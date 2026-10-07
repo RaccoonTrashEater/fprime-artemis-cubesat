@@ -14,6 +14,7 @@ MANIFEST = ROOT / "config/transport_constants.json"
 RF_NETWORKS = ROOT / "config/rf_networks.json"
 
 OUTPUTS = {
+    "fc_radio": ROOT / "fprime-artemis-core/FprimeArtemisCore/Components/UHFRadioManager/LinkConstants.hpp",
     "fprime": ROOT / "ArtemisRpiTeensy_N2/Components/LinkCfg/LinkCfg.hpp",
     "satellite": ROOT / "ArtemisTeensy_N2_Baremetal/firmware/satellite_teensy/src/link_protocol.hpp",
     "ground": ROOT / "GDS_Teensy/firmware/gds_teensy/src/link_protocol.hpp",
@@ -509,10 +510,11 @@ inline constexpr std::uint8_t PREVIEW_WIRE_TYPE_FRAGMENT = {preview["wire_type_f
 def render_all(cfg: dict, registry: dict) -> dict[Path, str]:
     identity = resolve_rf_identity(cfg, registry)
     return {
+        OUTPUTS["fc_radio"]: render_teensy(cfg, identity, satellite=True).replace("#include <Arduino.h>", "#include <cstdint>\n#include <cstddef>"),
         OUTPUTS["fprime"]: render_fprime(cfg, identity),
         OUTPUTS["satellite"]: render_teensy(cfg, identity, satellite=True),
         OUTPUTS["ground"]: render_teensy(cfg, identity, satellite=False),
-        OUTPUTS["zephyr"]: render_zephyr(cfg, identity),
+        **({OUTPUTS["zephyr"]: render_zephyr(cfg, identity)} if OUTPUTS["zephyr"].parent.exists() else {}),
     }
 
 

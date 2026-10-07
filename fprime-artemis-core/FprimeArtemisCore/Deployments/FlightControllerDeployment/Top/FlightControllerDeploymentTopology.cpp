@@ -59,6 +59,7 @@ void setupTopology(const TopologyState& state) {
     regCommands();
     // Autocoded configuration. Function provided by autocoder.
     configComponents(state);
+    RadioComms::driver.configure();
     // Project-specific component configuration. Function provided above. May be inlined, if desired.
     configureTopology();
     // Autocoded parameter read from file. Function provided by autocoder.
@@ -69,7 +70,12 @@ void setupTopology(const TopologyState& state) {
     startTasks(state);
     // Uplink is configured for receive; the Zephyr driver uses an interrupt callback,
     // so no separate receive task is started.
+#if defined(ARTEMIS_RADIO_GROUND_LINK)
+    RadioComms::manager.startRadio(true);
+#else
     comDriver.configure(state.uartDevice, state.baudRate);
+    RadioComms::manager.startRadio(false);
+#endif
     // FC↔PC link to the PayloadComputer over lpuart4
     pcLinkDriver.configure(state.pcLinkDevice, state.pcLinkBaud);
     // GPS on lpuart7: NMEA in, PMTK standby/wake out
@@ -116,6 +122,7 @@ void stopRateGroups() {
 
 void teardownTopology(const TopologyState& state) {
     // Autocoded (active component) task clean-up. Functions provided by topology autocoder.
+    RadioComms::manager.stopRadio();
     stopTasks(state);
     freeThreads(state);
 

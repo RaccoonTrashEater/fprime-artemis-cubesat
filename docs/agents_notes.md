@@ -43,6 +43,26 @@ The current top-level target is the shortened FlatSat FSR end-to-end demo shown 
 
 ## Current State
 
+### Zephyr FC RadioComms implementation (2026-10-06)
+
+- The new `fprime-artemis-core` radio path uses the Teensy as spacecraft
+  authority, per the supplied OBC architecture. The legacy Pi flight deployment
+  and both baremetal bridge workspaces are unchanged.
+- Added `RadioComms`, `UHFRadioManager`, and `UHFRadioDriver_RFM23BP`, with
+  a RadioHead 1.112 Zephyr SPI/GPIO adaptation and a portable channel-0 link core.
+- `ARTEMIS_GROUND_LINK=USB|RFM23` selects stock ComCcsds framing's transport.
+  USB remains the default; radio boot enable is selected only for RFM23.
+- FC TM frames are 128 bytes, com buffers 104 bytes, and telemetry packets
+  are split to satisfy generated size assertions. Radio link constants are
+  generated and checked against the existing satellite contract.
+- Host protocol tests cover framing bytes, ACK/retry, duplicate suppression,
+  header checks, timeouts, wraparound, and bounds. USB and RFM23 builds pass.
+  Hardware RF/SPI validation is still required; do not claim HIL acceptance.
+- Build, operator commands, and the bench checklist are documented in
+  `fprime-artemis-core/FprimeArtemisCore/Subtopologies/RadioComms/README.md`.
+  Payload sidecar traffic and MissionApp radio policy are separate integration
+  work; the radio manager exports a power request port for that policy.
+
 ### C3M ground-radio decision (2026-08-06)
 
 - The ground Teensy/RFM23BP through `./tools/c3m` is the primary C3M HIL and

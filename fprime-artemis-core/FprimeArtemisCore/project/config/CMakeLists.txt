@@ -20,6 +20,8 @@
 set(ARTEMIS_PLATFORM_CONFIG "")
 if (FPRIME_PLATFORM STREQUAL "Zephyr")
     set(ARTEMIS_PLATFORM_CONFIG
+        "${CMAKE_CURRENT_LIST_DIR}/zephyr/ComCfg.fpp"
+        "${CMAKE_CURRENT_LIST_DIR}/zephyr/FpConstants.fpp"
         "${CMAKE_CURRENT_LIST_DIR}/zephyr/CdhCoreConfig.fpp"
         "${CMAKE_CURRENT_LIST_DIR}/zephyr/ComCcsdsConfig.fpp"
     )

@@ -16,7 +16,9 @@ module FprimeArtemisCore {
   # Subtopology imports
   # ----------------------------------------------------------------------
     import CdhCore.Subtopology
-    import ComCcsds.Subtopology
+    import ComCcsds.FramingSubtopology
+    import RadioComms.Subtopology
+    @GROUND_LINK_INSTANCE@
     
   # ----------------------------------------------------------------------
   # Instances used in the topology
@@ -29,7 +31,6 @@ module FprimeArtemisCore {
     instance rateGroupDriver
     instance systemResources
     instance timer
-    instance comDriver
     instance nullPrmDb
     instance rpiPowerManager
     instance rpiPowerDriver
@@ -75,7 +76,7 @@ module FprimeArtemisCore {
   # Telemetry packets (only used when TlmPacketizer is used)
   # ----------------------------------------------------------------------
 
-    include "FlightControllerDeploymentPackets.fppi"
+    include "@CMAKE_CURRENT_LIST_DIR@/FlightControllerDeploymentPackets.fppi"
 
   # ----------------------------------------------------------------------
   # Direct graph specifiers
@@ -93,20 +94,12 @@ module FprimeArtemisCore {
     }
 
 
-    connections Communications {
-      # ComDriver buffer allocations
-      comDriver.allocate      -> ComCcsds.commsBufferManager.bufferGetCallee
-      comDriver.deallocate    -> ComCcsds.commsBufferManager.bufferSendIn
-      
-      # ComDriver <-> ComStub (Uplink)
-      comDriver.$recv                     -> ComCcsds.comStub.drvReceiveIn
-      ComCcsds.comStub.drvReceiveReturnOut -> comDriver.recvReturnIn
-      
-      # ComStub <-> ComDriver (Downlink)
-      ComCcsds.comStub.drvSendOut      -> comDriver.$send
-      comDriver.ready         -> ComCcsds.comStub.drvConnected
-    }
+    @GROUND_LINK_CONNECTIONS@
 
+    connections RadioBuffers {
+      RadioComms.manager.allocate -> ComCcsds.commsBufferManager.bufferGetCallee
+      RadioComms.manager.deallocate -> ComCcsds.commsBufferManager.bufferSendIn
+    }
 
     connections RateGroups {
       # timer to drive rate group
@@ -114,7 +107,7 @@ module FprimeArtemisCore {
 
       # 10Hz rate group: UART reads, plus thermal
       rateGroupDriver.CycleOut[Ports_RateGroups.rateGroup_10Hz] -> rateGroup_10Hz.CycleIn
-      rateGroup_10Hz.RateGroupMemberOut[0] -> comDriver.schedIn
+      @GROUND_LINK_SCHED@
       rateGroup_10Hz.RateGroupMemberOut[1] -> pcLinkDriver.schedIn
       rateGroup_10Hz.RateGroupMemberOut[2] -> gpsUartDriver.schedIn
       # No 2Hz group exists; thermalManager reads on every 5th tick (0.5 s).

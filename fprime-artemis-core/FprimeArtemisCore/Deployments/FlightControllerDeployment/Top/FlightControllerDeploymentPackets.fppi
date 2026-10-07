@@ -9,15 +9,21 @@ telemetry packets FlightControllerDeploymentPackets {
 
     ComCcsds.comQueue.comQueueDepth
     ComCcsds.comQueue.buffQueueDepth
-    CdhCore.tlmSend.GroupConfigs
-    CdhCore.tlmSend.SectionEnabled
     ComCcsds.commsBufferManager.TotalBuffs
     ComCcsds.commsBufferManager.CurrBuffs
     ComCcsds.commsBufferManager.HiBuffs
 
+  }
+
+  packet RateTiming id 12 group 1 {
     FprimeArtemisCore.rateGroup_10Hz.RgMaxTime
     FprimeArtemisCore.rateGroup_1Hz.RgMaxTime
     FprimeArtemisCore.rateGroup_0_25Hz.RgMaxTime
+  }
+
+  packet PacketizerState id 13 group 1 {
+    CdhCore.tlmSend.GroupConfigs
+    CdhCore.tlmSend.SectionEnabled
   }
 
   packet CDHErrors id 2 group 1 {
@@ -32,6 +38,18 @@ telemetry packets FlightControllerDeploymentPackets {
     FprimeArtemisCore.rateGroup_0_25Hz.RgCycleSlips
   }
 
+  packet Radio id 11 group 1 {
+    RadioComms.manager.RadioState
+    RadioComms.manager.LastRssi
+    RadioComms.manager.TxPackets
+    RadioComms.manager.RxPackets
+    RadioComms.manager.Retries
+    RadioComms.manager.AckTimeouts
+    RadioComms.manager.Drops
+    RadioComms.manager.Duplicates
+    RadioComms.manager.ReassemblyTimeouts
+    RadioComms.manager.CrcDrops
+  }
   packet Mission id 7 group 1 {
     FprimeArtemisCore.missionApp.CurrentMode
   }
@@ -112,31 +130,43 @@ telemetry packets FlightControllerDeploymentPackets {
 
   packet Version1 id 22 group 2 {
     CdhCore.version.FrameworkVersion
+  }
+  packet ProjectVersion id 38 group 2 {
     CdhCore.version.ProjectVersion
   }
 
   packet Version_Library1 id 23 group 2 {
     CdhCore.version.LibraryVersion01
+  }
+  packet LibraryVersion02 id 39 group 2 {
     CdhCore.version.LibraryVersion02
   }
 
   packet Version_Library2 id 24 group 2 {
     CdhCore.version.LibraryVersion03
+  }
+  packet LibraryVersion04 id 40 group 2 {
     CdhCore.version.LibraryVersion04
   }
 
   packet Version_Library3 id 25 group 2 {
     CdhCore.version.LibraryVersion05
+  }
+  packet LibraryVersion06 id 41 group 2 {
     CdhCore.version.LibraryVersion06
   }
 
   packet Version_Library4 id 26 group 2 {
     CdhCore.version.LibraryVersion07
+  }
+  packet LibraryVersion08 id 42 group 2 {
     CdhCore.version.LibraryVersion08
   }
 
   packet Version_Library5 id 27 group 2 {
     CdhCore.version.LibraryVersion09
+  }
+  packet LibraryVersion10 id 43 group 2 {
     CdhCore.version.LibraryVersion10
   }
 

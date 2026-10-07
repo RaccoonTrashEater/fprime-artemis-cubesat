@@ -17,6 +17,7 @@
 ####
 register_fprime_module(
     AUTOCODER_INPUTS
+        "${CMAKE_CURRENT_LIST_DIR}/Radio.fpp"
         "${CMAKE_CURRENT_LIST_DIR}/FcPcLink.fpp"
         "${CMAKE_CURRENT_LIST_DIR}/Imu.fpp"
         "${CMAKE_CURRENT_LIST_DIR}/Gps.fpp"

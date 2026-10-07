@@ -62,6 +62,7 @@ static constexpr FwEnumStoreType bufferManagerId = 500;
  *
  * ```c++
  * namespace PingEntries {
+    namespace RadioComms_manager {enum { WARN = 3, FATAL = 5 };}
  * namespace cmdDisp {
  *     enum { WARN = 3, FATAL = 5 };
  * }
@@ -69,6 +70,7 @@ static constexpr FwEnumStoreType bufferManagerId = 500;
  * ```
  */
 namespace PingEntries {
+    namespace RadioComms_manager {enum { WARN = 3, FATAL = 5 };}
     namespace FprimeArtemisCore_rateGroup_10Hz {enum { WARN = 3, FATAL = 5 };}
     namespace FprimeArtemisCore_rateGroup_1Hz {enum { WARN = 3, FATAL = 5 };}
     namespace FprimeArtemisCore_rateGroup_0_25Hz {enum { WARN = 3, FATAL = 5 };}

@@ -18,6 +18,7 @@ RF_NETWORKS = ROOT / "config/rf_networks.json"
 PAYLOAD_RECEIVER = ROOT / "ArtemisRpiTeensy_N2/tools/payload_receiver.py"
 
 SOURCES = {
+    "fc_radio": ROOT / "fprime-artemis-core/FprimeArtemisCore/Components/UHFRadioManager/LinkConstants.hpp",
     "fprime": ROOT / "ArtemisRpiTeensy_N2/Components/LinkCfg/LinkCfg.hpp",
     "satellite_teensy": ROOT / "ArtemisTeensy_N2_Baremetal/firmware/satellite_teensy/src/link_protocol.hpp",
     "ground_teensy": ROOT / "GDS_Teensy/firmware/gds_teensy/src/link_protocol.hpp",
@@ -106,6 +107,8 @@ def main() -> int:
 
     fp = constants["fprime"]
     sat = constants["satellite_teensy"]
+    if constants["fc_radio"] != sat:
+        errors.append("FC radio constants differ from satellite radio contract")
     gnd = constants["ground_teensy"]
     selected_network = registry["networks"][manifest["rf"]["network"]]
 
