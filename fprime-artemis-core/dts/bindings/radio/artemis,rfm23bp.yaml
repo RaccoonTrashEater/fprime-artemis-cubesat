@@ -2,6 +2,9 @@ description: Artemis RFM23BP radio module with external PA control
 compatible: "artemis,rfm23bp"
 include: spi-device.yaml
 properties:
+  select-gpios:
+    type: phandle-array
+    required: true
   irq-gpios:
     type: phandle-array
     required: true

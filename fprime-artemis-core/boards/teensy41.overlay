@@ -49,13 +49,28 @@
 };
 
 /* Radio SPI1 (RFM23BP). CS=38, INT=40, RX_ON=30, TX_ON=31. */
+&pinctrl {
+    artemis_radio_spi: artemis_radio_spi {
+        group0 {
+            pinmux = <&iomuxc_gpio_ad_b1_15_lpspi3_sck>,
+                     <&iomuxc_gpio_ad_b1_13_lpspi3_sdi>,
+                     <&iomuxc_gpio_ad_b1_14_lpspi3_sdo>;
+            drive-strength = "r0-6";
+            slew-rate = "fast";
+            nxp,speed = "100-mhz";
+        };
+    };
+};
 &lpspi3 {
     status = "okay";
+    pinctrl-0 = <&artemis_radio_spi>;
+    pinctrl-names = "default";
 
     rfm23: rfm23@0 {
         compatible = "artemis,rfm23bp";
         reg = <0>;
         spi-max-frequency = <1000000>;
+        select-gpios = <&gpio1 28 GPIO_ACTIVE_LOW>; /* pin 38, manual CS */
         irq-gpios = <&gpio1 20 GPIO_ACTIVE_LOW>; /* pin 40 */
         rx-on-gpios = <&gpio3 23 GPIO_ACTIVE_HIGH>; /* pin 30 */
         tx-on-gpios = <&gpio3 22 GPIO_ACTIVE_HIGH>; /* pin 31 */
