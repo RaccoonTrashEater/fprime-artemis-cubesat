@@ -7,9 +7,9 @@ description: "Cross-compile F' (F Prime) deployments for ARM/Linux targets, espe
 
 ## This Repo — Pi Zero W
 
-**Read first:** `docs/CROSS_COMPILE_HANDOFF_PI_ZERO_W.md` — covers the full handoff state, known issues, and what has/hasn't been validated on the actual hardware.
+**Read first:** `docs/integration/pi-zero-w/CROSS_COMPILE_HANDOFF.md` — covers the full handoff state, known issues, and what has/hasn't been validated on the actual hardware.
 
-**Critical landmine — ARMv6, not ARMv7:** The Raspberry Pi Zero W uses an ARMv6 CPU (BCM2835). Do NOT use `aarch64-linux` or standard `arm-hf-linux` toolchains — they target ARMv7+ and will produce binaries that SIGILL on the Pi Zero W. You must use an ARMv6-compatible toolchain (e.g. `arm-linux-gnueabihf` from the Raspberry Pi Foundation toolchain, not the ARM GNU toolchain). See `docs/CROSS_COMPILE_HANDOFF_PI_ZERO_W.md` for the exact toolchain path and CMake platform file.
+**Critical landmine — ARMv6, not ARMv7:** The Raspberry Pi Zero W uses an ARMv6 CPU (BCM2835). Do NOT use `aarch64-linux` or standard `arm-hf-linux` toolchains — they target ARMv7+ and will produce binaries that SIGILL on the Pi Zero W. You must use an ARMv6-compatible toolchain (e.g. `arm-linux-gnueabihf` from the Raspberry Pi Foundation toolchain, not the ARM GNU toolchain). See `docs/integration/pi-zero-w/CROSS_COMPILE_HANDOFF.md` for the exact toolchain path and CMake platform file.
 
 ### KISS workflow for this repo
 

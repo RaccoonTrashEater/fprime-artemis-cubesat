@@ -1,10 +1,12 @@
 # GDS_Teensy
 
+> Earlier Artemis/GDS/RFM23BP workflow reference. For current N2 Yamcs operations and integration status, start at [the documentation index](../docs/README.md). This page does not establish deployment of the new N2 software baseline.
+
 Ground-station Teensy baremetal workspace for the Neutron 2 RF MVP bridge.
 
 Detailed docs live in:
 
-- `../docs/GDS_TEENSY_RUNBOOK.md`
+- `../docs/archive/legacy-gds-rfm23bp/GDS_TEENSY_RUNBOOK.md`
 - `docs/transport_contract.md`
 
 ## Scope

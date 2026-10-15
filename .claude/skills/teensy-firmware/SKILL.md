@@ -32,7 +32,7 @@ debug counters, third = payload channel 1 receiver.
   Attach the Teensy to WSL first from an **administrator PowerShell** window:
   `usbipd bind --busid <BUSID>` (once), then `usbipd attach --wsl --busid <BUSID>`
   each session. Ports then appear as `/dev/ttyACM*`. Do not use `COM3`-style
-  names in repo scripts. Full procedure: `docs/STUDENT_WINDOWS_LAPTOP_SETUP.md`.
+  names in repo scripts. Full procedure: `docs/development/WINDOWS_WSL.md`.
 - **Linux / WSL2 serial permissions (`sudo`)**: if a serial command fails with
   `Permission denied`, the durable fix is
   `sudo usermod -aG dialout "$USER"` then restart WSL (or log out/in on Linux).

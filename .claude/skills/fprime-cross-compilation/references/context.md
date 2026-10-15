@@ -5,14 +5,14 @@
 - Deployment: `ArtemisRpiTeensy_N2/ArtemisRpiTeensyDeployment/`
 - Cross-compile driver script: `ArtemisRpiTeensy_N2/tools/docker_cross_compile_pi_zero_w.sh`
 - Sysroot sync helper: `ArtemisRpiTeensy_N2/tools/sync_pi_zero_w_sysroot.sh`
-- Full handoff/known-issues doc: `docs/CROSS_COMPILE_HANDOFF_PI_ZERO_W.md`
-- Student-facing guide: `docs/CROSS_COMPILE_PI_ZERO_W_STUDENT_GUIDE.md`
+- Full handoff/known-issues doc: `docs/integration/pi-zero-w/CROSS_COMPILE_HANDOFF.md`
+- Student-facing guide: `docs/integration/pi-zero-w/CROSS_COMPILE.md`
 
 ## Target hardware
 - Raspberry Pi Zero W — BCM2835, **ARMv6** with VFPv2, armhf userland.
 - Standard `aarch64-linux` and `arm-hf-linux` F' toolchains target ARMv7+;
   their binaries SIGILL on this board. Use the ARMv6-compatible toolchain
-  documented in `docs/CROSS_COMPILE_HANDOFF_PI_ZERO_W.md`.
+  documented in `docs/integration/pi-zero-w/CROSS_COMPILE_HANDOFF.md`.
 
 ## Build outputs
 - ARM binary + dictionary land under:

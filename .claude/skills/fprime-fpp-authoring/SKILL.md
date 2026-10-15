@@ -12,7 +12,7 @@ description: "Use when writing or editing FPP (F Prime Prime) files: component d
 - FPP language reference is NOT on the main F' docs site. Use
   `https://nasa.github.io/fpp/fpp-users-guide.html` (via the `fprime-docs-search` skill).
 - Copy an existing repo component as your template — `Components/SoHApp/SoHApp.fpp`
-  is a clean example. `docs/STUDENT_COMPONENT_STARTERS.md` has student-facing starters.
+  is a clean example. `docs/development/COMPONENT_STARTERS.md` has student-facing starters.
 
 ## Component Definition Anatomy
 
@@ -124,7 +124,7 @@ Forgetting `cmdResponse_out` leaves the command hanging in GDS.
 ## Repo Conventions
 
 - HAL tiers follow F´'s native Application-Manager-Driver (App-Man-Drv)
-  pattern per `docs/SYSTEM_ARCHITECTURE.md`: `<X>App` owns mission logic,
+  pattern per `docs/architecture/SYSTEM_ARCHITECTURE.md`: `<X>App` owns mission logic,
   `<X>Manager` owns the stable subsystem contract, `<X>Driver_<Impl>` owns
   hardware/sim specifics. Applications talk to managers; managers talk to
   drivers; drivers talk to hardware. Managers and drivers swap via shared

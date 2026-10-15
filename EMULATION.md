@@ -1,5 +1,7 @@
 # Local Closed-Loop Emulation (Laptop)
 
+> Earlier Artemis/GDS/RFM23BP workflow reference. For current N2 Yamcs operations and integration status, start at [the documentation index](docs/README.md). This page does not establish deployment of the new N2 software baseline.
+
 This is the fastest local end-user test loop for this repo:
 
 - run flight app + channelized local link emulator + `fprime-gds` on one laptop
@@ -111,7 +113,7 @@ Stop all processes with `Ctrl-C` in the launcher terminal.
 
 For a lead-facing manual walkthrough, use:
 
-- `docs/NEUTRON2_LOCAL_EMULATION_RUNBOOK.md`
+- `docs/archive/legacy-gds-rfm23bp/NEUTRON2_LOCAL_EMULATION_RUNBOOK.md`
 
 Use this for the laptop-only demo story before HIL testing. It starts local
 emulation, starts the Neutron 2 payload viewer, sends the demo command sequence,

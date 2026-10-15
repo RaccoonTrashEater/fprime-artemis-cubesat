@@ -5,21 +5,24 @@ description: "Use when running, validating, or debugging the Neutron 2 demo stor
 
 # F Prime Local Emulation (No-HIL Demo)
 
+> Current N2 routing: use `docs/operations/QUICKSTART.md` and `docs/development/YAMCS_LOCAL_TESTING.md` for the local Yamcs baseline. The GDS/RFM23BP procedures below are the older comparison workflow and do not establish PLD/SatNOGS/SDR integration. Windows/WSL local Yamcs remains unvalidated.
+
+
 ## Operating Style
 
 This is the no-hardware path. It proves the F Prime command/telemetry/science
 pipeline on one laptop; it does NOT prove RPi UART, Teensy firmware, RF link, or
 real payload behavior. Say plainly which side of that line a result falls on.
 
-Source of truth: `docs/NEUTRON2_LOCAL_EMULATION_RUNBOOK.md`. Debug failures
-with `docs/SOFTWARE_DEBUGGING_TROUBLESHOOTING.md`.
+Source of truth: `docs/archive/legacy-gds-rfm23bp/NEUTRON2_LOCAL_EMULATION_RUNBOOK.md`. Debug failures
+with `docs/development/TROUBLESHOOTING.md`.
 
 ## Platforms
 
 - **macOS** (primary): runs natively; typical repo root `~/Developer/fprime-artemis-cubesat`.
 - **Windows**: run everything inside **WSL2** (typical repo root
   `~/fprime-artemis-cubesat`); the browser for GDS (`:5050`) and the viewer
-  (`:8062`) can be native Windows. Setup: `docs/STUDENT_WINDOWS_LAPTOP_SETUP.md`.
+  (`:8062`) can be native Windows. Setup: `docs/development/WINDOWS_WSL.md`.
 - **Linux**: runs natively.
 - No serial hardware is involved, so no `sudo` is needed on any platform — a
   local-emulation command demanding `sudo` is a sign something else is wrong
@@ -114,7 +117,7 @@ Open GDS at `http://127.0.0.1:5050`, viewer at `http://127.0.0.1:8062`.
 8. Viewer at `:8062` auto-selects the newest CSV; chart shows counts over `t_s`, red bands mark SAA rows
 
 Full command names are prefixed `ArtemisRpiTeensyDeployment.`. Useful watch
-channels are listed in `docs/NEUTRON2_LOCAL_EMULATION_RUNBOOK.md` (GDS Setup).
+channels are listed in `docs/archive/legacy-gds-rfm23bp/NEUTRON2_LOCAL_EMULATION_RUNBOOK.md` (GDS Setup).
 
 ## Pass Criteria
 

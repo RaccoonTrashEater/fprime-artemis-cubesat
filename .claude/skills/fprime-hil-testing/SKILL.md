@@ -5,6 +5,9 @@ description: "Use when guiding live or rehearsal hardware-in-the-loop testing fo
 
 # F Prime HIL Testing
 
+> Current N2 routing: use `docs/operations/QUICKSTART.md` and `docs/development/YAMCS_LOCAL_TESTING.md` for the local Yamcs baseline. The GDS/RFM23BP procedures below are the older comparison workflow and do not establish PLD/SatNOGS/SDR integration. Windows/WSL local Yamcs remains unvalidated.
+
+
 ## Operating Style
 
 Keep it KISS: one physical step, one confirmation, then move on. Do not assume
@@ -31,12 +34,12 @@ git status --short --branch
 git submodule status --recursive
 sed -n '1,220p' AGENTS.md
 sed -n '1,220p' README.md
-sed -n '1,260p' docs/SYSTEM_ARCHITECTURE.md
-sed -n '400,490p' docs/agents_notes.md
-sed -n '1,140p' docs/NEUTRON2_RF_MVP_DEMO_RUNBOOK.md
+sed -n '1,260p' docs/architecture/SYSTEM_ARCHITECTURE.md
+sed -n '400,490p' docs/archive/AGENT_NOTES.md
+sed -n '1,140p' docs/archive/legacy-gds-rfm23bp/NEUTRON2_RF_MVP_DEMO_RUNBOOK.md
 ```
 
-Use `docs/NEUTRON2_RF_MVP_DEMO_RUNBOOK.md` as the current HIL proof source. Older
+Use `docs/archive/legacy-gds-rfm23bp/NEUTRON2_RF_MVP_DEMO_RUNBOOK.md` as the current HIL proof source. Older
 `HIL_TEST_HANDOFF_*` files may be stale or branch-specific.
 
 ## Platform Detection
@@ -90,7 +93,7 @@ If system Python lacks `pyserial`, use the repo venv Python after activating
 If WSL2 does not show the Teensy devices, attach them from Windows with
 `usbipd-win` from an **administrator PowerShell** window (`usbipd bind --busid
 <BUSID>` once, then `usbipd attach --wsl --busid <BUSID>` each session), then
-re-run the WSL2 checks. Full procedure: `docs/STUDENT_WINDOWS_LAPTOP_SETUP.md`.
+re-run the WSL2 checks. Full procedure: `docs/development/WINDOWS_WSL.md`.
 
 If a serial command fails with `Permission denied` on WSL2 or Linux, the
 durable fix is `sudo usermod -aG dialout "$USER"` plus a WSL restart

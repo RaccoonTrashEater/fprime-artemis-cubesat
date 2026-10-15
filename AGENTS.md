@@ -52,24 +52,19 @@ Use this project with the `fprime-swe` skill and follow these steps exactly.
   git submodule status --recursive
   ```
   Treat the active branch and local uncommitted files as the current working context. Do not assume the checkout is on `main`, `neutron_2`, `neutron2-develop`, or any Codex feature branch without verifying.
-- Read `docs/SYSTEM_ARCHITECTURE.md` first.
+- Read `docs/architecture/SYSTEM_ARCHITECTURE.md` first.
   - This is the required system-level crosswalk between the Neutron 2 target architecture and the Artemis-based prototype used for the current demo.
   - Do not continue with subsystem or architecture work until this file has been read.
 - Read `README.md` for the top-level architecture and current status.
-- Read `docs/agents_notes.md` for latest implementation details and pending TODO items.
+- Read `docs/README.md`, `docs/verification/SOFTWARE_BASELINE.md`, and `docs/planning/DEVELOPMENT_INTENT.md` for current routing, accepted software state, and open interfaces. `docs/archive/AGENT_NOTES.md` contains historical snapshots only.
 - For subsystem/component architecture details, point agents to:
-  - `docs/SYSTEM_ARCHITECTURE.md`
-  - `docs/archive/OPTIMAL_FPRIME_COMPONENT_TOPOLOGY_PLAN.md`
-  - `docs/STUDENT_COMPONENT_STARTERS.md`
+  - `docs/architecture/SYSTEM_ARCHITECTURE.md`
+  - `docs/archive/investigations/OPTIMAL_FPRIME_COMPONENT_TOPOLOGY_PLAN.md`
+  - `docs/development/COMPONENT_STARTERS.md`
   Keep detailed architecture in those docs rather than duplicating it here.
-- Treat the shortened FlatSat FSR end-to-end demo as the current target mission narrative:
-  1. boot into `Base Mode`
-  2. determine mock ground-contact timing with `D2S2` inputs
-  3. downlink live `SOH` telemetry for display to judges
-  4. send a command that schedules data collection after a short delay such as `10` seconds
-  5. run data collection using real or simulated payload data
-  6. downlink science data
-  7. review/analyze science data on the ground PC with `fprime-gds` for the MVP demo; treat `Yamcs` as the longer-term end-goal ground stack
+- Current N2 local functional testing uses Yamcs. Use `docs/operations/QUICKSTART.md` for mission ops and `docs/development/YAMCS_LOCAL_TESTING.md` for detailed setup/probes. Build this profile with `./tools/yamcs/build_native.sh`; generic native generate may select the default OFF/RF configuration.
+- October CDR targets pass-through payload collection and raw-data return through PLD/OBC/SatNOGS/SDR/Yamcs without requiring modes. December FSR adds nominal modes, time-based collection and EPS payload-power integration. Local software evidence does not establish either hardware milestone.
+- Shared Artemis/C3M references live under `docs/reference/`; older GDS/RFM23BP workflows live under `docs/archive/legacy-gds-rfm23bp/`. Do not treat them as current N2 mission-ops instructions or qualification evidence.
 - Active F' project root is:
   - `ArtemisRpiTeensy_N2`
 - Active baremetal Teensy workspace is:
@@ -124,11 +119,11 @@ fprime-util build
 
 ## RPi Native Build (Minimal)
 - Use manual native build + run instructions:
-  - `docs/RPI_BUILD.md`
+  - `docs/integration/pi-zero-w/NATIVE_BUILD.md`
 - Build policy:
   - build on the Raspberry Pi target and run the locally built binary.
 
-## Run `fprime-gds` over UART (RPi/Operator Side)
+## Historical RFM23BP/GDS UART workflow (revision-matched bench work only)
 
 Preferred launcher (repo-maintained defaults):
 macOS:
@@ -294,7 +289,7 @@ PORT="$(ls /dev/ttyACM* /dev/ttyUSB* 2>/dev/null | head -n 1)"
 1. Check active branch/worktree and submodule state:
    - `git status --short --branch`
    - `git submodule status --recursive`
-2. Read `README.md`, `docs/SYSTEM_ARCHITECTURE.md`, and `docs/agents_notes.md` for current architecture/state.
+2. Read `docs/README.md`, `docs/architecture/SYSTEM_ARCHITECTURE.md`, `docs/verification/SOFTWARE_BASELINE.md`, and `docs/planning/DEVELOPMENT_INTENT.md` for current architecture/state. Archived agent notes are historical context only.
 3. Activate F' venv:
    - `. ArtemisRpiTeensy_N2/fprime-venv/bin/activate`
 4. Validate F' build:
@@ -313,21 +308,15 @@ PORT="$(ls /dev/ttyACM* /dev/ttyUSB* 2>/dev/null | head -n 1)"
 ### Student Branch / Handoff Rules
 - `neutron2-develop` is the shared post-v1 student development branch, created from the frozen MVP demo baseline; verify the current branch before making student-facing edits.
 - Keep student-facing docs KISS: clear, concise, consistent, and explicit about what students should edit.
-- Use native application/manager/driver terminology from `docs/SYSTEM_ARCHITECTURE.md` and `docs/STUDENT_COMPONENT_STARTERS.md`; do not restate the full architecture here.
+- Use native application/manager/driver terminology from `docs/architecture/SYSTEM_ARCHITECTURE.md` and `docs/development/COMPONENT_STARTERS.md`; do not restate the full architecture here.
 - Placeholder or request-state commands must not imply real hardware actuation. Say plainly when a component records intent only.
 - When helping students with GitHub flow, use the `student-git-handoff` skill and keep their work on feature branches from the approved student base.
 
 ### Demo-First Decision Rule
 - Prefer the smallest implementation that supports the live demo story.
 - Demo-critical visible behaviors take priority over deeper architectural cleanup.
-- The current minimum acceptable demo story is:
-  - nominal bring-up in `Base Mode`
-  - live `SOH` telemetry on the ground display
-  - operator-issued scheduled collection command
-  - data collection after a short delay
-  - science-data downlink
-  - ground-side review or analysis of that science data
-- If a real subsystem is not stable enough, document and use a simulation/fallback path rather than leaving the demo story incomplete.
+- The current CDR software story is Yamcs command → serialized simulated acquisition → immutable raw storage → sender completion → independently verified ground receipt. See `docs/planning/DEVELOPMENT_INTENT.md` for CDR/FSR hardware scope.
+- Preserve the earlier GDS/RFM23BP demo as comparison evidence; mode scheduling and EPS hardware behavior have separate acceptance gates.
 
 ### Runtime Smoke Flow (RPi)
 - Binary:

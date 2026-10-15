@@ -1,5 +1,7 @@
 # Raspberry Pi Provisioning
 
+> Earlier Artemis/GDS/RFM23BP workflow reference. For current N2 Yamcs operations and integration status, start at [the documentation index](../../docs/README.md). This page does not establish deployment of the new N2 software baseline.
+
 BLUF: this folder versions the Pi service and the minimum blank-SD-card steps for
 the Neutron 2 MVP demo. Do not run these commands against the bench Pi unless
 you are in a bench session and intend to change the Pi.
@@ -67,9 +69,9 @@ are confirmed.
 The Pi Zero W is ARMv6. Do not use generic ARMv7 Raspberry Pi artifacts. For
 the cross-compile landmine and verification flow, use the existing docs:
 
-- `docs/CROSS_COMPILE_PI_ZERO_W_STUDENT_GUIDE.md`
-- `docs/CROSS_COMPILE_HANDOFF_PI_ZERO_W.md`
-- `docs/RPI_BUILD.md` for the slow native fallback
+- `docs/integration/pi-zero-w/CROSS_COMPILE.md`
+- `docs/integration/pi-zero-w/CROSS_COMPILE_HANDOFF.md`
+- `docs/integration/pi-zero-w/NATIVE_BUILD.md` for the slow native fallback
 
 ## Parameter Persistence Note
 

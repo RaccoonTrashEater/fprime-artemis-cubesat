@@ -2,7 +2,9 @@
 
 F' implementation workspace for the Neutron 2 team.
 
-For the accepted software checkpoint, team setup, evidence, and remaining integration gates, start with [N2 software baseline](docs/N2_SOFTWARE_BASELINE.md).
+Start with [the documentation index](docs/README.md). Mission ops: [one-time setup](docs/operations/LOCAL_SETUP.md) → [daily quickstart](docs/operations/QUICKSTART.md) → [troubleshooting](docs/operations/TROUBLESHOOTING.md).
+
+For the accepted software checkpoint, team setup, evidence, and remaining integration gates, start with [N2 software baseline](docs/verification/SOFTWARE_BASELINE.md).
 
 ## Current mission milestones — October 8, 2026
 
@@ -10,21 +12,21 @@ The end-of-October CDR MVP requires a Yamcs-commanded pass-through science colle
 
 Current software work is board-free and uses Yamcs for functional command/observation. The intended CDR OBC is a Pi Zero W running F′. Dennis owns OBC F′, Yamcs, and the F′ SatNOGS driver; Aris owns the PLD; Sam and Tierra own SatNOGS firmware and SPI integration. The physical PLD interface and SatNOGS SPI/host contracts remain open. The Oct 7 Yamcs ping/file-transfer evidence below is historical compatibility evidence, not proof of the new payload or RF path.
 
-- [Development intent and open questions](docs/N2_DEVELOPMENT_INTENT_2026-10-07.md)
-- [SDD gap analysis and staged plan](docs/N2_SDD_GAP_AND_DEVELOPMENT_PLAN_2026-10-07.md)
-- [Local F′–Yamcs setup and verification](docs/N2_YAMCS_LOCAL_TESTING_2026-10-07.md)
-- [Dedicated Ubuntu Pi 5 Yamcs ground-host plan](docs/N2_YAMCS_GROUND_HOST_PLAN_2026-10-08.md)
-- [Yamcs primer: browsers, dictionaries, commands, telemetry, and SDR handoff](docs/YAMCS_PRIMER.md)
-- [Verified slice-A operator walkthrough with screenshots](docs/N2_PASSTHROUGH_OPERATOR_WALKTHROUGH_2026-10-08.md)
-- [Verified slice-C timeout/recovery walkthrough with screenshots](docs/N2_LIFECYCLE_OPERATOR_WALKTHROUGH_2026-10-08.md)
-- [Verified slice-B raw-data cycle operator walkthrough with screenshots](docs/N2_RAW_CYCLE_OPERATOR_WALKTHROUGH_2026-10-08.md)
+- [Development intent and open questions](docs/planning/DEVELOPMENT_INTENT.md)
+- [SDD gap analysis and staged plan](docs/planning/SDD_GAP_PLAN.md)
+- [Local F′–Yamcs setup and verification](docs/development/YAMCS_LOCAL_TESTING.md)
+- [Dedicated Ubuntu Pi 5 Yamcs ground-host plan](docs/integration/GROUND_HOST.md)
+- [Yamcs primer: browsers, dictionaries, commands, telemetry, and SDR handoff](docs/operations/YAMCS_BASICS.md)
+- [Verified slice-A operator walkthrough with screenshots](docs/operations/walkthroughs/PASSTHROUGH.md)
+- [Verified slice-C timeout/recovery walkthrough with screenshots](docs/operations/walkthroughs/LIFECYCLE.md)
+- [Verified slice-B raw-data cycle operator walkthrough with screenshots](docs/operations/walkthroughs/RAW_CYCLE.md)
 
 For the software slice, proceed A → C → B: literal command pass-through, truthful correlated outcomes, then a nominal raw-data cycle. **A, C, and B passed on October 8 in the local software profile.** A returned exact synthetic 59-byte and 128-byte literals with matching request IDs and unchanged BASE mode. C passed 31 Yamcs lifecycle checks; B independently reconstructed and read back distinct 400-byte/30-window and 82-byte/5-window simulator products. B also recovered two packets after one injected drop and one corruption, and the ground viewer matched both Yamcs readback hashes and count-frequency histograms. These results validate the software path only: the numeric-duration command uses the simulator, and the real PLD command protocol, Pi Zero W runtime, SatNOGS/SDR, RF, and full CDR sequence remain unverified. All three walkthroughs were captured after their acceptance runs. No fallback for an unavailable SatNOGS/SDR path has been approved.
 
-**October 8 pulse extension — PASS:** [KISS synthetic pulse science](docs/N2_SYNTHETIC_PULSE_PLAN_2026-10-08.md) adds an opt-in raw pulse fixture and ground waveform, integrated-charge spectrum, and PSD density views. Yamcs raw readback, independent plot calculations, drop/corruption recovery, and browser download passed. The [operator walkthrough](docs/N2_PULSE_SCIENCE_OPERATOR_WALKTHROUGH_2026-10-08.md) has seven pictures taken after acceptance. All science is SIMULATED; figure of merit and real detector calibration are deferred.
+**October 8 pulse extension — PASS:** [KISS synthetic pulse science](docs/verification/SYNTHETIC_PULSE_ACCEPTANCE.md) adds an opt-in raw pulse fixture and ground waveform, integrated-charge spectrum, and PSD density views. Yamcs raw readback, independent plot calculations, drop/corruption recovery, and browser download passed. The [operator walkthrough](docs/operations/walkthroughs/PULSE_SCIENCE.md) has seven pictures taken after acceptance. All science is SIMULATED; figure of merit and real detector calibration are deferred.
 
 
-**October 9 software acceptance PASS:** [Yamcs completion verification and durable raw storage/restart recovery](docs/N2_COMPLETION_STORAGE_PLAN_2026-10-09.md): six completion/restart/fault scenarios plus A/C/B and pulse regressions passed through Yamcs. The payload team's supplied JAR owns actual science viewing. Our onboard FSW acquires, retains, and downlinks opaque raw science files; no real sample files will be supplied for this software slice. SatNOGS/SDR development is owned by another team. Synthetic plots remain regression fixtures.
+**October 9 software acceptance PASS:** [Yamcs completion verification and durable raw storage/restart recovery](docs/verification/COMPLETION_STORAGE.md): six completion/restart/fault scenarios plus A/C/B and pulse regressions passed through Yamcs. The payload team's supplied JAR owns actual science viewing. Our onboard FSW acquires, retains, and downlinks opaque raw science files; no real sample files will be supplied for this software slice. SatNOGS/SDR development is owned by another team. Synthetic plots remain regression fixtures.
 
 ## Previous demo architecture — July 2026 baseline
 
@@ -122,12 +124,12 @@ Reasons the earlier demo stayed on RFM23BP:
 That rationale applied to the July demo. The October CDR now requires SatNOGS
 and an SDR, so the earlier RFM23BP-only plan is superseded for the new milestone.
 See
-[`docs/archive/HACKRF_SDR_GROUND_STATION_INVESTIGATION_2026-06-30.md`](docs/archive/HACKRF_SDR_GROUND_STATION_INVESTIGATION_2026-06-30.md)
+[`docs/archive/investigations/HACKRF_SDR_GROUND_STATION_INVESTIGATION_2026-06-30.md`](docs/archive/investigations/HACKRF_SDR_GROUND_STATION_INVESTIGATION_2026-06-30.md)
 for the HackRF/SDR packet-compatibility investigation.
 
 ## Previous demo target flow — historical baseline
 
-![FlatSat FSR end-to-end demo plan](docs/images/flatsat-fsr-end-to-end-demo-plan.png)
+![FlatSat FSR end-to-end demo plan](docs/archive/legacy-gds-rfm23bp/diagrams/flatsat-fsr-end-to-end-demo-plan.png)
 
 The following shortened FlatSat FSR flow describes an earlier target demo and is superseded by the October CDR and December FSR milestones above. It is retained as historical context; do not treat it as the current acceptance sequence.
 
@@ -189,7 +191,7 @@ Hardware proof basis:
   simulated payload capture, channel-1 payload reconstruction, payload viewer
   parsing, and Pi-vs-ground payload hash matching.
 - The runbook source of truth for reproducing the demo is
-  [`docs/NEUTRON2_RF_MVP_DEMO_RUNBOOK.md`](docs/NEUTRON2_RF_MVP_DEMO_RUNBOOK.md).
+  [`docs/archive/legacy-gds-rfm23bp/NEUTRON2_RF_MVP_DEMO_RUNBOOK.md`](docs/archive/legacy-gds-rfm23bp/NEUTRON2_RF_MVP_DEMO_RUNBOOK.md).
 
 Validated for this MVP:
 
@@ -270,31 +272,26 @@ Where to find things:
 
 ## Read next
 
-New here? Read these roughly in order to fully understand the project:
+Start at [the documentation index](docs/README.md), then follow the path for your task:
 
-1. `docs/SYSTEM_ARCHITECTURE.md` — current Neutron 2-on-Artemis architecture, the application/manager/driver component model, the RF/transport design, and an end-to-end command/telemetry trace. **Read this first.**
-2. `docs/GLOSSARY.md` — every acronym and term used across the repo (SOH, CCSDS, APID, D2S2, OBC, PDU, HAL, ...). Keep it open while reading the rest.
-3. `docs/FPRIME_GROUND_INTERFACES_PRIMER.md` — F´ literacy: commands, events, telemetry, and parameters, and how to add each.
-4. `docs/archive/OPTIMAL_FPRIME_COMPONENT_TOPOLOGY_PLAN.md` — component and topology plan.
-5. `docs/TIME_AND_SCHEDULING.md` — rate groups, the clock, and how the "collect in N seconds" countdown works.
-6. `EMULATION.md` and `docs/NEUTRON2_LOCAL_EMULATION_RUNBOOK.md` — laptop-only closed-loop emulation (no hardware).
-7. `docs/NEUTRON2_RF_MVP_DEMO_RUNBOOK.md` — the real hardware-in-the-loop (HIL) demo flow.
-8. `docs/HARDWARE_PORT_MAP_AND_POWER.md` — which USB/serial device is which, and how to power the bench safely.
-9. `docs/MISSION_OPS_QUICK_RUN.md` — one-page local rehearsal and FlatSat/HIL operator checklist.
-10. `docs/STUDENT_WINDOWS_LAPTOP_SETUP.md` — Windows laptop setup for student developers and viewer users.
-11. `docs/CROSS_COMPILE_PI_ZERO_W_STUDENT_GUIDE.md` and `docs/RPI_BUILD.md` — building the Pi Zero W flight binary (cross-compile preferred; native is the manual fallback).
-12. `docs/SOFTWARE_DEBUGGING_TROUBLESHOOTING.md` — where to look first when commands, telemetry, payload downlink, or EPS/PDU behavior fails.
-13. `docs/agents_notes.md` — current implementation status and next-agent guidance.
+- Mission ops: [one-time local setup](docs/operations/LOCAL_SETUP.md), [daily quickstart](docs/operations/QUICKSTART.md), [operator troubleshooting](docs/operations/TROUBLESHOOTING.md).
+- Developers: [build/test](docs/development/BUILD_AND_TEST.md), [architecture](docs/architecture/SYSTEM_ARCHITECTURE.md), [mission modes](docs/architecture/MISSION_MODES.md).
+- Hardware integration: [open payload/SatNOGS contracts and target procedures](docs/integration/README.md).
+- Evidence and priorities: [accepted baseline](docs/verification/SOFTWARE_BASELINE.md), [development intent](docs/planning/DEVELOPMENT_INTENT.md).
+- Background: [shared Artemis](docs/reference/artemis/README.md), [C3M comparison references](docs/reference/c3m/README.md), [original SDD](docs/reference/sdd/README.md).
+- Historical comparison workflows and notes: [archive](docs/archive/README.md).
 
 ## Build and run (local emulation)
+
+> **Historical GDS/RFM23BP workflow.** The commands below preserve the earlier demo. For current N2 Yamcs, use [local setup](docs/operations/LOCAL_SETUP.md) and [the quickstart](docs/operations/QUICKSTART.md).
 
 This section covers the **local laptop emulation** build/run loop (no flight
 hardware). For the full hardware run, see
 [Hardware-in-the-loop (HIL) testing](#hardware-in-the-loop-hil-testing) below.
 
 For building the Raspberry Pi Zero W flight binary, default to the Docker
-cross-compile path in `docs/CROSS_COMPILE_PI_ZERO_W_STUDENT_GUIDE.md`. Use
-`docs/RPI_BUILD.md` only if you need the slower manual native-on-Pi build.
+cross-compile path in `docs/integration/pi-zero-w/CROSS_COMPILE.md`. Use
+`docs/integration/pi-zero-w/NATIVE_BUILD.md` only if you need the slower manual native-on-Pi build.
 
 ### macOS Laptop
 
@@ -385,10 +382,12 @@ local demo sequence.
 
 ## Hardware-in-the-loop (HIL) testing
 
+> **Earlier GDS/RFM23BP bench workflow.** This does not establish deployment of the new N2 baseline or current PLD/SatNOGS/SDR acceptance. See [integration status](docs/integration/README.md) before hardware work.
+
 The build-and-run section above is laptop emulation only. For the **full demo on
 real hardware** — RPi UART, satellite Teensy, RFM23BP pair, ground Teensy,
 `fprime-gds`, and the payload receiver/viewer — follow
-`docs/NEUTRON2_RF_MVP_DEMO_RUNBOOK.md`, with `docs/MISSION_OPS_QUICK_RUN.md` as
+`docs/archive/legacy-gds-rfm23bp/NEUTRON2_RF_MVP_DEMO_RUNBOOK.md`, with `docs/archive/legacy-gds-rfm23bp/MISSION_OPS_QUICK_RUN.md` as
 the operator checklist.
 
 ## Status
@@ -404,7 +403,7 @@ Implemented:
 - Artemis EPS/PDU command driver over channel 2 using the PDU v2 protocol from `external/artemis-pdu`, with timeout/recovery handling.
 - HIL proof of the shortened demo story over the real RPi UART, satellite
   Teensy, RFM23BP pair, ground Teensy, `fprime-gds`, payload receiver, and
-  payload viewer path. See `docs/NEUTRON2_RF_MVP_DEMO_RUNBOOK.md`.
+  payload viewer path. See `docs/archive/legacy-gds-rfm23bp/NEUTRON2_RF_MVP_DEMO_RUNBOOK.md`.
 
 Not implemented yet:
 - HIL validation of channel 2 against the real PDU.
@@ -423,5 +422,5 @@ Not implemented yet:
 - See [Read next](#read-next) above for the architecture, runbook, emulation, and setup docs.
 - The UART channel mux and RF transport (one Pi↔Teensy UART, three channels, the
   ground triple-serial mapping, and the Application -> Manager -> Driver HAL pattern)
-  are documented in `docs/SYSTEM_ARCHITECTURE.md` under **Transport Architecture:
+  are documented in `docs/architecture/SYSTEM_ARCHITECTURE.md` under **Transport Architecture:
   One UART, Three Channels** and **Flight Software Architecture**.
