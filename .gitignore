@@ -38,6 +38,15 @@ ArtemisTeensy_N2_Baremetal/build/
 # Coverage / local tooling
 *.gcov
 
+# Local F Prime-Yamcs runtime and data
+/tools/yamcs/.venv/
+/yamcs/data/
+/yamcs/logs/
+/yamcs/run/
+/yamcs/run-launch.log
+/yamcs-data/
+/cache/
+
 # Temporary/editor artifacts
 *.tmp
 *.swp

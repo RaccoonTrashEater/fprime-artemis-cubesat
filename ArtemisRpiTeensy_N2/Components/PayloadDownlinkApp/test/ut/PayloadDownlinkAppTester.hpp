@@ -20,6 +20,9 @@ class PayloadDownlinkAppTester final : public PayloadDownlinkAppGTestBase {
     void testFileBackedVariableLengthPackets();
     void testProgressEventsEveryTenPercent();
     void testQueuesRetryPacketsForScheduledResend();
+    void testDescriptorSnapshotAndExactSourceValidation();
+    void testBusyRejectionConsumesTransferIdSequence();
+    void testTransferIdWrapSkipsZeroAndConsumesFailedRequestOnce();
 
   private:
     void connectPorts();

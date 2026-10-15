@@ -4,6 +4,8 @@
 #include "Components/LinkCfg/LinkCfg.hpp"
 #include "Components/UartChannelMux/UartChannelMuxComponentAc.hpp"
 
+#include <limits>
+
 namespace Components {
 
 class UartChannelMux final : public UartChannelMuxComponentBase {
@@ -12,6 +14,12 @@ class UartChannelMux final : public UartChannelMuxComponentBase {
     ~UartChannelMux();
 
   private:
+#ifdef NEUTRON2_LOCAL_YAMCS
+    static constexpr U16 UART_PAYLOAD_CAPACITY = std::numeric_limits<U16>::max();
+#else
+    static constexpr U16 UART_PAYLOAD_CAPACITY = LinkCfg::UART_FRAME_MAX_PAYLOAD;
+#endif
+
     enum class ParseState {
         WAIT_MAGIC_0,
         WAIT_MAGIC_1,
@@ -40,14 +48,14 @@ class UartChannelMux final : public UartChannelMuxComponentBase {
 
     ParseState m_state;
     U8 m_rxChannel;
-    U8 m_rxPayload[LinkCfg::UART_FRAME_MAX_PAYLOAD];
+    U8 m_rxPayload[UART_PAYLOAD_CAPACITY];
     FwSizeType m_rxLength;
     FwSizeType m_rxIndex;
     U8 m_crcLo;
     U32 m_framesTx;
     U32 m_framesRx;
     U32 m_frameDrops;
-    U8 m_txFrame[LinkCfg::UART_FRAME_MAX_ENCODED];
+    U8 m_txFrame[UART_PAYLOAD_CAPACITY + LinkCfg::UART_FRAME_OVERHEAD];
 };
 
 }  // namespace Components

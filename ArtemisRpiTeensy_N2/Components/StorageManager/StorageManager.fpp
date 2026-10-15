@@ -9,16 +9,22 @@ module Components {
         output port pingOut: Svc.Ping
 
         @ Rate group scheduling input
-        sync input port run: Svc.Sched
+        async input port run: Svc.Sched
 
         @ Science product input from ScienceApp
-        sync input port requestIn: Components.ScienceProductDescriptor
+        async input port requestIn: Components.ScienceProductDescriptor
+
+        @ Explicit automatic-delivery request for a product already stored here.
+        async input port deliveryRequestIn: Components.ScienceProductDeliveryRequest
 
         @ Downlink request input from CommsApp
-        sync input port downlinkRequestIn: Components.ScienceDownlinkRequest
+        async input port downlinkRequestIn: Components.ScienceDownlinkRequest
 
         @ Science availability output to CommsApp
         output port downlinkReadyOut: Components.ScienceDownlinkReady
+
+        @ Exact validated descriptor for an automatic delivery request.
+        output port deliveryDescriptorOut: Components.ScienceProductDeliveryDescriptor
 
         @ Status output to SoH manager
         output port sohStatusOut: Components.HealthStatus
@@ -32,8 +38,11 @@ module Components {
         @ Emit one event per remembered stored dataset
         async command REPORT_STORAGE_HISTORY
 
-        @ Remove old simulator capture CSVs from the RPi temp capture directory. Use confirm=1.
+        @ Remove transient simulator capture files from /tmp only. Durable catalog products are retained. Use confirm=1.
         async command REMOVE_OLD_DATASETS(confirm: U32)
+
+        @ Select an immutable stored product for a later CommsApp science downlink.
+        async command SELECT_PRODUCT(productId: U32)
 
         @ Number of stored products
         telemetry StoredProducts: U32
@@ -49,6 +58,12 @@ module Components {
 
         @ Number of dataset files that failed removal in the last cleanup command
         telemetry RemoveDatasetFailures: U32
+
+        @ Product selected as the current downlink source; zero means none selected.
+        telemetry SelectedProductId: U32
+
+        @ Whether the durable product store and catalog are available.
+        telemetry StorageReady: bool
 
         @ Stored product event
         event ScienceStored(productCount: U32, productBytes: U32) severity activity high format "Stored science product count={} size={}"
@@ -70,6 +85,27 @@ module Components {
 
         @ Old dataset cleanup completed
         event OldDatasetsRemoved(removedFiles: U32, failedFiles: U32) severity activity high format "Removed old dataset files={} failures={}"
+
+        @ Product descriptor rejected before storage or downlink publication.
+        event ScienceProductRejected(productId: U32, reason: U32) severity warning high format "Rejected science product id={} reason={}"
+
+        @ Durable product available in the recovered storage catalog.
+        event StorageCatalogEntry(slot: U32, productId: U32, productBytes: U32, sourceCrc: U32, sourcePath: string size 192) severity activity low format "Storage catalog slot={} product={} bytes={} CRC={} path='{}'"
+
+        @ Valid durable product recovered after initialization.
+        event ScienceProductRecovered(productId: U32, productBytes: U32, sourceCrc: U32, sourcePath: string size 192) severity activity high format "Recovered science product={} bytes={} CRC={} path='{}'"
+
+        @ New opaque bytes and descriptor durably committed to storage.
+        event ScienceProductCommitted(productId: U32, productBytes: U32, sourceCrc: U32, sourcePath: string size 192) severity activity high format "Committed science product={} bytes={} CRC={} path='{}'"
+
+        @ Product selected as the current downlink source.
+        event ProductSelected(productId: U32, productBytes: U32, sourceCrc: U32, sourcePath: string size 192) severity activity high format "Selected science product={} bytes={} CRC={} path='{}'"
+
+        @ Detailed path for a rejected catalog product or incoming descriptor.
+        event ScienceProductRejectedDetail(productId: U32, reason: U32, sourcePath: string size 192) severity warning low format "Rejected science product={} reason={} path='{}'"
+
+        @ Durable storage root is unavailable or its catalog exceeds configured capacity.
+        event StorageUnavailable(reason: U32) severity warning high format "Science storage unavailable reason={}"
 
         @ Port for requesting the current time
         time get port timeCaller

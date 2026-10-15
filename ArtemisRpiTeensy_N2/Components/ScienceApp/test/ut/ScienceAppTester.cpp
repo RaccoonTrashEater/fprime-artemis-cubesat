@@ -1,6 +1,35 @@
 #include "ScienceAppTester.hpp"
 
+#include <cstdio>
+#include <unistd.h>
+
 namespace Components {
+
+namespace {
+constexpr const char* AUTO_DOWNLINK_TEST_PATH = "/tmp/science_app_auto_downlink_ut.bin";
+
+U16 scienceProductCrc(const U8* data, FwSizeType size) {
+    U16 crc = 0xFFFFU;
+    for (FwSizeType index = 0; index < size; ++index) {
+        crc ^= static_cast<U16>(data[index]) << 8U;
+        for (U8 bit = 0; bit < 8U; ++bit) {
+            crc = ((crc & 0x8000U) != 0U)
+                ? static_cast<U16>((crc << 1U) ^ 0x1021U)
+                : static_cast<U16>(crc << 1U);
+        }
+    }
+    return crc;
+}
+
+bool writeScienceProduct(const U8* data, FwSizeType size) {
+    std::FILE* file = std::fopen(AUTO_DOWNLINK_TEST_PATH, "wb");
+    if (file == nullptr) {
+        return false;
+    }
+    const std::size_t written = std::fwrite(data, 1U, static_cast<std::size_t>(size), file);
+    return (std::fclose(file) == 0) && (written == static_cast<std::size_t>(size));
+}
+}  // namespace
 
 ScienceAppTester::ScienceAppTester()
     : ScienceAppGTestBase("ScienceAppTester", MAX_HISTORY_SIZE),
@@ -11,6 +40,7 @@ ScienceAppTester::ScienceAppTester()
 
 ScienceAppTester::~ScienceAppTester() {
     this->component.deinit();
+    (void)::unlink(AUTO_DOWNLINK_TEST_PATH);
 }
 
 void ScienceAppTester::testDefaultDurationIsThirty() {
@@ -21,9 +51,23 @@ void ScienceAppTester::testDefaultDurationIsThirty() {
 
     ASSERT_CMD_RESPONSE_SIZE(1);
     ASSERT_from_payloadRequestOut_SIZE(1);
-    ASSERT_from_payloadRequestOut(0, 30);
+    ASSERT_from_payloadRequestOut(0, 1, 30);
+    ASSERT_from_missionModeOut_SIZE(0);
+
+    Fw::String sourcePath("");
+    this->invoke_to_operationNoticeIn(0, 1, 1, Components::PayloadOperationKind::CAPTURE,
+                                      Components::PayloadOperationState::ACCEPTED, 0, 0,
+                                      Components::ScienceProductSource::UNKNOWN, sourcePath, 0, true);
+    this->component.doDispatch();
     ASSERT_from_missionModeOut_SIZE(1);
     ASSERT_from_missionModeOut(0, Components::MissionMode::COLLECTING, 30);
+
+    this->invoke_to_operationNoticeIn(0, 1, 1, Components::PayloadOperationKind::CAPTURE,
+                                      Components::PayloadOperationState::FAILED, 0, 0,
+                                      Components::ScienceProductSource::UNKNOWN, sourcePath, 0, true);
+    this->component.doDispatch();
+    ASSERT_from_missionModeOut_SIZE(2);
+    ASSERT_from_missionModeOut(1, Components::MissionMode::BASE, 0);
     ASSERT_TLM_CaptureDurationSeconds(0, 30);
 }
 
@@ -45,7 +89,13 @@ void ScienceAppTester::testScheduledCountdownFiresExactlyOnce() {
     this->invoke_to_run(0, 0);
     this->component.doDispatch();
     ASSERT_from_payloadRequestOut_SIZE(1);
-    ASSERT_from_payloadRequestOut(0, 30);
+    ASSERT_from_payloadRequestOut(0, 1, 30);
+    ASSERT_from_missionModeOut_SIZE(0);
+    Fw::String sourcePath("");
+    this->invoke_to_operationNoticeIn(0, 1, 1, Components::PayloadOperationKind::CAPTURE,
+                                      Components::PayloadOperationState::ACCEPTED, 0, 0,
+                                      Components::ScienceProductSource::UNKNOWN, sourcePath, 0, true);
+    this->component.doDispatch();
     ASSERT_from_missionModeOut_SIZE(1);
     ASSERT_from_missionModeOut(0, Components::MissionMode::COLLECTING, 30);
     ASSERT_TLM_PendingDelaySeconds(2, 0);
@@ -159,9 +209,8 @@ void ScienceAppTester::testScienceCaptureDoesNotPersistDuration() {
     ASSERT_CMD_RESPONSE(0, ScienceAppComponentBase::OPCODE_SCIENCE_CAPTURE, 1,
                         Fw::CmdResponse::OK);
     ASSERT_from_payloadRequestOut_SIZE(1);
-    ASSERT_from_payloadRequestOut(0, 5);
-    ASSERT_from_missionModeOut_SIZE(1);
-    ASSERT_from_missionModeOut(0, Components::MissionMode::COLLECTING, 5);
+    ASSERT_from_payloadRequestOut(0, 1, 5);
+    ASSERT_from_missionModeOut_SIZE(0);
     ASSERT_TLM_CaptureDurationSeconds_SIZE(0);
     ASSERT_EVENTS_CaptureDurationConfigured_SIZE(0);
 
@@ -169,7 +218,8 @@ void ScienceAppTester::testScienceCaptureDoesNotPersistDuration() {
     this->sendCmd_START_COLLECTION(0, 2);
     this->component.doDispatch();
     ASSERT_from_payloadRequestOut_SIZE(1);
-    ASSERT_from_payloadRequestOut(0, 45);
+    ASSERT_from_payloadRequestOut(0, 2, 45);
+    ASSERT_from_missionModeOut_SIZE(0);
     ASSERT_TLM_CaptureDurationSeconds_SIZE(0);
 }
 
@@ -189,9 +239,8 @@ void ScienceAppTester::testParamSeedsDurationAtInit() {
     ASSERT_CMD_RESPONSE(0, ScienceAppComponentBase::OPCODE_START_COLLECTION, 0,
                         Fw::CmdResponse::OK);
     ASSERT_from_payloadRequestOut_SIZE(1);
-    ASSERT_from_payloadRequestOut(0, 45);
-    ASSERT_from_missionModeOut_SIZE(1);
-    ASSERT_from_missionModeOut(0, Components::MissionMode::COLLECTING, 45);
+    ASSERT_from_payloadRequestOut(0, 1, 45);
+    ASSERT_from_missionModeOut_SIZE(0);
 }
 
 void ScienceAppTester::testInvalidParamFallsBackToThirty() {
@@ -211,9 +260,100 @@ void ScienceAppTester::testInvalidParamFallsBackToThirty() {
     ASSERT_CMD_RESPONSE(0, ScienceAppComponentBase::OPCODE_START_COLLECTION, 0,
                         Fw::CmdResponse::OK);
     ASSERT_from_payloadRequestOut_SIZE(1);
-    ASSERT_from_payloadRequestOut(0, 30);
+    ASSERT_from_payloadRequestOut(0, 1, 30);
+    ASSERT_from_missionModeOut_SIZE(0);
+}
+
+void ScienceAppTester::testCollectAndDownlinkWaitsForValidatedCompletion() {
+    const U8 product[] = {0x4E, 0x32, 0x01, 0xFE};
+    ASSERT_TRUE(writeScienceProduct(product, sizeof(product)));
+    this->clearHistory();
+
+    this->sendCmd_COLLECT_AND_DOWNLINK(0, 0, 4U);
+    this->component.doDispatch();
+    ASSERT_CMD_RESPONSE_SIZE(1);
+    ASSERT_CMD_RESPONSE(0, ScienceAppComponentBase::OPCODE_COLLECT_AND_DOWNLINK, 0, Fw::CmdResponse::OK);
+    ASSERT_from_payloadRequestOut_SIZE(1);
+    ASSERT_from_payloadRequestOut(0, 1, 4U);
+    ASSERT_from_deliveryRequestOut_SIZE(0);
+
+    Fw::String sourcePath(AUTO_DOWNLINK_TEST_PATH);
+    // The direct manager request owns this ID first. Its accepted operation
+    // must still publish the legacy C product, without consuming the pending
+    // ScienceApp request's automatic-delivery intent.
+    this->invoke_to_operationNoticeIn(0, 1, 41, Components::PayloadOperationKind::CAPTURE,
+                                      Components::PayloadOperationState::ACCEPTED, 0U, 0U,
+                                      Components::ScienceProductSource::UNKNOWN, sourcePath, 0U, false);
+    this->component.doDispatch();
     ASSERT_from_missionModeOut_SIZE(1);
-    ASSERT_from_missionModeOut(0, Components::MissionMode::COLLECTING, 30);
+    ASSERT_from_missionModeOut(0, Components::MissionMode::COLLECTING, 30U);
+    ASSERT_from_deliveryRequestOut_SIZE(0);
+
+    // ScienceApp's same-ID request is rejected BUSY. It must clear only its
+    // unbound automatic intent and leave the foreign operation in control.
+    this->invoke_to_operationNoticeIn(0, 1, 0, Components::PayloadOperationKind::CAPTURE,
+                                      Components::PayloadOperationState::BUSY, 0U, 0U,
+                                      Components::ScienceProductSource::UNKNOWN, sourcePath, 0U, true);
+    this->component.doDispatch();
+
+    this->invoke_to_operationNoticeIn(0, 1, 41, Components::PayloadOperationKind::CAPTURE,
+                                      Components::PayloadOperationState::COMPLETED, 23U, sizeof(product),
+                                      Components::ScienceProductSource::NEUTRON_SIM, sourcePath,
+                                      scienceProductCrc(product, sizeof(product)), false);
+    this->component.doDispatch();
+    ASSERT_from_scienceProductOut_SIZE(1);
+    ASSERT_from_deliveryRequestOut_SIZE(0);
+
+    // A later ScienceApp-owned operation still binds and completes its own
+    // automatic-delivery intent.
+    this->sendCmd_COLLECT_AND_DOWNLINK(0, 1, 5U);
+    this->component.doDispatch();
+    ASSERT_from_payloadRequestOut_SIZE(2);
+    ASSERT_from_payloadRequestOut(1, 2, 5U);
+    this->invoke_to_operationNoticeIn(0, 2, 42, Components::PayloadOperationKind::CAPTURE,
+                                      Components::PayloadOperationState::ACCEPTED, 0U, 0U,
+                                      Components::ScienceProductSource::UNKNOWN, sourcePath, 0U, true);
+    this->component.doDispatch();
+    this->invoke_to_operationNoticeIn(0, 2, 42, Components::PayloadOperationKind::CAPTURE,
+                                      Components::PayloadOperationState::COMPLETED, 24U, sizeof(product),
+                                      Components::ScienceProductSource::NEUTRON_SIM, sourcePath,
+                                      scienceProductCrc(product, sizeof(product)), true);
+    this->component.doDispatch();
+    ASSERT_from_scienceProductOut_SIZE(2);
+    ASSERT_from_deliveryRequestOut_SIZE(1);
+    ASSERT_from_deliveryRequestOut(0, 24U);
+    ASSERT_TLM_CollectionCount_SIZE(3);
+    ASSERT_TLM_CollectionCount(2, 2U);
+}
+
+void ScienceAppTester::testCollectAndDownlinkClearsIntentOnFailure() {
+    this->clearHistory();
+    this->sendCmd_COLLECT_AND_DOWNLINK(0, 0, 4U);
+    this->component.doDispatch();
+    ASSERT_from_payloadRequestOut_SIZE(1);
+
+    Fw::String sourcePath("");
+    this->invoke_to_operationNoticeIn(0, 1, 52, Components::PayloadOperationKind::CAPTURE,
+                                      Components::PayloadOperationState::ACCEPTED, 0U, 0U,
+                                      Components::ScienceProductSource::UNKNOWN, sourcePath, 0U, true);
+    this->component.doDispatch();
+    this->invoke_to_operationNoticeIn(0, 1, 52, Components::PayloadOperationKind::CAPTURE,
+                                      Components::PayloadOperationState::FAILED, 0U, 0U,
+                                      Components::ScienceProductSource::UNKNOWN, sourcePath, 0U, true);
+    this->component.doDispatch();
+    ASSERT_from_deliveryRequestOut_SIZE(0);
+
+    // A late terminal callback for the failed operation must not revive its intent.
+    const U8 product[] = {0x4E, 0x32};
+    ASSERT_TRUE(writeScienceProduct(product, sizeof(product)));
+    Fw::String validPath(AUTO_DOWNLINK_TEST_PATH);
+    this->invoke_to_operationNoticeIn(0, 1, 52, Components::PayloadOperationKind::CAPTURE,
+                                      Components::PayloadOperationState::COMPLETED, 23U, sizeof(product),
+                                      Components::ScienceProductSource::NEUTRON_SIM, validPath,
+                                      scienceProductCrc(product, sizeof(product)), true);
+    this->component.doDispatch();
+    ASSERT_from_deliveryRequestOut_SIZE(0);
+    ASSERT_from_scienceProductOut_SIZE(0);
 }
 
 }  // namespace Components

@@ -1,0 +1,10 @@
+# Isolated host-side Yamcs runtime for the N2 F' v4.2.1 dictionary.
+# fprime-gds is newer than the flight framework so its UART bridge can use
+# tm-frame-aggregator for fixed-size CCSDS TM transfer frames.
+fprime-yamcs==0.2.4
+fprime-gds==4.4.0
+fprime-xtce==0.1.5
+fprime-yamcs-bundle==5.12.8.0
+fprime-jre==25.0.4.1.0
+yamcs-client==1.12.1
+PyYAML==6.0.2

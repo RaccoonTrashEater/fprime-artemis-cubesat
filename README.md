@@ -2,6 +2,34 @@
 
 F' implementation workspace for the Neutron 2 team.
 
+For the accepted software checkpoint, team setup, evidence, and remaining integration gates, start with [N2 software baseline](docs/N2_SOFTWARE_BASELINE.md).
+
+## Current mission milestones — October 8, 2026
+
+The end-of-October CDR MVP requires a Yamcs-commanded pass-through science collection through PLD, OBC, SatNOGS, SDR, and ground, with raw science visible to the operator. No modes are required for that milestone. The end-of-December FSR adds nominal Base/collection/processing modes, time-based execution, and EPS-controlled payload power. The PLD supplies raw science. The accepted simulator demo derives a count-frequency histogram from Yamcs-retrieved CSV; the public raw-file transfer boundary remains open. Actual science viewing is owned by the payload team's supplied JAR.
+
+Current software work is board-free and uses Yamcs for functional command/observation. The intended CDR OBC is a Pi Zero W running F′. Dennis owns OBC F′, Yamcs, and the F′ SatNOGS driver; Aris owns the PLD; Sam and Tierra own SatNOGS firmware and SPI integration. The physical PLD interface and SatNOGS SPI/host contracts remain open. The Oct 7 Yamcs ping/file-transfer evidence below is historical compatibility evidence, not proof of the new payload or RF path.
+
+- [Development intent and open questions](docs/N2_DEVELOPMENT_INTENT_2026-10-07.md)
+- [SDD gap analysis and staged plan](docs/N2_SDD_GAP_AND_DEVELOPMENT_PLAN_2026-10-07.md)
+- [Local F′–Yamcs setup and verification](docs/N2_YAMCS_LOCAL_TESTING_2026-10-07.md)
+- [Dedicated Ubuntu Pi 5 Yamcs ground-host plan](docs/N2_YAMCS_GROUND_HOST_PLAN_2026-10-08.md)
+- [Yamcs primer: browsers, dictionaries, commands, telemetry, and SDR handoff](docs/YAMCS_PRIMER.md)
+- [Verified slice-A operator walkthrough with screenshots](docs/N2_PASSTHROUGH_OPERATOR_WALKTHROUGH_2026-10-08.md)
+- [Verified slice-C timeout/recovery walkthrough with screenshots](docs/N2_LIFECYCLE_OPERATOR_WALKTHROUGH_2026-10-08.md)
+- [Verified slice-B raw-data cycle operator walkthrough with screenshots](docs/N2_RAW_CYCLE_OPERATOR_WALKTHROUGH_2026-10-08.md)
+
+For the software slice, proceed A → C → B: literal command pass-through, truthful correlated outcomes, then a nominal raw-data cycle. **A, C, and B passed on October 8 in the local software profile.** A returned exact synthetic 59-byte and 128-byte literals with matching request IDs and unchanged BASE mode. C passed 31 Yamcs lifecycle checks; B independently reconstructed and read back distinct 400-byte/30-window and 82-byte/5-window simulator products. B also recovered two packets after one injected drop and one corruption, and the ground viewer matched both Yamcs readback hashes and count-frequency histograms. These results validate the software path only: the numeric-duration command uses the simulator, and the real PLD command protocol, Pi Zero W runtime, SatNOGS/SDR, RF, and full CDR sequence remain unverified. All three walkthroughs were captured after their acceptance runs. No fallback for an unavailable SatNOGS/SDR path has been approved.
+
+**October 8 pulse extension — PASS:** [KISS synthetic pulse science](docs/N2_SYNTHETIC_PULSE_PLAN_2026-10-08.md) adds an opt-in raw pulse fixture and ground waveform, integrated-charge spectrum, and PSD density views. Yamcs raw readback, independent plot calculations, drop/corruption recovery, and browser download passed. The [operator walkthrough](docs/N2_PULSE_SCIENCE_OPERATOR_WALKTHROUGH_2026-10-08.md) has seven pictures taken after acceptance. All science is SIMULATED; figure of merit and real detector calibration are deferred.
+
+
+**October 9 software acceptance PASS:** [Yamcs completion verification and durable raw storage/restart recovery](docs/N2_COMPLETION_STORAGE_PLAN_2026-10-09.md): six completion/restart/fault scenarios plus A/C/B and pulse regressions passed through Yamcs. The payload team's supplied JAR owns actual science viewing. Our onboard FSW acquires, retains, and downlinks opaque raw science files; no real sample files will be supplied for this software slice. SatNOGS/SDR development is owned by another team. Synthetic plots remain regression fixtures.
+
+## Previous demo architecture — July 2026 baseline
+
+The hardware stack and descriptions below record the earlier Artemis/RFM23BP demo baseline. They are useful for understanding existing code and prior evidence, but do not establish integration of the current PLD/SatNOGS/SDR milestone path.
+
 ## What this project is
 
 This repository is building the Neutron 2 FlatSat demo on Artemis prototype
@@ -18,15 +46,15 @@ hardware.
 - **Ground Teensy:** runs baremetal RF/USB bridge firmware (`GDS_Teensy`). It
   reassembles RF packets to laptop USB streams and packetizes uplink bytes back
   over RF.
-- **Ground laptop:** uses `fprime-gds` for the current MVP command, event, and
+- **Ground laptop:** used `fprime-gds` for the previous MVP command, event, and
   telemetry surface, plus the Neutron 2 payload viewer for reconstructed science
   files.
 
-## Hardware test bench stack
+## Previous hardware test bench stack
 
-This section describes the physical hardware that makes up the current Neutron 2
-test bench, written for students and new team members so the hardware context
-behind the software is clear. The prototype is based on the
+This section records the earlier Neutron 2 test-bench hardware, written for
+students and new team members so the hardware context behind the software is
+clear. It does not establish the current PLD or SatNOGS integration. The prototype is based on the
 [Artemis CubeSat Kit](https://sites.google.com/hawaii.edu/artemiscubesatkit).
 
 The bench is intentionally a **two-node mirror**: the ground station and the
@@ -75,13 +103,13 @@ panels are not yet integrated into the bring-up.
 [Artemis CubeSat Kit](https://sites.google.com/hawaii.edu/artemiscubesatkit) bus
 instead of USB power.
 
-### Future direction: stay on the RFM23BP radio head for now
+### Previous radio direction: stay on the RFM23BP radio head
 
-A longer-term option is to move the ground station **away from a carbon-copy of
-the satellite** and toward a **Software Defined Radio (SDR)**. We are
-intentionally **not** doing that right now.
+In the July 2026 demo baseline, moving the ground station to a Software Defined
+Radio (SDR) was a longer-term option. The October 2026 CDR plan now requires
+SatNOGS and an SDR; the SPI, host, and RF interfaces are still being developed.
 
-Reasons to stay on the current RFM23BP radio for now:
+Reasons the earlier demo stayed on RFM23BP:
 
 - **Lower maintenance:** Going SDR means someone has to learn and maintain the
   SDR stack, and effectively relearn how RF comms works at a lower level.
@@ -91,17 +119,17 @@ Reasons to stay on the current RFM23BP radio for now:
 - **Two identical nodes are simpler:** Building the ground station from the same
   kit as the satellite means one bring-up procedure and one radio codebase.
 
-In short: an SDR is a "someday" upgrade, not a near-term need. Until the benefit
-clearly outweighs the added learning and maintenance burden, we keep the
-RFM23BP + RadioHead path on both the ground station and the satellite. See
+That rationale applied to the July demo. The October CDR now requires SatNOGS
+and an SDR, so the earlier RFM23BP-only plan is superseded for the new milestone.
+See
 [`docs/archive/HACKRF_SDR_GROUND_STATION_INVESTIGATION_2026-06-30.md`](docs/archive/HACKRF_SDR_GROUND_STATION_INVESTIGATION_2026-06-30.md)
 for the HackRF/SDR packet-compatibility investigation.
 
-## Target demo
+## Previous demo target flow — historical baseline
 
 ![FlatSat FSR end-to-end demo plan](docs/images/flatsat-fsr-end-to-end-demo-plan.png)
 
-The current target is a shortened FlatSat FSR end-to-end demo based on the team's system diagram and operator flow. The live demo is not a full mission implementation; it is a controlled proof-of-concept showing command, telemetry, timed data collection, and science-data downlink across the full Raspberry Pi -> satellite Teensy -> RF -> ground Teensy -> ground station chain.
+The following shortened FlatSat FSR flow describes an earlier target demo and is superseded by the October CDR and December FSR milestones above. It is retained as historical context; do not treat it as the current acceptance sequence.
 
 ### Target operator story
 

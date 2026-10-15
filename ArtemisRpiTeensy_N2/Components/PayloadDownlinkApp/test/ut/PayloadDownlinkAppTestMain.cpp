@@ -15,6 +15,21 @@ TEST(Nominal, QueuesRetryPacketsForScheduledResend) {
     tester.testQueuesRetryPacketsForScheduledResend();
 }
 
+TEST(Nominal, DescriptorSnapshotAndExactSourceValidation) {
+    Components::PayloadDownlinkAppTester tester;
+    tester.testDescriptorSnapshotAndExactSourceValidation();
+}
+
+TEST(Nominal, BusyRejectionConsumesTransferIdSequence) {
+    Components::PayloadDownlinkAppTester tester;
+    tester.testBusyRejectionConsumesTransferIdSequence();
+}
+
+TEST(Nominal, TransferIdWrapSkipsZeroAndConsumesFailedRequestOnce) {
+    Components::PayloadDownlinkAppTester tester;
+    tester.testTransferIdWrapSkipsZeroAndConsumesFailedRequestOnce();
+}
+
 int main(int argc, char** argv) {
     ::testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();

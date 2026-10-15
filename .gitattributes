@@ -1,0 +1,2 @@
+# Preserve original diagnostic logs in versioned acceptance snapshots.
+docs/evidence/**/*.log -whitespace

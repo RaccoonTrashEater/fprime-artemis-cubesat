@@ -11,7 +11,13 @@
 # Topology and Components
 ###
 
-add_fprime_subdirectory("${CMAKE_CURRENT_LIST_DIR}/RfMvpConfig/")
+if (NEUTRON2_LOCAL_YAMCS)
+    set(NEUTRON2_DEPLOYMENT_CONFIG LocalYamcsConfig)
+    add_fprime_subdirectory("${CMAKE_CURRENT_LIST_DIR}/LocalYamcsConfig/")
+else()
+    set(NEUTRON2_DEPLOYMENT_CONFIG RfMvpConfig)
+    add_fprime_subdirectory("${CMAKE_CURRENT_LIST_DIR}/RfMvpConfig/")
+endif()
 add_fprime_subdirectory("${CMAKE_CURRENT_LIST_DIR}/Top/")
 
 # Add custom components to this specific deployment here

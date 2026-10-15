@@ -4,7 +4,9 @@
 #include "Components/LinkCfg/LinkCfg.hpp"
 #include "Components/PayloadDownlinkApp/PayloadDownlinkAppComponentAc.hpp"
 
+#include <Os/Mutex.hpp>
 #include <string>
+#include <vector>
 
 namespace Components {
 
@@ -42,8 +44,21 @@ class PayloadDownlinkApp final : public PayloadDownlinkAppComponentBase {
     void ABORT_PAYLOAD_DOWNLINK_cmdHandler(FwOpcodeType opCode, U32 cmdSeq) override;
     void GET_PAYLOAD_STATUS_cmdHandler(FwOpcodeType opCode, U32 cmdSeq) override;
 
-    bool resetTransfer(U32 productId, U32 byteCount, const std::string& preferredSourcePath, U32 expectedSourceCrc);
-    bool prepareSource(U32 byteCount, const std::string& preferredSourcePath);
+    bool resetTransfer(U32 productId,
+                       U32 byteCount,
+                       const std::string& preferredSourcePath,
+                       U32 expectedSourceCrc,
+                       bool exactSourcePath,
+                       bool validateExpectedCrc);
+    bool prepareSource(U32 byteCount,
+                       const std::string& preferredSourcePath,
+                       bool exactSourcePath,
+                       U32 expectedSourceCrc,
+                       bool validateExpectedCrc,
+                       U16& crcOut);
+    bool transferActive() const;
+    U8 allocateTransferId();
+    void rejectRequest(U32 productId, U32 byteCount, U32 reason);
     void emitTelemetry(bool force = false);
     void emitStatus();
     void writeProgressTelemetry();
@@ -55,7 +70,6 @@ class PayloadDownlinkApp final : public PayloadDownlinkAppComponentBase {
     void emitProgressIfDue();
     void handleRetryRequest(const U8* data, FwSizeType size);
     bool readSourceBytes(U32 offset, U8* output, U32 length) const;
-    bool computeSourceCrc(U32 byteCount, U16& crcOut) const;
     U16 crc16Ccitt(const U8* data, FwSizeType size) const;
     void putU16(U8* data, FwSizeType offset, U16 value) const;
     void putU32(U8* data, FwSizeType offset, U32 value) const;
@@ -66,6 +80,7 @@ class PayloadDownlinkApp final : public PayloadDownlinkAppComponentBase {
 
     State m_state;
     U8 m_transferId;
+    U8 m_transferSequence;
     U32 m_productId;
     U32 m_totalBytes;
     U32 m_totalPackets;
@@ -83,12 +98,14 @@ class PayloadDownlinkApp final : public PayloadDownlinkAppComponentBase {
     bool m_sourceReady;
     U32 m_sourceBytes;
     std::string m_sourcePath;
+    std::vector<U8> m_sourceSnapshot;
     U32 m_runTicks;
     U32 m_lastTelemetryTick;
     U32 m_retryPackets[MAX_RETRY_PACKETS];
     U32 m_retryCount;
     U32 m_retryCursor;
     U8 m_packet[LinkCfg::PAYLOAD_PACKET_MAX_BYTES];
+    Os::Mutex m_stateLock;
 };
 
 }  // namespace Components

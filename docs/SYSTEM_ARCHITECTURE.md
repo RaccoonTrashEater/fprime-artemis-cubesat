@@ -1,6 +1,20 @@
 # System Architecture
 
+> **2026-10-08 milestone update:** October CDR requires pass-through science collection through Yamcs, SDR, SatNOGS, OBC, and the PLD, without modes; December FSR adds nominal modes, time-based collection, and EPS payload-power control. Current development is software-only, with a Pi Zero W running F′ as the planned CDR OBC. The PLD supplies raw science; the histogram is a ground-side product. A, C, and B have passed in the local software profile: B reconstructs simulator products, verifies Yamcs readback, and renders simulator CSV count-frequency data. The accepted opt-in pulse extension additionally derives waveform, integrated-charge spectrum, and PSD density from verified simulated raw ADC samples; see the [pulse plan](N2_SYNTHETIC_PULSE_PLAN_2026-10-08.md) and [operator guide](N2_PULSE_SCIENCE_OPERATOR_WALKTHROUGH_2026-10-08.md). PLD transport and SatNOGS SPI/host contracts remain open; this evidence does not prove Pi deployment, payload hardware, SDR, or RF integration. The architecture below includes prior GDS/RFM23BP demo assumptions and should be read as historical where they conflict with the current milestones. See [current development intent](N2_DEVELOPMENT_INTENT_2026-10-07.md), [SDD gap plan](N2_SDD_GAP_AND_DEVELOPMENT_PLAN_2026-10-07.md), [local Yamcs setup and accepted tests](N2_YAMCS_LOCAL_TESTING_2026-10-07.md), and the [B operator walkthrough](N2_RAW_CYCLE_OPERATOR_WALKTHROUGH_2026-10-08.md).
+
+> **October 9 scope:** onboard FSW acquires, stores, and downlinks raw science bytes. The payload team provides a JAR for actual science display/interpretation; the local synthetic plots are regression fixtures. Real payload samples are unavailable for this work, and another team owns SatNOGS/SDR development. [Completion/storage plan](N2_COMPLETION_STORAGE_PLAN_2026-10-09.md) records the new authorized software slices and acceptance boundaries.
+
 ## Purpose
+
+**Ground-host intent recorded October 8:** a dedicated Pi 5 running 64-bit Ubuntu hosts Yamcs and the SDR ground software; students use browser clients over the router LAN. Conducted RF over reviewed coax/attenuation precedes antenna testing. The ground Pi is separate from the satellite Pi Zero W running F′. Replace the simulator/PTY launcher for hardware, but retain the ground services. See the [ground-host plan](N2_YAMCS_GROUND_HOST_PLAN_2026-10-08.md) and [Yamcs primer](YAMCS_PRIMER.md); deployment and the SDR/SatNOGS packet contract remain pending.
+
+The October 8 local-profile implementation makes `PayloadManager` the sole serialized admission point for literal, direct, legacy, ScienceApp, and scheduled capture requests. Typed requests/results carry external request ID plus internal generation; admitted operations emit `ACCEPTED` and one terminal outcome, and stale/duplicate callbacks cannot publish a second product. `ScienceApp` advances only for its matched accepted capture, and `StorageManager` accepts validated products. The simulated driver uses a nonblocking child process with bounded termination/reaping. This bounded C behavior passed 31 Yamcs checks; see the [C acceptance and operator walkthrough](N2_LIFECYCLE_OPERATOR_WALKTHROUGH_2026-10-08.md). B's raw simulator delivery through an independent ground receiver and Yamcs readback is also accepted separately below; real payload and communications adapters remain pending.
+
+### October 9 completion and durable-storage implementation
+
+`StorageManager` now commits immutable raw copies plus versioned metadata under `N2_STORAGE_ROOT`, validates size/CRC before publication, recovers valid catalog entries after process restart, and selects older products through `SELECT_PRODUCT`. A shared lock and persistent high-water marker prevent simulator product-ID reuse across restarts, including orphaned or rejected records. Its rate-group callback is connected. The 16-entry catalog retains products after sender completion and transient cleanup; full storage rejects a new product. Ground ACK reclamation and power-loss qualification are separate work.
+
+`ScienceApp.VERIFIED_COLLECT_AND_DOWNLINK` and `CommsApp.VERIFIED_REQUEST_SCIENCE_DOWNLINK` carry explicit nonzero tokens. FSW events bind those tokens to capture request/generation and product/transfer. The Yamcs-launched ground verifier writes admission, terminal, storage, sender, receipt, and final completion stages into actual command history. Final success requires independent Yamcs raw-object readback matching identity, size, CRC, and SHA; sender DONE alone is insufficient. Tokens are owned by the earliest command, persisted across verifier restart, and reused-token rejection does not rewrite the owner. Legacy commands retain dispatch semantics. [D/E plan and acceptance](N2_COMPLETION_STORAGE_PLAN_2026-10-09.md) contains the operator procedure and evidence.
 
 This document is the working system-architecture crosswalk for the Neutron 2 FlatSat demo, written so future student developers can understand **the architecture, the decisions behind it, the tradeoffs, and the data-flow patterns** — not just the box diagram.
 
@@ -37,7 +51,7 @@ Keep `external/epscorc3m` as a reference for how the Artemis hardware actually b
 
 ![System architecture diagram for the Neutron 2 FlatSat demo on Artemis prototype hardware](SYSTEM_ARCHITECTURE_DIAGRAM.svg)
 
-## Subsystem Crosswalk
+## Previous demo subsystem crosswalk — July 2026 baseline
 
 | Subsystem | Demo implementation | Role in the current prototype | Notes |
 | --- | --- | --- | --- |
@@ -189,7 +203,7 @@ See the [RFM23BP datasheet](#reference-documents) for the radio's packet/FIFO li
 
 ### The three ground USB serial ports
 
-The ground Teensy presents **three USB serial ports** to the ground laptop (Teensy USB triple-serial). 
+The ground Teensy presents **three USB serial ports** to the ground laptop (Teensy USB triple-serial).
 
 > ⚠️ **Numbering warning:** the ground USB serial **port** index is *not* the same axis as the satellite UART **channel** index. Don't conflate "channel 2" (satellite-local RPC, never on RF) with "ground serial port 2" (payload receiver).
 
@@ -338,13 +352,13 @@ These are the interfaces that matter most for the current demo architecture.
 - `OBC <-> ADCS`
   - simulated through `D2S2`
 - `OBC <-> PLD`
-  - payload data / command path to the Neutron 2 payload simulator now, and the loaned Neutron 2 development payload board later (same `PayloadManager` contract, swapped driver)
+  - local A/C/B acceptance uses the simulator; B sends its raw simulator product over software channel 1 to the local ground receiver and verifies the Yamcs object. The loaned Neutron 2 development payload board and Aris's public command/data contract remain pending.
 - `OBC <-> COMMS`
-  - `RFM23BP` now, `SatNOGS` if and when validated
+  - the local B acceptance uses a software channel-1 link. The October CDR sequence still requires SatNOGS and SDR; the prior `RFM23BP` path is historical hardware-demo context, and no physical radio path has been accepted for N2.
 - `OBC <-> GPS`
   - Artemis-provided GPS module
 - `COMMS <-> Ground`
-  - ground-station data path used by `fprime-gds` for the MVP demo
+  - local B acceptance reconstructs the channel-1 simulator product in the ground adapter, uploads it to Yamcs, and confirms it by HTTP readback. This is not the required SatNOGS/SDR/RF path.
 
 ## Ground Segment
 
@@ -353,9 +367,11 @@ The ground side for this demo should be understood as a separate but essential p
 - `D2S2`
   - external ADCS simulator
 - `fprime-gds`
-  - default MVP ground interface
+  - ground interface in the earlier Artemis/RFM23BP demo architecture
 - `Yamcs`
-  - longer-term end-goal ground presentation / analysis environment
+  - command/observation surface used for the accepted A/C/B software tests; the B run verifies raw-object readback independently of sender completion
+- `tools/yamcs/science_viewer.py`
+  - local operator view that retrieves the raw object and receipt from Yamcs; supports count-CSV frequency or opt-in simulated pulse waveform, integrated-charge spectrum, and PSD density. Pulse charge is ADC-sample area, with physical energy calibration and figure of merit deferred
 - operator-facing display
   - the live demo must make telemetry, command acknowledgement, payload-transfer progress, and science-data review visible
 
@@ -388,7 +404,9 @@ This is the architecture-level story the software must support.
 
 ## Payload Downlink Progress
 
-For the MVP path, F Prime does not use stock GDS file downlink for the science product. Instead, the mission command path starts a custom channel 1 payload transfer designed for the RFM23BP link.
+The accepted board-free B path starts a simulator capture from Yamcs, reconstructs the raw simulator product at the local ground receiver over software channel 1, uploads it to Yamcs, and verifies the stored bytes by independent GET/readback. The local viewer builds a count-frequency histogram from Yamcs-retrieved simulator CSV. See the [B acceptance record](N2_SDD_GAP_AND_DEVELOPMENT_PLAN_2026-10-07.md#slice-b-acceptance-record-2026-10-08) and [operator walkthrough](N2_RAW_CYCLE_OPERATOR_WALKTHROUGH_2026-10-08.md). This proves neither the real PLD protocol nor the October SatNOGS/SDR/RF sequence.
+
+The earlier RFM23BP MVP path did not use stock GDS file downlink for its science product. Instead, the mission command path started a custom channel 1 payload transfer designed for the RFM23BP link. The following runtime notes describe that previous hardware path, not the accepted local B route.
 
 Runtime ownership is:
 
@@ -401,7 +419,7 @@ Runtime ownership is:
 
 `PayloadDownlinkApp.PayloadDownlinkProgress` emits nominal `10%` increments from `10` through `90`. `PayloadDownlinkComplete` and `CommsApp.DownlinkFinished` are the completion signals. For tiny payloads, several progress events may appear at the same timestamp or packet count because one payload packet can represent more than ten percent of the file.
 
-## Development Assumptions
+## Previous demo development assumptions — superseded 2026-10-08
 
 Unless the user says otherwise, agents should assume the following:
 

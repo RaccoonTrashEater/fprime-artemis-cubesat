@@ -40,6 +40,16 @@ TEST(Nominal, InvalidParamFallsBackToThirty) {
     tester.testInvalidParamFallsBackToThirty();
 }
 
+TEST(Nominal, CollectAndDownlinkWaitsForValidatedCompletion) {
+    Components::ScienceAppTester tester;
+    tester.testCollectAndDownlinkWaitsForValidatedCompletion();
+}
+
+TEST(Nominal, CollectAndDownlinkClearsIntentOnFailure) {
+    Components::ScienceAppTester tester;
+    tester.testCollectAndDownlinkClearsIntentOnFailure();
+}
+
 int main(int argc, char** argv) {
     ::testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();

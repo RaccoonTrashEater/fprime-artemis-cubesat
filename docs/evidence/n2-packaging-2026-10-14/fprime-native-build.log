@@ -1,0 +1,979 @@
+ninja: no work to do.
+ninja: no work to do.
+[1/857] Building CXX object F-Prime/Fw/DataStructures/CMakeFiles/Fw_DataStructures.dir/DataStructures.cpp.o
+[2/857] Generating PhasesEnumAc.cpp, PhasesEnumAc.hpp
+[3/857] Linking CXX static library lib/Darwin/libFw_DataStructures.a
+[4/857] Generating FppConstantsAc.cpp, FppConstantsAc.hpp
+[5/857] Generating PlatformAssertArgTypeAliasAc.hpp, PlatformIndexTypeAliasAc.hpp, PlatformQueuePriorityTypeAliasAc.hpp, PlatformSignedSizeTypeAliasAc.hpp, PlatformSizeTypeAliasAc.hpp, PlatformTaskIdTypeAliasAc.hpp, PlatformTaskPriorityTypeAliasAc.hpp
+[6/857] Generating FppConstantsAc.cpp, FppConstantsAc.hpp
+[7/857] Generating SubtopologyTopologyAc.cpp, SubtopologyTopologyAc.hpp
+[8/857] Generating SubtopologyTopologyAc.cpp, SubtopologyTopologyAc.hpp
+[9/857] Generating ApidEnumAc.cpp, ApidEnumAc.hpp, FileDispatchPortEnumAc.cpp, FileDispatchPortEnumAc.hpp, FppConstantsAc.cpp, FppConstantsAc.hpp, FrameContextSerializableAc.cpp, FrameContextSerializableAc.hpp, FwAssertArgTypeAliasAc.hpp, FwChanIdTypeAliasAc.hpp, FwDpIdTypeAliasAc.hpp, FwDpPriorityTypeAliasAc.hpp, FwEnumStoreTypeAliasAc.hpp, FwEventIdTypeAliasAc.hpp, FwIdTypeAliasAc.hpp, FwIndexTypeAliasAc.hpp, FwOpcodeTypeAliasAc.hpp, FwPacketDescriptorTypeAliasAc.hpp, FwPrmIdTypeAliasAc.hpp, FwQueuePriorityTypeAliasAc.hpp, FwSignedSizeTypeAliasAc.hpp, FwSizeStoreTypeAliasAc.hpp, FwSizeTypeAliasAc.hpp, FwTaskIdTypeAliasAc.hpp, FwTaskPriorityTypeAliasAc.hpp, FwTimeBaseStoreTypeAliasAc.hpp, FwTimeContextStoreTypeAliasAc.hpp, FwTlmPacketizeIdTypeAliasAc.hpp, FwTraceIdTypeAliasAc.hpp, MemoryAllocatorTypeEnumAc.cpp, MemoryAllocatorTypeEnumAc.hpp, PolyDbEntryEnumAc.cpp, PolyDbEntryEnumAc.hpp, ProcTypeEnumAc.cpp, ProcTypeEnumAc.hpp, TimeBaseEnumAc.cpp, TimeBaseEnumAc.hpp, VersionEnumEnumAc.cpp, VersionEnumEnumAc.hpp
+[10/857] Generating SubtopologyTopologyAc.cpp, SubtopologyTopologyAc.hpp
+[11/857] Building CXX object F-Prime/default/config/CMakeFiles/default_config.dir/FppConstantsAc.cpp.o
+[12/857] Building CXX object F-Prime/default/config/CMakeFiles/default_config.dir/ApidEnumAc.cpp.o
+[13/857] Building CXX object F-Prime/default/config/CMakeFiles/default_config.dir/FileDispatchPortEnumAc.cpp.o
+[14/857] Building CXX object F-Prime/default/config/CMakeFiles/default_config.dir/FrameContextSerializableAc.cpp.o
+[15/857] Building CXX object F-Prime/default/config/CMakeFiles/default_config.dir/TimeBaseEnumAc.cpp.o
+[16/857] Building CXX object F-Prime/default/config/CMakeFiles/default_config.dir/PolyDbEntryEnumAc.cpp.o
+[17/857] Building CXX object F-Prime/default/config/CMakeFiles/default_config.dir/MemoryAllocatorTypeEnumAc.cpp.o
+[18/857] Building CXX object F-Prime/default/config/CMakeFiles/default_config.dir/VersionEnumEnumAc.cpp.o
+[19/857] Building CXX object F-Prime/default/config/CMakeFiles/default_config.dir/ProcTypeEnumAc.cpp.o
+[20/857] Linking CXX static library lib/Darwin/libdefault_config.a
+[21/857] Generating FramingSubtopologyTopologyAc.cpp, FramingSubtopologyTopologyAc.hpp, Ports_ComBufferQueueEnumAc.cpp, Ports_ComBufferQueueEnumAc.hpp, Ports_ComPacketQueueEnumAc.cpp, Ports_ComPacketQueueEnumAc.hpp, SubtopologyTopologyAc.cpp, SubtopologyTopologyAc.hpp
+[22/857] Generating ActiveEnumAc.cpp, ActiveEnumAc.hpp, CompletedEnumAc.cpp, CompletedEnumAc.hpp, DeserialStatusEnumAc.cpp, DeserialStatusEnumAc.hpp, DirectionEnumAc.cpp, DirectionEnumAc.hpp, EnabledEnumAc.cpp, EnabledEnumAc.hpp, HealthEnumAc.cpp, HealthEnumAc.hpp, LogicEnumAc.cpp, LogicEnumAc.hpp, OnEnumAc.cpp, OnEnumAc.hpp, OpenEnumAc.cpp, OpenEnumAc.hpp, SerialStatusEnumAc.cpp, SerialStatusEnumAc.hpp, SuccessEnumAc.cpp, SuccessEnumAc.hpp, WaitEnumAc.cpp, WaitEnumAc.hpp
+[23/857] Generating versions/version.hpp, versions/version.cpp, versions/version.json
+[24/857] Building CXX object F-Prime/Fw/Port/CMakeFiles/Fw_Port.dir/InputSerializePort.cpp.o
+[25/857] Building CXX object F-Prime/Fw/Comp/CMakeFiles/Fw_Comp.dir/PassiveComponentBase.cpp.o
+[26/857] Building CXX object F-Prime/Fw/Obj/CMakeFiles/Fw_Obj.dir/ObjBase.cpp.o
+[27/857] Building CXX object F-Prime/Fw/Port/CMakeFiles/Fw_Port.dir/OutputSerializePort.cpp.o
+[28/857] Building CXX object F-Prime/Fw/Port/CMakeFiles/Fw_Port.dir/PortBase.cpp.o
+[29/857] Building CXX object F-Prime/Fw/Logger/CMakeFiles/Fw_Logger.dir/Logger.cpp.o
+[30/857] Building CXX object F-Prime/Fw/Test/CMakeFiles/Fw_Test.dir/UnitTestAssert.cpp.o
+[31/857] Building CXX object F-Prime/Fw/Obj/CMakeFiles/Fw_Obj.dir/SimpleObjRegistry.cpp.o
+[32/857] Building CXX object F-Prime/Fw/Port/CMakeFiles/Fw_Port.dir/InputPortBase.cpp.o
+[33/857] Building CXX object F-Prime/Fw/Port/CMakeFiles/Fw_Port.dir/OutputPortBase.cpp.o
+[34/857] Building CXX object F-Prime/Fw/Sm/CMakeFiles/Fw_Sm.dir/SmSignalBuffer.cpp.o
+[35/857] Building CXX object F-Prime/Fw/Types/CMakeFiles/Fw_Types.dir/MemAllocator.cpp.o
+[36/857] Building CXX object F-Prime/Fw/Types/CMakeFiles/Fw_Types.dir/MallocAllocator.cpp.o
+[37/857] Building CXX object F-Prime/Fw/Types/CMakeFiles/Fw_Types.dir/Assert.cpp.o
+[38/857] Building CXX object F-Prime/Fw/Types/CMakeFiles/Fw_Types.dir/SerialBuffer.cpp.o
+[39/857] Building CXX object F-Prime/Fw/Types/CMakeFiles/Fw_Types.dir/PolyType.cpp.o
+[40/857] Building CXX object CMakeFiles/version.dir/versions/version.cpp.o
+[41/857] Building CXX object F-Prime/Fw/Types/CMakeFiles/Fw_Types.dir/StringUtils.cpp.o
+[42/857] Building CXX object F-Prime/Fw/Types/CMakeFiles/Fw_Types.dir/ActiveEnumAc.cpp.o
+[43/857] Building CXX object F-Prime/Fw/Types/CMakeFiles/Fw_Types.dir/StringBase.cpp.o
+[44/857] Building CXX object F-Prime/Fw/Types/CMakeFiles/Fw_Types.dir/Serializable.cpp.o
+[45/857] Building CXX object F-Prime/Fw/Types/CMakeFiles/Fw_Types.dir/DeserialStatusEnumAc.cpp.o
+[46/857] Building CXX object F-Prime/Fw/Types/CMakeFiles/Fw_Types.dir/CompletedEnumAc.cpp.o
+[47/857] Building CXX object F-Prime/Fw/Types/CMakeFiles/Fw_Types.dir/StringToNumber.cpp.o
+[48/857] Building CXX object F-Prime/Fw/Types/CMakeFiles/Fw_Types.dir/DirectionEnumAc.cpp.o
+[49/857] Building CXX object F-Prime/Fw/Types/CMakeFiles/Fw_Types.dir/LogicEnumAc.cpp.o
+[50/857] Building CXX object F-Prime/Fw/Types/CMakeFiles/Fw_Types.dir/HealthEnumAc.cpp.o
+[51/857] Building CXX object F-Prime/Fw/Types/CMakeFiles/Fw_Types.dir/OnEnumAc.cpp.o
+[52/857] Building CXX object F-Prime/Fw/Types/CMakeFiles/Fw_Types.dir/OpenEnumAc.cpp.o
+[53/857] Building CXX object F-Prime/Fw/Types/CMakeFiles/Fw_Types.dir/SuccessEnumAc.cpp.o
+[54/857] Building CXX object F-Prime/Fw/Types/CMakeFiles/Fw_Types.dir/SerialStatusEnumAc.cpp.o
+[55/857] Building CXX object F-Prime/Fw/Types/CMakeFiles/Fw_Types.dir/EnabledEnumAc.cpp.o
+[56/857] Building CXX object F-Prime/Fw/Types/CMakeFiles/Fw_Types.dir/WaitEnumAc.cpp.o
+[57/857] Building CXX object F-Prime/Fw/Types/CMakeFiles/Fw_StringFormat_snprintf.dir/snprintf_format.cpp.o
+[58/857] Building C object F-Prime/Utils/Hash/CMakeFiles/Utils_Hash.dir/libcrc/lib_crc.c.o
+[59/857] Building CXX object F-Prime/Fw/Types/CMakeFiles/Fw_StringScan_sscanf.dir/sscanf_scan.cpp.o
+[60/857] Building CXX object F-Prime/CFDP/Checksum/CMakeFiles/CFDP_Checksum.dir/Checksum.cpp.o
+[61/857] Building CXX object F-Prime/Os/Generic/CMakeFiles/Os_Generic_PriorityQueue.dir/DefaultPriorityQueue.cpp.o
+[62/857] Building CXX object F-Prime/Utils/Hash/CMakeFiles/Utils_Hash.dir/HashCommon.cpp.o
+[63/857] Building CXX object F-Prime/Utils/Types/CMakeFiles/Utils_Types.dir/CircularBuffer.cpp.o
+[64/857] Building CXX object F-Prime/Utils/Types/CMakeFiles/Utils_Types.dir/Queue.cpp.o
+[65/857] Building CXX object F-Prime/Utils/Hash/CMakeFiles/Utils_Hash.dir/libcrc/CRC32.cpp.o
+[66/857] Building CXX object F-Prime/Os/Generic/Types/CMakeFiles/Os_Generic_Types.dir/MaxHeap.cpp.o
+[67/857] Building CXX object F-Prime/Fw/Types/CMakeFiles/Fw_Types.dir/ConstStringBase.cpp.o
+[68/857] Linking CXX static library lib/Darwin/libFw_Types.a
+[69/857] Linking CXX static library lib/Darwin/libversion.a
+[70/857] Linking CXX static library lib/Darwin/libFw_Sm.a
+[71/857] Linking CXX static library lib/Darwin/libFw_Test.a
+[72/857] Linking CXX static library lib/Darwin/libUtils_Types.a
+[73/857] Linking CXX static library lib/Darwin/libOs_Generic_Types.a
+[74/857] Linking CXX static library lib/Darwin/libCFDP_Checksum.a
+[75/857] Linking CXX static library lib/Darwin/libFw_Logger.a
+[76/857] Generating FppConstantsAc.cpp, FppConstantsAc.hpp
+[77/857] Generating FppConstantsAc.cpp, FppConstantsAc.hpp
+[78/857] Building CXX object F-Prime/Os/Generic/CMakeFiles/Os_Generic_PriorityQueue_Implementation.dir/PriorityQueue.cpp.o
+[79/857] Linking CXX static library lib/Darwin/libFw_Obj.a
+[80/857] Building CXX object F-Prime/Utils/Hash/CMakeFiles/Utils_Hash.dir/HashBufferCommon.cpp.o
+[81/857] Building CXX object F-Prime/Svc/Subtopologies/DataProducts/DataProductsConfig/CMakeFiles/Svc_Subtopologies_DataProducts_DataProductsConfig.dir/FppConstantsAc.cpp.o
+[82/857] Building CXX object F-Prime/Svc/Subtopologies/ComCcsds/ComCcsdsConfig/CMakeFiles/Svc_Subtopologies_ComCcsds_ComCcsdsConfig.dir/FppConstantsAc.cpp.o
+[83/857] Building CXX object F-Prime/Svc/Subtopologies/DataProducts/DataProductsConfig/CMakeFiles/Svc_Subtopologies_DataProducts_DataProductsConfig.dir/DataProductsSubtopologyConfig.cpp.o
+[84/857] Building CXX object F-Prime/Svc/Subtopologies/ComCcsds/ComCcsdsConfig/CMakeFiles/Svc_Subtopologies_ComCcsds_ComCcsdsConfig.dir/ComCcsdsSubtopologyConfig.cpp.o
+[85/857] Linking CXX static library lib/Darwin/libOs_Generic_PriorityQueue_Implementation.a
+[86/857] Linking CXX static library lib/Darwin/libFw_Port.a
+[87/857] Linking CXX static library lib/Darwin/libUtils_Hash.a
+[88/857] Linking CXX static library lib/Darwin/libSvc_Subtopologies_DataProducts_DataProductsConfig.a
+[89/857] Linking CXX static library lib/Darwin/libSvc_Subtopologies_ComCcsds_ComCcsdsConfig.a
+[90/857] Linking CXX static library lib/Darwin/libFw_Comp.a
+[91/857] Generating TimeComparisonEnumAc.cpp, TimeComparisonEnumAc.hpp, TimeIntervalPortAc.cpp, TimeIntervalPortAc.hpp, TimeIntervalValueSerializableAc.cpp, TimeIntervalValueSerializableAc.hpp, TimePortAc.cpp, TimePortAc.hpp, TimeValueSerializableAc.cpp, TimeValueSerializableAc.hpp
+[92/857] Building CXX object F-Prime/Fw/Time/CMakeFiles/Fw_Time.dir/TimeComparisonEnumAc.cpp.o
+[93/857] Building CXX object F-Prime/Fw/Time/CMakeFiles/Fw_Time.dir/TimeValueSerializableAc.cpp.o
+[94/857] Building CXX object F-Prime/Fw/Time/CMakeFiles/Fw_Time.dir/TimeIntervalValueSerializableAc.cpp.o
+[95/857] Building CXX object F-Prime/Fw/Time/CMakeFiles/Fw_Time.dir/Time.cpp.o
+[96/857] Building CXX object F-Prime/Os/CMakeFiles/Os_Console.dir/Console.cpp.o
+[97/857] Building CXX object F-Prime/Os/CMakeFiles/Os_File.dir/Directory.cpp.o
+[98/857] Building CXX object F-Prime/Fw/Time/CMakeFiles/Fw_Time.dir/TimeInterval.cpp.o
+[99/857] Building CXX object F-Prime/Svc/FileWorker/test/FileTester/CMakeFiles/Svc_FileWorker_test_FileTester.dir/FileTester.cpp.o
+[100/857] Building CXX object F-Prime/Svc/FileWorker/test/FileTester/CMakeFiles/Svc_FileWorker_test_FileTester.dir/__/__/__/__/Os/Posix/FileSystem.cpp.o
+[101/857] Building CXX object F-Prime/Svc/FileWorker/test/FileTester/CMakeFiles/Svc_FileWorker_test_FileTester.dir/__/__/__/__/Os/Posix/Directory.cpp.o
+[102/857] Building CXX object F-Prime/Fw/Time/CMakeFiles/Fw_Time.dir/TimeIntervalPortAc.cpp.o
+[103/857] Building CXX object F-Prime/Os/CMakeFiles/Os_Mutex.dir/Mutex.cpp.o
+[104/857] Building CXX object F-Prime/Fw/Time/CMakeFiles/Fw_Time.dir/TimePortAc.cpp.o
+[105/857] Building CXX object F-Prime/Svc/OsTime/test/RawTimeTester/CMakeFiles/Svc_OsTime_test_RawTimeTester.dir/RawTimeTester.cpp.o
+[106/857] Building CXX object F-Prime/Os/CMakeFiles/Os_Task.dir/Task.cpp.o
+[107/857] Building CXX object F-Prime/Os/CMakeFiles/Os_Cpu.dir/Cpu.cpp.o
+[108/857] Building CXX object F-Prime/Os/CMakeFiles/Os_Mutex.dir/Condition.cpp.o
+[109/857] Building CXX object F-Prime/Os/CMakeFiles/Os_Memory.dir/Memory.cpp.o
+[110/857] Building CXX object F-Prime/Os/CMakeFiles/Os_Queue.dir/Queue.cpp.o
+[111/857] Building CXX object F-Prime/Os/Stub/CMakeFiles/Os_File_Stub_Implementation.dir/Directory.cpp.o
+[112/857] Building CXX object F-Prime/Os/Stub/CMakeFiles/Os_File_Stub_Implementation.dir/FileSystem.cpp.o
+[113/857] Building CXX object F-Prime/Os/Stub/CMakeFiles/Os_File_Stub_Implementation.dir/File.cpp.o
+[114/857] Building CXX object F-Prime/Os/Stub/CMakeFiles/Os_Mutex_Stub_Implementation.dir/ConditionVariable.cpp.o
+[115/857] Linking CXX static library lib/Darwin/libFw_Time.a
+[116/857] Building CXX object F-Prime/Os/Stub/CMakeFiles/Os_File_Stub.dir/DefaultFile.cpp.o
+[117/857] Building CXX object F-Prime/Os/Stub/CMakeFiles/Os_Console_Stub_Implementation.dir/Console.cpp.o
+[118/857] Building CXX object F-Prime/Os/Stub/CMakeFiles/Os_Console_Stub.dir/DefaultConsole.cpp.o
+[119/857] Building CXX object F-Prime/Os/Stub/CMakeFiles/Os_Task_Stub_Implementation.dir/Task.cpp.o
+[120/857] Building CXX object F-Prime/Os/Stub/CMakeFiles/Os_Task_Stub.dir/DefaultTask.cpp.o
+[121/857] Building CXX object F-Prime/Os/Stub/CMakeFiles/Os_Mutex_Stub_Implementation.dir/Mutex.cpp.o
+[122/857] Building CXX object F-Prime/Os/Stub/CMakeFiles/Os_Memory_Stub_Implementation.dir/Memory.cpp.o
+[123/857] Building CXX object F-Prime/Os/Stub/CMakeFiles/Os_Cpu_Stub_Implementation.dir/Cpu.cpp.o
+[124/857] Building CXX object F-Prime/Os/Stub/CMakeFiles/Os_Cpu_Stub.dir/DefaultCpu.cpp.o
+[125/857] Linking CXX static library lib/Darwin/libOs_Console.a
+[126/857] Building CXX object F-Prime/Os/Stub/CMakeFiles/Os_Queue_Stub_Implementation.dir/Queue.cpp.o
+[127/857] Building CXX object F-Prime/Os/Stub/CMakeFiles/Os_Memory_Stub.dir/DefaultMemory.cpp.o
+[128/857] Linking CXX static library lib/Darwin/libOs_Task.a
+[129/857] Linking CXX static library lib/Darwin/libOs_Mutex.a
+[130/857] Building CXX object F-Prime/Os/Posix/CMakeFiles/Os_Posix_Shared.dir/error.cpp.o
+[131/857] Building CXX object F-Prime/Os/CMakeFiles/Os_File.dir/FileSystem.cpp.o
+[132/857] Linking CXX static library lib/Darwin/libOs_Queue.a
+[133/857] Linking CXX static library lib/Darwin/libOs_Cpu.a
+[134/857] Building CXX object F-Prime/Os/Stub/CMakeFiles/Os_Queue_Stub.dir/DefaultQueue.cpp.o
+[135/857] Generating ComPortAc.cpp, ComPortAc.hpp
+[136/857] Building CXX object F-Prime/Os/Stub/CMakeFiles/Os_Mutex_Stub.dir/DefaultMutex.cpp.o
+[137/857] Linking CXX static library lib/Darwin/libOs_Memory.a
+[138/857] Linking CXX static library lib/Darwin/libOs_Console_Stub_Implementation.a
+[139/857] Linking CXX static library lib/Darwin/libOs_Mutex_Stub_Implementation.a
+[140/857] Building CXX object F-Prime/Os/Posix/CMakeFiles/Os_File_Posix_Implementation.dir/File.cpp.o
+[141/857] Linking CXX static library lib/Darwin/libOs_Queue_Stub_Implementation.a
+[142/857] Linking CXX static library lib/Darwin/libOs_Cpu_Stub_Implementation.a
+[143/857] Linking CXX static library lib/Darwin/libOs_Posix_Shared.a
+[144/857] Linking CXX static library lib/Darwin/libOs_Task_Stub_Implementation.a
+[145/857] Building CXX object F-Prime/Os/Posix/CMakeFiles/Os_Console_Posix_Implementation.dir/Console.cpp.o
+[146/857] Building CXX object F-Prime/Os/Posix/CMakeFiles/Os_File_Posix_Implementation.dir/FileSystem.cpp.o
+[147/857] Building CXX object F-Prime/Os/CMakeFiles/Os_File.dir/File.cpp.o
+[148/857] Building CXX object F-Prime/Os/Posix/CMakeFiles/Os_File_Posix_Implementation.dir/Directory.cpp.o
+[149/857] Building CXX object F-Prime/Os/Posix/CMakeFiles/Os_File_Posix.dir/DefaultFile.cpp.o
+[150/857] Building CXX object F-Prime/Fw/Com/CMakeFiles/Fw_Com.dir/ComPacket.cpp.o
+[151/857] Building CXX object F-Prime/Os/Posix/CMakeFiles/Os_Console_Posix.dir/DefaultConsole.cpp.o
+[152/857] Linking CXX static library lib/Darwin/libOs_Memory_Stub_Implementation.a
+[153/857] Building CXX object F-Prime/Fw/Com/CMakeFiles/Fw_Com.dir/ComBuffer.cpp.o
+[154/857] Linking CXX static library lib/Darwin/libOs_Console_Posix_Implementation.a
+[155/857] Building CXX object F-Prime/Fw/Fpy/CMakeFiles/Fw_Fpy.dir/StatementArgBuffer.cpp.o
+[156/857] Linking CXX static library lib/Darwin/libOs_File.a
+[157/857] Building CXX object F-Prime/Fw/Com/CMakeFiles/Fw_Com.dir/ComPortAc.cpp.o
+[158/857] Building CXX object F-Prime/Os/Darwin/CMakeFiles/Os_Cpu_Darwin.dir/DefaultCpu.cpp.o
+[159/857] Building CXX object F-Prime/Os/Posix/CMakeFiles/Os_Mutex_Posix_Implementation.dir/Mutex.cpp.o
+[160/857] Building CXX object F-Prime/Os/Posix/CMakeFiles/Os_Mutex_Posix.dir/DefaultMutex.cpp.o
+[161/857] Building CXX object F-Prime/Os/Posix/CMakeFiles/Os_Mutex_Posix_Implementation.dir/ConditionVariable.cpp.o
+[162/857] Building CXX object F-Prime/Os/Darwin/CMakeFiles/Os_Cpu_Darwin_Implementation.dir/Cpu.cpp.o
+[163/857] Building CXX object F-Prime/Os/Darwin/CMakeFiles/Os_Memory_Darwin.dir/DefaultMemory.cpp.o
+[164/857] Building CXX object F-Prime/Os/Darwin/CMakeFiles/Os_Memory_Darwin_Implementation.dir/Memory.cpp.o
+[165/857] Building CXX object F-Prime/Os/Posix/CMakeFiles/Os_Task_Posix_Implementation.dir/Task.cpp.o
+[166/857] Linking CXX static library lib/Darwin/libOs_File_Stub_Implementation.a
+[167/857] Linking CXX static library lib/Darwin/libFw_Com.a
+[168/857] Linking CXX static library lib/Darwin/libOs_File_Posix_Implementation.a
+[169/857] Linking CXX static library lib/Darwin/libOs_Cpu_Darwin_Implementation.a
+[170/857] Linking CXX static library lib/Darwin/libOs_Mutex_Posix_Implementation.a
+[171/857] Building CXX object F-Prime/Os/Posix/CMakeFiles/Os_Task_Posix.dir/DefaultTask.cpp.o
+[172/857] Linking CXX static library lib/Darwin/libOs_Memory_Darwin_Implementation.a
+[173/857] Linking CXX static library lib/Darwin/libOs_Task_Posix_Implementation.a
+[174/857] Linking CXX static library lib/Darwin/libFw_Fpy.a
+[175/857] Generating TlmGetPortAc.cpp, TlmGetPortAc.hpp, TlmPortAc.cpp, TlmPortAc.hpp, TlmValidEnumAc.cpp, TlmValidEnumAc.hpp
+[176/857] Building CXX object F-Prime/Fw/Tlm/CMakeFiles/Fw_Tlm.dir/TlmBuffer.cpp.o
+[177/857] Building CXX object F-Prime/Fw/Tlm/CMakeFiles/Fw_Tlm.dir/TlmValidEnumAc.cpp.o
+[178/857] Building CXX object F-Prime/Fw/Tlm/CMakeFiles/Fw_Tlm.dir/TlmPacket.cpp.o
+[179/857] Building CXX object F-Prime/Fw/Tlm/CMakeFiles/Fw_Tlm.dir/TlmGetPortAc.cpp.o
+[180/857] Building CXX object F-Prime/Fw/Tlm/CMakeFiles/Fw_Tlm.dir/TlmPortAc.cpp.o
+[181/857] Linking CXX static library lib/Darwin/libFw_Tlm.a
+[182/857] Generating LogPortAc.cpp, LogPortAc.hpp, LogSeverityEnumAc.cpp, LogSeverityEnumAc.hpp, LogTextPortAc.cpp, LogTextPortAc.hpp
+[183/857] Building CXX object F-Prime/Fw/Log/CMakeFiles/Fw_Log.dir/LogBuffer.cpp.o
+[184/857] Building CXX object F-Prime/Fw/Log/CMakeFiles/Fw_Log.dir/LogSeverityEnumAc.cpp.o
+[185/857] Building CXX object F-Prime/Fw/Log/CMakeFiles/Fw_Log.dir/LogPacket.cpp.o
+[186/857] Building CXX object F-Prime/Fw/Log/CMakeFiles/Fw_Log.dir/LogPortAc.cpp.o
+[187/857] Building CXX object F-Prime/Fw/Log/CMakeFiles/Fw_Log.dir/LogTextPortAc.cpp.o
+[188/857] Linking CXX static library lib/Darwin/libFw_Log.a
+[189/857] Generating CmdPortAc.cpp, CmdPortAc.hpp, CmdRegPortAc.cpp, CmdRegPortAc.hpp, CmdResponseEnumAc.cpp, CmdResponseEnumAc.hpp, CmdResponsePortAc.cpp, CmdResponsePortAc.hpp
+[190/857] Building CXX object F-Prime/Fw/Cmd/CMakeFiles/Fw_Cmd.dir/CmdArgBuffer.cpp.o
+[191/857] Building CXX object F-Prime/Fw/Cmd/CMakeFiles/Fw_Cmd.dir/CmdResponseEnumAc.cpp.o
+[192/857] Building CXX object F-Prime/Fw/Cmd/CMakeFiles/Fw_Cmd.dir/CmdPacket.cpp.o
+[193/857] Building CXX object F-Prime/Fw/Cmd/CMakeFiles/Fw_Cmd.dir/CmdPortAc.cpp.o
+[194/857] Building CXX object F-Prime/Fw/Cmd/CMakeFiles/Fw_Cmd.dir/CmdRegPortAc.cpp.o
+[195/857] Building CXX object F-Prime/Fw/Cmd/CMakeFiles/Fw_Cmd.dir/CmdResponsePortAc.cpp.o
+[196/857] Linking CXX static library lib/Darwin/libFw_Cmd.a
+[197/857] Generating ParamValidEnumAc.cpp, ParamValidEnumAc.hpp, PrmGetPortAc.cpp, PrmGetPortAc.hpp, PrmSetPortAc.cpp, PrmSetPortAc.hpp
+[198/857] Building CXX object F-Prime/Fw/Prm/CMakeFiles/Fw_Prm.dir/PrmBuffer.cpp.o
+[199/857] Building CXX object F-Prime/Fw/Prm/CMakeFiles/Fw_Prm.dir/ParamValidEnumAc.cpp.o
+[200/857] Building CXX object F-Prime/Fw/Prm/CMakeFiles/Fw_Prm.dir/PrmGetPortAc.cpp.o
+[201/857] Building CXX object F-Prime/Fw/Prm/CMakeFiles/Fw_Prm.dir/PrmSetPortAc.cpp.o
+[202/857] Linking CXX static library lib/Darwin/libFw_Prm.a
+[203/857] Generating FatalEventPortAc.cpp, FatalEventPortAc.hpp
+[204/857] Generating SuccessConditionPortAc.cpp, SuccessConditionPortAc.hpp
+[205/857] Generating SignalPortAc.cpp, SignalPortAc.hpp
+[206/857] Generating ReadyPortAc.cpp, ReadyPortAc.hpp
+[207/857] Generating PingPortAc.cpp, PingPortAc.hpp
+[208/857] Generating WatchDogPortAc.cpp, WatchDogPortAc.hpp
+[209/857] Generating RateLogicEnumAc.cpp, RateLogicEnumAc.hpp
+[210/857] Generating CmdSeqCancelPortAc.cpp, CmdSeqCancelPortAc.hpp, CmdSeqInPortAc.cpp, CmdSeqInPortAc.hpp
+[211/857] Generating CompletionStatusPortAc.cpp, CompletionStatusPortAc.hpp
+[212/857] Generating MeasurementStatusEnumAc.cpp, MeasurementStatusEnumAc.hpp, PolyPortAc.cpp, PolyPortAc.hpp
+[213/857] Generating SchedPortAc.cpp, SchedPortAc.hpp
+[214/857] Generating DpWrittenPortAc.cpp, DpWrittenPortAc.hpp
+[215/857] Generating ComSplitterComponentAc.cpp, ComSplitterComponentAc.hpp
+[216/857] Generating BufferGetPortAc.cpp, BufferGetPortAc.hpp, BufferSendPortAc.cpp, BufferSendPortAc.hpp
+[217/857] Generating AssertFatalAdapterComponentAc.cpp, AssertFatalAdapterComponentAc.hpp
+[218/857] Generating CmdSplitterComponentAc.cpp, CmdSplitterComponentAc.hpp
+[219/857] Generating VersionPortAc.cpp, VersionPortAc.hpp, VersionStatusEnumAc.cpp, VersionStatusEnumAc.hpp
+[220/857] Building CXX object F-Prime/Svc/Fatal/CMakeFiles/Svc_Fatal.dir/FatalEventPortAc.cpp.o
+[221/857] Building CXX object F-Prime/Fw/Ports/SuccessCondition/CMakeFiles/Fw_Ports_SuccessCondition.dir/SuccessConditionPortAc.cpp.o
+[222/857] Building CXX object F-Prime/Fw/Ports/Signal/CMakeFiles/Fw_Ports_Signal.dir/SignalPortAc.cpp.o
+[223/857] Building CXX object F-Prime/Fw/Ports/Ready/CMakeFiles/Fw_Ports_Ready.dir/ReadyPortAc.cpp.o
+[224/857] Building CXX object F-Prime/Svc/Seq/CMakeFiles/Svc_Seq.dir/CmdSeqCancelPortAc.cpp.o
+[225/857] Building CXX object F-Prime/Svc/Ping/CMakeFiles/Svc_Ping.dir/PingPortAc.cpp.o
+[226/857] Building CXX object F-Prime/Svc/WatchDog/CMakeFiles/Svc_WatchDog.dir/WatchDogPortAc.cpp.o
+[227/857] Building CXX object F-Prime/Svc/Sched/CMakeFiles/Svc_Sched.dir/SchedPortAc.cpp.o
+[228/857] Building CXX object F-Prime/Svc/PolyIf/CMakeFiles/Svc_PolyIf.dir/MeasurementStatusEnumAc.cpp.o
+[229/857] Building CXX object F-Prime/Svc/Types/TlmPacketizerTypes/CMakeFiles/Svc_Types_TlmPacketizerTypes.dir/RateLogicEnumAc.cpp.o
+[230/857] Building CXX object F-Prime/Fw/Ports/CompletionStatus/CMakeFiles/Fw_Ports_CompletionStatus.dir/CompletionStatusPortAc.cpp.o
+[231/857] Building CXX object F-Prime/Fw/Buffer/CMakeFiles/Fw_Buffer.dir/Buffer.cpp.o
+[232/857] Building CXX object F-Prime/Svc/PolyIf/CMakeFiles/Svc_PolyIf.dir/PolyPortAc.cpp.o
+[233/857] Building CXX object F-Prime/Fw/Buffer/CMakeFiles/Fw_Buffer.dir/BufferGetPortAc.cpp.o
+[234/857] Building CXX object F-Prime/Svc/Seq/CMakeFiles/Svc_Seq.dir/CmdSeqInPortAc.cpp.o
+[235/857] Building CXX object F-Prime/Fw/Buffer/CMakeFiles/Fw_Buffer.dir/BufferSendPortAc.cpp.o
+[236/857] Building CXX object F-Prime/Fw/Comp/CMakeFiles/Fw_CompQueued.dir/QueuedComponentBase.cpp.o
+[237/857] Building CXX object F-Prime/Fw/Comp/CMakeFiles/Fw_CompQueued.dir/ActiveComponentBase.cpp.o
+[238/857] Building CXX object F-Prime/Fw/FilePacket/CMakeFiles/Fw_FilePacket.dir/CancelPacket.cpp.o
+[239/857] Building CXX object F-Prime/Fw/FilePacket/CMakeFiles/Fw_FilePacket.dir/DataPacket.cpp.o
+[240/857] Building CXX object F-Prime/Fw/FilePacket/CMakeFiles/Fw_FilePacket.dir/FilePacket.cpp.o
+[241/857] Linking CXX static library lib/Darwin/libFw_Ports_Signal.a
+[242/857] Linking CXX static library lib/Darwin/libFw_Ports_CompletionStatus.a
+[243/857] Linking CXX static library lib/Darwin/libSvc_Fatal.a
+[244/857] Building CXX object F-Prime/Fw/FilePacket/CMakeFiles/Fw_FilePacket.dir/PathName.cpp.o
+[245/857] Building CXX object F-Prime/Fw/FilePacket/CMakeFiles/Fw_FilePacket.dir/StartPacket.cpp.o
+[246/857] Linking CXX static library lib/Darwin/libFw_Ports_Ready.a
+[247/857] Building CXX object F-Prime/Fw/FilePacket/CMakeFiles/Fw_FilePacket.dir/EndPacket.cpp.o
+[248/857] Building CXX object F-Prime/Fw/FilePacket/CMakeFiles/Fw_FilePacket.dir/Header.cpp.o
+[249/857] Linking CXX static library lib/Darwin/libFw_Ports_SuccessCondition.a
+[250/857] Linking CXX static library lib/Darwin/libSvc_Types_TlmPacketizerTypes.a
+[251/857] Linking CXX static library lib/Darwin/libSvc_Ping.a
+[252/857] Building CXX object F-Prime/Fw/SerializableFile/CMakeFiles/Fw_SerializableFile.dir/SerializableFile.cpp.o
+[253/857] Linking CXX static library lib/Darwin/libFw_Buffer.a
+[254/857] Linking CXX static library lib/Darwin/libSvc_PolyIf.a
+[255/857] Linking CXX static library lib/Darwin/libSvc_Seq.a
+[256/857] Linking CXX static library lib/Darwin/libSvc_Sched.a
+[257/857] Linking CXX static library lib/Darwin/libSvc_WatchDog.a
+[258/857] Building CXX object F-Prime/Svc/Ports/VersionPorts/CMakeFiles/Svc_Ports_VersionPorts.dir/VersionStatusEnumAc.cpp.o
+[259/857] Building CXX object F-Prime/Svc/Ports/VersionPorts/CMakeFiles/Svc_Ports_VersionPorts.dir/VersionPortAc.cpp.o
+[260/857] Building CXX object F-Prime/Svc/CmdSplitter/CMakeFiles/Svc_CmdSplitter.dir/CmdSplitter.cpp.o
+[261/857] Building CXX object F-Prime/Svc/DpPorts/CMakeFiles/Svc_DpPorts.dir/DpWrittenPortAc.cpp.o
+[262/857] Generating FrameHeaderSerializableAc.cpp, FrameHeaderSerializableAc.hpp, FrameTrailerSerializableAc.cpp, FrameTrailerSerializableAc.hpp, TokenTypeAliasAc.hpp
+[263/857] Building CXX object F-Prime/Svc/ComSplitter/CMakeFiles/Svc_ComSplitter.dir/ComSplitter.cpp.o
+[264/857] Building CXX object F-Prime/Svc/CmdSplitter/CMakeFiles/Svc_CmdSplitter.dir/CmdSplitterComponentAc.cpp.o
+[265/857] Building CXX object F-Prime/Svc/ComSplitter/CMakeFiles/Svc_ComSplitter.dir/ComSplitterComponentAc.cpp.o
+[266/857] Generating FppConstantsAc.cpp, FppConstantsAc.hpp, TelemetrySectionEnumAc.cpp, TelemetrySectionEnumAc.hpp
+[267/857] Generating SendFileCompletePortAc.cpp, SendFileCompletePortAc.hpp, SendFileRequestPortAc.cpp, SendFileRequestPortAc.hpp, SendFileResponseSerializableAc.cpp, SendFileResponseSerializableAc.hpp, SendFileStatusEnumAc.cpp, SendFileStatusEnumAc.hpp
+[268/857] Linking CXX static library lib/Darwin/libFw_FilePacket.a
+[269/857] Generating DpGetPortAc.cpp, DpGetPortAc.hpp, DpRequestPortAc.cpp, DpRequestPortAc.hpp, DpResponsePortAc.cpp, DpResponsePortAc.hpp, DpSendPortAc.cpp, DpSendPortAc.hpp, DpStateEnumAc.cpp, DpStateEnumAc.hpp
+[270/857] Generating ComDataContextPairSerializableAc.cpp, ComDataContextPairSerializableAc.hpp, ComDataWithContextPortAc.cpp, ComDataWithContextPortAc.hpp
+[271/857] Linking CXX static library lib/Darwin/libSvc_Ports_VersionPorts.a
+[272/857] Linking CXX static library lib/Darwin/libSvc_DpPorts.a
+[273/857] Building CXX object F-Prime/Svc/FprimeProtocol/CMakeFiles/Svc_FprimeProtocol.dir/FrameHeaderSerializableAc.cpp.o
+[274/857] Generating PassiveTextLoggerComponentAc.cpp, PassiveTextLoggerComponentAc.hpp
+[275/857] Generating BufferRepeaterComponentAc.cpp, BufferRepeaterComponentAc.hpp
+[276/857] Linking CXX static library lib/Darwin/libSvc_CmdSplitter.a
+[277/857] Building CXX object F-Prime/Svc/TlmPacketizer/config/TlmPacketizerConfig/CMakeFiles/Svc_TlmPacketizer_config_TlmPacketizerConfig.dir/FppConstantsAc.cpp.o
+[278/857] Generating CancelStatusPortAc.cpp, CancelStatusPortAc.hpp, FileAnnouncePortAc.cpp, FileAnnouncePortAc.hpp, FileDispatchPortAc.cpp, FileDispatchPortAc.hpp, FileReadPortAc.cpp, FileReadPortAc.hpp, FileWritePortAc.cpp, FileWritePortAc.hpp, SignalDonePortAc.cpp, SignalDonePortAc.hpp, VerifyStatusPortAc.cpp, VerifyStatusPortAc.hpp
+[279/857] Building CXX object F-Prime/Svc/FprimeProtocol/CMakeFiles/Svc_FprimeProtocol.dir/FrameTrailerSerializableAc.cpp.o
+[280/857] Linking CXX static library lib/Darwin/libSvc_ComSplitter.a
+[281/857] Building CXX object F-Prime/Svc/AssertFatalAdapter/CMakeFiles/Svc_AssertFatalAdapter.dir/AssertFatalAdapterComponentImpl.cpp.o
+[282/857] Building CXX object F-Prime/Svc/FileDownlinkPorts/CMakeFiles/Svc_FileDownlinkPorts.dir/SendFileRequestPortAc.cpp.o
+[283/857] Building CXX object F-Prime/Svc/AssertFatalAdapter/CMakeFiles/Svc_AssertFatalAdapter.dir/AssertFatalAdapterComponentAc.cpp.o
+[284/857] Generating AOSHeaderSerializableAc.cpp, AOSHeaderSerializableAc.hpp, AOSTrailerSerializableAc.cpp, AOSTrailerSerializableAc.hpp, FppConstantsAc.cpp, FppConstantsAc.hpp, FrameErrorEnumAc.cpp, FrameErrorEnumAc.hpp, M_PDUHeaderSerializableAc.cpp, M_PDUHeaderSerializableAc.hpp, SpacePacketHeaderSerializableAc.cpp, SpacePacketHeaderSerializableAc.hpp, TCHeaderSerializableAc.cpp, TCHeaderSerializableAc.hpp, TCTrailerSerializableAc.cpp, TCTrailerSerializableAc.hpp, TMHeaderSerializableAc.cpp, TMHeaderSerializableAc.hpp, TMTrailerSerializableAc.cpp, TMTrailerSerializableAc.hpp, TfvnEnumAc.cpp, TfvnEnumAc.hpp
+[285/857] Building CXX object F-Prime/Svc/FileDownlinkPorts/CMakeFiles/Svc_FileDownlinkPorts.dir/SendFileCompletePortAc.cpp.o
+[286/857] Building CXX object F-Prime/Fw/Dp/CMakeFiles/Fw_Dp.dir/DpContainer.cpp.o
+[287/857] Building CXX object F-Prime/Fw/Dp/CMakeFiles/Fw_Dp.dir/DpGetPortAc.cpp.o
+[288/857] Building CXX object F-Prime/Fw/Dp/CMakeFiles/Fw_Dp.dir/DpRequestPortAc.cpp.o
+[289/857] Building CXX object F-Prime/Fw/Dp/CMakeFiles/Fw_Dp.dir/DpResponsePortAc.cpp.o
+[290/857] Building CXX object F-Prime/Fw/Dp/CMakeFiles/Fw_Dp.dir/DpStateEnumAc.cpp.o
+[291/857] Building CXX object F-Prime/Fw/Dp/CMakeFiles/Fw_Dp.dir/DpSendPortAc.cpp.o
+[292/857] Building CXX object F-Prime/Svc/Ports/CommsPorts/CMakeFiles/Svc_Ports_CommsPorts.dir/ComDataContextPairSerializableAc.cpp.o
+[293/857] Building CXX object F-Prime/Svc/Ports/CommsPorts/CMakeFiles/Svc_Ports_CommsPorts.dir/ComDataWithContextPortAc.cpp.o
+[294/857] Building CXX object F-Prime/Svc/Ports/FilePorts/CMakeFiles/Svc_Ports_FilePorts.dir/CancelStatusPortAc.cpp.o
+[295/857] Building CXX object F-Prime/Svc/Ports/FilePorts/CMakeFiles/Svc_Ports_FilePorts.dir/FileDispatchPortAc.cpp.o
+[296/857] Building CXX object F-Prime/Svc/Ports/FilePorts/CMakeFiles/Svc_Ports_FilePorts.dir/FileReadPortAc.cpp.o
+[297/857] Building CXX object F-Prime/Svc/Ports/FilePorts/CMakeFiles/Svc_Ports_FilePorts.dir/FileAnnouncePortAc.cpp.o
+[298/857] Linking CXX static library lib/Darwin/libSvc_AssertFatalAdapter.a
+[299/857] Building CXX object F-Prime/Svc/Ports/FilePorts/CMakeFiles/Svc_Ports_FilePorts.dir/FileWritePortAc.cpp.o
+[300/857] Building CXX object F-Prime/Svc/Ports/FilePorts/CMakeFiles/Svc_Ports_FilePorts.dir/SignalDonePortAc.cpp.o
+[301/857] Building CXX object F-Prime/Svc/Ports/FilePorts/CMakeFiles/Svc_Ports_FilePorts.dir/VerifyStatusPortAc.cpp.o
+[302/857] Building CXX object F-Prime/Svc/FileDownlinkPorts/CMakeFiles/Svc_FileDownlinkPorts.dir/SendFileResponseSerializableAc.cpp.o
+[303/857] Building CXX object F-Prime/Svc/FileDownlinkPorts/CMakeFiles/Svc_FileDownlinkPorts.dir/SendFileStatusEnumAc.cpp.o
+[304/857] Linking CXX static library lib/Darwin/libFw_Dp.a
+[305/857] Linking CXX static library lib/Darwin/libSvc_FprimeProtocol.a
+[306/857] Building CXX object F-Prime/Svc/BufferRepeater/CMakeFiles/Svc_BufferRepeater.dir/BufferRepeater.cpp.o
+[307/857] Building CXX object F-Prime/Svc/TlmPacketizer/config/TlmPacketizerConfig/CMakeFiles/Svc_TlmPacketizer_config_TlmPacketizerConfig.dir/TelemetrySectionEnumAc.cpp.o
+[308/857] Linking CXX static library lib/Darwin/libSvc_Ports_CommsPorts.a
+[309/857] Building CXX object F-Prime/Svc/Ccsds/Types/CMakeFiles/Svc_Ccsds_Types.dir/FppConstantsAc.cpp.o
+[310/857] Building CXX object F-Prime/Svc/Ccsds/Types/CMakeFiles/Svc_Ccsds_Types.dir/AOSHeaderSerializableAc.cpp.o
+[311/857] Building CXX object F-Prime/Svc/Ccsds/Types/CMakeFiles/Svc_Ccsds_Types.dir/FrameErrorEnumAc.cpp.o
+[312/857] Building CXX object F-Prime/Svc/PassiveConsoleTextLogger/CMakeFiles/Svc_PassiveConsoleTextLogger.dir/ConsoleTextLoggerImplCommon.cpp.o
+[313/857] Linking CXX static library lib/Darwin/libSvc_Ports_FilePorts.a
+[314/857] Building CXX object F-Prime/Svc/Ccsds/Types/CMakeFiles/Svc_Ccsds_Types.dir/AOSTrailerSerializableAc.cpp.o
+[315/857] Building CXX object F-Prime/Svc/Ccsds/Types/CMakeFiles/Svc_Ccsds_Types.dir/M_PDUHeaderSerializableAc.cpp.o
+[316/857] Building CXX object F-Prime/Svc/Ccsds/Types/CMakeFiles/Svc_Ccsds_Types.dir/SpacePacketHeaderSerializableAc.cpp.o
+[317/857] Building CXX object F-Prime/Svc/Ccsds/Types/CMakeFiles/Svc_Ccsds_Types.dir/TCHeaderSerializableAc.cpp.o
+[318/857] Building CXX object F-Prime/Svc/PassiveConsoleTextLogger/CMakeFiles/Svc_PassiveConsoleTextLogger.dir/PassiveTextLoggerComponentAc.cpp.o
+[319/857] Linking CXX static library lib/Darwin/libSvc_FileDownlinkPorts.a
+[320/857] Building CXX object F-Prime/Svc/BufferRepeater/CMakeFiles/Svc_BufferRepeater.dir/BufferRepeaterComponentAc.cpp.o
+[321/857] Building CXX object F-Prime/Svc/Ccsds/Types/CMakeFiles/Svc_Ccsds_Types.dir/TCTrailerSerializableAc.cpp.o
+[322/857] Building CXX object F-Prime/Svc/Ccsds/Types/CMakeFiles/Svc_Ccsds_Types.dir/TMTrailerSerializableAc.cpp.o
+[323/857] Linking CXX static library lib/Darwin/libSvc_TlmPacketizer_config_TlmPacketizerConfig.a
+[324/857] Building CXX object F-Prime/Svc/Ccsds/Types/CMakeFiles/Svc_Ccsds_Types.dir/TMHeaderSerializableAc.cpp.o
+[325/857] Building CXX object F-Prime/Svc/Ccsds/Types/CMakeFiles/Svc_Ccsds_Types.dir/TfvnEnumAc.cpp.o
+[326/857] Building CXX object F-Prime/Os/CMakeFiles/Os.dir/ValidatedFile.cpp.o
+[327/857] Building CXX object F-Prime/Os/CMakeFiles/Os.dir/ValidateFileCommon.cpp.o
+[328/857] Building CXX object F-Prime/Os/CMakeFiles/Os.dir/IntervalTimer.cpp.o
+[329/857] Building CXX object F-Prime/Os/CMakeFiles/Os.dir/Os.cpp.o
+[330/857] Generating PassThroughRouterComponentAc.cpp, PassThroughRouterComponentAc.hpp
+[331/857] Building CXX object F-Prime/Os/CMakeFiles/Os_RawTime.dir/RawTime.cpp.o
+[332/857] Linking CXX static library lib/Darwin/libSvc_PassiveConsoleTextLogger.a
+[333/857] Building CXX object F-Prime/Os/Stub/CMakeFiles/Os_RawTime_Stub_Implementation.dir/RawTime.cpp.o
+[334/857] Building CXX object F-Prime/Os/Posix/CMakeFiles/Os_RawTime_Posix_Implementation.dir/RawTime.cpp.o
+[335/857] Generating DirectoryOpenModeEnumAc.cpp, DirectoryOpenModeEnumAc.hpp, DirectoryStatusEnumAc.cpp, DirectoryStatusEnumAc.hpp, FileModeEnumAc.cpp, FileModeEnumAc.hpp, FileStatusEnumAc.cpp, FileStatusEnumAc.hpp, FileSystemStatusEnumAc.cpp, FileSystemStatusEnumAc.hpp, GenericStatusEnumAc.cpp, GenericStatusEnumAc.hpp, MutexStatusEnumAc.cpp, MutexStatusEnumAc.hpp, QueueBlockingTypeEnumAc.cpp, QueueBlockingTypeEnumAc.hpp, QueueStatusEnumAc.cpp, QueueStatusEnumAc.hpp, RawTimeStatusEnumAc.cpp, RawTimeStatusEnumAc.hpp, TaskStatusEnumAc.cpp, TaskStatusEnumAc.hpp
+[336/857] Building CXX object F-Prime/Os/Stub/CMakeFiles/Os_RawTime_Stub.dir/DefaultRawTime.cpp.o
+[337/857] Linking CXX static library lib/Darwin/libSvc_BufferRepeater.a
+[338/857] Linking CXX static library lib/Darwin/libSvc_Ccsds_Types.a
+[339/857] Building CXX object F-Prime/Os/Posix/CMakeFiles/Os_RawTime_Posix.dir/DefaultRawTime.cpp.o
+[340/857] Generating DataBufferPortAc.cpp, DataBufferPortAc.hpp
+[341/857] Generating GpioReadPortAc.cpp, GpioReadPortAc.hpp, GpioStatusEnumAc.cpp, GpioStatusEnumAc.hpp, GpioWritePortAc.cpp, GpioWritePortAc.hpp, I2cPortAc.cpp, I2cPortAc.hpp, I2cStatusEnumAc.cpp, I2cStatusEnumAc.hpp, I2cWriteReadPortAc.cpp, I2cWriteReadPortAc.hpp, SpiReadWritePortAc.cpp, SpiReadWritePortAc.hpp, SpiStatusEnumAc.cpp, SpiStatusEnumAc.hpp, SpiWriteReadPortAc.cpp, SpiWriteReadPortAc.hpp
+[342/857] Generating ConfigureGroupRatePortAc.cpp, ConfigureGroupRatePortAc.hpp, EnableSectionPortAc.cpp, EnableSectionPortAc.hpp
+[343/857] Building CXX object F-Prime/Svc/PassThroughRouter/CMakeFiles/Svc_PassThroughRouter.dir/PassThroughRouter.cpp.o
+[344/857] Building CXX object F-Prime/Drv/Ip/CMakeFiles/Drv_Ip.dir/IpSocket.cpp.o
+[345/857] Building CXX object F-Prime/Drv/Ip/CMakeFiles/Drv_Ip.dir/TcpClientSocket.cpp.o
+[346/857] Linking CXX static library lib/Darwin/libOs_RawTime.a
+[347/857] Building CXX object F-Prime/Os/Models/CMakeFiles/Os_Models.dir/DirectoryOpenModeEnumAc.cpp.o
+[348/857] Building CXX object F-Prime/Svc/PassThroughRouter/CMakeFiles/Svc_PassThroughRouter.dir/PassThroughRouterComponentAc.cpp.o
+[349/857] Generating ByteStreamDataPortAc.cpp, ByteStreamDataPortAc.hpp, ByteStreamReadyPortAc.cpp, ByteStreamReadyPortAc.hpp, ByteStreamSendPortAc.cpp, ByteStreamSendPortAc.hpp, ByteStreamStatusEnumAc.cpp, ByteStreamStatusEnumAc.hpp
+[350/857] Building CXX object F-Prime/Os/Models/CMakeFiles/Os_Models.dir/Models.cpp.o
+[351/857] Building CXX object F-Prime/Drv/Ip/CMakeFiles/Drv_Ip.dir/TcpServerSocket.cpp.o
+[352/857] Building CXX object F-Prime/Os/Models/CMakeFiles/Os_Models.dir/DirectoryStatusEnumAc.cpp.o
+[353/857] Building CXX object F-Prime/Drv/Ip/CMakeFiles/Drv_Ip.dir/SocketComponentHelper.cpp.o
+[354/857] Building CXX object F-Prime/Drv/Ip/CMakeFiles/Drv_Ip.dir/UdpSocket.cpp.o
+[355/857] Building CXX object F-Prime/Os/Models/CMakeFiles/Os_Models.dir/FileModeEnumAc.cpp.o
+[356/857] Building CXX object F-Prime/Os/Models/CMakeFiles/Os_Models.dir/FileStatusEnumAc.cpp.o
+[357/857] Building CXX object F-Prime/Os/Models/CMakeFiles/Os_Models.dir/FileSystemStatusEnumAc.cpp.o
+[358/857] Generating ApidSequenceCountPortAc.cpp, ApidSequenceCountPortAc.hpp, ErrorNotifyPortAc.cpp, ErrorNotifyPortAc.hpp
+[359/857] Building CXX object F-Prime/Svc/Ports/TlmPacketizerPorts/CMakeFiles/Svc_Ports_TlmPacketizerPorts.dir/ConfigureGroupRatePortAc.cpp.o
+[360/857] Linking CXX static library lib/Darwin/libOs_RawTime_Stub_Implementation.a
+[361/857] Linking CXX static library lib/Darwin/libSvc_PassThroughRouter.a
+[362/857] Building CXX object F-Prime/Os/Models/CMakeFiles/Os_Models.dir/GenericStatusEnumAc.cpp.o
+[363/857] Building CXX object F-Prime/Os/Models/CMakeFiles/Os_Models.dir/MutexStatusEnumAc.cpp.o
+[364/857] Linking CXX static library lib/Darwin/libOs.a
+[365/857] Linking CXX static library lib/Darwin/libOs_RawTime_Posix_Implementation.a
+[366/857] Building CXX object F-Prime/Os/Models/CMakeFiles/Os_Models.dir/RawTimeStatusEnumAc.cpp.o
+[367/857] Building CXX object F-Prime/Os/Models/CMakeFiles/Os_Models.dir/QueueBlockingTypeEnumAc.cpp.o
+[368/857] Building CXX object F-Prime/Os/Models/CMakeFiles/Os_Models.dir/TaskStatusEnumAc.cpp.o
+[369/857] Building CXX object F-Prime/Svc/Ports/TlmPacketizerPorts/CMakeFiles/Svc_Ports_TlmPacketizerPorts.dir/EnableSectionPortAc.cpp.o
+[370/857] Building CXX object F-Prime/Drv/Ports/CMakeFiles/Drv_Ports.dir/GpioStatusEnumAc.cpp.o
+[371/857] Building CXX object F-Prime/Os/Models/CMakeFiles/Os_Models.dir/QueueStatusEnumAc.cpp.o
+[372/857] Building CXX object F-Prime/Drv/Ports/CMakeFiles/Drv_Ports.dir/GpioReadPortAc.cpp.o
+[373/857] Building CXX object F-Prime/Drv/Ports/CMakeFiles/Drv_Ports.dir/GpioWritePortAc.cpp.o
+[374/857] Building CXX object F-Prime/Svc/Ccsds/Ports/CMakeFiles/Svc_Ccsds_Ports.dir/ApidSequenceCountPortAc.cpp.o
+[375/857] Building CXX object F-Prime/Drv/Ports/CMakeFiles/Drv_Ports.dir/I2cPortAc.cpp.o
+[376/857] Building CXX object F-Prime/Drv/Ports/CMakeFiles/Drv_Ports.dir/I2cStatusEnumAc.cpp.o
+[377/857] Linking CXX static library lib/Darwin/libFw_SerializableFile.a
+[378/857] Building CXX object F-Prime/Drv/Ports/CMakeFiles/Drv_Ports.dir/SpiStatusEnumAc.cpp.o
+[379/857] Linking CXX static library lib/Darwin/libFw_CompQueued.a
+[380/857] Building CXX object F-Prime/Drv/Ports/CMakeFiles/Drv_Ports.dir/I2cWriteReadPortAc.cpp.o
+[381/857] Linking CXX static library lib/Darwin/libSvc_Ports_TlmPacketizerPorts.a
+[382/857] Building CXX object F-Prime/Drv/Ports/CMakeFiles/Drv_Ports.dir/SpiReadWritePortAc.cpp.o
+[383/857] Building CXX object F-Prime/Svc/Ccsds/Ports/CMakeFiles/Svc_Ccsds_Ports.dir/ErrorNotifyPortAc.cpp.o
+[384/857] Generating CyclePortAc.cpp, CyclePortAc.hpp
+[385/857] Generating OsTimeEpochPortAc.cpp, OsTimeEpochPortAc.hpp
+[386/857] Generating ChronoTimeComponentAc.cpp, ChronoTimeComponentAc.hpp
+[387/857] Generating FatalHandlerComponentAc.cpp, FatalHandlerComponentAc.hpp
+[388/857] Generating FprimeDeframerComponentAc.cpp, FprimeDeframerComponentAc.hpp
+[389/857] Generating BufferManagerComponentAc.cpp, BufferManagerComponentAc.hpp
+[390/857] Generating FprimeFramerComponentAc.cpp, FprimeFramerComponentAc.hpp
+[391/857] Generating FrameAccumulatorComponentAc.cpp, FrameAccumulatorComponentAc.hpp
+[392/857] Generating FprimeRouterComponentAc.cpp, FprimeRouterComponentAc.hpp, FprimeRouter_AllocationReasonEnumAc.cpp, FprimeRouter_AllocationReasonEnumAc.hpp
+[393/857] Generating StaticMemoryComponentAc.cpp, StaticMemoryComponentAc.hpp
+[394/857] Building CXX object F-Prime/Svc/Cycle/CMakeFiles/Svc_Cycle.dir/CyclePortAc.cpp.o
+[395/857] Generating SystemResourceEnabledEnumAc.cpp, SystemResourceEnabledEnumAc.hpp, SystemResourcesComponentAc.cpp, SystemResourcesComponentAc.hpp
+[396/857] Generating BufferAccumulatorComponentAc.cpp, BufferAccumulatorComponentAc.hpp, BufferAccumulator_BlockModeEnumAc.cpp, BufferAccumulator_BlockModeEnumAc.hpp, BufferAccumulator_OpStateEnumAc.cpp, BufferAccumulator_OpStateEnumAc.hpp
+[397/857] Generating PolyDbComponentAc.cpp, PolyDbComponentAc.hpp
+[398/857] Generating BufferLoggerComponentAc.cpp, BufferLoggerComponentAc.hpp, BufferLogger_LogStateEnumAc.cpp, BufferLogger_LogStateEnumAc.hpp
+[399/857] Generating ComLoggerComponentAc.cpp, ComLoggerComponentAc.hpp
+[400/857] Building CXX object F-Prime/Svc/Ports/OsTimeEpoch/CMakeFiles/Svc_Ports_OsTimeEpoch.dir/OsTimeEpochPortAc.cpp.o
+[401/857] Building CXX object F-Prime/Svc/ChronoTime/CMakeFiles/Svc_ChronoTime.dir/ChronoTimeComponentAc.cpp.o
+[402/857] Generating BuffQueueDepthArrayAc.cpp, BuffQueueDepthArrayAc.hpp, ComQueueComponentAc.cpp, ComQueueComponentAc.hpp, ComQueueDepthArrayAc.cpp, ComQueueDepthArrayAc.hpp, QueueTypeEnumAc.cpp, QueueTypeEnumAc.hpp
+[403/857] Generating CommandDispatcherComponentAc.cpp, CommandDispatcherComponentAc.hpp
+[404/857] Linking CXX static library lib/Darwin/libSvc_Cycle.a
+[405/857] Generating CmdSequencerComponentAc.cpp, CmdSequencerComponentAc.hpp, CmdSequencer_BlockStateEnumAc.cpp, CmdSequencer_BlockStateEnumAc.hpp, CmdSequencer_FileReadStageEnumAc.cpp, CmdSequencer_FileReadStageEnumAc.hpp, CmdSequencer_SeqModeEnumAc.cpp, CmdSequencer_SeqModeEnumAc.hpp
+[406/857] Building CXX object F-Prime/Svc/BufferAccumulator/CMakeFiles/Svc_BufferAccumulator.dir/BufferAccumulator_BlockModeEnumAc.cpp.o
+[407/857] Linking CXX static library lib/Darwin/libSvc_Ports_OsTimeEpoch.a
+[408/857] Generating DpWriterComponentAc.cpp, DpWriterComponentAc.hpp
+[409/857] Building CXX object F-Prime/Svc/BufferAccumulator/CMakeFiles/Svc_BufferAccumulator.dir/BufferAccumulator_OpStateEnumAc.cpp.o
+[410/857] Building CXX object F-Prime/Svc/BufferManager/CMakeFiles/Svc_BufferManager.dir/BufferManagerComponentImpl.cpp.o
+[411/857] Generating DpManagerComponentAc.cpp, DpManagerComponentAc.hpp
+[412/857] Generating DpCatalogComponentAc.cpp, DpCatalogComponentAc.hpp, DpHdrFieldEnumAc.cpp, DpHdrFieldEnumAc.hpp, DpRecordSerializableAc.cpp, DpRecordSerializableAc.hpp
+[413/857] Generating EventManagerComponentAc.cpp, EventManagerComponentAc.hpp, EventManager_EnabledEnumAc.cpp, EventManager_EnabledEnumAc.hpp, EventManager_FilterSeverityEnumAc.cpp, EventManager_FilterSeverityEnumAc.hpp
+[414/857] Building CXX object F-Prime/Svc/BufferManager/CMakeFiles/Svc_BufferManager.dir/BufferManagerComponentAc.cpp.o
+[415/857] Generating ActivePhaserComponentAc.cpp, ActivePhaserComponentAc.hpp
+[416/857] Building CXX object F-Prime/Svc/BufferAccumulator/CMakeFiles/Svc_BufferAccumulator.dir/BufferAccumulator.cpp.o
+[417/857] Building CXX object F-Prime/Svc/BufferAccumulator/CMakeFiles/Svc_BufferAccumulator.dir/ArrayFIFOBuffer.cpp.o
+[418/857] Building CXX object F-Prime/Svc/BufferLogger/CMakeFiles/Svc_BufferLogger.dir/BufferLogger_LogStateEnumAc.cpp.o
+[419/857] Building CXX object F-Prime/Svc/ComQueue/CMakeFiles/Svc_ComQueue.dir/BuffQueueDepthArrayAc.cpp.o
+[420/857] Generating ActiveRateGroupComponentAc.cpp, ActiveRateGroupComponentAc.hpp
+[421/857] Building CXX object F-Prime/Svc/BufferLogger/CMakeFiles/Svc_BufferLogger.dir/BufferLogger.cpp.o
+[422/857] Building CXX object F-Prime/Svc/ComQueue/CMakeFiles/Svc_ComQueue.dir/ComQueueDepthArrayAc.cpp.o
+[423/857] Building CXX object F-Prime/Svc/ComLogger/CMakeFiles/Svc_ComLogger.dir/ComLogger.cpp.o
+[424/857] Building CXX object F-Prime/Svc/BufferAccumulator/CMakeFiles/Svc_BufferAccumulator.dir/BufferAccumulatorComponentAc.cpp.o
+[425/857] Building CXX object F-Prime/Svc/ComQueue/CMakeFiles/Svc_ComQueue.dir/QueueTypeEnumAc.cpp.o
+[426/857] Linking CXX static library lib/Darwin/libSvc_BufferManager.a
+[427/857] Building CXX object F-Prime/Svc/BufferLogger/CMakeFiles/Svc_BufferLogger.dir/BufferLoggerFile.cpp.o
+[428/857] Building CXX object F-Prime/Svc/ComQueue/CMakeFiles/Svc_ComQueue.dir/ComQueue.cpp.o
+[429/857] Building CXX object F-Prime/Svc/ComLogger/CMakeFiles/Svc_ComLogger.dir/ComLoggerComponentAc.cpp.o
+[430/857] Building CXX object F-Prime/Svc/BufferLogger/CMakeFiles/Svc_BufferLogger.dir/BufferLoggerComponentAc.cpp.o
+[431/857] Building CXX object F-Prime/Svc/ComQueue/CMakeFiles/Svc_ComQueue.dir/ComQueueComponentAc.cpp.o
+[432/857] Building CXX object F-Prime/Svc/ActivePhaser/CMakeFiles/Svc_ActivePhaser.dir/ActivePhaser.cpp.o
+[433/857] Building CXX object F-Prime/Svc/ActivePhaser/CMakeFiles/Svc_ActivePhaser.dir/ActivePhaserComponentAc.cpp.o
+[434/857] Linking CXX static library lib/Darwin/libSvc_BufferAccumulator.a
+[435/857] Building CXX object F-Prime/Svc/ActiveRateGroup/CMakeFiles/Svc_ActiveRateGroup.dir/ActiveRateGroup.cpp.o
+[436/857] Building CXX object F-Prime/Svc/CmdSequencer/CMakeFiles/Svc_CmdSequencer.dir/CmdSequencer_BlockStateEnumAc.cpp.o
+[437/857] Building CXX object F-Prime/Svc/CmdSequencer/CMakeFiles/Svc_CmdSequencer.dir/CmdSequencerImpl.cpp.o
+[438/857] Building CXX object F-Prime/Svc/ActiveRateGroup/CMakeFiles/Svc_ActiveRateGroup.dir/ActiveRateGroupComponentAc.cpp.o
+[439/857] Building CXX object F-Prime/Svc/ChronoTime/CMakeFiles/Svc_ChronoTime.dir/ChronoTime.cpp.o
+[440/857] Linking CXX static library lib/Darwin/libSvc_ComLogger.a
+[441/857] Linking CXX static library lib/Darwin/libSvc_BufferLogger.a
+[442/857] Building CXX object F-Prime/Svc/CmdDispatcher/CMakeFiles/Svc_CmdDispatcher.dir/CommandDispatcherImpl.cpp.o
+[443/857] Linking CXX static library lib/Darwin/libSvc_ComQueue.a
+[444/857] Building CXX object F-Prime/Svc/CmdSequencer/CMakeFiles/Svc_CmdSequencer.dir/Sequence.cpp.o
+[445/857] Linking CXX static library lib/Darwin/libSvc_ActivePhaser.a
+[446/857] Building CXX object F-Prime/Svc/CmdDispatcher/CMakeFiles/Svc_CmdDispatcher.dir/CommandDispatcherComponentAc.cpp.o
+[447/857] Building CXX object F-Prime/Svc/CmdSequencer/CMakeFiles/Svc_CmdSequencer.dir/Events.cpp.o
+[448/857] Building CXX object F-Prime/Svc/CmdSequencer/CMakeFiles/Svc_CmdSequencer.dir/FPrimeSequence.cpp.o
+[449/857] Building CXX object F-Prime/Svc/CmdSequencer/CMakeFiles/Svc_CmdSequencer.dir/CmdSequencer_FileReadStageEnumAc.cpp.o
+[450/857] Building CXX object F-Prime/Svc/CmdSequencer/CMakeFiles/Svc_CmdSequencer.dir/formats/AMPCSSequence.cpp.o
+[451/857] Building CXX object F-Prime/Svc/CmdSequencer/CMakeFiles/Svc_CmdSequencer.dir/CmdSequencer_SeqModeEnumAc.cpp.o
+[452/857] Linking CXX static library lib/Darwin/libSvc_ChronoTime.a
+[453/857] Linking CXX static library lib/Darwin/libSvc_ActiveRateGroup.a
+[454/857] Building CXX object F-Prime/Svc/DpCatalog/CMakeFiles/Svc_DpCatalog.dir/DpRecordSerializableAc.cpp.o
+[455/857] Building CXX object F-Prime/Svc/DpCatalog/CMakeFiles/Svc_DpCatalog.dir/DpHdrFieldEnumAc.cpp.o
+[456/857] Linking CXX static library lib/Darwin/libSvc_CmdDispatcher.a
+[457/857] Building CXX object F-Prime/Svc/EventManager/CMakeFiles/Svc_EventManager.dir/EventManager_EnabledEnumAc.cpp.o
+[458/857] Building CXX object F-Prime/Svc/CmdSequencer/CMakeFiles/Svc_CmdSequencer.dir/CmdSequencerComponentAc.cpp.o
+[459/857] Building CXX object F-Prime/Svc/EventManager/CMakeFiles/Svc_EventManager.dir/EventManager_FilterSeverityEnumAc.cpp.o
+[460/857] Building CXX object F-Prime/Svc/DpManager/CMakeFiles/Svc_DpManager.dir/DpManager.cpp.o
+[461/857] Building CXX object F-Prime/Svc/FatalHandler/CMakeFiles/Svc_FatalHandler.dir/FatalHandlerComponentLinuxImpl.cpp.o
+[462/857] Building CXX object F-Prime/Svc/FatalHandler/CMakeFiles/Svc_FatalHandler.dir/FatalHandlerComponentCommonImpl.cpp.o
+[463/857] Building CXX object F-Prime/Svc/FatalHandler/CMakeFiles/Svc_FatalHandler.dir/FatalHandlerComponentAc.cpp.o
+[464/857] Building CXX object F-Prime/Svc/DpWriter/CMakeFiles/Svc_DpWriter.dir/DpWriter.cpp.o
+[465/857] Building CXX object F-Prime/Svc/DpManager/CMakeFiles/Svc_DpManager.dir/DpManagerComponentAc.cpp.o
+[466/857] Generating FileDownlinkComponentAc.cpp, FileDownlinkComponentAc.hpp
+[467/857] Building CXX object F-Prime/Svc/DpCatalog/CMakeFiles/Svc_DpCatalog.dir/DpCatalog.cpp.o
+[468/857] Building CXX object F-Prime/Svc/EventManager/CMakeFiles/Svc_EventManager.dir/EventManager.cpp.o
+[469/857] Linking CXX static library lib/Darwin/libSvc_CmdSequencer.a
+[470/857] Generating FileDispatcherComponentAc.cpp, FileDispatcherComponentAc.hpp
+[471/857] Building CXX object F-Prime/Svc/DpWriter/CMakeFiles/Svc_DpWriter.dir/DpWriterComponentAc.cpp.o
+[472/857] Building CXX object F-Prime/Svc/EventManager/CMakeFiles/Svc_EventManager.dir/EventManagerComponentAc.cpp.o
+[473/857] Building CXX object F-Prime/Svc/DpCatalog/CMakeFiles/Svc_DpCatalog.dir/DpCatalogComponentAc.cpp.o
+[474/857] Generating FileUplinkComponentAc.cpp, FileUplinkComponentAc.hpp
+[475/857] Linking CXX static library lib/Darwin/libSvc_FatalHandler.a
+[476/857] Generating FileManagerComponentAc.cpp, FileManagerComponentAc.hpp
+[477/857] Building CXX object F-Prime/Svc/FprimeFramer/CMakeFiles/Svc_FprimeFramer.dir/FprimeFramer.cpp.o
+[478/857] Building CXX object F-Prime/Svc/FprimeFramer/CMakeFiles/Svc_FprimeFramer.dir/FprimeFramerComponentAc.cpp.o
+[479/857] Linking CXX static library lib/Darwin/libSvc_DpManager.a
+[480/857] Linking CXX static library lib/Darwin/libSvc_DpWriter.a
+[481/857] Linking CXX static library lib/Darwin/libSvc_DpCatalog.a
+[482/857] Building CXX object F-Prime/Svc/FprimeDeframer/CMakeFiles/Svc_FprimeDeframer.dir/FprimeDeframerComponentAc.cpp.o
+[483/857] Linking CXX static library lib/Darwin/libSvc_EventManager.a
+[484/857] Building CXX object F-Prime/Svc/FprimeDeframer/CMakeFiles/Svc_FprimeDeframer.dir/FprimeDeframer.cpp.o
+[485/857] Building CXX object F-Prime/Svc/FileDownlink/CMakeFiles/Svc_FileDownlink.dir/File.cpp.o
+[486/857] Building CXX object F-Prime/Svc/FprimeRouter/CMakeFiles/Svc_FprimeRouter.dir/FprimeRouter.cpp.o
+[487/857] Building CXX object F-Prime/Svc/FileDownlink/CMakeFiles/Svc_FileDownlink.dir/Warnings.cpp.o
+[488/857] Linking CXX static library lib/Darwin/libSvc_FprimeFramer.a
+[489/857] Building CXX object F-Prime/Svc/FileDownlink/CMakeFiles/Svc_FileDownlink.dir/FileDownlink.cpp.o
+[490/857] Building CXX object F-Prime/Svc/FprimeRouter/CMakeFiles/Svc_FprimeRouter.dir/FprimeRouter_AllocationReasonEnumAc.cpp.o
+[491/857] Building CXX object F-Prime/Svc/FileDownlink/CMakeFiles/Svc_FileDownlink.dir/FileDownlinkComponentAc.cpp.o
+[492/857] Building CXX object F-Prime/Svc/FileDispatcher/CMakeFiles/Svc_FileDispatcher.dir/FileDispatcher.cpp.o
+[493/857] Building CXX object F-Prime/Svc/FileManager/CMakeFiles/Svc_FileManager.dir/FileManager.cpp.o
+[494/857] Building CXX object F-Prime/Svc/FileDispatcher/CMakeFiles/Svc_FileDispatcher.dir/FileDispatcherComponentAc.cpp.o
+[495/857] Linking CXX static library lib/Darwin/libSvc_FprimeDeframer.a
+[496/857] Building CXX object F-Prime/Svc/FileUplink/CMakeFiles/Svc_FileUplink.dir/File.cpp.o
+[497/857] Building CXX object F-Prime/Svc/FileUplink/CMakeFiles/Svc_FileUplink.dir/Warnings.cpp.o
+[498/857] Building CXX object F-Prime/Svc/FrameAccumulator/CMakeFiles/Svc_FrameAccumulator.dir/FrameDetector/FprimeFrameDetector.cpp.o
+[499/857] Building CXX object F-Prime/Svc/FileUplink/CMakeFiles/Svc_FileUplink.dir/FileUplink.cpp.o
+[500/857] Building CXX object F-Prime/Svc/FrameAccumulator/CMakeFiles/Svc_FrameAccumulator.dir/FrameDetector/CcsdsTcFrameDetector.cpp.o
+[501/857] Linking CXX static library lib/Darwin/libSvc_FileDownlink.a
+[502/857] Linking CXX static library lib/Darwin/libSvc_FileDispatcher.a
+[503/857] Generating PassiveRateGroupComponentAc.cpp, PassiveRateGroupComponentAc.hpp
+[504/857] Building CXX object F-Prime/Svc/FprimeRouter/CMakeFiles/Svc_FprimeRouter.dir/FprimeRouterComponentAc.cpp.o
+[505/857] Building CXX object F-Prime/Svc/FileUplink/CMakeFiles/Svc_FileUplink.dir/FileUplinkComponentAc.cpp.o
+[506/857] Building CXX object F-Prime/Svc/PolyDb/CMakeFiles/Svc_PolyDb.dir/PolyDb.cpp.o
+[507/857] Building CXX object F-Prime/Svc/PolyDb/CMakeFiles/Svc_PolyDb.dir/PolyDbComponentAc.cpp.o
+[508/857] Building CXX object F-Prime/Svc/FrameAccumulator/CMakeFiles/Svc_FrameAccumulator.dir/FrameAccumulator.cpp.o
+[509/857] Generating OsTimeComponentAc.cpp, OsTimeComponentAc.hpp
+[510/857] Generating HealthComponentAc.cpp, HealthComponentAc.hpp
+[511/857] Generating RateGroupDriverComponentAc.cpp, RateGroupDriverComponentAc.hpp
+[512/857] Building CXX object F-Prime/Svc/StaticMemory/CMakeFiles/Svc_StaticMemory.dir/StaticMemoryComponentImpl.cpp.o
+[513/857] Building CXX object F-Prime/Svc/FileManager/CMakeFiles/Svc_FileManager.dir/FileManagerComponentAc.cpp.o
+[514/857] Generating SeqDispatcherComponentAc.cpp, SeqDispatcherComponentAc.hpp, SeqDispatcher_CmdSequencerStateEnumAc.cpp, SeqDispatcher_CmdSequencerStateEnumAc.hpp
+[515/857] Building CXX object F-Prime/Svc/StaticMemory/CMakeFiles/Svc_StaticMemory.dir/StaticMemoryComponentAc.cpp.o
+[516/857] Building CXX object F-Prime/Svc/FrameAccumulator/CMakeFiles/Svc_FrameAccumulator.dir/FrameAccumulatorComponentAc.cpp.o
+[517/857] Building CXX object F-Prime/Svc/PassiveRateGroup/CMakeFiles/Svc_PassiveRateGroup.dir/PassiveRateGroup.cpp.o
+[518/857] Linking CXX static library lib/Darwin/libSvc_FprimeRouter.a
+[519/857] Linking CXX static library lib/Darwin/libSvc_FileUplink.a
+[520/857] Generating TlmChanComponentAc.cpp, TlmChanComponentAc.hpp
+[521/857] Generating PrmDbComponentAc.cpp, PrmDbComponentAc.hpp, PrmDb_MergeEnumAc.cpp, PrmDb_MergeEnumAc.hpp, PrmDb_PrmDbFileLoadStateEnumAc.cpp, PrmDb_PrmDbFileLoadStateEnumAc.hpp, PrmDb_PrmDbTypeEnumAc.cpp, PrmDb_PrmDbTypeEnumAc.hpp, PrmDb_PrmLoadActionEnumAc.cpp, PrmDb_PrmLoadActionEnumAc.hpp, PrmDb_PrmReadErrorEnumAc.cpp, PrmDb_PrmReadErrorEnumAc.hpp, PrmDb_PrmWriteErrorEnumAc.cpp, PrmDb_PrmWriteErrorEnumAc.hpp
+[522/857] Linking CXX static library lib/Darwin/libSvc_PolyDb.a
+[523/857] Building CXX object F-Prime/Svc/PassiveRateGroup/CMakeFiles/Svc_PassiveRateGroup.dir/PassiveRateGroupComponentAc.cpp.o
+[524/857] Building CXX object F-Prime/Svc/SystemResources/CMakeFiles/Svc_SystemResources.dir/SystemResources.cpp.o
+[525/857] Linking CXX static library lib/Darwin/libSvc_FileManager.a
+[526/857] Building CXX object F-Prime/Svc/RateGroupDriver/CMakeFiles/Svc_RateGroupDriver.dir/RateGroupDriver.cpp.o
+[527/857] Linking CXX static library lib/Darwin/libSvc_FrameAccumulator.a
+[528/857] Generating TlmPacketizerComponentAc.cpp, TlmPacketizerComponentAc.hpp, TlmPacketizer_GroupConfigSerializableAc.cpp, TlmPacketizer_GroupConfigSerializableAc.hpp, TlmPacketizer_GroupConfigsArrayAc.cpp, TlmPacketizer_GroupConfigsArrayAc.hpp, TlmPacketizer_SectionConfigsArrayAc.cpp, TlmPacketizer_SectionConfigsArrayAc.hpp, TlmPacketizer_SectionEnabledArrayAc.cpp, TlmPacketizer_SectionEnabledArrayAc.hpp, TlmPacketizer_TelemetrySendPortMapArrayAc.cpp, TlmPacketizer_TelemetrySendPortMapArrayAc.hpp, TlmPacketizer_TelemetrySendSectionArrayAc.cpp, TlmPacketizer_TelemetrySendSectionArrayAc.hpp
+[529/857] Building CXX object F-Prime/Svc/SeqDispatcher/CMakeFiles/Svc_SeqDispatcher.dir/SeqDispatcher_CmdSequencerStateEnumAc.cpp.o
+[530/857] Linking CXX static library lib/Darwin/libSvc_StaticMemory.a
+[531/857] Building CXX object F-Prime/Svc/OsTime/CMakeFiles/Svc_OsTime.dir/OsTime.cpp.o
+[532/857] Building CXX object F-Prime/Svc/Health/CMakeFiles/Svc_Health.dir/HealthComponentImpl.cpp.o
+[533/857] Building CXX object F-Prime/Svc/RateGroupDriver/CMakeFiles/Svc_RateGroupDriver.dir/RateGroupDriverComponentAc.cpp.o
+[534/857] Linking CXX static library lib/Darwin/libSvc_PassiveRateGroup.a
+[535/857] Building CXX object F-Prime/Svc/PrmDb/CMakeFiles/Svc_PrmDb.dir/PrmDb_MergeEnumAc.cpp.o
+[536/857] Building CXX object F-Prime/Svc/OsTime/CMakeFiles/Svc_OsTime.dir/OsTimeComponentAc.cpp.o
+[537/857] Building CXX object F-Prime/Svc/PrmDb/CMakeFiles/Svc_PrmDb.dir/PrmDb_PrmDbFileLoadStateEnumAc.cpp.o
+[538/857] Building CXX object F-Prime/Svc/PrmDb/CMakeFiles/Svc_PrmDb.dir/PrmDb_PrmDbTypeEnumAc.cpp.o
+[539/857] Building CXX object F-Prime/Svc/Health/CMakeFiles/Svc_Health.dir/HealthComponentAc.cpp.o
+[540/857] Building CXX object F-Prime/Svc/PrmDb/CMakeFiles/Svc_PrmDb.dir/PrmDb_PrmLoadActionEnumAc.cpp.o
+[541/857] Building CXX object F-Prime/Svc/SeqDispatcher/CMakeFiles/Svc_SeqDispatcher.dir/SeqDispatcher.cpp.o
+[542/857] Building CXX object F-Prime/Svc/PrmDb/CMakeFiles/Svc_PrmDb.dir/PrmDb_PrmReadErrorEnumAc.cpp.o
+[543/857] Building CXX object F-Prime/Svc/PrmDb/CMakeFiles/Svc_PrmDb.dir/PrmDb_PrmWriteErrorEnumAc.cpp.o
+[544/857] Linking CXX static library lib/Darwin/libSvc_RateGroupDriver.a
+[545/857] Building CXX object F-Prime/Svc/SeqDispatcher/CMakeFiles/Svc_SeqDispatcher.dir/SeqDispatcherComponentAc.cpp.o
+[546/857] Building CXX object F-Prime/Svc/TlmChan/CMakeFiles/Svc_TlmChan.dir/TlmChan.cpp.o
+[547/857] Building CXX object F-Prime/Svc/PrmDb/CMakeFiles/Svc_PrmDb.dir/PrmDbImpl.cpp.o
+[548/857] Building CXX object F-Prime/Svc/TlmPacketizer/CMakeFiles/Svc_TlmPacketizer.dir/TlmPacketizer_GroupConfigSerializableAc.cpp.o
+[549/857] Linking CXX static library lib/Darwin/libSvc_OsTime.a
+[550/857] Building CXX object F-Prime/Svc/TlmChan/CMakeFiles/Svc_TlmChan.dir/TlmChanComponentAc.cpp.o
+[551/857] Building CXX object F-Prime/Svc/PrmDb/CMakeFiles/Svc_PrmDb.dir/PrmDbComponentAc.cpp.o
+[552/857] Linking CXX static library lib/Darwin/libSvc_Health.a
+[553/857] Building CXX object F-Prime/Svc/TlmPacketizer/CMakeFiles/Svc_TlmPacketizer.dir/TlmPacketizer_SectionConfigsArrayAc.cpp.o
+[554/857] Building CXX object F-Prime/Svc/TlmPacketizer/CMakeFiles/Svc_TlmPacketizer.dir/TlmPacketizer_GroupConfigsArrayAc.cpp.o
+[555/857] Building CXX object F-Prime/Svc/TlmPacketizer/CMakeFiles/Svc_TlmPacketizer.dir/TlmPacketizer_SectionEnabledArrayAc.cpp.o
+[556/857] Building CXX object F-Prime/Svc/TlmPacketizer/CMakeFiles/Svc_TlmPacketizer.dir/TlmPacketizer_TelemetrySendPortMapArrayAc.cpp.o
+[557/857] Building CXX object F-Prime/Svc/SystemResources/CMakeFiles/Svc_SystemResources.dir/SystemResourceEnabledEnumAc.cpp.o
+[558/857] Linking CXX static library lib/Darwin/libSvc_SeqDispatcher.a
+[559/857] Building CXX object F-Prime/Svc/TlmPacketizer/CMakeFiles/Svc_TlmPacketizer.dir/TlmPacketizer_TelemetrySendSectionArrayAc.cpp.o
+[560/857] Linking CXX static library lib/Darwin/libSvc_TlmChan.a
+[561/857] Linking CXX static library lib/Darwin/libSvc_PrmDb.a
+[562/857] Generating PosixTimeComponentAc.cpp, PosixTimeComponentAc.hpp
+[563/857] Building CXX object F-Prime/Svc/SystemResources/CMakeFiles/Svc_SystemResources.dir/SystemResourcesComponentAc.cpp.o
+[564/857] Generating ActiveTextLoggerComponentAc.cpp, ActiveTextLoggerComponentAc.hpp
+[565/857] Linking CXX static library lib/Darwin/libSvc_Ccsds_Ports.a
+[566/857] Linking CXX static library lib/Darwin/libOs_Models.a
+[567/857] Building CXX object F-Prime/Drv/Ports/DataTypes/CMakeFiles/Drv_Ports_DataTypes.dir/DataBuffer.cpp.o
+[568/857] Building CXX object F-Prime/Drv/Ports/CMakeFiles/Drv_Ports.dir/SpiWriteReadPortAc.cpp.o
+[569/857] Building CXX object F-Prime/Svc/TlmPacketizer/CMakeFiles/Svc_TlmPacketizer.dir/TlmPacketizer.cpp.o
+[570/857] Generating CustomVersionDbSerializableAc.cpp, CustomVersionDbSerializableAc.hpp, VersionComponentAc.cpp, VersionComponentAc.hpp, VersionEnabledEnumAc.cpp, VersionEnabledEnumAc.hpp, VersionTypeEnumAc.cpp, VersionTypeEnumAc.hpp
+[571/857] Generating AosFramerComponentAc.cpp, AosFramerComponentAc.hpp
+[572/857] Generating ComRetryComponentAc.cpp, ComRetryComponentAc.hpp
+[573/857] Generating AggregationMachineStateMachineAc.cpp, AggregationMachineStateMachineAc.hpp, AggregationMachine_StateEnumAc.cpp, AggregationMachine_StateEnumAc.hpp, ComAggregatorComponentAc.cpp, ComAggregatorComponentAc.hpp
+[574/857] Generating TmFramerComponentAc.cpp, TmFramerComponentAc.hpp
+[575/857] Building CXX object F-Prime/Drv/Ports/DataTypes/CMakeFiles/Drv_Ports_DataTypes.dir/DataBufferPortAc.cpp.o
+[576/857] Building CXX object F-Prime/Svc/TlmPacketizer/CMakeFiles/Svc_TlmPacketizer.dir/TlmPacketizerComponentAc.cpp.o
+[577/857] Linking CXX static library lib/Darwin/libSvc_SystemResources.a
+[578/857] Building CXX object F-Prime/Svc/ActiveTextLogger/CMakeFiles/Svc_ActiveTextLogger.dir/LogFile.cpp.o
+[579/857] Building CXX object F-Prime/Svc/ActiveTextLogger/CMakeFiles/Svc_ActiveTextLogger.dir/ActiveTextLogger.cpp.o
+[580/857] Building CXX object F-Prime/Drv/ByteStreamDriverModel/CMakeFiles/Drv_ByteStreamDriverModel.dir/ByteStreamDataPortAc.cpp.o
+[581/857] Building CXX object F-Prime/Svc/PosixTime/CMakeFiles/Svc_PosixTime.dir/PosixTime.cpp.o
+[582/857] Building CXX object F-Prime/Svc/PosixTime/CMakeFiles/Svc_PosixTime.dir/PosixTimeComponentAc.cpp.o
+[583/857] Building CXX object F-Prime/Svc/Version/CMakeFiles/Svc_Version.dir/VersionTypeEnumAc.cpp.o
+[584/857] Building CXX object F-Prime/Svc/ActiveTextLogger/CMakeFiles/Svc_ActiveTextLogger.dir/ActiveTextLoggerComponentAc.cpp.o
+[585/857] Building CXX object F-Prime/Svc/Version/CMakeFiles/Svc_Version.dir/CustomVersionDbSerializableAc.cpp.o
+[586/857] Linking CXX static library lib/Darwin/libSvc_TlmPacketizer.a
+[587/857] Building CXX object F-Prime/Svc/Version/CMakeFiles/Svc_Version.dir/VersionEnabledEnumAc.cpp.o
+[588/857] Building CXX object F-Prime/Svc/Ccsds/TmFramer/CMakeFiles/Svc_Ccsds_TmFramer.dir/TmFramer.cpp.o
+[589/857] Generating SpacePacketDeframerComponentAc.cpp, SpacePacketDeframerComponentAc.hpp
+[590/857] Generating SpacePacketFramerComponentAc.cpp, SpacePacketFramerComponentAc.hpp
+[591/857] Building CXX object F-Prime/Svc/Ccsds/TmFramer/CMakeFiles/Svc_Ccsds_TmFramer.dir/TmFramerComponentAc.cpp.o
+[592/857] Building CXX object F-Prime/Svc/Version/CMakeFiles/Svc_Version.dir/Version.cpp.o
+[593/857] Building CXX object F-Prime/Svc/Ccsds/AosFramer/CMakeFiles/Svc_Ccsds_AosFramer.dir/AosFramerComponentAc.cpp.o
+[594/857] Linking CXX static library lib/Darwin/libSvc_PosixTime.a
+[595/857] Linking CXX static library lib/Darwin/libSvc_ActiveTextLogger.a
+[596/857] Building CXX object F-Prime/Svc/ComAggregator/CMakeFiles/Svc_ComAggregator.dir/AggregationMachine_StateEnumAc.cpp.o
+[597/857] Building CXX object F-Prime/Svc/ComAggregator/CMakeFiles/Svc_ComAggregator.dir/AggregationMachineStateMachineAc.cpp.o
+[598/857] Building CXX object F-Prime/Svc/Ccsds/AosFramer/CMakeFiles/Svc_Ccsds_AosFramer.dir/AosFramer.cpp.o
+[599/857] Generating TcDeframerComponentAc.cpp, TcDeframerComponentAc.hpp
+[600/857] Generating ApidManagerComponentAc.cpp, ApidManagerComponentAc.hpp
+[601/857] Building CXX object F-Prime/Svc/Version/CMakeFiles/Svc_Version.dir/VersionComponentAc.cpp.o
+[602/857] Building CXX object F-Prime/Svc/ComRetry/CMakeFiles/Svc_ComRetry.dir/ComRetry.cpp.o
+[603/857] Linking CXX static library lib/Darwin/libSvc_Ccsds_TmFramer.a
+[604/857] Linking CXX static library lib/Darwin/libDrv_Ports.a
+[605/857] Linking CXX static library lib/Darwin/libDrv_Ports_DataTypes.a
+[606/857] Building CXX object F-Prime/Svc/ComAggregator/CMakeFiles/Svc_ComAggregator.dir/ComAggregatorComponentAc.cpp.o
+[607/857] Linking CXX static library lib/Darwin/libSvc_Ccsds_AosFramer.a
+[608/857] Building CXX object F-Prime/Drv/ByteStreamDriverModel/CMakeFiles/Drv_ByteStreamDriverModel.dir/ByteStreamReadyPortAc.cpp.o
+[609/857] Building CXX object F-Prime/Svc/ComRetry/CMakeFiles/Svc_ComRetry.dir/ComRetryComponentAc.cpp.o
+[610/857] Building CXX object F-Prime/Svc/Ccsds/SpacePacketFramer/CMakeFiles/Svc_Ccsds_SpacePacketFramer.dir/SpacePacketFramer.cpp.o
+[611/857] Building CXX object F-Prime/Svc/Ccsds/SpacePacketFramer/CMakeFiles/Svc_Ccsds_SpacePacketFramer.dir/SpacePacketFramerComponentAc.cpp.o
+[612/857] Building CXX object F-Prime/Svc/ComAggregator/CMakeFiles/Svc_ComAggregator.dir/ComAggregator.cpp.o
+[613/857] Linking CXX static library lib/Darwin/libSvc_Version.a
+[614/857] Linking CXX static library lib/Darwin/libDrv_Ip.a
+[615/857] Building CXX object F-Prime/Svc/Ccsds/SpacePacketDeframer/CMakeFiles/Svc_Ccsds_SpacePacketDeframer.dir/SpacePacketDeframerComponentAc.cpp.o
+[616/857] Building CXX object F-Prime/Drv/ByteStreamDriverModel/CMakeFiles/Drv_ByteStreamDriverModel.dir/ByteStreamStatusEnumAc.cpp.o
+[617/857] Linking CXX static library lib/Darwin/libSvc_ComRetry.a
+[618/857] Building CXX object F-Prime/Drv/ByteStreamDriverModel/CMakeFiles/Drv_ByteStreamDriverModel.dir/ByteStreamSendPortAc.cpp.o
+[619/857] Building CXX object F-Prime/Utils/CMakeFiles/Utils.dir/RateLimiter.cpp.o
+[620/857] Linking CXX static library lib/Darwin/libSvc_Ccsds_SpacePacketFramer.a
+[621/857] Building CXX object F-Prime/Svc/Ccsds/SpacePacketDeframer/CMakeFiles/Svc_Ccsds_SpacePacketDeframer.dir/SpacePacketDeframer.cpp.o
+[622/857] Linking CXX static library lib/Darwin/libSvc_ComAggregator.a
+[623/857] Building CXX object F-Prime/Utils/CMakeFiles/Utils.dir/CRCChecker.cpp.o
+[624/857] Building CXX object F-Prime/Svc/Ccsds/TcDeframer/CMakeFiles/Svc_Ccsds_TcDeframer.dir/TcDeframer.cpp.o
+[625/857] Linking CXX static library lib/Darwin/libDrv_ByteStreamDriverModel.a
+[626/857] Building CXX object F-Prime/Svc/Ccsds/TcDeframer/CMakeFiles/Svc_Ccsds_TcDeframer.dir/TcDeframerComponentAc.cpp.o
+[627/857] Generating FppConstantsAc.cpp, FppConstantsAc.hpp
+[628/857] Building CXX object F-Prime/Svc/Ccsds/ApidManager/CMakeFiles/Svc_Ccsds_ApidManager.dir/ApidManagerComponentAc.cpp.o
+[629/857] Linking CXX static library lib/Darwin/libSvc_Ccsds_SpacePacketDeframer.a
+[630/857] Generating AdcsDriver_D2S2ComponentAc.cpp, AdcsDriver_D2S2ComponentAc.hpp
+[631/857] Generating GpsDriver_ArtemisComponentAc.cpp, GpsDriver_ArtemisComponentAc.hpp
+[632/857] Building CXX object F-Prime/Svc/Ccsds/ApidManager/CMakeFiles/Svc_Ccsds_ApidManager.dir/ApidManager.cpp.o
+[633/857] Generating ThermalDriver_ArtemisComponentAc.cpp, ThermalDriver_ArtemisComponentAc.hpp
+[634/857] Generating CollectionRequestPortAc.cpp, CollectionRequestPortAc.hpp, EpsCommandPortAc.cpp, EpsCommandPortAc.hpp, EpsRequestEnumAc.cpp, EpsRequestEnumAc.hpp, EpsStatusPortAc.cpp, EpsStatusPortAc.hpp, FppConstantsAc.cpp, FppConstantsAc.hpp, HealthStateEnumAc.cpp, HealthStateEnumAc.hpp, HealthStatusPortAc.cpp, HealthStatusPortAc.hpp, MissionModeEnumAc.cpp, MissionModeEnumAc.hpp, MissionModeUpdatePortAc.cpp, MissionModeUpdatePortAc.hpp, PayloadCaptureRequestPortAc.cpp, PayloadCaptureRequestPortAc.hpp, PayloadDownlinkStatusPortAc.cpp, PayloadDownlinkStatusPortAc.hpp, PayloadDriverAvailabilityPortAc.cpp, PayloadDriverAvailabilityPortAc.hpp, PayloadDriverCaptureRequestPortAc.cpp, PayloadDriverCaptureRequestPortAc.hpp, PayloadDriverOperationResultPortAc.cpp, PayloadDriverOperationResultPortAc.hpp, PayloadDriverPassthroughRequestPortAc.cpp, PayloadDriverPassthroughRequestPortAc.hpp, PayloadOperationKindEnumAc.cpp, PayloadOperationKindEnumAc.hpp, PayloadOperationNoticePortAc.cpp, PayloadOperationNoticePortAc.hpp, PayloadOperationStateEnumAc.cpp, PayloadOperationStateEnumAc.hpp, PayloadPassthroughRequestPortAc.cpp, PayloadPassthroughRequestPortAc.hpp, PayloadPassthroughResponsePortAc.cpp, PayloadPassthroughResponsePortAc.hpp, PayloadPassthroughStatusEnumAc.cpp, PayloadPassthroughStatusEnumAc.hpp, PayloadSimulationFaultEnumAc.cpp, PayloadSimulationFaultEnumAc.hpp, RssiStatusPortAc.cpp, RssiStatusPortAc.hpp, ScienceDownlinkReadyPortAc.cpp, ScienceDownlinkReadyPortAc.hpp, ScienceDownlinkRequestPortAc.cpp, ScienceDownlinkRequestPortAc.hpp, ScienceProductDeliveryDescriptorPortAc.cpp, ScienceProductDeliveryDescriptorPortAc.hpp, ScienceProductDeliveryRequestPortAc.cpp, ScienceProductDeliveryRequestPortAc.hpp, ScienceProductDescriptorPortAc.cpp, ScienceProductDescriptorPortAc.hpp, ScienceProductSourceEnumAc.cpp, ScienceProductSourceEnumAc.hpp
+[635/857] Linking CXX static library lib/Darwin/libSvc_Ccsds_TcDeframer.a
+[636/857] Building CXX object Components/LinkCfg/CMakeFiles/Components_LinkCfg.dir/FppConstantsAc.cpp.o
+[637/857] Generating LinuxTimerComponentAc.cpp, LinuxTimerComponentAc.hpp
+[638/857] Generating LinuxI2cDriverComponentAc.cpp, LinuxI2cDriverComponentAc.hpp
+[639/857] Generating ComStubComponentAc.cpp, ComStubComponentAc.hpp
+[640/857] Generating AsyncByteStreamBufferAdapterComponentAc.cpp, AsyncByteStreamBufferAdapterComponentAc.hpp
+[641/857] Generating LinuxGpioDriverComponentAc.cpp, LinuxGpioDriverComponentAc.hpp
+[642/857] Linking CXX static library lib/Darwin/libSvc_Ccsds_ApidManager.a
+[643/857] Generating ByteStreamBufferAdapterComponentAc.cpp, ByteStreamBufferAdapterComponentAc.hpp
+[644/857] Generating TcpClientComponentAc.cpp, TcpClientComponentAc.hpp
+[645/857] Generating LinuxUartDriverComponentAc.cpp, LinuxUartDriverComponentAc.hpp
+[646/857] Generating UdpComponentAc.cpp, UdpComponentAc.hpp
+[647/857] Building CXX object Components/Types/CMakeFiles/Components_Types.dir/CollectionRequestPortAc.cpp.o
+[648/857] Generating TcpServerComponentAc.cpp, TcpServerComponentAc.hpp
+[649/857] Generating LinuxSpiDriverComponentAc.cpp, LinuxSpiDriverComponentAc.hpp
+[650/857] Building CXX object F-Prime/Utils/CMakeFiles/Utils.dir/TokenBucket.cpp.o
+[651/857] Building CXX object Components/Types/CMakeFiles/Components_Types.dir/EpsCommandPortAc.cpp.o
+[652/857] Building CXX object Components/Types/CMakeFiles/Components_Types.dir/EpsRequestEnumAc.cpp.o
+[653/857] Building CXX object F-Prime/Svc/LinuxTimer/CMakeFiles/Svc_LinuxTimer.dir/LinuxTimerTaskDelay.cpp.o
+[654/857] Building CXX object F-Prime/Svc/LinuxTimer/CMakeFiles/Svc_LinuxTimer.dir/LinuxTimerCommon.cpp.o
+[655/857] Building CXX object F-Prime/Svc/ComStub/CMakeFiles/Svc_ComStub.dir/ComStubComponentAc.cpp.o
+[656/857] Building CXX object F-Prime/Svc/ComStub/CMakeFiles/Svc_ComStub.dir/ComStub.cpp.o
+[657/857] Building CXX object F-Prime/Svc/LinuxTimer/CMakeFiles/Svc_LinuxTimer.dir/LinuxTimerComponentAc.cpp.o
+[658/857] Generating DirectiveErrorCodeEnumAc.cpp, DirectiveErrorCodeEnumAc.hpp, DirectiveIdEnumAc.cpp, DirectiveIdEnumAc.hpp, FlagIdEnumAc.cpp, FlagIdEnumAc.hpp, FooterSerializableAc.cpp, FooterSerializableAc.hpp, FppConstantsAc.cpp, FppConstantsAc.hpp, FpySequencerComponentAc.cpp, FpySequencerComponentAc.hpp, FpySequencer_AllocateDirectiveSerializableAc.cpp, FpySequencer_AllocateDirectiveSerializableAc.hpp, FpySequencer_BlockStateEnumAc.cpp, FpySequencer_BlockStateEnumAc.hpp, FpySequencer_BreakpointArgsSerializableAc.cpp, FpySequencer_BreakpointArgsSerializableAc.hpp, FpySequencer_CallDirectiveSerializableAc.cpp, FpySequencer_CallDirectiveSerializableAc.hpp, FpySequencer_ConstCmdDirectiveSerializableAc.cpp, FpySequencer_ConstCmdDirectiveSerializableAc.hpp, FpySequencer_DiscardDirectiveSerializableAc.cpp, FpySequencer_DiscardDirectiveSerializableAc.hpp, FpySequencer_ExitDirectiveSerializableAc.cpp, FpySequencer_ExitDirectiveSerializableAc.hpp, FpySequencer_FileReadStageEnumAc.cpp, FpySequencer_FileReadStageEnumAc.hpp, FpySequencer_GetFieldDirectiveSerializableAc.cpp, FpySequencer_GetFieldDirectiveSerializableAc.hpp, FpySequencer_GetFlagDirectiveSerializableAc.cpp, FpySequencer_GetFlagDirectiveSerializableAc.hpp, FpySequencer_GoalStateEnumAc.cpp, FpySequencer_GoalStateEnumAc.hpp, FpySequencer_GotoDirectiveSerializableAc.cpp, FpySequencer_GotoDirectiveSerializableAc.hpp, FpySequencer_IfDirectiveSerializableAc.cpp, FpySequencer_IfDirectiveSerializableAc.hpp, FpySequencer_LoadAbsDirectiveSerializableAc.cpp, FpySequencer_LoadAbsDirectiveSerializableAc.hpp, FpySequencer_LoadRelDirectiveSerializableAc.cpp, FpySequencer_LoadRelDirectiveSerializableAc.hpp, FpySequencer_MemCmpDirectiveSerializableAc.cpp, FpySequencer_MemCmpDirectiveSerializableAc.hpp, FpySequencer_NoOpDirectiveSerializableAc.cpp, FpySequencer_NoOpDirectiveSerializableAc.hpp, FpySequencer_PeekDirectiveSerializableAc.cpp, FpySequencer_PeekDirectiveSerializableAc.hpp, FpySequencer_PushPrmDirectiveSerializableAc.cpp, FpySequencer_PushPrmDirectiveSerializableAc.hpp, FpySequencer_PushTimeDirectiveSerializableAc.cpp, FpySequencer_PushTimeDirectiveSerializableAc.hpp, FpySequencer_PushTlmValAndTimeDirectiveSerializableAc.cpp, FpySequencer_PushTlmValAndTimeDirectiveSerializableAc.hpp, FpySequencer_PushTlmValDirectiveSerializableAc.cpp, FpySequencer_PushTlmValDirectiveSerializableAc.hpp, FpySequencer_PushValDirectiveSerializableAc.cpp, FpySequencer_PushValDirectiveSerializableAc.hpp, FpySequencer_ReturnDirectiveSerializableAc.cpp, FpySequencer_ReturnDirectiveSerializableAc.hpp, FpySequencer_SequenceExecutionArgsSerializableAc.cpp, FpySequencer_SequenceExecutionArgsSerializableAc.hpp, FpySequencer_SequencerStateMachineStateMachineAc.cpp, FpySequencer_SequencerStateMachineStateMachineAc.hpp, FpySequencer_SequencerStateMachine_StateEnumAc.cpp, FpySequencer_SequencerStateMachine_StateEnumAc.hpp, FpySequencer_SetFlagDirectiveSerializableAc.cpp, FpySequencer_SetFlagDirectiveSerializableAc.hpp, FpySequencer_StackCmdDirectiveSerializableAc.cpp, FpySequencer_StackCmdDirectiveSerializableAc.hpp, FpySequencer_StackOpDirectiveSerializableAc.cpp, FpySequencer_StackOpDirectiveSerializableAc.hpp, FpySequencer_StoreAbsConstOffsetDirectiveSerializableAc.cpp, FpySequencer_StoreAbsConstOffsetDirectiveSerializableAc.hpp, FpySequencer_StoreAbsDirectiveSerializableAc.cpp, FpySequencer_StoreAbsDirectiveSerializableAc.hpp, FpySequencer_StoreRelConstOffsetDirectiveSerializableAc.cpp, FpySequencer_StoreRelConstOffsetDirectiveSerializableAc.hpp, FpySequencer_StoreRelDirectiveSerializableAc.cpp, FpySequencer_StoreRelDirectiveSerializableAc.hpp, FpySequencer_WaitAbsDirectiveSerializableAc.cpp, FpySequencer_WaitAbsDirectiveSerializableAc.hpp, FpySequencer_WaitRelDirectiveSerializableAc.cpp, FpySequencer_WaitRelDirectiveSerializableAc.hpp, HeaderSerializableAc.cpp, HeaderSerializableAc.hpp, SequenceSerializableAc.cpp, SequenceSerializableAc.hpp, SignedStackSizeTypeAliasAc.hpp, StackSizeTypeAliasAc.hpp, StatementSerializableAc.cpp, StatementSerializableAc.hpp
+[659/857] Building CXX object F-Prime/Drv/LinuxI2cDriver/CMakeFiles/Drv_LinuxI2cDriver.dir/LinuxI2cDriverStub.cpp.o
+[660/857] Building CXX object F-Prime/Drv/LinuxI2cDriver/CMakeFiles/Drv_LinuxI2cDriver.dir/LinuxI2cDriverComponentAc.cpp.o
+[661/857] Building CXX object F-Prime/Drv/AsyncByteStreamBufferAdapter/CMakeFiles/Drv_AsyncByteStreamBufferAdapter.dir/AsyncByteStreamBufferAdapter.cpp.o
+[662/857] Building CXX object F-Prime/Drv/ByteStreamBufferAdapter/CMakeFiles/Drv_ByteStreamBufferAdapter.dir/ByteStreamBufferAdapter.cpp.o
+[663/857] Linking CXX static library lib/Darwin/libSvc_ComStub.a
+[664/857] Building CXX object F-Prime/Drv/ByteStreamBufferAdapter/CMakeFiles/Drv_ByteStreamBufferAdapter.dir/ByteStreamBufferAdapterComponentAc.cpp.o
+[665/857] Building CXX object F-Prime/Drv/LinuxGpioDriver/CMakeFiles/Drv_LinuxGpioDriver.dir/LinuxGpioDriverStub.cpp.o
+[666/857] Building CXX object F-Prime/Drv/LinuxGpioDriver/CMakeFiles/Drv_LinuxGpioDriver.dir/LinuxGpioDriverComponentAc.cpp.o
+[667/857] Linking CXX static library lib/Darwin/libSvc_LinuxTimer.a
+[668/857] Building CXX object F-Prime/Drv/LinuxGpioDriver/CMakeFiles/Drv_LinuxGpioDriver.dir/LinuxGpioDriverCommon.cpp.o
+[669/857] Building CXX object F-Prime/Drv/LinuxSpiDriver/CMakeFiles/Drv_LinuxSpiDriver.dir/LinuxSpiDriverComponentImplCommon.cpp.o
+[670/857] Building CXX object F-Prime/Drv/AsyncByteStreamBufferAdapter/CMakeFiles/Drv_AsyncByteStreamBufferAdapter.dir/AsyncByteStreamBufferAdapterComponentAc.cpp.o
+[671/857] Building CXX object F-Prime/Drv/LinuxSpiDriver/CMakeFiles/Drv_LinuxSpiDriver.dir/LinuxSpiDriverComponentImplStub.cpp.o
+[672/857] Building CXX object F-Prime/Drv/LinuxSpiDriver/CMakeFiles/Drv_LinuxSpiDriver.dir/LinuxSpiDriverComponentAc.cpp.o
+[673/857] Building CXX object F-Prime/Svc/FpySequencer/CMakeFiles/Svc_FpySequencer.dir/FppConstantsAc.cpp.o
+[674/857] Building CXX object F-Prime/Svc/FpySequencer/CMakeFiles/Svc_FpySequencer.dir/FlagIdEnumAc.cpp.o
+[675/857] Building CXX object F-Prime/Svc/FpySequencer/CMakeFiles/Svc_FpySequencer.dir/DirectiveErrorCodeEnumAc.cpp.o
+[676/857] Building CXX object F-Prime/Svc/FpySequencer/CMakeFiles/Svc_FpySequencer.dir/FooterSerializableAc.cpp.o
+[677/857] Building CXX object F-Prime/Svc/FpySequencer/CMakeFiles/Svc_FpySequencer.dir/DirectiveIdEnumAc.cpp.o
+[678/857] Building CXX object F-Prime/Svc/FpySequencer/CMakeFiles/Svc_FpySequencer.dir/FpySequencer_AllocateDirectiveSerializableAc.cpp.o
+[679/857] Building CXX object F-Prime/Drv/LinuxUartDriver/CMakeFiles/Drv_LinuxUartDriver.dir/LinuxUartDriver.cpp.o
+[680/857] Building CXX object F-Prime/Svc/FpySequencer/CMakeFiles/Svc_FpySequencer.dir/FpySequencer_BlockStateEnumAc.cpp.o
+[681/857] Building CXX object F-Prime/Drv/LinuxUartDriver/CMakeFiles/Drv_LinuxUartDriver.dir/LinuxUartDriverComponentAc.cpp.o
+[682/857] Building CXX object F-Prime/Svc/FpySequencer/CMakeFiles/Svc_FpySequencer.dir/FpySequencerStateMachine.cpp.o
+[683/857] Building CXX object F-Prime/Svc/FpySequencer/CMakeFiles/Svc_FpySequencer.dir/FpySequencer_BreakpointArgsSerializableAc.cpp.o
+[684/857] Building CXX object F-Prime/Svc/FpySequencer/CMakeFiles/Svc_FpySequencer.dir/FpySequencer_CallDirectiveSerializableAc.cpp.o
+[685/857] Building CXX object F-Prime/Svc/FpySequencer/CMakeFiles/Svc_FpySequencer.dir/FpySequencer_ExitDirectiveSerializableAc.cpp.o
+[686/857] Building CXX object F-Prime/Svc/FpySequencer/CMakeFiles/Svc_FpySequencer.dir/FpySequencer_FileReadStageEnumAc.cpp.o
+[687/857] Building CXX object F-Prime/Svc/FpySequencer/CMakeFiles/Svc_FpySequencer.dir/FpySequencer_DiscardDirectiveSerializableAc.cpp.o
+[688/857] Building CXX object F-Prime/Svc/FpySequencer/CMakeFiles/Svc_FpySequencer.dir/FpySequencer_GetFieldDirectiveSerializableAc.cpp.o
+[689/857] Building CXX object F-Prime/Svc/FpySequencer/CMakeFiles/Svc_FpySequencer.dir/FpySequencer_GetFlagDirectiveSerializableAc.cpp.o
+[690/857] Building CXX object F-Prime/Svc/FpySequencer/CMakeFiles/Svc_FpySequencer.dir/FpySequencer_ConstCmdDirectiveSerializableAc.cpp.o
+[691/857] Building CXX object F-Prime/Svc/FpySequencer/CMakeFiles/Svc_FpySequencer.dir/FpySequencerValidationState.cpp.o
+[692/857] Building CXX object F-Prime/Svc/FpySequencer/CMakeFiles/Svc_FpySequencer.dir/FpySequencer.cpp.o
+[693/857] Building CXX object F-Prime/Svc/FpySequencer/CMakeFiles/Svc_FpySequencer.dir/FpySequencerStack.cpp.o
+[694/857] Building CXX object F-Prime/Svc/FpySequencer/CMakeFiles/Svc_FpySequencer.dir/FpySequencerDirectives.cpp.o
+[695/857] Building CXX object F-Prime/Svc/FpySequencer/CMakeFiles/Svc_FpySequencer.dir/FpySequencerRunState.cpp.o
+[696/857] Building CXX object F-Prime/Svc/FpySequencer/CMakeFiles/Svc_FpySequencer.dir/FpySequencer_GoalStateEnumAc.cpp.o
+[697/857] Building CXX object F-Prime/Svc/FpySequencer/CMakeFiles/Svc_FpySequencer.dir/FpySequencer_IfDirectiveSerializableAc.cpp.o
+[698/857] Building CXX object F-Prime/Svc/FpySequencer/CMakeFiles/Svc_FpySequencer.dir/FpySequencer_GotoDirectiveSerializableAc.cpp.o
+[699/857] Building CXX object F-Prime/Svc/FpySequencer/CMakeFiles/Svc_FpySequencer.dir/FpySequencer_LoadAbsDirectiveSerializableAc.cpp.o
+[700/857] Building CXX object F-Prime/Svc/FpySequencer/CMakeFiles/Svc_FpySequencer.dir/FpySequencer_NoOpDirectiveSerializableAc.cpp.o
+[701/857] Building CXX object F-Prime/Svc/FpySequencer/CMakeFiles/Svc_FpySequencer.dir/FpySequencer_PushTimeDirectiveSerializableAc.cpp.o
+[702/857] Building CXX object F-Prime/Svc/FpySequencer/CMakeFiles/Svc_FpySequencer.dir/FpySequencer_LoadRelDirectiveSerializableAc.cpp.o
+[703/857] Building CXX object F-Prime/Svc/FpySequencer/CMakeFiles/Svc_FpySequencer.dir/FpySequencer_PeekDirectiveSerializableAc.cpp.o
+[704/857] Building CXX object F-Prime/Svc/FpySequencer/CMakeFiles/Svc_FpySequencer.dir/FpySequencer_MemCmpDirectiveSerializableAc.cpp.o
+[705/857] Building CXX object F-Prime/Svc/FpySequencer/CMakeFiles/Svc_FpySequencer.dir/FpySequencer_PushPrmDirectiveSerializableAc.cpp.o
+[706/857] Building CXX object F-Prime/Svc/FpySequencer/CMakeFiles/Svc_FpySequencer.dir/FpySequencer_PushTlmValDirectiveSerializableAc.cpp.o
+[707/857] Building CXX object F-Prime/Svc/FpySequencer/CMakeFiles/Svc_FpySequencer.dir/FpySequencer_PushTlmValAndTimeDirectiveSerializableAc.cpp.o
+[708/857] Building CXX object F-Prime/Svc/FpySequencer/CMakeFiles/Svc_FpySequencer.dir/FpySequencer_PushValDirectiveSerializableAc.cpp.o
+[709/857] Building CXX object F-Prime/Svc/FpySequencer/CMakeFiles/Svc_FpySequencer.dir/FpySequencer_ReturnDirectiveSerializableAc.cpp.o
+[710/857] Building CXX object F-Prime/Svc/FpySequencer/CMakeFiles/Svc_FpySequencer.dir/FpySequencer_SequenceExecutionArgsSerializableAc.cpp.o
+[711/857] Building CXX object F-Prime/Svc/FpySequencer/CMakeFiles/Svc_FpySequencer.dir/FpySequencer_SequencerStateMachineStateMachineAc.cpp.o
+[712/857] Building CXX object F-Prime/Svc/FpySequencer/CMakeFiles/Svc_FpySequencer.dir/FpySequencer_SetFlagDirectiveSerializableAc.cpp.o
+[713/857] Building CXX object F-Prime/Svc/FpySequencer/CMakeFiles/Svc_FpySequencer.dir/FpySequencer_SequencerStateMachine_StateEnumAc.cpp.o
+[714/857] Building CXX object F-Prime/Svc/FpySequencer/CMakeFiles/Svc_FpySequencer.dir/FpySequencer_StackCmdDirectiveSerializableAc.cpp.o
+[715/857] Building CXX object F-Prime/Svc/FpySequencer/CMakeFiles/Svc_FpySequencer.dir/FpySequencer_StoreAbsConstOffsetDirectiveSerializableAc.cpp.o
+[716/857] Building CXX object F-Prime/Svc/FpySequencer/CMakeFiles/Svc_FpySequencer.dir/FpySequencer_StackOpDirectiveSerializableAc.cpp.o
+[717/857] Building CXX object F-Prime/Svc/FpySequencer/CMakeFiles/Svc_FpySequencer.dir/FpySequencer_StoreRelConstOffsetDirectiveSerializableAc.cpp.o
+[718/857] Building CXX object F-Prime/Svc/FpySequencer/CMakeFiles/Svc_FpySequencer.dir/FpySequencer_StoreRelDirectiveSerializableAc.cpp.o
+[719/857] Building CXX object F-Prime/Svc/FpySequencer/CMakeFiles/Svc_FpySequencer.dir/HeaderSerializableAc.cpp.o
+[720/857] Building CXX object F-Prime/Svc/FpySequencer/CMakeFiles/Svc_FpySequencer.dir/FpySequencer_StoreAbsDirectiveSerializableAc.cpp.o
+[721/857] Building CXX object F-Prime/Svc/FpySequencer/CMakeFiles/Svc_FpySequencer.dir/FpySequencer_WaitRelDirectiveSerializableAc.cpp.o
+[722/857] Building CXX object F-Prime/Svc/FpySequencer/CMakeFiles/Svc_FpySequencer.dir/FpySequencer_WaitAbsDirectiveSerializableAc.cpp.o
+[723/857] Building CXX object F-Prime/Svc/FpySequencer/CMakeFiles/Svc_FpySequencer.dir/StatementSerializableAc.cpp.o
+[724/857] Building CXX object F-Prime/Svc/FpySequencer/CMakeFiles/Svc_FpySequencer.dir/SequenceSerializableAc.cpp.o
+[725/857] Linking CXX static library lib/Darwin/libDrv_AsyncByteStreamBufferAdapter.a
+[726/857] Linking CXX static library lib/Darwin/libDrv_ByteStreamBufferAdapter.a
+[727/857] Linking CXX static library lib/Darwin/libDrv_LinuxGpioDriver.a
+[728/857] Linking CXX static library lib/Darwin/libDrv_LinuxI2cDriver.a
+[729/857] Linking CXX static library lib/Darwin/libDrv_LinuxSpiDriver.a
+[730/857] Linking CXX static library lib/Darwin/libDrv_LinuxUartDriver.a
+[731/857] Building CXX object F-Prime/Svc/FpySequencer/CMakeFiles/Svc_FpySequencer.dir/FpySequencerComponentAc.cpp.o
+[732/857] Linking CXX static library lib/Darwin/libUtils.a
+[733/857] Building CXX object Components/Types/CMakeFiles/Components_Types.dir/FppConstantsAc.cpp.o
+[734/857] Building CXX object F-Prime/Drv/TcpClient/CMakeFiles/Drv_TcpClient.dir/TcpClientComponentImpl.cpp.o
+[735/857] Building CXX object F-Prime/Drv/TcpClient/CMakeFiles/Drv_TcpClient.dir/TcpClientComponentAc.cpp.o
+[736/857] Building CXX object F-Prime/Drv/TcpServer/CMakeFiles/Drv_TcpServer.dir/TcpServerComponentImpl.cpp.o
+[737/857] Building CXX object Components/Types/CMakeFiles/Components_Types.dir/EpsStatusPortAc.cpp.o
+[738/857] Building CXX object F-Prime/Drv/Udp/CMakeFiles/Drv_Udp.dir/UdpComponentAc.cpp.o
+[739/857] Building CXX object F-Prime/Drv/TcpServer/CMakeFiles/Drv_TcpServer.dir/TcpServerComponentAc.cpp.o
+[740/857] Building CXX object F-Prime/Drv/Udp/CMakeFiles/Drv_Udp.dir/UdpComponentImpl.cpp.o
+[741/857] Building CXX object Components/Types/CMakeFiles/Components_Types.dir/HealthStateEnumAc.cpp.o
+[742/857] Building CXX object Components/Types/CMakeFiles/Components_Types.dir/MissionModeEnumAc.cpp.o
+[743/857] Building CXX object Components/Types/CMakeFiles/Components_Types.dir/HealthStatusPortAc.cpp.o
+[744/857] Building CXX object Components/Types/CMakeFiles/Components_Types.dir/PayloadCaptureRequestPortAc.cpp.o
+[745/857] Building CXX object Components/Types/CMakeFiles/Components_Types.dir/MissionModeUpdatePortAc.cpp.o
+[746/857] Building CXX object Components/Types/CMakeFiles/Components_Types.dir/PayloadDownlinkStatusPortAc.cpp.o
+[747/857] Building CXX object Components/Types/CMakeFiles/Components_Types.dir/PayloadDriverAvailabilityPortAc.cpp.o
+[748/857] Linking CXX static library lib/Darwin/libSvc_FpySequencer.a
+[749/857] Building CXX object Components/Types/CMakeFiles/Components_Types.dir/PayloadDriverCaptureRequestPortAc.cpp.o
+[750/857] Building CXX object Components/Types/CMakeFiles/Components_Types.dir/PayloadOperationKindEnumAc.cpp.o
+[751/857] Linking CXX static library lib/Darwin/libDrv_TcpServer.a
+[752/857] Linking CXX static library lib/Darwin/libDrv_TcpClient.a
+[753/857] Linking CXX static library lib/Darwin/libDrv_Udp.a
+[754/857] Building CXX object Components/Types/CMakeFiles/Components_Types.dir/PayloadOperationStateEnumAc.cpp.o
+[755/857] Building CXX object Components/Types/CMakeFiles/Components_Types.dir/PayloadDriverPassthroughRequestPortAc.cpp.o
+[756/857] Building CXX object Components/Types/CMakeFiles/Components_Types.dir/PayloadDriverOperationResultPortAc.cpp.o
+[757/857] Building CXX object Components/Types/CMakeFiles/Components_Types.dir/PayloadPassthroughResponsePortAc.cpp.o
+[758/857] Building CXX object Components/Types/CMakeFiles/Components_Types.dir/PayloadPassthroughRequestPortAc.cpp.o
+[759/857] Building CXX object Components/Types/CMakeFiles/Components_Types.dir/PayloadPassthroughStatusEnumAc.cpp.o
+[760/857] Building CXX object Components/Types/CMakeFiles/Components_Types.dir/PayloadOperationNoticePortAc.cpp.o
+[761/857] Building CXX object Components/Types/CMakeFiles/Components_Types.dir/PayloadSimulationFaultEnumAc.cpp.o
+[762/857] Building CXX object Components/Types/CMakeFiles/Components_Types.dir/RssiStatusPortAc.cpp.o
+[763/857] Generating FileWorkerComponentAc.cpp, FileWorkerComponentAc.hpp
+[764/857] Building CXX object Components/Types/CMakeFiles/Components_Types.dir/ScienceDownlinkReadyPortAc.cpp.o
+[765/857] Building CXX object Components/Types/CMakeFiles/Components_Types.dir/ScienceDownlinkRequestPortAc.cpp.o
+[766/857] Linking CXX static library lib/Darwin/libComponents_LinkCfg.a
+[767/857] Building CXX object Components/Types/CMakeFiles/Components_Types.dir/ScienceProductSourceEnumAc.cpp.o
+[768/857] Building CXX object Components/Types/CMakeFiles/Components_Types.dir/ScienceProductDeliveryDescriptorPortAc.cpp.o
+[769/857] Building CXX object Components/Types/CMakeFiles/Components_Types.dir/ScienceProductDescriptorPortAc.cpp.o
+[770/857] Building CXX object Components/Types/CMakeFiles/Components_Types.dir/ScienceProductDeliveryRequestPortAc.cpp.o
+[771/857] Linking CXX static library lib/Darwin/libComponents_Types.a
+[772/857] Building CXX object Components/AdcsDriver_D2S2/CMakeFiles/Components_AdcsDriver_D2S2.dir/AdcsDriver_D2S2.cpp.o
+[773/857] Building CXX object Components/GpsDriver_Artemis/CMakeFiles/Components_GpsDriver_Artemis.dir/GpsDriver_Artemis.cpp.o
+[774/857] Building CXX object Components/ThermalDriver_Artemis/CMakeFiles/Components_ThermalDriver_Artemis.dir/ThermalDriver_Artemis.cpp.o
+[775/857] Building CXX object Components/AdcsDriver_D2S2/CMakeFiles/Components_AdcsDriver_D2S2.dir/AdcsDriver_D2S2ComponentAc.cpp.o
+[776/857] Generating UartChannelMuxComponentAc.cpp, UartChannelMuxComponentAc.hpp
+[777/857] Building CXX object Components/ThermalDriver_Artemis/CMakeFiles/Components_ThermalDriver_Artemis.dir/ThermalDriver_ArtemisComponentAc.cpp.o
+[778/857] Building CXX object Components/GpsDriver_Artemis/CMakeFiles/Components_GpsDriver_Artemis.dir/GpsDriver_ArtemisComponentAc.cpp.o
+[779/857] Building CXX object F-Prime/Svc/FileWorker/CMakeFiles/Svc_FileWorker.dir/FileWorker.cpp.o
+[780/857] Generating MissionAppComponentAc.cpp, MissionAppComponentAc.hpp
+[781/857] Generating TeensyTransportManagerComponentAc.cpp, TeensyTransportManagerComponentAc.hpp
+[782/857] Generating PayloadDownlinkAppComponentAc.cpp, PayloadDownlinkAppComponentAc.hpp
+[783/857] Building CXX object F-Prime/Svc/FileWorker/CMakeFiles/Svc_FileWorker.dir/FileWorkerComponentAc.cpp.o
+[784/857] Generating AdcsManagerComponentAc.cpp, AdcsManagerComponentAc.hpp
+[785/857] Generating SoHAppComponentAc.cpp, SoHAppComponentAc.hpp
+[786/857] Generating GpsManagerComponentAc.cpp, GpsManagerComponentAc.hpp
+[787/857] Generating ScienceAppComponentAc.cpp, ScienceAppComponentAc.hpp
+[788/857] Generating EpsManagerComponentAc.cpp, EpsManagerComponentAc.hpp
+[789/857] Generating ThermalManagerComponentAc.cpp, ThermalManagerComponentAc.hpp
+[790/857] Generating PayloadManagerComponentAc.cpp, PayloadManagerComponentAc.hpp
+[791/857] Generating CommsAppComponentAc.cpp, CommsAppComponentAc.hpp
+[792/857] Generating EpsDriver_ArtemisComponentAc.cpp, EpsDriver_ArtemisComponentAc.hpp
+[793/857] Generating PayloadDriver_NeutronSimComponentAc.cpp, PayloadDriver_NeutronSimComponentAc.hpp
+[794/857] Generating StorageManagerComponentAc.cpp, StorageManagerComponentAc.hpp
+[795/857] Linking CXX static library lib/Darwin/libSvc_FileWorker.a
+[796/857] Building CXX object Components/UartChannelMux/CMakeFiles/Components_UartChannelMux.dir/UartChannelMux.cpp.o
+[797/857] Building CXX object Components/UartChannelMux/CMakeFiles/Components_UartChannelMux.dir/UartChannelMuxComponentAc.cpp.o
+[798/857] Building CXX object Components/MissionApp/CMakeFiles/Components_MissionApp.dir/MissionApp.cpp.o
+[799/857] Linking CXX static library lib/Darwin/libComponents_UartChannelMux.a
+[800/857] Building CXX object Components/SoHApp/CMakeFiles/Components_SoHApp.dir/SoHApp.cpp.o
+[801/857] Building CXX object Components/TeensyTransportManager/CMakeFiles/Components_TeensyTransportManager.dir/TeensyTransportManager.cpp.o
+[802/857] Building CXX object Components/SoHApp/CMakeFiles/Components_SoHApp.dir/SoHAppComponentAc.cpp.o
+[803/857] Building CXX object Components/MissionApp/CMakeFiles/Components_MissionApp.dir/MissionAppComponentAc.cpp.o
+[804/857] Building CXX object Components/ScienceApp/CMakeFiles/Components_ScienceApp.dir/ScienceApp.cpp.o
+[805/857] Building CXX object Components/PayloadDownlinkApp/CMakeFiles/Components_PayloadDownlinkApp.dir/PayloadDownlinkAppComponentAc.cpp.o
+[806/857] Building CXX object Components/EpsManager/CMakeFiles/Components_EpsManager.dir/EpsManager.cpp.o
+[807/857] Building CXX object Components/TeensyTransportManager/CMakeFiles/Components_TeensyTransportManager.dir/TeensyTransportManagerComponentAc.cpp.o
+[808/857] Building CXX object Components/ScienceApp/CMakeFiles/Components_ScienceApp.dir/ScienceAppComponentAc.cpp.o
+[809/857] Building CXX object Components/CommsApp/CMakeFiles/Components_CommsApp.dir/CommsAppComponentAc.cpp.o
+[810/857] Building CXX object Components/EpsManager/CMakeFiles/Components_EpsManager.dir/EpsManagerComponentAc.cpp.o
+[811/857] Linking CXX static library lib/Darwin/libComponents_SoHApp.a
+[812/857] Linking CXX static library lib/Darwin/libComponents_MissionApp.a
+[813/857] Linking CXX static library lib/Darwin/libComponents_TeensyTransportManager.a
+[814/857] Building CXX object Components/AdcsManager/CMakeFiles/Components_AdcsManager.dir/AdcsManager.cpp.o
+[815/857] Linking CXX static library lib/Darwin/libComponents_ScienceApp.a
+[816/857] Linking CXX static library lib/Darwin/libComponents_EpsManager.a
+[817/857] Building CXX object Components/PayloadManager/CMakeFiles/Components_PayloadManager.dir/PayloadManagerComponentAc.cpp.o
+[818/857] Building CXX object Components/AdcsManager/CMakeFiles/Components_AdcsManager.dir/AdcsManagerComponentAc.cpp.o
+[819/857] Building CXX object Components/GpsManager/CMakeFiles/Components_GpsManager.dir/GpsManager.cpp.o
+[820/857] Building CXX object Components/CommsApp/CMakeFiles/Components_CommsApp.dir/CommsApp.cpp.o
+[821/857] Building CXX object Components/ThermalManager/CMakeFiles/Components_ThermalManager.dir/ThermalManager.cpp.o
+[822/857] Building CXX object Components/GpsManager/CMakeFiles/Components_GpsManager.dir/GpsManagerComponentAc.cpp.o
+[823/857] Linking CXX static library lib/Darwin/libComponents_AdcsDriver_D2S2.a
+[824/857] Linking CXX static library lib/Darwin/libComponents_GpsDriver_Artemis.a
+[825/857] Linking CXX static library lib/Darwin/libComponents_ThermalDriver_Artemis.a
+[826/857] Linking CXX static library lib/Darwin/libComponents_AdcsManager.a
+[827/857] Building CXX object Components/EpsDriver_Artemis/CMakeFiles/Components_EpsDriver_Artemis.dir/EpsDriver_Artemis.cpp.o
+[828/857] Linking CXX static library lib/Darwin/libComponents_CommsApp.a
+[829/857] Linking CXX static library lib/Darwin/libComponents_GpsManager.a
+[830/857] Building CXX object Components/EpsDriver_Artemis/CMakeFiles/Components_EpsDriver_Artemis.dir/EpsDriver_ArtemisComponentAc.cpp.o
+[831/857] Building CXX object Components/ThermalManager/CMakeFiles/Components_ThermalManager.dir/ThermalManagerComponentAc.cpp.o
+[832/857] Building CXX object Components/PayloadDownlinkApp/CMakeFiles/Components_PayloadDownlinkApp.dir/PayloadDownlinkApp.cpp.o
+[833/857] Building CXX object Components/StorageManager/CMakeFiles/Components_StorageManager.dir/StorageManagerComponentAc.cpp.o
+[834/857] Generating CommsDriver_TeensyRfm23ComponentAc.cpp, CommsDriver_TeensyRfm23ComponentAc.hpp
+[835/857] Linking CXX static library lib/Darwin/libComponents_EpsDriver_Artemis.a
+[836/857] Building CXX object Components/PayloadDriver_NeutronSim/CMakeFiles/Components_PayloadDriver_NeutronSim.dir/PayloadDriver_NeutronSimComponentAc.cpp.o
+[837/857] Linking CXX static library lib/Darwin/libComponents_ThermalManager.a
+[838/857] Linking CXX static library lib/Darwin/libComponents_PayloadDownlinkApp.a
+[839/857] Building CXX object Components/PayloadManager/CMakeFiles/Components_PayloadManager.dir/PayloadManager.cpp.o
+[840/857] Linking CXX static library lib/Darwin/libComponents_PayloadManager.a
+[841/857] Building CXX object Components/StorageManager/CMakeFiles/Components_StorageManager.dir/StorageManager.cpp.o
+[842/857] Building CXX object Components/CommsDriver_TeensyRfm23/CMakeFiles/Components_CommsDriver_TeensyRfm23.dir/CommsDriver_TeensyRfm23.cpp.o
+[843/857] Building CXX object Components/CommsDriver_TeensyRfm23/CMakeFiles/Components_CommsDriver_TeensyRfm23.dir/CommsDriver_TeensyRfm23ComponentAc.cpp.o
+[844/857] Linking CXX static library lib/Darwin/libComponents_StorageManager.a
+[845/857] Generating ArtemisRpiTeensyDeploymentTopologyDictionary.json
+[846/857] Linking CXX static library lib/Darwin/libComponents_CommsDriver_TeensyRfm23.a
+[847/857] Running utility command for ArtemisRpiTeensyDeployment_dictionary
+-- Install configuration: ""
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/dict/ArtemisRpiTeensyDeploymentTopologyDictionary.json
+[848/857] Building CXX object Components/PayloadDriver_NeutronSim/CMakeFiles/Components_PayloadDriver_NeutronSim.dir/PayloadDriver_NeutronSim.cpp.o
+[849/857] Linking CXX static library lib/Darwin/libComponents_PayloadDriver_NeutronSim.a
+[850/857] Generating ArtemisRpiTeensyDeploymentTopologyAc.cpp, ArtemisRpiTeensyDeploymentTopologyAc.hpp, FppConstantsAc.cpp, FppConstantsAc.hpp, Ports_RateGroupsEnumAc.cpp, Ports_RateGroupsEnumAc.hpp
+[851/857] Building CXX object ArtemisRpiTeensyDeployment/Top/CMakeFiles/ArtemisRpiTeensyDeployment_Top.dir/FppConstantsAc.cpp.o
+[852/857] Building CXX object ArtemisRpiTeensyDeployment/Top/CMakeFiles/ArtemisRpiTeensyDeployment_Top.dir/Ports_RateGroupsEnumAc.cpp.o
+[853/857] Building CXX object ArtemisRpiTeensyDeployment/CMakeFiles/ArtemisRpiTeensyDeployment.dir/Main.cpp.o
+[854/857] Building CXX object ArtemisRpiTeensyDeployment/Top/CMakeFiles/ArtemisRpiTeensyDeployment_Top.dir/ArtemisRpiTeensyDeploymentTopology.cpp.o
+[855/857] Building CXX object ArtemisRpiTeensyDeployment/Top/CMakeFiles/ArtemisRpiTeensyDeployment_Top.dir/ArtemisRpiTeensyDeploymentTopologyAc.cpp.o
+[856/857] Linking CXX static library lib/Darwin/libArtemisRpiTeensyDeployment_Top.a
+[857/857] Linking CXX executable bin/Darwin/ArtemisRpiTeensyDeployment
+-- Install configuration: ""
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/bin/ArtemisRpiTeensyDeployment
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libFw_Types.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libFw_Time.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libdefault_config.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libFw_Port.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libFw_Logger.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libFw_Obj.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libOs_Console_Posix_Implementation.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libOs_Console.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libOs_File_Posix_Implementation.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libOs_File.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libUtils_Hash.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libOs_Posix_Shared.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libOs_Task_Posix_Implementation.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libOs_Task.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libOs_Mutex_Posix_Implementation.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libOs_Mutex.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libOs_Generic_PriorityQueue_Implementation.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libOs_Generic_Types.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libOs_Cpu_Darwin_Implementation.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libOs_Cpu.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libOs_Memory_Darwin_Implementation.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libOs_Memory.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libOs_RawTime_Posix_Implementation.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libOs_RawTime.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libFw_Buffer.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libFw_Prm.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libFw_Cmd.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libFw_Com.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libFw_Log.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libFw_Tlm.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libFw_Fpy.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libArtemisRpiTeensyDeployment_Top.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libComponents_AdcsDriver_D2S2.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libFw_Dp.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libSvc_Ping.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libFw_Comp.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libComponents_AdcsManager.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libComponents_Types.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libSvc_Sched.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libFw_CompQueued.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libOs.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libOs_Queue.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libComponents_CommsApp.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libComponents_CommsDriver_TeensyRfm23.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libComponents_LinkCfg.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libComponents_EpsDriver_Artemis.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libComponents_EpsManager.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libComponents_GpsDriver_Artemis.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libComponents_GpsManager.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libComponents_MissionApp.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libComponents_PayloadDownlinkApp.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libComponents_PayloadDriver_NeutronSim.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libComponents_PayloadManager.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libComponents_ScienceApp.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libComponents_SoHApp.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libComponents_StorageManager.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libComponents_TeensyTransportManager.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libComponents_ThermalDriver_Artemis.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libComponents_ThermalManager.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libComponents_UartChannelMux.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libDrv_ByteStreamDriverModel.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libDrv_LinuxUartDriver.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libDrv_Ports.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libSvc_Cycle.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libSvc_ActiveRateGroup.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libSvc_ChronoTime.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libFw_Ports_SuccessCondition.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libSvc_Ports_CommsPorts.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libSvc_CmdSequencer.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libSvc_Ports_FilePorts.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libSvc_Seq.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libSvc_LinuxTimer.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libSvc_RateGroupDriver.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libSvc_FatalHandler.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libSvc_Fatal.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libSvc_TlmChan.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libSvc_AssertFatalAdapter.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libSvc_Ccsds_Types.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libSvc_CmdDispatcher.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libSvc_EventManager.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libSvc_FpySequencer.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libSvc_Health.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libSvc_WatchDog.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libSvc_PassiveConsoleTextLogger.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libSvc_Version.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libversion.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libSvc_Ports_VersionPorts.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libSvc_Subtopologies_ComCcsds_ComCcsdsConfig.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libSvc_BufferManager.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libSvc_Ccsds_ApidManager.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libSvc_Ccsds_Ports.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libSvc_Ccsds_SpacePacketDeframer.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libSvc_Ccsds_SpacePacketFramer.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libSvc_Ccsds_TcDeframer.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libSvc_Ccsds_TmFramer.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libSvc_ComAggregator.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libSvc_ComQueue.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libUtils_Types.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libSvc_ComStub.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libSvc_FprimeRouter.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libSvc_FrameAccumulator.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libSvc_FprimeProtocol.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libSvc_Subtopologies_DataProducts_DataProductsConfig.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libSvc_DpCatalog.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libSvc_DpPorts.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libSvc_FileDownlinkPorts.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libSvc_DpManager.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libSvc_DpWriter.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libSvc_FileDownlink.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libFw_FilePacket.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libCFDP_Checksum.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libSvc_FileManager.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libSvc_FileUplink.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libSvc_PrmDb.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/lib/static/libSvc_SystemResources.a
+-- Installing: /Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/hashes.txt

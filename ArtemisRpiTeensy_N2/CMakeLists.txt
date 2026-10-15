@@ -6,6 +6,13 @@
 cmake_minimum_required(VERSION 3.13)
 project(ArtemisRpiTeensy_N2 C CXX)
 
+# Enable a host-only configuration for Yamcs local testing. This is deliberately
+# opt-in so the default build retains the RF MVP sizing and behavior.
+option(NEUTRON2_LOCAL_YAMCS "Build with local Yamcs command and UART capacity" OFF)
+if (NEUTRON2_LOCAL_YAMCS)
+    add_compile_definitions(NEUTRON2_LOCAL_YAMCS)
+endif()
+
 # Pi Zero W (ARMv6) requires explicit CPU/FPU flags for ARM Linux builds.
 # Without these flags, generated binaries may emit instructions not valid on ARM1176.
 if (CMAKE_SYSTEM_NAME STREQUAL "Linux" AND CMAKE_SYSTEM_PROCESSOR STREQUAL "arm")

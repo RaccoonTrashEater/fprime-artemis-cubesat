@@ -1,0 +1,1275 @@
+{
+  "accepted_history": {
+    "entry": {
+      "assignments": [
+        {
+          "name": "CCSDS_Version",
+          "userInput": false,
+          "value": {
+            "type": "UINT32",
+            "uint32Value": 0
+          }
+        },
+        {
+          "name": "CCSDS_Type",
+          "userInput": false,
+          "value": {
+            "booleanValue": true,
+            "type": "BOOLEAN"
+          }
+        },
+        {
+          "name": "CCSDS_Sec_Hdr_Flag",
+          "userInput": false,
+          "value": {
+            "booleanValue": false,
+            "type": "BOOLEAN"
+          }
+        },
+        {
+          "name": "CCSDS_APID",
+          "userInput": false,
+          "value": {
+            "type": "UINT32",
+            "uint32Value": 0
+          }
+        },
+        {
+          "name": "CCSDS_Group_Flags",
+          "userInput": false,
+          "value": {
+            "sint64Value": "3",
+            "stringValue": "Standalone",
+            "type": "ENUMERATED"
+          }
+        },
+        {
+          "name": "OpCode",
+          "userInput": false,
+          "value": {
+            "type": "UINT32",
+            "uint32Value": 268464132
+          }
+        },
+        {
+          "name": "verificationToken",
+          "userInput": true,
+          "value": {
+            "type": "UINT32",
+            "uint32Value": 638938820
+          }
+        },
+        {
+          "name": "durationSeconds",
+          "userInput": true,
+          "value": {
+            "type": "UINT32",
+            "uint32Value": 1
+          }
+        }
+      ],
+      "attr": [
+        {
+          "name": "unprocessedBinary",
+          "value": {
+            "binaryValue": "EADAAAAAAAAQAHAEJhVuxAAAAAE=",
+            "type": "BINARY"
+          }
+        },
+        {
+          "name": "binary",
+          "value": {
+            "binaryValue": "EADAAQANAAAQAHAEJhVuxAAAAAE=",
+            "type": "BINARY"
+          }
+        },
+        {
+          "name": "username",
+          "value": {
+            "stringValue": "guest",
+            "type": "STRING"
+          }
+        },
+        {
+          "name": "queue",
+          "value": {
+            "stringValue": "default",
+            "type": "STRING"
+          }
+        },
+        {
+          "name": "Acknowledge_Queued_Status",
+          "value": {
+            "stringValue": "OK",
+            "type": "STRING"
+          }
+        },
+        {
+          "name": "Acknowledge_Queued_Time",
+          "value": {
+            "stringValue": "2026-10-09T23:05:01.449Z",
+            "timestampValue": "1791587138449",
+            "type": "TIMESTAMP"
+          }
+        },
+        {
+          "name": "TransmissionConstraints_Status",
+          "value": {
+            "stringValue": "NA",
+            "type": "STRING"
+          }
+        },
+        {
+          "name": "TransmissionConstraints_Time",
+          "value": {
+            "stringValue": "2026-10-09T23:05:01.449Z",
+            "timestampValue": "1791587138449",
+            "type": "TIMESTAMP"
+          }
+        },
+        {
+          "name": "Acknowledge_Released_Status",
+          "value": {
+            "stringValue": "OK",
+            "type": "STRING"
+          }
+        },
+        {
+          "name": "Acknowledge_Released_Time",
+          "value": {
+            "stringValue": "2026-10-09T23:05:01.449Z",
+            "timestampValue": "1791587138449",
+            "type": "TIMESTAMP"
+          }
+        },
+        {
+          "name": "ccsds-seqcount",
+          "value": {
+            "sint32Value": 1,
+            "type": "SINT32"
+          }
+        },
+        {
+          "name": "Acknowledge_Sent_Status",
+          "value": {
+            "stringValue": "OK",
+            "type": "STRING"
+          }
+        },
+        {
+          "name": "Acknowledge_Sent_Time",
+          "value": {
+            "stringValue": "2026-10-09T23:05:01.449Z",
+            "timestampValue": "1791587138449",
+            "type": "TIMESTAMP"
+          }
+        },
+        {
+          "name": "Verification_RunId",
+          "value": {
+            "stringValue": "e5841c58f32b",
+            "type": "STRING"
+          }
+        },
+        {
+          "name": "Verification_Token",
+          "value": {
+            "stringValue": "638938820",
+            "type": "STRING"
+          }
+        },
+        {
+          "name": "Verification_RequestId",
+          "value": {
+            "stringValue": "1",
+            "type": "STRING"
+          }
+        },
+        {
+          "name": "Verification_Generation",
+          "value": {
+            "stringValue": "1",
+            "type": "STRING"
+          }
+        },
+        {
+          "name": "PayloadAccepted_Status",
+          "value": {
+            "stringValue": "OK",
+            "type": "STRING"
+          }
+        },
+        {
+          "name": "PayloadAccepted_Time",
+          "value": {
+            "stringValue": "2026-10-09T23:05:02.896Z",
+            "type": "STRING"
+          }
+        },
+        {
+          "name": "PayloadAccepted_Message",
+          "value": {
+            "stringValue": "FSW admitted request 1, internal generation 1",
+            "type": "STRING"
+          }
+        }
+      ],
+      "commandId": {
+        "commandName": "/ArtemisRpiTeensyDeployment_ArtemisRpiTeensyDeployment/ArtemisRpiTeensyDeployment/scienceApp/VERIFIED_COLLECT_AND_DOWNLINK",
+        "generationTime": "1791587138448",
+        "origin": "n2-completion-storage-31304",
+        "sequenceNumber": 850235529
+      },
+      "commandName": "/ArtemisRpiTeensyDeployment_ArtemisRpiTeensyDeployment/ArtemisRpiTeensyDeployment/scienceApp/VERIFIED_COLLECT_AND_DOWNLINK",
+      "generationTime": "2026-10-09T23:05:01.448Z",
+      "id": "1791587138448-n2-completion-storage-31304-850235529",
+      "origin": "n2-completion-storage-31304",
+      "sequenceNumber": 850235529
+    },
+    "stages": {
+      "Acknowledge_Queued_Status": {
+        "message": null,
+        "time": null,
+        "value": "OK"
+      },
+      "Acknowledge_Queued_Time": {
+        "message": null,
+        "time": null,
+        "value": "2026-10-09T23:05:01.449Z"
+      },
+      "Acknowledge_Released_Status": {
+        "message": null,
+        "time": null,
+        "value": "OK"
+      },
+      "Acknowledge_Released_Time": {
+        "message": null,
+        "time": null,
+        "value": "2026-10-09T23:05:01.449Z"
+      },
+      "Acknowledge_Sent_Status": {
+        "message": null,
+        "time": null,
+        "value": "OK"
+      },
+      "Acknowledge_Sent_Time": {
+        "message": null,
+        "time": null,
+        "value": "2026-10-09T23:05:01.449Z"
+      },
+      "PayloadAccepted_Message": {
+        "message": null,
+        "time": null,
+        "value": "FSW admitted request 1, internal generation 1"
+      },
+      "PayloadAccepted_Status": {
+        "message": null,
+        "time": null,
+        "value": "OK"
+      },
+      "PayloadAccepted_Time": {
+        "message": null,
+        "time": null,
+        "value": "2026-10-09T23:05:02.896Z"
+      },
+      "TransmissionConstraints_Status": {
+        "message": null,
+        "time": null,
+        "value": "NA"
+      },
+      "TransmissionConstraints_Time": {
+        "message": null,
+        "time": null,
+        "value": "2026-10-09T23:05:01.449Z"
+      },
+      "Verification_Generation": {
+        "message": null,
+        "time": null,
+        "value": "1"
+      },
+      "Verification_RequestId": {
+        "message": null,
+        "time": null,
+        "value": "1"
+      },
+      "Verification_RunId": {
+        "message": null,
+        "time": null,
+        "value": "e5841c58f32b"
+      },
+      "Verification_Token": {
+        "message": null,
+        "time": null,
+        "value": "638938820"
+      },
+      "binary": {
+        "message": null,
+        "time": null,
+        "value": {
+          "binaryValue": "EADAAQANAAAQAHAEJhVuxAAAAAE=",
+          "type": "BINARY"
+        }
+      },
+      "ccsds-seqcount": {
+        "message": null,
+        "time": null,
+        "value": 1
+      },
+      "queue": {
+        "message": null,
+        "time": null,
+        "value": "default"
+      },
+      "unprocessedBinary": {
+        "message": null,
+        "time": null,
+        "value": {
+          "binaryValue": "EADAAAAAAAAQAHAEJhVuxAAAAAE=",
+          "type": "BINARY"
+        }
+      },
+      "username": {
+        "message": null,
+        "time": null,
+        "value": "guest"
+      }
+    }
+  },
+  "accepted_time_persisted": {
+    "after_restart": {
+      "message": null,
+      "time": null,
+      "value": "2026-10-09T23:05:02.896Z"
+    },
+    "before_restart": {
+      "message": null,
+      "time": null,
+      "value": "2026-10-09T23:05:02.896Z"
+    }
+  },
+  "capture": {
+    "accepted": {
+      "createdBy": "guest",
+      "extra": {
+        "fprime_event_id": "268464134",
+        "fprime_event_name": "ArtemisRpiTeensyDeployment.scienceApp.VerifiedCaptureStatus",
+        "fprime_severity": "ACTIVITY_HI",
+        "generation": "1",
+        "productBytes": "0",
+        "productId": "0",
+        "reasonCode": "0",
+        "requestId": "1",
+        "sourceCrc": "0",
+        "state": "ACCEPTED",
+        "verificationToken": "638938820"
+      },
+      "generationTime": "2026-10-09T23:05:02.450Z",
+      "message": "[VerifiedCaptureStatus] Verified capture token=638938820 request=1 generation=1 state=ACCEPTED product=0 bytes=0 crc=0 reason=0",
+      "receptionTime": "2026-10-09T23:05:02.432Z",
+      "seqNumber": 17,
+      "severity": "WATCH",
+      "source": "FPrimeEventProcessor",
+      "type": "ArtemisRpiTeensyDeployment.scienceApp.VerifiedCaptureStatus"
+    },
+    "command": {
+      "assignments": [
+        {
+          "name": "CCSDS_Version",
+          "userInput": false,
+          "value": {
+            "type": "UINT32",
+            "uint32Value": 0
+          }
+        },
+        {
+          "name": "CCSDS_Type",
+          "userInput": false,
+          "value": {
+            "booleanValue": true,
+            "type": "BOOLEAN"
+          }
+        },
+        {
+          "name": "CCSDS_Sec_Hdr_Flag",
+          "userInput": false,
+          "value": {
+            "booleanValue": false,
+            "type": "BOOLEAN"
+          }
+        },
+        {
+          "name": "CCSDS_APID",
+          "userInput": false,
+          "value": {
+            "type": "UINT32",
+            "uint32Value": 0
+          }
+        },
+        {
+          "name": "CCSDS_Group_Flags",
+          "userInput": false,
+          "value": {
+            "sint64Value": "3",
+            "stringValue": "Standalone",
+            "type": "ENUMERATED"
+          }
+        },
+        {
+          "name": "OpCode",
+          "userInput": false,
+          "value": {
+            "type": "UINT32",
+            "uint32Value": 268464132
+          }
+        },
+        {
+          "name": "verificationToken",
+          "userInput": true,
+          "value": {
+            "type": "UINT32",
+            "uint32Value": 638938820
+          }
+        },
+        {
+          "name": "durationSeconds",
+          "userInput": true,
+          "value": {
+            "type": "UINT32",
+            "uint32Value": 1
+          }
+        }
+      ],
+      "binary": "EADAAAAAAAAQAHAEJhVuxAAAAAE=",
+      "commandName": "/ArtemisRpiTeensyDeployment_ArtemisRpiTeensyDeployment/ArtemisRpiTeensyDeployment/scienceApp/VERIFIED_COLLECT_AND_DOWNLINK",
+      "generationTime": "2026-10-09T23:05:01.448Z",
+      "id": "1791587138448-n2-completion-storage-31304-850235529",
+      "origin": "n2-completion-storage-31304",
+      "queue": "default",
+      "sequenceNumber": 850235529,
+      "unprocessedBinary": "EADAAAAAAAAQAHAEJhVuxAAAAAE=",
+      "username": "guest"
+    },
+    "committed": {
+      "createdBy": "guest",
+      "extra": {
+        "fprime_event_id": "268492810",
+        "fprime_event_name": "ArtemisRpiTeensyDeployment.storageManager.ScienceProductCommitted",
+        "fprime_severity": "ACTIVITY_HI",
+        "productBytes": "902",
+        "productId": "5",
+        "sourceCrc": "58578",
+        "sourcePath": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-store/product_5.bin"
+      },
+      "generationTime": "2026-10-09T23:05:10.438Z",
+      "message": "[ScienceProductCommitted] Committed science product=5 bytes=902 CRC=58578 path='/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-store/product_5.bin'",
+      "receptionTime": "2026-10-09T23:05:09.469Z",
+      "seqNumber": 26,
+      "severity": "WATCH",
+      "source": "FPrimeEventProcessor",
+      "type": "ArtemisRpiTeensyDeployment.storageManager.ScienceProductCommitted"
+    },
+    "downloaded_raw_path": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/20261009-130425/yamcs-product-5-319b61ec8a25.bin",
+    "ground_receipt": {
+      "bytes": 902,
+      "checks": {
+        "event_bytes": true,
+        "event_crc16_ccitt": true,
+        "event_identity": true,
+        "event_sha256": true,
+        "expected_crc": true,
+        "expected_digest": true,
+        "expected_size": true,
+        "product_id": true,
+        "receipt_bytes": true,
+        "receipt_crc16_ccitt": true,
+        "receipt_object_identity": true,
+        "receipt_raw_object_identity": true,
+        "receipt_sha256": true,
+        "run_id": true,
+        "transfer_id": true,
+        "verified_ground_receipt": true
+      },
+      "crc16_ccitt": 58578,
+      "raw_object": "n2-science-e5841c58f32b-00000005-01-319b61ec8a25.bin",
+      "receipt": {
+        "bucket": "fprimeFilesIn",
+        "bytes": 902,
+        "crc16Ccitt": 58578,
+        "crc16CcittHex": "0xE4D2",
+        "faults": {
+          "packetsCorrupted": 1,
+          "packetsDropped": 1,
+          "profile": [
+            "corrupt-first-1",
+            "drop-first-0"
+          ],
+          "recoveredPackets": 2,
+          "retryRequestsSent": 1
+        },
+        "groundIngestCounters": {
+          "badDataPacketCrc": 1,
+          "channel1Packets": 28,
+          "completedTransfers": 1,
+          "conflictingDataPackets": 0,
+          "duplicateDataPackets": 0,
+          "duplicateEndPackets": 0,
+          "duplicateHeaders": 0,
+          "faultPacketsCorrupted": 1,
+          "faultPacketsDropped": 1,
+          "invalidPackets": 0,
+          "recoveredPackets": 2,
+          "rejectedEndPackets": 0,
+          "rejectedHeaders": 0,
+          "retryRequestsSent": 1,
+          "wholeFileCrcFailures": 0
+        },
+        "objectName": "n2-science-e5841c58f32b-00000005-01-319b61ec8a25.bin",
+        "packetCount": 26,
+        "productId": 5,
+        "receiptObject": "n2-science-e5841c58f32b-00000005-01-319b61ec8a25.bin.receipt.json",
+        "runId": "e5841c58f32b",
+        "sha256": "319b61ec8a258cba0cde05d554bc1dfaba3adb9f477b22375675f5fa6e358286",
+        "transferId": 1,
+        "verificationMethod": "Yamcs GET exact bytes and SHA-256 match",
+        "verifiedAt": "2026-10-09T23:05:12.572403+00:00",
+        "verifiedGroundReceipt": true
+      },
+      "receipt_object": "n2-science-e5841c58f32b-00000005-01-319b61ec8a25.bin.receipt.json",
+      "sha256": "319b61ec8a258cba0cde05d554bc1dfaba3adb9f477b22375675f5fa6e358286"
+    },
+    "ground_receipt_event": {
+      "createdBy": "guest",
+      "extra": {
+        "bytes": "902",
+        "crc16Ccitt": "58578",
+        "objectName": "n2-science-e5841c58f32b-00000005-01-319b61ec8a25.bin",
+        "productId": "5",
+        "receiptObject": "n2-science-e5841c58f32b-00000005-01-319b61ec8a25.bin.receipt.json",
+        "runId": "e5841c58f32b",
+        "sha256": "319b61ec8a258cba0cde05d554bc1dfaba3adb9f477b22375675f5fa6e358286",
+        "transferId": "1",
+        "verifiedGroundReceipt": "true"
+      },
+      "generationTime": "2026-10-09T23:05:12.576Z",
+      "message": "GroundScienceReceiptVerified: Yamcs returned and verified 902 raw science bytes",
+      "receptionTime": "2026-10-09T23:05:12.576Z",
+      "seqNumber": 47,
+      "severity": "INFO",
+      "source": "n2-local-science-ingest",
+      "type": "GroundScienceReceiptVerified"
+    },
+    "history": {
+      "entry": {
+        "assignments": [
+          {
+            "name": "CCSDS_Version",
+            "userInput": false,
+            "value": {
+              "type": "UINT32",
+              "uint32Value": 0
+            }
+          },
+          {
+            "name": "CCSDS_Type",
+            "userInput": false,
+            "value": {
+              "booleanValue": true,
+              "type": "BOOLEAN"
+            }
+          },
+          {
+            "name": "CCSDS_Sec_Hdr_Flag",
+            "userInput": false,
+            "value": {
+              "booleanValue": false,
+              "type": "BOOLEAN"
+            }
+          },
+          {
+            "name": "CCSDS_APID",
+            "userInput": false,
+            "value": {
+              "type": "UINT32",
+              "uint32Value": 0
+            }
+          },
+          {
+            "name": "CCSDS_Group_Flags",
+            "userInput": false,
+            "value": {
+              "sint64Value": "3",
+              "stringValue": "Standalone",
+              "type": "ENUMERATED"
+            }
+          },
+          {
+            "name": "OpCode",
+            "userInput": false,
+            "value": {
+              "type": "UINT32",
+              "uint32Value": 268464132
+            }
+          },
+          {
+            "name": "verificationToken",
+            "userInput": true,
+            "value": {
+              "type": "UINT32",
+              "uint32Value": 638938820
+            }
+          },
+          {
+            "name": "durationSeconds",
+            "userInput": true,
+            "value": {
+              "type": "UINT32",
+              "uint32Value": 1
+            }
+          }
+        ],
+        "attr": [
+          {
+            "name": "unprocessedBinary",
+            "value": {
+              "binaryValue": "EADAAAAAAAAQAHAEJhVuxAAAAAE=",
+              "type": "BINARY"
+            }
+          },
+          {
+            "name": "binary",
+            "value": {
+              "binaryValue": "EADAAQANAAAQAHAEJhVuxAAAAAE=",
+              "type": "BINARY"
+            }
+          },
+          {
+            "name": "username",
+            "value": {
+              "stringValue": "guest",
+              "type": "STRING"
+            }
+          },
+          {
+            "name": "queue",
+            "value": {
+              "stringValue": "default",
+              "type": "STRING"
+            }
+          },
+          {
+            "name": "Acknowledge_Queued_Status",
+            "value": {
+              "stringValue": "OK",
+              "type": "STRING"
+            }
+          },
+          {
+            "name": "Acknowledge_Queued_Time",
+            "value": {
+              "stringValue": "2026-10-09T23:05:01.449Z",
+              "timestampValue": "1791587138449",
+              "type": "TIMESTAMP"
+            }
+          },
+          {
+            "name": "TransmissionConstraints_Status",
+            "value": {
+              "stringValue": "NA",
+              "type": "STRING"
+            }
+          },
+          {
+            "name": "TransmissionConstraints_Time",
+            "value": {
+              "stringValue": "2026-10-09T23:05:01.449Z",
+              "timestampValue": "1791587138449",
+              "type": "TIMESTAMP"
+            }
+          },
+          {
+            "name": "Acknowledge_Released_Status",
+            "value": {
+              "stringValue": "OK",
+              "type": "STRING"
+            }
+          },
+          {
+            "name": "Acknowledge_Released_Time",
+            "value": {
+              "stringValue": "2026-10-09T23:05:01.449Z",
+              "timestampValue": "1791587138449",
+              "type": "TIMESTAMP"
+            }
+          },
+          {
+            "name": "ccsds-seqcount",
+            "value": {
+              "sint32Value": 1,
+              "type": "SINT32"
+            }
+          },
+          {
+            "name": "Acknowledge_Sent_Status",
+            "value": {
+              "stringValue": "OK",
+              "type": "STRING"
+            }
+          },
+          {
+            "name": "Acknowledge_Sent_Time",
+            "value": {
+              "stringValue": "2026-10-09T23:05:01.449Z",
+              "timestampValue": "1791587138449",
+              "type": "TIMESTAMP"
+            }
+          },
+          {
+            "name": "Verification_RunId",
+            "value": {
+              "stringValue": "e5841c58f32b",
+              "type": "STRING"
+            }
+          },
+          {
+            "name": "Verification_Token",
+            "value": {
+              "stringValue": "638938820",
+              "type": "STRING"
+            }
+          },
+          {
+            "name": "Verification_RequestId",
+            "value": {
+              "stringValue": "1",
+              "type": "STRING"
+            }
+          },
+          {
+            "name": "Verification_Generation",
+            "value": {
+              "stringValue": "1",
+              "type": "STRING"
+            }
+          },
+          {
+            "name": "PayloadAccepted_Status",
+            "value": {
+              "stringValue": "OK",
+              "type": "STRING"
+            }
+          },
+          {
+            "name": "PayloadAccepted_Time",
+            "value": {
+              "stringValue": "2026-10-09T23:05:02.896Z",
+              "type": "STRING"
+            }
+          },
+          {
+            "name": "PayloadAccepted_Message",
+            "value": {
+              "stringValue": "FSW admitted request 1, internal generation 1",
+              "type": "STRING"
+            }
+          },
+          {
+            "name": "Verification_ProductId",
+            "value": {
+              "stringValue": "5",
+              "type": "STRING"
+            }
+          },
+          {
+            "name": "Verification_Bytes",
+            "value": {
+              "stringValue": "902",
+              "type": "STRING"
+            }
+          },
+          {
+            "name": "Verification_CRC16_CCITT",
+            "value": {
+              "stringValue": "58578",
+              "type": "STRING"
+            }
+          },
+          {
+            "name": "PayloadTerminal_Status",
+            "value": {
+              "stringValue": "OK",
+              "type": "STRING"
+            }
+          },
+          {
+            "name": "PayloadTerminal_Time",
+            "value": {
+              "stringValue": "2026-10-09T23:05:09.780Z",
+              "type": "STRING"
+            }
+          },
+          {
+            "name": "PayloadTerminal_Message",
+            "value": {
+              "stringValue": "request 1, generation 1 completed with product 5",
+              "type": "STRING"
+            }
+          },
+          {
+            "name": "StorageCommitted_Status",
+            "value": {
+              "stringValue": "OK",
+              "type": "STRING"
+            }
+          },
+          {
+            "name": "StorageCommitted_Time",
+            "value": {
+              "stringValue": "2026-10-09T23:05:09.780Z",
+              "type": "STRING"
+            }
+          },
+          {
+            "name": "StorageCommitted_Message",
+            "value": {
+              "stringValue": "product 5 is durably committed",
+              "type": "STRING"
+            }
+          },
+          {
+            "name": "Verification_TransferId",
+            "value": {
+              "stringValue": "1",
+              "type": "STRING"
+            }
+          },
+          {
+            "name": "SenderComplete_Status",
+            "value": {
+              "stringValue": "OK",
+              "type": "STRING"
+            }
+          },
+          {
+            "name": "SenderComplete_Time",
+            "value": {
+              "stringValue": "2026-10-09T23:05:11.888Z",
+              "type": "STRING"
+            }
+          },
+          {
+            "name": "SenderComplete_Message",
+            "value": {
+              "stringValue": "sender completed product 5, transfer 1",
+              "type": "STRING"
+            }
+          },
+          {
+            "name": "Verification_SHA256",
+            "value": {
+              "stringValue": "319b61ec8a258cba0cde05d554bc1dfaba3adb9f477b22375675f5fa6e358286",
+              "type": "STRING"
+            }
+          },
+          {
+            "name": "Verification_ReceiptObject",
+            "value": {
+              "stringValue": "n2-science-e5841c58f32b-00000005-01-319b61ec8a25.bin.receipt.json",
+              "type": "STRING"
+            }
+          },
+          {
+            "name": "GroundReceipt_Status",
+            "value": {
+              "stringValue": "OK",
+              "type": "STRING"
+            }
+          },
+          {
+            "name": "GroundReceipt_Time",
+            "value": {
+              "stringValue": "2026-10-09T23:05:12.940Z",
+              "type": "STRING"
+            }
+          },
+          {
+            "name": "GroundReceipt_Message",
+            "value": {
+              "stringValue": "ground receipt and independently downloaded raw bytes match",
+              "type": "STRING"
+            }
+          },
+          {
+            "name": "CommandComplete_Status",
+            "value": {
+              "stringValue": "OK",
+              "type": "STRING"
+            }
+          },
+          {
+            "name": "CommandComplete_Time",
+            "value": {
+              "stringValue": "2026-10-09T23:05:12.940Z",
+              "timestampValue": "1791587149940",
+              "type": "TIMESTAMP"
+            }
+          },
+          {
+            "name": "CommandComplete_Message",
+            "value": {
+              "stringValue": "token-correlated payload, storage, sender, Yamcs receipt, raw bytes, CRC, and SHA-256 verified",
+              "type": "STRING"
+            }
+          }
+        ],
+        "commandId": {
+          "commandName": "/ArtemisRpiTeensyDeployment_ArtemisRpiTeensyDeployment/ArtemisRpiTeensyDeployment/scienceApp/VERIFIED_COLLECT_AND_DOWNLINK",
+          "generationTime": "1791587138448",
+          "origin": "n2-completion-storage-31304",
+          "sequenceNumber": 850235529
+        },
+        "commandName": "/ArtemisRpiTeensyDeployment_ArtemisRpiTeensyDeployment/ArtemisRpiTeensyDeployment/scienceApp/VERIFIED_COLLECT_AND_DOWNLINK",
+        "generationTime": "2026-10-09T23:05:01.448Z",
+        "id": "1791587138448-n2-completion-storage-31304-850235529",
+        "origin": "n2-completion-storage-31304",
+        "sequenceNumber": 850235529
+      },
+      "stages": {
+        "Acknowledge_Queued_Status": {
+          "message": null,
+          "time": null,
+          "value": "OK"
+        },
+        "Acknowledge_Queued_Time": {
+          "message": null,
+          "time": null,
+          "value": "2026-10-09T23:05:01.449Z"
+        },
+        "Acknowledge_Released_Status": {
+          "message": null,
+          "time": null,
+          "value": "OK"
+        },
+        "Acknowledge_Released_Time": {
+          "message": null,
+          "time": null,
+          "value": "2026-10-09T23:05:01.449Z"
+        },
+        "Acknowledge_Sent_Status": {
+          "message": null,
+          "time": null,
+          "value": "OK"
+        },
+        "Acknowledge_Sent_Time": {
+          "message": null,
+          "time": null,
+          "value": "2026-10-09T23:05:01.449Z"
+        },
+        "CommandComplete_Message": {
+          "message": null,
+          "time": null,
+          "value": "token-correlated payload, storage, sender, Yamcs receipt, raw bytes, CRC, and SHA-256 verified"
+        },
+        "CommandComplete_Status": {
+          "message": null,
+          "time": null,
+          "value": "OK"
+        },
+        "CommandComplete_Time": {
+          "message": null,
+          "time": null,
+          "value": "2026-10-09T23:05:12.940Z"
+        },
+        "GroundReceipt_Message": {
+          "message": null,
+          "time": null,
+          "value": "ground receipt and independently downloaded raw bytes match"
+        },
+        "GroundReceipt_Status": {
+          "message": null,
+          "time": null,
+          "value": "OK"
+        },
+        "GroundReceipt_Time": {
+          "message": null,
+          "time": null,
+          "value": "2026-10-09T23:05:12.940Z"
+        },
+        "PayloadAccepted_Message": {
+          "message": null,
+          "time": null,
+          "value": "FSW admitted request 1, internal generation 1"
+        },
+        "PayloadAccepted_Status": {
+          "message": null,
+          "time": null,
+          "value": "OK"
+        },
+        "PayloadAccepted_Time": {
+          "message": null,
+          "time": null,
+          "value": "2026-10-09T23:05:02.896Z"
+        },
+        "PayloadTerminal_Message": {
+          "message": null,
+          "time": null,
+          "value": "request 1, generation 1 completed with product 5"
+        },
+        "PayloadTerminal_Status": {
+          "message": null,
+          "time": null,
+          "value": "OK"
+        },
+        "PayloadTerminal_Time": {
+          "message": null,
+          "time": null,
+          "value": "2026-10-09T23:05:09.780Z"
+        },
+        "SenderComplete_Message": {
+          "message": null,
+          "time": null,
+          "value": "sender completed product 5, transfer 1"
+        },
+        "SenderComplete_Status": {
+          "message": null,
+          "time": null,
+          "value": "OK"
+        },
+        "SenderComplete_Time": {
+          "message": null,
+          "time": null,
+          "value": "2026-10-09T23:05:11.888Z"
+        },
+        "StorageCommitted_Message": {
+          "message": null,
+          "time": null,
+          "value": "product 5 is durably committed"
+        },
+        "StorageCommitted_Status": {
+          "message": null,
+          "time": null,
+          "value": "OK"
+        },
+        "StorageCommitted_Time": {
+          "message": null,
+          "time": null,
+          "value": "2026-10-09T23:05:09.780Z"
+        },
+        "TransmissionConstraints_Status": {
+          "message": null,
+          "time": null,
+          "value": "NA"
+        },
+        "TransmissionConstraints_Time": {
+          "message": null,
+          "time": null,
+          "value": "2026-10-09T23:05:01.449Z"
+        },
+        "Verification_Bytes": {
+          "message": null,
+          "time": null,
+          "value": "902"
+        },
+        "Verification_CRC16_CCITT": {
+          "message": null,
+          "time": null,
+          "value": "58578"
+        },
+        "Verification_Generation": {
+          "message": null,
+          "time": null,
+          "value": "1"
+        },
+        "Verification_ProductId": {
+          "message": null,
+          "time": null,
+          "value": "5"
+        },
+        "Verification_ReceiptObject": {
+          "message": null,
+          "time": null,
+          "value": "n2-science-e5841c58f32b-00000005-01-319b61ec8a25.bin.receipt.json"
+        },
+        "Verification_RequestId": {
+          "message": null,
+          "time": null,
+          "value": "1"
+        },
+        "Verification_RunId": {
+          "message": null,
+          "time": null,
+          "value": "e5841c58f32b"
+        },
+        "Verification_SHA256": {
+          "message": null,
+          "time": null,
+          "value": "319b61ec8a258cba0cde05d554bc1dfaba3adb9f477b22375675f5fa6e358286"
+        },
+        "Verification_Token": {
+          "message": null,
+          "time": null,
+          "value": "638938820"
+        },
+        "Verification_TransferId": {
+          "message": null,
+          "time": null,
+          "value": "1"
+        },
+        "binary": {
+          "message": null,
+          "time": null,
+          "value": {
+            "binaryValue": "EADAAQANAAAQAHAEJhVuxAAAAAE=",
+            "type": "BINARY"
+          }
+        },
+        "ccsds-seqcount": {
+          "message": null,
+          "time": null,
+          "value": 1
+        },
+        "queue": {
+          "message": null,
+          "time": null,
+          "value": "default"
+        },
+        "unprocessedBinary": {
+          "message": null,
+          "time": null,
+          "value": {
+            "binaryValue": "EADAAAAAAAAQAHAEJhVuxAAAAAE=",
+            "type": "BINARY"
+          }
+        },
+        "username": {
+          "message": null,
+          "time": null,
+          "value": "guest"
+        }
+      }
+    },
+    "label": "verifier process restart",
+    "product_bytes": 902,
+    "product_id": 5,
+    "sender_complete": {
+      "createdBy": "guest",
+      "extra": {
+        "fprime_event_id": "268632065",
+        "fprime_event_name": "ArtemisRpiTeensyDeployment.payloadDownlinkApp.PayloadDownlinkComplete",
+        "fprime_severity": "ACTIVITY_HI",
+        "packetsSent": "26",
+        "transferId": "1"
+      },
+      "generationTime": "2026-10-09T23:05:11.440Z",
+      "message": "[PayloadDownlinkComplete] Payload sender complete transfer=1 packetsSent=26",
+      "receptionTime": "2026-10-09T23:05:11.474Z",
+      "seqNumber": 41,
+      "severity": "WATCH",
+      "source": "FPrimeEventProcessor",
+      "type": "ArtemisRpiTeensyDeployment.payloadDownlinkApp.PayloadDownlinkComplete"
+    },
+    "sender_started": {
+      "createdBy": "guest",
+      "extra": {
+        "byteCount": "902",
+        "fprime_event_id": "268632064",
+        "fprime_event_name": "ArtemisRpiTeensyDeployment.payloadDownlinkApp.PayloadDownlinkStarted",
+        "fprime_severity": "ACTIVITY_HI",
+        "productId": "5",
+        "totalPackets": "26",
+        "transferId": "1"
+      },
+      "generationTime": "2026-10-09T23:05:10.439Z",
+      "message": "[PayloadDownlinkStarted] Payload downlink started product=5 transfer=1 bytes=902 packets=26",
+      "receptionTime": "2026-10-09T23:05:10.447Z",
+      "seqNumber": 30,
+      "severity": "WATCH",
+      "source": "FPrimeEventProcessor",
+      "type": "ArtemisRpiTeensyDeployment.payloadDownlinkApp.PayloadDownlinkStarted"
+    },
+    "source_crc": 58578,
+    "stored": {
+      "createdBy": "guest",
+      "extra": {
+        "fprime_event_id": "268492800",
+        "fprime_event_name": "ArtemisRpiTeensyDeployment.storageManager.ScienceStored",
+        "fprime_severity": "ACTIVITY_HI",
+        "productBytes": "902",
+        "productCount": "4"
+      },
+      "generationTime": "2026-10-09T23:05:10.438Z",
+      "message": "[ScienceStored] Stored science product count=4 size=902",
+      "receptionTime": "2026-10-09T23:05:09.468Z",
+      "seqNumber": 25,
+      "severity": "WATCH",
+      "source": "FPrimeEventProcessor",
+      "type": "ArtemisRpiTeensyDeployment.storageManager.ScienceStored"
+    },
+    "terminal": {
+      "createdBy": "guest",
+      "extra": {
+        "fprime_event_id": "268464134",
+        "fprime_event_name": "ArtemisRpiTeensyDeployment.scienceApp.VerifiedCaptureStatus",
+        "fprime_severity": "ACTIVITY_HI",
+        "generation": "1",
+        "productBytes": "902",
+        "productId": "5",
+        "reasonCode": "0",
+        "requestId": "1",
+        "sourceCrc": "58578",
+        "state": "COMPLETED",
+        "verificationToken": "638938820"
+      },
+      "generationTime": "2026-10-09T23:05:10.436Z",
+      "message": "[VerifiedCaptureStatus] Verified capture token=638938820 request=1 generation=1 state=COMPLETED product=5 bytes=902 crc=58578 reason=0",
+      "receptionTime": "2026-10-09T23:05:09.463Z",
+      "seqNumber": 23,
+      "severity": "WATCH",
+      "source": "FPrimeEventProcessor",
+      "type": "ArtemisRpiTeensyDeployment.scienceApp.VerifiedCaptureStatus"
+    },
+    "transfer_id": 1,
+    "verification_token": 638938820,
+    "verified_downlink": null
+  },
+  "continue_marker": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-verifier-retry-continue",
+  "direct_component_calls_used": false,
+  "evidence": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/20261009-130425/completion-storage-verifier-restart-5763e83ec232.json",
+  "finished_at": "2026-10-09T23:05:13.590060+00:00",
+  "hardware_or_rf_used": false,
+  "phase": "verifier-restart",
+  "restart_marker": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-verifier-retry-ready.json",
+  "restart_target": {
+    "accepted_at": "2026-10-09T23:05:02.432Z",
+    "command_id": "1791587138448-n2-completion-storage-31304-850235529",
+    "generation": 1,
+    "local_run_id": "e5841c58f32b",
+    "request_id": 1,
+    "verification_token": 638938820
+  },
+  "result": "PASS",
+  "run_id": "e5841c58f32b",
+  "stack": {
+    "mode": "BASE",
+    "started_at": "2026-10-09T23:04:25.253006+00:00",
+    "storage_ready": {
+      "acquisitionStatus": "ACQUIRED",
+      "acquisitionTime": "2026-10-09T23:05:00.421Z",
+      "engValue": {
+        "sint64Value": "255",
+        "stringValue": "True",
+        "type": "ENUMERATED"
+      },
+      "generationTime": "2026-10-09T23:05:00.393Z",
+      "id": {
+        "name": "StorageReady",
+        "namespace": "/ArtemisRpiTeensyDeployment_ArtemisRpiTeensyDeployment/ArtemisRpiTeensyDeployment/storageManager"
+      },
+      "rawValue": {
+        "type": "UINT32",
+        "uint32Value": 255
+      }
+    }
+  },
+  "storage_root": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-store",
+  "yamcs_instance": "fprime-project"
+}

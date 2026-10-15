@@ -19,6 +19,9 @@ class CommsAppTester final : public CommsAppGTestBase {
     void testRequestsScienceDownlinkAndCompletionClearsState();
     void testDownlinkFailureReturnsBase();
     void testIgnoresPayloadStatusWhenInactive();
+    void testOldCompletionCannotFinishNewProductAndNewPendingSurvives();
+    void testAutomaticDeliveryUsesSharedDownlinkGate();
+    void testBusyRejectionSequenceAllowsSubsequentDownlinks();
     void testDriverStatusPollingAndRssiPing();
     void testRunPublishesHealthFromLinkState();
 

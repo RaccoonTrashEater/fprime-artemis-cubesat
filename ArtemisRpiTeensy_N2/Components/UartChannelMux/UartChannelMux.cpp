@@ -81,7 +81,7 @@ void UartChannelMux::ccsdsRecvReturnIn_handler(FwIndexType portNum, Fw::Buffer& 
 
 Drv::ByteStreamStatus UartChannelMux::sendWrapped(U8 channel, const U8* data, FwSizeType size) {
     if (!LinkCfg::isValidChannel(channel) || data == nullptr || size == 0 ||
-        size > LinkCfg::UART_FRAME_MAX_PAYLOAD) {
+        size > UART_PAYLOAD_CAPACITY) {
         this->m_frameDrops++;
         this->tlmWrite_FrameDrops(this->m_frameDrops);
         this->log_WARNING_LO_FrameDropped(1);
@@ -141,7 +141,7 @@ void UartChannelMux::parseByte(U8 byte) {
 
         case ParseState::WAIT_LEN_HI:
             this->m_rxLength |= static_cast<FwSizeType>(byte) << 8U;
-            if (this->m_rxLength == 0 || this->m_rxLength > LinkCfg::UART_FRAME_MAX_PAYLOAD) {
+            if (this->m_rxLength == 0 || this->m_rxLength > UART_PAYLOAD_CAPACITY) {
                 this->m_frameDrops++;
                 this->log_WARNING_LO_FrameDropped(3);
                 this->resetParser();

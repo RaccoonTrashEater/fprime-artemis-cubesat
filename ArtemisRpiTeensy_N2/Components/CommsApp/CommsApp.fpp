@@ -17,6 +17,9 @@ module Components {
         @ Science ready input from storage
         async input port scienceReadyIn: Components.ScienceDownlinkReady
 
+        @ Validated descriptor requested for automatic delivery.
+        async input port deliveryDescriptorIn: Components.ScienceProductDeliveryDescriptor
+
         @ Driver status input
         async input port driverStatusIn: Svc.Ping
 
@@ -50,6 +53,9 @@ module Components {
         @ Poll the radio driver and log current RSSI in dBm
         async command PING_LINK_RSSI
 
+        @ Token-correlated request for the selected, stored product's science downlink.
+        async command VERIFIED_REQUEST_SCIENCE_DOWNLINK(verificationToken: U32)
+
         @ Current link state
         telemetry LinkState: U32 update on change
 
@@ -66,8 +72,8 @@ module Components {
         @ Downlink request event
         event DownlinkRequested(bytes: U32) severity activity high format "Downlink requested for {} bytes"
 
-        @ Downlink completion event for the current synchronous/demo downlink path
-        event DownlinkFinished(bytes: U32) severity activity high format "Downlink finished for {} bytes"
+        @ Local sender completion only; ground receipt is reported independently by Yamcs.
+        event DownlinkFinished(bytes: U32) severity activity high format "Local sender completed {} bytes; ground receipt is separate"
 
         @ Operator command rejected by validation guard
         event CommsCommandRejected(reason: U32, value: U32) severity warning low format "Comms command rejected reason={} value={}"
@@ -80,6 +86,18 @@ module Components {
 
         @ RSSI ping event
         event LinkRssiPing(linkState: U32, rssiDbm: I32, pollCount: U32) severity activity high format "Comms link RSSI ping state={} rssi={}dBm polls={}"
+
+        @ Token-bound selected-product sender status; ground receipt remains a separate Yamcs event.
+        event VerifiedDownlinkStatus(
+            verificationToken: U32,
+            productId: U32,
+            productBytes: U32,
+            sourceCrc: U32,
+            transferId: U32,
+            stateValue: U32,
+            lastError: U32,
+            reasonCode: U32
+        ) severity activity high format "Verified downlink token={} product={} bytes={} crc={} transfer={} state={} error={} reason={}"
 
         @ Port for requesting the current time
         time get port timeCaller

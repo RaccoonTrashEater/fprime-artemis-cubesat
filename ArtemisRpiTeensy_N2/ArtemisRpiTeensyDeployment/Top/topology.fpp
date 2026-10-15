@@ -146,10 +146,11 @@ module ArtemisRpiTeensyDeployment {
       rateGroupDriver.CycleOut[Ports_RateGroups.rateGroup2] -> rateGroup2.CycleIn
       rateGroup2.RateGroupMemberOut[0] -> cmdSeq.schedIn
       rateGroup2.RateGroupMemberOut[1] -> epsDriverArtemis.run
-      # rateGroup2.RateGroupMemberOut[2] -> payloadManager.run
+      rateGroup2.RateGroupMemberOut[2] -> payloadManager.run
+      rateGroup2.RateGroupMemberOut[3] -> payloadDriverNeutronSim.run
       # rateGroup2.RateGroupMemberOut[3] -> adcsManager.run
       # rateGroup2.RateGroupMemberOut[4] -> gpsManager.run
-      # rateGroup2.RateGroupMemberOut[5] -> storageManager.run
+      rateGroup2.RateGroupMemberOut[5] -> storageManager.run
       # rateGroup2.RateGroupMemberOut[6] -> thermalManager.run
 
       # Rate group 3
@@ -172,9 +173,11 @@ module ArtemisRpiTeensyDeployment {
       missionApp.collectionRequestOut -> scienceApp.requestIn
       missionApp.cancelRequestOut -> scienceApp.cancelRequestIn
       scienceApp.payloadRequestOut -> payloadManager.requestIn
-      payloadManager.statusOut -> scienceApp.payloadStatusIn
+      payloadManager.operationNoticeOut -> scienceApp.operationNoticeIn
       scienceApp.scienceProductOut -> storageManager.requestIn
+      scienceApp.deliveryRequestOut -> storageManager.deliveryRequestIn
       storageManager.downlinkReadyOut -> commsApp.scienceReadyIn
+      storageManager.deliveryDescriptorOut -> commsApp.deliveryDescriptorIn
       commsApp.downlinkRequestOut -> storageManager.downlinkRequestIn
       commsApp.payloadDownlinkRequestOut -> payloadDownlinkApp.downlinkRequestIn
       payloadDownlinkApp.statusOut -> commsApp.payloadDownlinkStatusIn
@@ -189,7 +192,9 @@ module ArtemisRpiTeensyDeployment {
       uartChannelMux.localRecvOut -> epsDriverArtemis.teensyResponseIn
 
       payloadManager.driverRequestOut -> payloadDriverNeutronSim.requestIn
-      payloadDriverNeutronSim.statusOut -> payloadManager.driverStatusIn
+      payloadDriverNeutronSim.operationResponseOut -> payloadManager.driverOperationResultIn
+      payloadDriverNeutronSim.availabilityOut -> payloadManager.driverAvailabilityIn
+      payloadManager.driverPassthroughOut -> payloadDriverNeutronSim.passthroughIn
 
       adcsManager.driverRequestOut -> adcsDriverD2S2.requestIn
       adcsDriverD2S2.statusOut -> adcsManager.driverStatusIn

@@ -210,4 +210,124 @@ void PayloadDownlinkAppTester::testQueuesRetryPacketsForScheduledResend() {
     EXPECT_EQ(this->m_packets[4][5], 0U);
 }
 
+void PayloadDownlinkAppTester::testDescriptorSnapshotAndExactSourceValidation() {
+    const U8 original[] = {0xFFU, 0xFFU};  // CRC-16/CCITT-FALSE is exactly zero.
+    this->writePayloadFile(original, sizeof(original));
+    this->clearHistory();
+    this->m_packets.clear();
+
+    Fw::String exactPath(TEST_PAYLOAD_PATH);
+    this->invoke_to_downlinkRequestIn(0, 99U, sizeof(original), ScienceProductSource::NEUTRON_SIM, exactPath, 0U);
+    this->component.doDispatch();
+    ASSERT_EVENTS_PayloadDownlinkStarted_SIZE(1);
+    ASSERT_EVENTS_PayloadDownlinkStarted(0, 99U, 1U, sizeof(original), 1U);
+
+    // A concurrent request must not replace the active descriptor.
+    this->invoke_to_downlinkRequestIn(0, 100U, sizeof(original), ScienceProductSource::NEUTRON_SIM, exactPath, 0U);
+    this->component.doDispatch();
+    ASSERT_EVENTS_PayloadDownlinkStarted_SIZE(1);
+    ASSERT_EVENTS_PayloadDownlinkFailed_SIZE(1);
+
+    // Mutating the source after admission must not change data or retries.
+    const U8 replacement[] = {0x00U, 0x00U};
+    this->writePayloadFile(replacement, sizeof(replacement));
+    this->invoke_to_run(0, 0);
+    this->invoke_to_run(0, 0);
+    ASSERT_EQ(this->m_packets.size(), 3U);
+    ASSERT_EQ(this->m_packets[0][3], 1U);
+    const U32 headerProductId = static_cast<U32>(this->m_packets[0][4]) |
+                                (static_cast<U32>(this->m_packets[0][5]) << 8U) |
+                                (static_cast<U32>(this->m_packets[0][6]) << 16U) |
+                                (static_cast<U32>(this->m_packets[0][7]) << 24U);
+    EXPECT_EQ(headerProductId, 99U);
+    EXPECT_EQ(this->m_packets[1][7], original[0]);
+    EXPECT_EQ(this->m_packets[1][8], original[1]);
+
+    this->clearHistory();
+    this->m_packets.clear();
+    Fw::String missingPath("/tmp/payload_downlink_manager_missing_descriptor.bin");
+    this->invoke_to_downlinkRequestIn(0, 101U, sizeof(original), ScienceProductSource::NEUTRON_SIM,
+                                      missingPath, 0U);
+    this->component.doDispatch();
+    ASSERT_EVENTS_PayloadDownlinkStarted_SIZE(0);
+    ASSERT_EVENTS_PayloadDownlinkFailed_SIZE(1);
+    EXPECT_EQ(this->m_packets.size(), 0U);  // Environment fallback exists but descriptor path is exact.
+
+    this->clearHistory();
+    Fw::String validPath(TEST_PAYLOAD_PATH);
+    this->invoke_to_downlinkRequestIn(0, 102U, sizeof(replacement), ScienceProductSource::NEUTRON_SIM,
+                                      validPath, 0U);
+    this->component.doDispatch();
+    ASSERT_EVENTS_PayloadDownlinkStarted_SIZE(0);
+    ASSERT_EVENTS_PayloadDownlinkFailed_SIZE(1);  // Zero is validated, not treated as "CRC absent".
+}
+
+void PayloadDownlinkAppTester::testBusyRejectionConsumesTransferIdSequence() {
+    const U8 payload[] = {0xFFU, 0xFFU};  // CRC-16/CCITT-FALSE is exactly zero.
+    this->writePayloadFile(payload, sizeof(payload));
+    this->clearHistory();
+    this->m_packets.clear();
+
+    Fw::String sourcePath(TEST_PAYLOAD_PATH);
+    this->invoke_to_downlinkRequestIn(0, 99U, sizeof(payload), ScienceProductSource::NEUTRON_SIM,
+                                      sourcePath, 0U);
+    this->component.doDispatch();
+    ASSERT_from_statusOut_SIZE(1);
+    ASSERT_from_statusOut(0, 1U, 1U, 99U, sizeof(payload), 0U, 1U, 0U);
+
+    // The busy rejection receives the next ID without replacing active transfer 1.
+    this->invoke_to_downlinkRequestIn(0, 100U, sizeof(payload), ScienceProductSource::NEUTRON_SIM,
+                                      sourcePath, 0U);
+    this->component.doDispatch();
+    ASSERT_from_statusOut_SIZE(2);
+    ASSERT_from_statusOut(1, 4U, 2U, 100U, sizeof(payload), 0U, 0U, 12U);
+
+    this->invoke_to_run(0, 0);
+    ASSERT_from_statusOut_SIZE(3);
+    ASSERT_from_statusOut(2, 2U, 1U, 99U, sizeof(payload), 1U, 1U, 0U);
+    ASSERT_EQ(this->m_packets.size(), 3U);
+    EXPECT_EQ(this->m_packets[0][3], 1U);
+
+    // The next admitted transfer advances past the consumed rejection ID.
+    this->invoke_to_downlinkRequestIn(0, 101U, sizeof(payload), ScienceProductSource::NEUTRON_SIM,
+                                      sourcePath, 0U);
+    this->component.doDispatch();
+    ASSERT_from_statusOut_SIZE(4);
+    ASSERT_from_statusOut(3, 1U, 3U, 101U, sizeof(payload), 0U, 1U, 0U);
+    this->invoke_to_run(0, 0);
+    ASSERT_from_statusOut_SIZE(5);
+    ASSERT_from_statusOut(4, 2U, 3U, 101U, sizeof(payload), 1U, 1U, 0U);
+    ASSERT_EQ(this->m_packets.size(), 6U);
+    EXPECT_EQ(this->m_packets[3][3], 3U);
+}
+
+void PayloadDownlinkAppTester::testTransferIdWrapSkipsZeroAndConsumesFailedRequestOnce() {
+    Fw::String emptyPath("");
+    for (U32 allocation = 1U; allocation <= 0xFFU; ++allocation) {
+        this->clearHistory();
+        this->invoke_to_downlinkRequestIn(0, 0U, 0U, ScienceProductSource::UNKNOWN, emptyPath, 0U);
+        this->component.doDispatch();
+        ASSERT_from_statusOut_SIZE(1);
+        ASSERT_from_statusOut(0, 4U, allocation, 0U, 0U, 0U, 0U, 8U);
+    }
+
+    // A source-preparation failure consumes one wrapped ID, not zero or two.
+    this->clearHistory();
+    Fw::String missingPath("/tmp/payload_downlink_wrap_missing.bin");
+    this->invoke_to_downlinkRequestIn(0, 101U, 2U, ScienceProductSource::NEUTRON_SIM, missingPath, 0U);
+    this->component.doDispatch();
+    ASSERT_from_statusOut_SIZE(1);
+    ASSERT_from_statusOut(0, 4U, 1U, 101U, 2U, 0U, 0U, 7U);
+
+    const U8 payload[] = {0xFFU, 0xFFU};
+    this->writePayloadFile(payload, sizeof(payload));
+    this->clearHistory();
+    Fw::String validPath(TEST_PAYLOAD_PATH);
+    this->invoke_to_downlinkRequestIn(0, 102U, sizeof(payload), ScienceProductSource::NEUTRON_SIM,
+                                     validPath, 0U);
+    this->component.doDispatch();
+    ASSERT_from_statusOut_SIZE(1);
+    ASSERT_from_statusOut(0, 1U, 2U, 102U, sizeof(payload), 0U, 1U, 0U);
+}
+
 }  // namespace Components

@@ -1,0 +1,42 @@
+[
+  {
+    "filename": "01-collection-command.jpg",
+    "captured_at": "2026-10-09T00:02:15.162Z",
+    "sha256": "23f9fbe079358e2174391594a78970c48da548c25bd96edc7c9233fde1aac151"
+  },
+  {
+    "filename": "02-command-report.jpg",
+    "captured_at": "2026-10-09T00:02:27.199Z",
+    "sha256": "3b36d85da12073f3d6d01d171cf4cc66337abea94def4daa64ceb7e9f42626e0"
+  },
+  {
+    "filename": "03-capture-complete.jpg",
+    "captured_at": "2026-10-09T00:05:38.351Z",
+    "sha256": "325a60d94653cd08eeb75f037b23eac5fc2cec16b43b36c2b7b1fd3112ea63ff"
+  },
+  {
+    "filename": "04-stored-product.jpg",
+    "captured_at": "2026-10-09T00:05:48.248Z",
+    "sha256": "77ab35346b65981e23d6397e5f65479d0fcacb4f31f2b2662cc6b9bdbc0c07c8"
+  },
+  {
+    "filename": "05-sender-complete.jpg",
+    "captured_at": "2026-10-09T00:06:34.922Z",
+    "sha256": "77346914fda0a53df46d8e76209619b1acc527e4fb0b50e35477063d980dd31f"
+  },
+  {
+    "filename": "06-ground-receipt.jpg",
+    "captured_at": "2026-10-09T00:06:38.628Z",
+    "sha256": "8e9be77a4fee9c52931d4da09db4ca8badb3ba83f4ca82b88444ce53f9a8340b"
+  },
+  {
+    "filename": "07-ground-histogram.jpg",
+    "captured_at": "2026-10-09T00:06:42.266Z",
+    "sha256": "73fbec9bb7f09394f818a92166402ab38bf2d8603ddcc97babedbbcdd99b39a5"
+  },
+  {
+    "filename": "08-ground-products-full.jpg",
+    "captured_at": "2026-10-09T00:06:51.473Z",
+    "sha256": "9112467d0991eff00ee52366800f5a3e3590a1641091da06caa3cd4f0e065ac8"
+  }
+]

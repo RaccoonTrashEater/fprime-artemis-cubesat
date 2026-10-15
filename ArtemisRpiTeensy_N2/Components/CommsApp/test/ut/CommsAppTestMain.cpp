@@ -20,6 +20,21 @@ TEST(Nominal, IgnoresPayloadStatusWhenInactive) {
     tester.testIgnoresPayloadStatusWhenInactive();
 }
 
+TEST(Nominal, OldCompletionCannotFinishNewProductAndNewPendingSurvives) {
+    Components::CommsAppTester tester;
+    tester.testOldCompletionCannotFinishNewProductAndNewPendingSurvives();
+}
+
+TEST(Nominal, AutomaticDeliveryUsesSharedDownlinkGate) {
+    Components::CommsAppTester tester;
+    tester.testAutomaticDeliveryUsesSharedDownlinkGate();
+}
+
+TEST(Nominal, BusyRejectionSequenceAllowsSubsequentDownlinks) {
+    Components::CommsAppTester tester;
+    tester.testBusyRejectionSequenceAllowsSubsequentDownlinks();
+}
+
 TEST(Nominal, DriverStatusPollingAndRssiPing) {
     Components::CommsAppTester tester;
     tester.testDriverStatusPollingAndRssiPing();

@@ -1,0 +1,93 @@
+{
+  "result": "PASS",
+  "scope": "host-native FSW / synthetic raw files / Yamcs API; process restart, no hardware or RF",
+  "matrix": [
+    {
+      "name": "final-before",
+      "exit_code": 0,
+      "log": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-before.log",
+      "run": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/20261009-130131",
+      "run_id": "d7f1d3f71928",
+      "artifacts": [
+        "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/20261009-130131/completion-storage-before-restart-3b4bdd24ba9d.json"
+      ]
+    },
+    {
+      "name": "final-after",
+      "exit_code": 0,
+      "log": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-after.log",
+      "run": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/20261009-130240",
+      "run_id": "c5467781a44e",
+      "artifacts": [
+        "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/20261009-130240/completion-storage-after-restart-e20707ff693f.json"
+      ]
+    },
+    {
+      "name": "final-verifier-retry",
+      "exit_code": 0,
+      "log": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-verifier-retry.log",
+      "run": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/20261009-130425",
+      "run_id": "e5841c58f32b",
+      "artifacts": [
+        "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/20261009-130425/completion-storage-verifier-restart-5763e83ec232.json"
+      ]
+    },
+    {
+      "name": "final-fault",
+      "exit_code": 0,
+      "log": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-fault.log",
+      "run": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/20261009-130515",
+      "run_id": "f221c7f80cbc",
+      "artifacts": [
+        "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/20261009-130515/completion-storage-storage-fault-6889a41095e0.json"
+      ]
+    },
+    {
+      "name": "final-full-retry",
+      "exit_code": 0,
+      "log": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-retry.log",
+      "run": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/20261009-131319",
+      "run_id": "1d16ddee3115",
+      "artifacts": [
+        "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/20261009-131319/completion-storage-storage-fault-d7ee06308a89.json"
+      ]
+    },
+    {
+      "name": "final-receipt",
+      "exit_code": 0,
+      "log": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-receipt.log",
+      "run": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/20261009-131403",
+      "run_id": "11e378f86959",
+      "artifacts": [
+        "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/20261009-131403/completion-storage-missing-receipt-44a691ef61d4.json"
+      ]
+    },
+    {
+      "name": "final-pulse-a",
+      "exit_code": 0,
+      "log": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-pulse-a.log",
+      "run": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/20261009-131453",
+      "run_id": "4950ff1745be",
+      "artifacts": [
+        "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/20261009-131453/passthrough-4bb71b5115f4.json"
+      ]
+    },
+    {
+      "name": "final-pulse",
+      "exit_code": 0,
+      "log": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-pulse.log",
+      "run": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/20261009-131453",
+      "run_id": "4950ff1745be",
+      "artifacts": [
+        "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/20261009-131453/pulse-cycle-b6dd5adf0f29.json"
+      ]
+    }
+  ],
+  "regressions": [
+    "yamcs/run/20261009-125729/passthrough-dfd02b8a9ae8.json",
+    "yamcs/run/20261009-125729/lifecycle-b20592f3c52c.json",
+    "yamcs/run/20261009-125729/raw-cycle-21d8ba4ca098.json"
+  ],
+  "prior_failures_preserved_in": "final-matrix-progress.json",
+  "source_fingerprint": "implementation-source-sha256.json"
+}

@@ -9,19 +9,25 @@ module Components {
         output port pingOut: Svc.Ping
 
         @ Rate group scheduling input
-        sync input port run: Svc.Sched
+        async input port run: Svc.Sched
 
         @ Collection request input from ScienceApp
-        sync input port requestIn: Components.PayloadCaptureRequest
+        async input port requestIn: Components.PayloadCaptureRequest
 
-        @ Driver status input
-        sync input port driverStatusIn: Components.ScienceProductDescriptor
+        @ Correlated simulated-driver operation result
+        async input port driverOperationResultIn: Components.PayloadDriverOperationResult
+
+        @ Current simulated-driver capture capacity
+        async input port driverAvailabilityIn: Components.PayloadDriverAvailability
 
         @ Driver request output
-        output port driverRequestOut: Components.PayloadCaptureRequest
+        output port driverRequestOut: Components.PayloadDriverCaptureRequest
 
-        @ Payload status output to ScienceApp
-        output port statusOut: Components.ScienceProductDescriptor
+        @ Opaque synthetic pass-through request output to the payload driver
+        output port driverPassthroughOut: Components.PayloadDriverPassthroughRequest
+
+        @ Admission and completion notices consumed by ScienceApp
+        output port operationNoticeOut: Components.PayloadOperationNotice
 
         @ Status output to SoH manager
         output port sohStatusOut: Components.HealthStatus
@@ -37,6 +43,22 @@ module Components {
 
         @ Capture neutron samples for the requested duration in seconds
         async command SCIENCE_CAPTURE(durationSeconds: U32)
+
+        @ Forward an opaque printable ASCII literal to the board-free synthetic payload facade.
+        @ Embedded NUL and non-ASCII input are outside this demo contract and are not validated here.
+        @ This does not encode or assume any real payload command protocol.
+        async command SYNTHETIC_PASSTHROUGH(
+            requestId: U32,
+            literalCommand: string size PAYLOAD_PASSTHROUGH_LITERAL_MAX
+        )
+
+        @ Configure one local-Yamcs simulator fault for the next admitted operation.
+        @ This command is rejected unless the deployment is built with NEUTRON2_LOCAL_YAMCS.
+        async command CONFIGURE_SIMULATION(
+            faultMode: Components.PayloadSimulationFault,
+            delayMs: U32,
+            timeoutMs: U32
+        )
 
         @ Last payload sample value
         telemetry LastPayloadValue: U32
@@ -56,6 +78,15 @@ module Components {
         @ Manager heartbeat
         telemetry ManagerHeartbeat: U32
 
+        @ Whether the simulated driver's capture subprocess slot is idle and reusable
+        telemetry PayloadDriverAvailable: bool
+
+        @ Whether a manager operation is admitted and awaiting a terminal result
+        telemetry PayloadOperationInFlight: bool
+
+        @ Latest manager-owned operation generation token
+        telemetry LastOperationGeneration: U32
+
         @ Payload request forwarded to driver
         event PayloadCollectionForwarded(requestKey: U32) severity activity high format "Payload request forwarded key={}"
 
@@ -67,6 +98,43 @@ module Components {
 
         @ Payload science capture event
         event PayloadScienceCaptureRequested(durationSeconds: U32) severity activity high format "Payload science capture requested duration={}s"
+
+        @ Literal pass-through accepted by the manager and sent to the synthetic driver.
+        event SyntheticPassthroughForwarded(
+            requestId: U32,
+            literalCommand: string size PAYLOAD_PASSTHROUGH_LITERAL_MAX
+        ) severity activity high format "Synthetic payload pass-through forwarded request={} literal='{}'"
+
+        @ Synthetic pass-through command rejected before it reached the driver.
+        event SyntheticPassthroughRejected(requestId: U32, reason: U32) severity warning high format "Synthetic payload pass-through rejected request={} reason={}"
+
+        @ Correlated response returned by the synthetic payload driver with the exact literal echo.
+        event SyntheticPassthroughResponse(
+            requestId: U32,
+            status: Components.PayloadPassthroughStatus,
+            literalEcho: string size PAYLOAD_PASSTHROUGH_LITERAL_MAX
+        ) severity activity high format "Synthetic payload response request={} status={} literal='{}'"
+
+        @ Admission, rejection, and terminal status for a serialized operation.
+        event PayloadOperationStatus(
+            requestId: U32,
+            generation: U32,
+            kind: Components.PayloadOperationKind,
+            $state: Components.PayloadOperationState
+        ) severity activity high format "Payload operation request={} generation={} kind={} state={}"
+
+        @ Driver response dropped because it is stale or duplicated.
+        event PayloadReplyIgnored(requestId: U32, generation: U32, reason: U32) severity warning low format "Ignored payload reply request={} generation={} reason={}"
+
+        @ Local simulator fault configuration accepted.
+        event SimulationConfigured(
+            faultMode: Components.PayloadSimulationFault,
+            delayMs: U32,
+            timeoutMs: U32
+        ) severity activity high format "Payload simulator configured fault={} delayMs={} timeoutMs={}"
+
+        @ Simulator configuration rejected because it is unsupported or unsafe at this time.
+        event SimulationConfigRejected(reason: U32) severity warning low format "Payload simulator configuration rejected reason={}"
 
         @ Port for requesting the current time
         time get port timeCaller

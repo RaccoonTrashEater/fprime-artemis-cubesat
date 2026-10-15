@@ -17,14 +17,17 @@ module Components {
         @ Cancel a pending collection request from MissionApp
         async input port cancelRequestIn: Svc.Ping
 
-        @ Payload status input from PayloadManager
-        async input port payloadStatusIn: Components.ScienceProductDescriptor
+        @ Correlated admission/completion/failure status from PayloadManager
+        async input port operationNoticeIn: Components.PayloadOperationNotice
 
         @ Forwarded collection request to PayloadManager
         output port payloadRequestOut: Components.PayloadCaptureRequest
 
         @ Science product handoff to StorageManager
         output port scienceProductOut: Components.ScienceProductDescriptor
+
+        @ Opt-in request to deliver the just-stored product through CommsApp.
+        output port deliveryRequestOut: Components.ScienceProductDeliveryRequest
 
         @ Mission mode update output
         output port missionModeOut: Components.MissionModeUpdate
@@ -37,6 +40,12 @@ module Components {
 
         @ Trigger one immediate collection for the requested duration. Does not change the configured default duration.
         async command SCIENCE_CAPTURE(durationSeconds: U32)
+
+        @ Capture one product and automatically request its downlink after StorageManager validates and stores it.
+        async command COLLECT_AND_DOWNLINK(durationSeconds: U32)
+
+        @ Token-correlated capture and automatic downlink for Yamcs command-history verification.
+        async command VERIFIED_COLLECT_AND_DOWNLINK(verificationToken: U32, durationSeconds: U32)
 
         @ Boot-default capture duration. Runtime CONFIGURE_CAPTURE_DURATION remains volatile.
         param CAPTURE_DURATION_SECONDS: U32 default 30
@@ -64,6 +73,21 @@ module Components {
 
         @ Science command or request rejected by duration/delay guard
         event ScienceCommandRejected(reason: U32, value: U32) severity warning low format "Science command rejected reason={} value={}"
+
+        @ Payload operation failed, timed out, or was rejected before capture.
+        event ScienceOperationRejected(requestId: U32, $state: Components.PayloadOperationState) severity warning high format "Science payload operation request={} state={}"
+
+        @ Token-bound admission and terminal result; FSW generation is internal to PayloadManager.
+        event VerifiedCaptureStatus(
+            verificationToken: U32,
+            requestId: U32,
+            generation: U32,
+            $state: Components.PayloadOperationState,
+            productId: U32,
+            productBytes: U32,
+            sourceCrc: U32,
+            reasonCode: U32
+        ) severity activity high format "Verified capture token={} request={} generation={} state={} product={} bytes={} crc={} reason={}"
 
         @ Port for requesting the current time
         time get port timeCaller

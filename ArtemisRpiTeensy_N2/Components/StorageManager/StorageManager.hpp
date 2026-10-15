@@ -3,6 +3,8 @@
 
 #include "Components/StorageManager/StorageManagerComponentAc.hpp"
 
+#include <string>
+
 namespace Components {
 
 class StorageManager final : public StorageManagerComponentBase {
@@ -19,6 +21,7 @@ class StorageManager final : public StorageManagerComponentBase {
                            const Components::ScienceProductSource& sourceKind,
                            const Fw::StringBase& sourcePath,
                            U32 sourceCrc) override;
+    void deliveryRequestIn_handler(FwIndexType portNum, U32 productId) override;
     void downlinkRequestIn_handler(FwIndexType portNum,
                                    U32 productId,
                                    U32 productBytes,
@@ -29,32 +32,55 @@ class StorageManager final : public StorageManagerComponentBase {
     void REPORT_LATEST_DATASET_cmdHandler(FwOpcodeType opCode, U32 cmdSeq) override;
     void REPORT_STORAGE_HISTORY_cmdHandler(FwOpcodeType opCode, U32 cmdSeq) override;
     void REMOVE_OLD_DATASETS_cmdHandler(FwOpcodeType opCode, U32 cmdSeq, U32 confirm) override;
+    void SELECT_PRODUCT_cmdHandler(FwOpcodeType opCode, U32 cmdSeq, U32 productId) override;
 
     struct ProductRecord {
-        U32 productCount;
         U32 productId;
+        U32 inputProductId;
         U32 productBytes;
+        U32 sourceCrc;
+        Components::ScienceProductSource sourceKind;
+        Fw::String sourcePath;
     };
 
-    void rememberProduct(U32 productCount, U32 productId, U32 productBytes);
+    bool ensureCatalogLoaded();
+    bool loadCatalog();
+    bool persistNextProductId(U32 nextProductId) const;
+    bool copyProductAtomically(const Fw::StringBase& sourcePath,
+                               const std::string& targetPath,
+                               U32 productBytes,
+                               U32 expectedCrc) const;
+    bool writeMetadataAtomically(const std::string& metadataPath,
+                                 U32 productId,
+                                 U32 productBytes,
+                                 const Components::ScienceProductSource& sourceKind,
+                                 U32 sourceCrc) const;
+    bool readMetadata(U32 filenameProductId, ProductRecord& record) const;
+    bool isValidStoredProduct(const ProductRecord& record) const;
+    void rejectProduct(U32 productId, U32 reason, const Fw::StringBase& path) const;
+    void publishSelected(const ProductRecord& record, bool selectedByCommand);
     void reportLatest() const;
     void reportHistory() const;
     U32 historyDepth() const;
-    void clearHistory();
+    ProductRecord* findProduct(U32 productId);
+    const ProductRecord* findProduct(U32 productId) const;
     void removeCaptureFiles(U32& removedFiles, U32& failedFiles) const;
 
     static constexpr U32 HISTORY_CAPACITY = 16;
     static constexpr U32 REMOVE_CONFIRM = 1;
     U32 m_storedProducts;
     U32 m_lastProductSize;
-    U32 m_historyNext;
-    U32 m_historyCount;
+    U32 m_selectedProductId;
+    U32 m_lastInputProductId;
+    U32 m_nextProductId;
     U32 m_removedDatasetFiles;
     U32 m_removeDatasetFailures;
-    U32 m_lastProductId;
-    Components::ScienceProductSource m_lastSourceKind;
-    Fw::String m_lastSourcePath;
-    U32 m_lastSourceCrc;
+    U32 m_catalogOverflow;
+    bool m_catalogLoaded;
+    bool m_storageReady;
+    bool m_idCounterExhausted;
+    bool m_recoveryReported;
+    std::string m_storageRoot;
     ProductRecord m_history[HISTORY_CAPACITY];
 };
 

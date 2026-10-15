@@ -1,0 +1,2639 @@
+{
+  "catalog": {
+    "100": {
+      "createdBy": "guest",
+      "extra": {
+        "fprime_event_id": "268492808",
+        "fprime_event_name": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry",
+        "fprime_severity": "ACTIVITY_LO",
+        "productBytes": "902",
+        "productId": "100",
+        "slot": "0",
+        "sourceCrc": "58578",
+        "sourcePath": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_100.bin"
+      },
+      "generationTime": "2026-10-09T23:13:57.103Z",
+      "message": "[StorageCatalogEntry] Storage catalog slot=0 product=100 bytes=902 CRC=58578 path='/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_100.bin'",
+      "receptionTime": "2026-10-09T23:13:56.110Z",
+      "seqNumber": 24,
+      "severity": "INFO",
+      "source": "FPrimeEventProcessor",
+      "type": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry"
+    },
+    "101": {
+      "createdBy": "guest",
+      "extra": {
+        "fprime_event_id": "268492808",
+        "fprime_event_name": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry",
+        "fprime_severity": "ACTIVITY_LO",
+        "productBytes": "902",
+        "productId": "101",
+        "slot": "1",
+        "sourceCrc": "58578",
+        "sourcePath": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_101.bin"
+      },
+      "generationTime": "2026-10-09T23:13:57.103Z",
+      "message": "[StorageCatalogEntry] Storage catalog slot=1 product=101 bytes=902 CRC=58578 path='/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_101.bin'",
+      "receptionTime": "2026-10-09T23:13:56.113Z",
+      "seqNumber": 26,
+      "severity": "INFO",
+      "source": "FPrimeEventProcessor",
+      "type": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry"
+    },
+    "102": {
+      "createdBy": "guest",
+      "extra": {
+        "fprime_event_id": "268492808",
+        "fprime_event_name": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry",
+        "fprime_severity": "ACTIVITY_LO",
+        "productBytes": "902",
+        "productId": "102",
+        "slot": "2",
+        "sourceCrc": "58578",
+        "sourcePath": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_102.bin"
+      },
+      "generationTime": "2026-10-09T23:13:57.103Z",
+      "message": "[StorageCatalogEntry] Storage catalog slot=2 product=102 bytes=902 CRC=58578 path='/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_102.bin'",
+      "receptionTime": "2026-10-09T23:13:56.117Z",
+      "seqNumber": 28,
+      "severity": "INFO",
+      "source": "FPrimeEventProcessor",
+      "type": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry"
+    },
+    "103": {
+      "createdBy": "guest",
+      "extra": {
+        "fprime_event_id": "268492808",
+        "fprime_event_name": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry",
+        "fprime_severity": "ACTIVITY_LO",
+        "productBytes": "902",
+        "productId": "103",
+        "slot": "3",
+        "sourceCrc": "58578",
+        "sourcePath": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_103.bin"
+      },
+      "generationTime": "2026-10-09T23:13:57.103Z",
+      "message": "[StorageCatalogEntry] Storage catalog slot=3 product=103 bytes=902 CRC=58578 path='/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_103.bin'",
+      "receptionTime": "2026-10-09T23:13:56.119Z",
+      "seqNumber": 30,
+      "severity": "INFO",
+      "source": "FPrimeEventProcessor",
+      "type": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry"
+    },
+    "104": {
+      "createdBy": "guest",
+      "extra": {
+        "fprime_event_id": "268492808",
+        "fprime_event_name": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry",
+        "fprime_severity": "ACTIVITY_LO",
+        "productBytes": "902",
+        "productId": "104",
+        "slot": "4",
+        "sourceCrc": "58578",
+        "sourcePath": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_104.bin"
+      },
+      "generationTime": "2026-10-09T23:13:57.103Z",
+      "message": "[StorageCatalogEntry] Storage catalog slot=4 product=104 bytes=902 CRC=58578 path='/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_104.bin'",
+      "receptionTime": "2026-10-09T23:13:56.122Z",
+      "seqNumber": 32,
+      "severity": "INFO",
+      "source": "FPrimeEventProcessor",
+      "type": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry"
+    },
+    "105": {
+      "createdBy": "guest",
+      "extra": {
+        "fprime_event_id": "268492808",
+        "fprime_event_name": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry",
+        "fprime_severity": "ACTIVITY_LO",
+        "productBytes": "902",
+        "productId": "105",
+        "slot": "5",
+        "sourceCrc": "58578",
+        "sourcePath": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_105.bin"
+      },
+      "generationTime": "2026-10-09T23:13:57.103Z",
+      "message": "[StorageCatalogEntry] Storage catalog slot=5 product=105 bytes=902 CRC=58578 path='/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_105.bin'",
+      "receptionTime": "2026-10-09T23:13:56.125Z",
+      "seqNumber": 34,
+      "severity": "INFO",
+      "source": "FPrimeEventProcessor",
+      "type": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry"
+    },
+    "106": {
+      "createdBy": "guest",
+      "extra": {
+        "fprime_event_id": "268492808",
+        "fprime_event_name": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry",
+        "fprime_severity": "ACTIVITY_LO",
+        "productBytes": "902",
+        "productId": "106",
+        "slot": "6",
+        "sourceCrc": "58578",
+        "sourcePath": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_106.bin"
+      },
+      "generationTime": "2026-10-09T23:13:57.103Z",
+      "message": "[StorageCatalogEntry] Storage catalog slot=6 product=106 bytes=902 CRC=58578 path='/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_106.bin'",
+      "receptionTime": "2026-10-09T23:13:56.130Z",
+      "seqNumber": 36,
+      "severity": "INFO",
+      "source": "FPrimeEventProcessor",
+      "type": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry"
+    },
+    "107": {
+      "createdBy": "guest",
+      "extra": {
+        "fprime_event_id": "268492808",
+        "fprime_event_name": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry",
+        "fprime_severity": "ACTIVITY_LO",
+        "productBytes": "902",
+        "productId": "107",
+        "slot": "7",
+        "sourceCrc": "58578",
+        "sourcePath": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_107.bin"
+      },
+      "generationTime": "2026-10-09T23:13:57.103Z",
+      "message": "[StorageCatalogEntry] Storage catalog slot=7 product=107 bytes=902 CRC=58578 path='/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_107.bin'",
+      "receptionTime": "2026-10-09T23:13:56.133Z",
+      "seqNumber": 38,
+      "severity": "INFO",
+      "source": "FPrimeEventProcessor",
+      "type": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry"
+    },
+    "108": {
+      "createdBy": "guest",
+      "extra": {
+        "fprime_event_id": "268492808",
+        "fprime_event_name": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry",
+        "fprime_severity": "ACTIVITY_LO",
+        "productBytes": "902",
+        "productId": "108",
+        "slot": "8",
+        "sourceCrc": "58578",
+        "sourcePath": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_108.bin"
+      },
+      "generationTime": "2026-10-09T23:13:57.103Z",
+      "message": "[StorageCatalogEntry] Storage catalog slot=8 product=108 bytes=902 CRC=58578 path='/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_108.bin'",
+      "receptionTime": "2026-10-09T23:13:56.136Z",
+      "seqNumber": 40,
+      "severity": "INFO",
+      "source": "FPrimeEventProcessor",
+      "type": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry"
+    },
+    "109": {
+      "createdBy": "guest",
+      "extra": {
+        "fprime_event_id": "268492808",
+        "fprime_event_name": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry",
+        "fprime_severity": "ACTIVITY_LO",
+        "productBytes": "902",
+        "productId": "109",
+        "slot": "9",
+        "sourceCrc": "58578",
+        "sourcePath": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_109.bin"
+      },
+      "generationTime": "2026-10-09T23:13:57.103Z",
+      "message": "[StorageCatalogEntry] Storage catalog slot=9 product=109 bytes=902 CRC=58578 path='/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_109.bin'",
+      "receptionTime": "2026-10-09T23:13:56.140Z",
+      "seqNumber": 42,
+      "severity": "INFO",
+      "source": "FPrimeEventProcessor",
+      "type": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry"
+    },
+    "110": {
+      "createdBy": "guest",
+      "extra": {
+        "fprime_event_id": "268492808",
+        "fprime_event_name": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry",
+        "fprime_severity": "ACTIVITY_LO",
+        "productBytes": "902",
+        "productId": "110",
+        "slot": "10",
+        "sourceCrc": "58578",
+        "sourcePath": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_110.bin"
+      },
+      "generationTime": "2026-10-09T23:13:57.103Z",
+      "message": "[StorageCatalogEntry] Storage catalog slot=10 product=110 bytes=902 CRC=58578 path='/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_110.bin'",
+      "receptionTime": "2026-10-09T23:13:56.143Z",
+      "seqNumber": 44,
+      "severity": "INFO",
+      "source": "FPrimeEventProcessor",
+      "type": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry"
+    },
+    "111": {
+      "createdBy": "guest",
+      "extra": {
+        "fprime_event_id": "268492808",
+        "fprime_event_name": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry",
+        "fprime_severity": "ACTIVITY_LO",
+        "productBytes": "902",
+        "productId": "111",
+        "slot": "11",
+        "sourceCrc": "58578",
+        "sourcePath": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_111.bin"
+      },
+      "generationTime": "2026-10-09T23:13:57.103Z",
+      "message": "[StorageCatalogEntry] Storage catalog slot=11 product=111 bytes=902 CRC=58578 path='/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_111.bin'",
+      "receptionTime": "2026-10-09T23:13:56.147Z",
+      "seqNumber": 46,
+      "severity": "INFO",
+      "source": "FPrimeEventProcessor",
+      "type": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry"
+    },
+    "112": {
+      "createdBy": "guest",
+      "extra": {
+        "fprime_event_id": "268492808",
+        "fprime_event_name": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry",
+        "fprime_severity": "ACTIVITY_LO",
+        "productBytes": "902",
+        "productId": "112",
+        "slot": "12",
+        "sourceCrc": "58578",
+        "sourcePath": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_112.bin"
+      },
+      "generationTime": "2026-10-09T23:13:57.103Z",
+      "message": "[StorageCatalogEntry] Storage catalog slot=12 product=112 bytes=902 CRC=58578 path='/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_112.bin'",
+      "receptionTime": "2026-10-09T23:13:56.151Z",
+      "seqNumber": 48,
+      "severity": "INFO",
+      "source": "FPrimeEventProcessor",
+      "type": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry"
+    },
+    "113": {
+      "createdBy": "guest",
+      "extra": {
+        "fprime_event_id": "268492808",
+        "fprime_event_name": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry",
+        "fprime_severity": "ACTIVITY_LO",
+        "productBytes": "902",
+        "productId": "113",
+        "slot": "13",
+        "sourceCrc": "58578",
+        "sourcePath": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_113.bin"
+      },
+      "generationTime": "2026-10-09T23:13:57.103Z",
+      "message": "[StorageCatalogEntry] Storage catalog slot=13 product=113 bytes=902 CRC=58578 path='/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_113.bin'",
+      "receptionTime": "2026-10-09T23:13:56.155Z",
+      "seqNumber": 50,
+      "severity": "INFO",
+      "source": "FPrimeEventProcessor",
+      "type": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry"
+    },
+    "114": {
+      "createdBy": "guest",
+      "extra": {
+        "fprime_event_id": "268492808",
+        "fprime_event_name": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry",
+        "fprime_severity": "ACTIVITY_LO",
+        "productBytes": "902",
+        "productId": "114",
+        "slot": "14",
+        "sourceCrc": "58578",
+        "sourcePath": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_114.bin"
+      },
+      "generationTime": "2026-10-09T23:13:57.103Z",
+      "message": "[StorageCatalogEntry] Storage catalog slot=14 product=114 bytes=902 CRC=58578 path='/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_114.bin'",
+      "receptionTime": "2026-10-09T23:13:56.787Z",
+      "seqNumber": 52,
+      "severity": "INFO",
+      "source": "FPrimeEventProcessor",
+      "type": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry"
+    },
+    "115": {
+      "createdBy": "guest",
+      "extra": {
+        "fprime_event_id": "268492808",
+        "fprime_event_name": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry",
+        "fprime_severity": "ACTIVITY_LO",
+        "productBytes": "902",
+        "productId": "115",
+        "slot": "15",
+        "sourceCrc": "58578",
+        "sourcePath": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_115.bin"
+      },
+      "generationTime": "2026-10-09T23:13:57.103Z",
+      "message": "[StorageCatalogEntry] Storage catalog slot=15 product=115 bytes=902 CRC=58578 path='/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_115.bin'",
+      "receptionTime": "2026-10-09T23:13:56.791Z",
+      "seqNumber": 54,
+      "severity": "INFO",
+      "source": "FPrimeEventProcessor",
+      "type": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry"
+    }
+  },
+  "catalog_command": {
+    "assignments": [
+      {
+        "name": "CCSDS_Version",
+        "userInput": false,
+        "value": {
+          "type": "UINT32",
+          "uint32Value": 0
+        }
+      },
+      {
+        "name": "CCSDS_Type",
+        "userInput": false,
+        "value": {
+          "booleanValue": true,
+          "type": "BOOLEAN"
+        }
+      },
+      {
+        "name": "CCSDS_Sec_Hdr_Flag",
+        "userInput": false,
+        "value": {
+          "booleanValue": false,
+          "type": "BOOLEAN"
+        }
+      },
+      {
+        "name": "CCSDS_APID",
+        "userInput": false,
+        "value": {
+          "type": "UINT32",
+          "uint32Value": 0
+        }
+      },
+      {
+        "name": "CCSDS_Group_Flags",
+        "userInput": false,
+        "value": {
+          "sint64Value": "3",
+          "stringValue": "Standalone",
+          "type": "ENUMERATED"
+        }
+      },
+      {
+        "name": "OpCode",
+        "userInput": false,
+        "value": {
+          "type": "UINT32",
+          "uint32Value": 268492802
+        }
+      }
+    ],
+    "binary": "EADAAAAAAAAQAOAC",
+    "commandName": "/ArtemisRpiTeensyDeployment_ArtemisRpiTeensyDeployment/ArtemisRpiTeensyDeployment/storageManager/REPORT_STORAGE_HISTORY",
+    "generationTime": "2026-10-09T23:13:56.098Z",
+    "id": "1791587673098-n2-completion-storage-33184-1282122880",
+    "origin": "n2-completion-storage-33184",
+    "queue": "default",
+    "report_attempts": [
+      {
+        "attempt": 1,
+        "catalog_events": [
+          {
+            "createdBy": "guest",
+            "extra": {
+              "fprime_event_id": "268492808",
+              "fprime_event_name": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry",
+              "fprime_severity": "ACTIVITY_LO",
+              "productBytes": "902",
+              "productId": "115",
+              "slot": "15",
+              "sourceCrc": "58578",
+              "sourcePath": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_115.bin"
+            },
+            "generationTime": "2026-10-09T23:13:57.103Z",
+            "message": "[StorageCatalogEntry] Storage catalog slot=15 product=115 bytes=902 CRC=58578 path='/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_115.bin'",
+            "receptionTime": "2026-10-09T23:13:56.791Z",
+            "seqNumber": 54,
+            "severity": "INFO",
+            "source": "FPrimeEventProcessor",
+            "type": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry"
+          },
+          {
+            "createdBy": "guest",
+            "extra": {
+              "fprime_event_id": "268492808",
+              "fprime_event_name": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry",
+              "fprime_severity": "ACTIVITY_LO",
+              "productBytes": "902",
+              "productId": "114",
+              "slot": "14",
+              "sourceCrc": "58578",
+              "sourcePath": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_114.bin"
+            },
+            "generationTime": "2026-10-09T23:13:57.103Z",
+            "message": "[StorageCatalogEntry] Storage catalog slot=14 product=114 bytes=902 CRC=58578 path='/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_114.bin'",
+            "receptionTime": "2026-10-09T23:13:56.787Z",
+            "seqNumber": 52,
+            "severity": "INFO",
+            "source": "FPrimeEventProcessor",
+            "type": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry"
+          },
+          {
+            "createdBy": "guest",
+            "extra": {
+              "fprime_event_id": "268492808",
+              "fprime_event_name": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry",
+              "fprime_severity": "ACTIVITY_LO",
+              "productBytes": "902",
+              "productId": "113",
+              "slot": "13",
+              "sourceCrc": "58578",
+              "sourcePath": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_113.bin"
+            },
+            "generationTime": "2026-10-09T23:13:57.103Z",
+            "message": "[StorageCatalogEntry] Storage catalog slot=13 product=113 bytes=902 CRC=58578 path='/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_113.bin'",
+            "receptionTime": "2026-10-09T23:13:56.155Z",
+            "seqNumber": 50,
+            "severity": "INFO",
+            "source": "FPrimeEventProcessor",
+            "type": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry"
+          },
+          {
+            "createdBy": "guest",
+            "extra": {
+              "fprime_event_id": "268492808",
+              "fprime_event_name": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry",
+              "fprime_severity": "ACTIVITY_LO",
+              "productBytes": "902",
+              "productId": "112",
+              "slot": "12",
+              "sourceCrc": "58578",
+              "sourcePath": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_112.bin"
+            },
+            "generationTime": "2026-10-09T23:13:57.103Z",
+            "message": "[StorageCatalogEntry] Storage catalog slot=12 product=112 bytes=902 CRC=58578 path='/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_112.bin'",
+            "receptionTime": "2026-10-09T23:13:56.151Z",
+            "seqNumber": 48,
+            "severity": "INFO",
+            "source": "FPrimeEventProcessor",
+            "type": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry"
+          },
+          {
+            "createdBy": "guest",
+            "extra": {
+              "fprime_event_id": "268492808",
+              "fprime_event_name": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry",
+              "fprime_severity": "ACTIVITY_LO",
+              "productBytes": "902",
+              "productId": "111",
+              "slot": "11",
+              "sourceCrc": "58578",
+              "sourcePath": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_111.bin"
+            },
+            "generationTime": "2026-10-09T23:13:57.103Z",
+            "message": "[StorageCatalogEntry] Storage catalog slot=11 product=111 bytes=902 CRC=58578 path='/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_111.bin'",
+            "receptionTime": "2026-10-09T23:13:56.147Z",
+            "seqNumber": 46,
+            "severity": "INFO",
+            "source": "FPrimeEventProcessor",
+            "type": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry"
+          },
+          {
+            "createdBy": "guest",
+            "extra": {
+              "fprime_event_id": "268492808",
+              "fprime_event_name": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry",
+              "fprime_severity": "ACTIVITY_LO",
+              "productBytes": "902",
+              "productId": "110",
+              "slot": "10",
+              "sourceCrc": "58578",
+              "sourcePath": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_110.bin"
+            },
+            "generationTime": "2026-10-09T23:13:57.103Z",
+            "message": "[StorageCatalogEntry] Storage catalog slot=10 product=110 bytes=902 CRC=58578 path='/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_110.bin'",
+            "receptionTime": "2026-10-09T23:13:56.143Z",
+            "seqNumber": 44,
+            "severity": "INFO",
+            "source": "FPrimeEventProcessor",
+            "type": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry"
+          },
+          {
+            "createdBy": "guest",
+            "extra": {
+              "fprime_event_id": "268492808",
+              "fprime_event_name": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry",
+              "fprime_severity": "ACTIVITY_LO",
+              "productBytes": "902",
+              "productId": "109",
+              "slot": "9",
+              "sourceCrc": "58578",
+              "sourcePath": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_109.bin"
+            },
+            "generationTime": "2026-10-09T23:13:57.103Z",
+            "message": "[StorageCatalogEntry] Storage catalog slot=9 product=109 bytes=902 CRC=58578 path='/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_109.bin'",
+            "receptionTime": "2026-10-09T23:13:56.140Z",
+            "seqNumber": 42,
+            "severity": "INFO",
+            "source": "FPrimeEventProcessor",
+            "type": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry"
+          },
+          {
+            "createdBy": "guest",
+            "extra": {
+              "fprime_event_id": "268492808",
+              "fprime_event_name": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry",
+              "fprime_severity": "ACTIVITY_LO",
+              "productBytes": "902",
+              "productId": "108",
+              "slot": "8",
+              "sourceCrc": "58578",
+              "sourcePath": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_108.bin"
+            },
+            "generationTime": "2026-10-09T23:13:57.103Z",
+            "message": "[StorageCatalogEntry] Storage catalog slot=8 product=108 bytes=902 CRC=58578 path='/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_108.bin'",
+            "receptionTime": "2026-10-09T23:13:56.136Z",
+            "seqNumber": 40,
+            "severity": "INFO",
+            "source": "FPrimeEventProcessor",
+            "type": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry"
+          },
+          {
+            "createdBy": "guest",
+            "extra": {
+              "fprime_event_id": "268492808",
+              "fprime_event_name": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry",
+              "fprime_severity": "ACTIVITY_LO",
+              "productBytes": "902",
+              "productId": "107",
+              "slot": "7",
+              "sourceCrc": "58578",
+              "sourcePath": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_107.bin"
+            },
+            "generationTime": "2026-10-09T23:13:57.103Z",
+            "message": "[StorageCatalogEntry] Storage catalog slot=7 product=107 bytes=902 CRC=58578 path='/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_107.bin'",
+            "receptionTime": "2026-10-09T23:13:56.133Z",
+            "seqNumber": 38,
+            "severity": "INFO",
+            "source": "FPrimeEventProcessor",
+            "type": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry"
+          },
+          {
+            "createdBy": "guest",
+            "extra": {
+              "fprime_event_id": "268492808",
+              "fprime_event_name": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry",
+              "fprime_severity": "ACTIVITY_LO",
+              "productBytes": "902",
+              "productId": "106",
+              "slot": "6",
+              "sourceCrc": "58578",
+              "sourcePath": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_106.bin"
+            },
+            "generationTime": "2026-10-09T23:13:57.103Z",
+            "message": "[StorageCatalogEntry] Storage catalog slot=6 product=106 bytes=902 CRC=58578 path='/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_106.bin'",
+            "receptionTime": "2026-10-09T23:13:56.130Z",
+            "seqNumber": 36,
+            "severity": "INFO",
+            "source": "FPrimeEventProcessor",
+            "type": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry"
+          },
+          {
+            "createdBy": "guest",
+            "extra": {
+              "fprime_event_id": "268492808",
+              "fprime_event_name": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry",
+              "fprime_severity": "ACTIVITY_LO",
+              "productBytes": "902",
+              "productId": "105",
+              "slot": "5",
+              "sourceCrc": "58578",
+              "sourcePath": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_105.bin"
+            },
+            "generationTime": "2026-10-09T23:13:57.103Z",
+            "message": "[StorageCatalogEntry] Storage catalog slot=5 product=105 bytes=902 CRC=58578 path='/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_105.bin'",
+            "receptionTime": "2026-10-09T23:13:56.125Z",
+            "seqNumber": 34,
+            "severity": "INFO",
+            "source": "FPrimeEventProcessor",
+            "type": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry"
+          },
+          {
+            "createdBy": "guest",
+            "extra": {
+              "fprime_event_id": "268492808",
+              "fprime_event_name": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry",
+              "fprime_severity": "ACTIVITY_LO",
+              "productBytes": "902",
+              "productId": "104",
+              "slot": "4",
+              "sourceCrc": "58578",
+              "sourcePath": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_104.bin"
+            },
+            "generationTime": "2026-10-09T23:13:57.103Z",
+            "message": "[StorageCatalogEntry] Storage catalog slot=4 product=104 bytes=902 CRC=58578 path='/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_104.bin'",
+            "receptionTime": "2026-10-09T23:13:56.122Z",
+            "seqNumber": 32,
+            "severity": "INFO",
+            "source": "FPrimeEventProcessor",
+            "type": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry"
+          },
+          {
+            "createdBy": "guest",
+            "extra": {
+              "fprime_event_id": "268492808",
+              "fprime_event_name": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry",
+              "fprime_severity": "ACTIVITY_LO",
+              "productBytes": "902",
+              "productId": "103",
+              "slot": "3",
+              "sourceCrc": "58578",
+              "sourcePath": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_103.bin"
+            },
+            "generationTime": "2026-10-09T23:13:57.103Z",
+            "message": "[StorageCatalogEntry] Storage catalog slot=3 product=103 bytes=902 CRC=58578 path='/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_103.bin'",
+            "receptionTime": "2026-10-09T23:13:56.119Z",
+            "seqNumber": 30,
+            "severity": "INFO",
+            "source": "FPrimeEventProcessor",
+            "type": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry"
+          },
+          {
+            "createdBy": "guest",
+            "extra": {
+              "fprime_event_id": "268492808",
+              "fprime_event_name": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry",
+              "fprime_severity": "ACTIVITY_LO",
+              "productBytes": "902",
+              "productId": "102",
+              "slot": "2",
+              "sourceCrc": "58578",
+              "sourcePath": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_102.bin"
+            },
+            "generationTime": "2026-10-09T23:13:57.103Z",
+            "message": "[StorageCatalogEntry] Storage catalog slot=2 product=102 bytes=902 CRC=58578 path='/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_102.bin'",
+            "receptionTime": "2026-10-09T23:13:56.117Z",
+            "seqNumber": 28,
+            "severity": "INFO",
+            "source": "FPrimeEventProcessor",
+            "type": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry"
+          },
+          {
+            "createdBy": "guest",
+            "extra": {
+              "fprime_event_id": "268492808",
+              "fprime_event_name": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry",
+              "fprime_severity": "ACTIVITY_LO",
+              "productBytes": "902",
+              "productId": "101",
+              "slot": "1",
+              "sourceCrc": "58578",
+              "sourcePath": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_101.bin"
+            },
+            "generationTime": "2026-10-09T23:13:57.103Z",
+            "message": "[StorageCatalogEntry] Storage catalog slot=1 product=101 bytes=902 CRC=58578 path='/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_101.bin'",
+            "receptionTime": "2026-10-09T23:13:56.113Z",
+            "seqNumber": 26,
+            "severity": "INFO",
+            "source": "FPrimeEventProcessor",
+            "type": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry"
+          },
+          {
+            "createdBy": "guest",
+            "extra": {
+              "fprime_event_id": "268492808",
+              "fprime_event_name": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry",
+              "fprime_severity": "ACTIVITY_LO",
+              "productBytes": "902",
+              "productId": "100",
+              "slot": "0",
+              "sourceCrc": "58578",
+              "sourcePath": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_100.bin"
+            },
+            "generationTime": "2026-10-09T23:13:57.103Z",
+            "message": "[StorageCatalogEntry] Storage catalog slot=0 product=100 bytes=902 CRC=58578 path='/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_100.bin'",
+            "receptionTime": "2026-10-09T23:13:56.110Z",
+            "seqNumber": 24,
+            "severity": "INFO",
+            "source": "FPrimeEventProcessor",
+            "type": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry"
+          }
+        ],
+        "command": {
+          "assignments": [
+            {
+              "name": "CCSDS_Version",
+              "userInput": false,
+              "value": {
+                "type": "UINT32",
+                "uint32Value": 0
+              }
+            },
+            {
+              "name": "CCSDS_Type",
+              "userInput": false,
+              "value": {
+                "booleanValue": true,
+                "type": "BOOLEAN"
+              }
+            },
+            {
+              "name": "CCSDS_Sec_Hdr_Flag",
+              "userInput": false,
+              "value": {
+                "booleanValue": false,
+                "type": "BOOLEAN"
+              }
+            },
+            {
+              "name": "CCSDS_APID",
+              "userInput": false,
+              "value": {
+                "type": "UINT32",
+                "uint32Value": 0
+              }
+            },
+            {
+              "name": "CCSDS_Group_Flags",
+              "userInput": false,
+              "value": {
+                "sint64Value": "3",
+                "stringValue": "Standalone",
+                "type": "ENUMERATED"
+              }
+            },
+            {
+              "name": "OpCode",
+              "userInput": false,
+              "value": {
+                "type": "UINT32",
+                "uint32Value": 268492802
+              }
+            }
+          ],
+          "binary": "EADAAAAAAAAQAOAC",
+          "commandName": "/ArtemisRpiTeensyDeployment_ArtemisRpiTeensyDeployment/ArtemisRpiTeensyDeployment/storageManager/REPORT_STORAGE_HISTORY",
+          "generationTime": "2026-10-09T23:13:56.098Z",
+          "id": "1791587673098-n2-completion-storage-33184-1282122880",
+          "origin": "n2-completion-storage-33184",
+          "queue": "default",
+          "sequenceNumber": 1282122880,
+          "unprocessedBinary": "EADAAAAAAAAQAOAC",
+          "username": "guest"
+        },
+        "complete": true,
+        "count_matches": true,
+        "duplicate_product_ids": [],
+        "elapsed_seconds": 0.959,
+        "empty_events": [],
+        "event_count": 16,
+        "expected_count": 16,
+        "expected_product_ids": [],
+        "generation_time": "2026-10-09T23:13:56.098Z",
+        "ids_match": true,
+        "invalid_id_event_indexes": [],
+        "metadata_errors": [],
+        "missing_product_ids": [],
+        "product_ids": [
+          100,
+          101,
+          102,
+          103,
+          104,
+          105,
+          106,
+          107,
+          108,
+          109,
+          110,
+          111,
+          112,
+          113,
+          114,
+          115
+        ],
+        "status": "PASS",
+        "unexpected_product_ids": []
+      }
+    ],
+    "sequenceNumber": 1282122880,
+    "successful_report_attempt": 1,
+    "unprocessedBinary": "EADAAAAAAAAQAOAC",
+    "username": "guest"
+  },
+  "direct_component_calls_used": false,
+  "evidence": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/20261009-131319/completion-storage-storage-fault-d7ee06308a89.json",
+  "fault_ids": {},
+  "finished_at": "2026-10-09T23:14:02.072897+00:00",
+  "full_catalog": {
+    "accepted": {
+      "createdBy": "guest",
+      "extra": {
+        "fprime_event_id": "268464134",
+        "fprime_event_name": "ArtemisRpiTeensyDeployment.scienceApp.VerifiedCaptureStatus",
+        "fprime_severity": "ACTIVITY_HI",
+        "generation": "1",
+        "productBytes": "0",
+        "productId": "0",
+        "reasonCode": "0",
+        "requestId": "1",
+        "sourceCrc": "0",
+        "state": "ACCEPTED",
+        "verificationToken": "1998178803"
+      },
+      "generationTime": "2026-10-09T23:14:01.055Z",
+      "message": "[VerifiedCaptureStatus] Verified capture token=1998178803 request=1 generation=1 state=ACCEPTED product=0 bytes=0 crc=0 reason=0",
+      "receptionTime": "2026-10-09T23:14:00.811Z",
+      "seqNumber": 97,
+      "severity": "WATCH",
+      "source": "FPrimeEventProcessor",
+      "type": "ArtemisRpiTeensyDeployment.scienceApp.VerifiedCaptureStatus"
+    },
+    "after_report": {
+      "assignments": [
+        {
+          "name": "CCSDS_Version",
+          "userInput": false,
+          "value": {
+            "type": "UINT32",
+            "uint32Value": 0
+          }
+        },
+        {
+          "name": "CCSDS_Type",
+          "userInput": false,
+          "value": {
+            "booleanValue": true,
+            "type": "BOOLEAN"
+          }
+        },
+        {
+          "name": "CCSDS_Sec_Hdr_Flag",
+          "userInput": false,
+          "value": {
+            "booleanValue": false,
+            "type": "BOOLEAN"
+          }
+        },
+        {
+          "name": "CCSDS_APID",
+          "userInput": false,
+          "value": {
+            "type": "UINT32",
+            "uint32Value": 0
+          }
+        },
+        {
+          "name": "CCSDS_Group_Flags",
+          "userInput": false,
+          "value": {
+            "sint64Value": "3",
+            "stringValue": "Standalone",
+            "type": "ENUMERATED"
+          }
+        },
+        {
+          "name": "OpCode",
+          "userInput": false,
+          "value": {
+            "type": "UINT32",
+            "uint32Value": 268492802
+          }
+        }
+      ],
+      "binary": "EADAAAAAAAAQAOAC",
+      "commandName": "/ArtemisRpiTeensyDeployment_ArtemisRpiTeensyDeployment/ArtemisRpiTeensyDeployment/storageManager/REPORT_STORAGE_HISTORY",
+      "generationTime": "2026-10-09T23:14:01.181Z",
+      "id": "1791587678181-n2-completion-storage-33184-1960988171",
+      "origin": "n2-completion-storage-33184",
+      "queue": "default",
+      "report_attempts": [
+        {
+          "attempt": 1,
+          "catalog_events": [
+            {
+              "createdBy": "guest",
+              "extra": {
+                "fprime_event_id": "268492808",
+                "fprime_event_name": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry",
+                "fprime_severity": "ACTIVITY_LO",
+                "productBytes": "902",
+                "productId": "115",
+                "slot": "15",
+                "sourceCrc": "58578",
+                "sourcePath": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_115.bin"
+              },
+              "generationTime": "2026-10-09T23:14:02.182Z",
+              "message": "[StorageCatalogEntry] Storage catalog slot=15 product=115 bytes=902 CRC=58578 path='/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_115.bin'",
+              "receptionTime": "2026-10-09T23:14:01.811Z",
+              "seqNumber": 142,
+              "severity": "INFO",
+              "source": "FPrimeEventProcessor",
+              "type": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry"
+            },
+            {
+              "createdBy": "guest",
+              "extra": {
+                "fprime_event_id": "268492808",
+                "fprime_event_name": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry",
+                "fprime_severity": "ACTIVITY_LO",
+                "productBytes": "902",
+                "productId": "114",
+                "slot": "14",
+                "sourceCrc": "58578",
+                "sourcePath": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_114.bin"
+              },
+              "generationTime": "2026-10-09T23:14:02.182Z",
+              "message": "[StorageCatalogEntry] Storage catalog slot=14 product=114 bytes=902 CRC=58578 path='/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_114.bin'",
+              "receptionTime": "2026-10-09T23:14:01.809Z",
+              "seqNumber": 140,
+              "severity": "INFO",
+              "source": "FPrimeEventProcessor",
+              "type": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry"
+            },
+            {
+              "createdBy": "guest",
+              "extra": {
+                "fprime_event_id": "268492808",
+                "fprime_event_name": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry",
+                "fprime_severity": "ACTIVITY_LO",
+                "productBytes": "902",
+                "productId": "113",
+                "slot": "13",
+                "sourceCrc": "58578",
+                "sourcePath": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_113.bin"
+              },
+              "generationTime": "2026-10-09T23:14:02.182Z",
+              "message": "[StorageCatalogEntry] Storage catalog slot=13 product=113 bytes=902 CRC=58578 path='/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_113.bin'",
+              "receptionTime": "2026-10-09T23:14:01.214Z",
+              "seqNumber": 138,
+              "severity": "INFO",
+              "source": "FPrimeEventProcessor",
+              "type": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry"
+            },
+            {
+              "createdBy": "guest",
+              "extra": {
+                "fprime_event_id": "268492808",
+                "fprime_event_name": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry",
+                "fprime_severity": "ACTIVITY_LO",
+                "productBytes": "902",
+                "productId": "112",
+                "slot": "12",
+                "sourceCrc": "58578",
+                "sourcePath": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_112.bin"
+              },
+              "generationTime": "2026-10-09T23:14:02.182Z",
+              "message": "[StorageCatalogEntry] Storage catalog slot=12 product=112 bytes=902 CRC=58578 path='/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_112.bin'",
+              "receptionTime": "2026-10-09T23:14:01.213Z",
+              "seqNumber": 136,
+              "severity": "INFO",
+              "source": "FPrimeEventProcessor",
+              "type": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry"
+            },
+            {
+              "createdBy": "guest",
+              "extra": {
+                "fprime_event_id": "268492808",
+                "fprime_event_name": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry",
+                "fprime_severity": "ACTIVITY_LO",
+                "productBytes": "902",
+                "productId": "111",
+                "slot": "11",
+                "sourceCrc": "58578",
+                "sourcePath": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_111.bin"
+              },
+              "generationTime": "2026-10-09T23:14:02.182Z",
+              "message": "[StorageCatalogEntry] Storage catalog slot=11 product=111 bytes=902 CRC=58578 path='/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_111.bin'",
+              "receptionTime": "2026-10-09T23:14:01.211Z",
+              "seqNumber": 134,
+              "severity": "INFO",
+              "source": "FPrimeEventProcessor",
+              "type": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry"
+            },
+            {
+              "createdBy": "guest",
+              "extra": {
+                "fprime_event_id": "268492808",
+                "fprime_event_name": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry",
+                "fprime_severity": "ACTIVITY_LO",
+                "productBytes": "902",
+                "productId": "110",
+                "slot": "10",
+                "sourceCrc": "58578",
+                "sourcePath": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_110.bin"
+              },
+              "generationTime": "2026-10-09T23:14:02.182Z",
+              "message": "[StorageCatalogEntry] Storage catalog slot=10 product=110 bytes=902 CRC=58578 path='/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_110.bin'",
+              "receptionTime": "2026-10-09T23:14:01.209Z",
+              "seqNumber": 132,
+              "severity": "INFO",
+              "source": "FPrimeEventProcessor",
+              "type": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry"
+            },
+            {
+              "createdBy": "guest",
+              "extra": {
+                "fprime_event_id": "268492808",
+                "fprime_event_name": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry",
+                "fprime_severity": "ACTIVITY_LO",
+                "productBytes": "902",
+                "productId": "109",
+                "slot": "9",
+                "sourceCrc": "58578",
+                "sourcePath": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_109.bin"
+              },
+              "generationTime": "2026-10-09T23:14:02.182Z",
+              "message": "[StorageCatalogEntry] Storage catalog slot=9 product=109 bytes=902 CRC=58578 path='/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_109.bin'",
+              "receptionTime": "2026-10-09T23:14:01.208Z",
+              "seqNumber": 130,
+              "severity": "INFO",
+              "source": "FPrimeEventProcessor",
+              "type": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry"
+            },
+            {
+              "createdBy": "guest",
+              "extra": {
+                "fprime_event_id": "268492808",
+                "fprime_event_name": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry",
+                "fprime_severity": "ACTIVITY_LO",
+                "productBytes": "902",
+                "productId": "108",
+                "slot": "8",
+                "sourceCrc": "58578",
+                "sourcePath": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_108.bin"
+              },
+              "generationTime": "2026-10-09T23:14:02.182Z",
+              "message": "[StorageCatalogEntry] Storage catalog slot=8 product=108 bytes=902 CRC=58578 path='/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_108.bin'",
+              "receptionTime": "2026-10-09T23:14:01.206Z",
+              "seqNumber": 128,
+              "severity": "INFO",
+              "source": "FPrimeEventProcessor",
+              "type": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry"
+            },
+            {
+              "createdBy": "guest",
+              "extra": {
+                "fprime_event_id": "268492808",
+                "fprime_event_name": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry",
+                "fprime_severity": "ACTIVITY_LO",
+                "productBytes": "902",
+                "productId": "107",
+                "slot": "7",
+                "sourceCrc": "58578",
+                "sourcePath": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_107.bin"
+              },
+              "generationTime": "2026-10-09T23:14:02.182Z",
+              "message": "[StorageCatalogEntry] Storage catalog slot=7 product=107 bytes=902 CRC=58578 path='/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_107.bin'",
+              "receptionTime": "2026-10-09T23:14:01.204Z",
+              "seqNumber": 126,
+              "severity": "INFO",
+              "source": "FPrimeEventProcessor",
+              "type": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry"
+            },
+            {
+              "createdBy": "guest",
+              "extra": {
+                "fprime_event_id": "268492808",
+                "fprime_event_name": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry",
+                "fprime_severity": "ACTIVITY_LO",
+                "productBytes": "902",
+                "productId": "106",
+                "slot": "6",
+                "sourceCrc": "58578",
+                "sourcePath": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_106.bin"
+              },
+              "generationTime": "2026-10-09T23:14:02.182Z",
+              "message": "[StorageCatalogEntry] Storage catalog slot=6 product=106 bytes=902 CRC=58578 path='/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_106.bin'",
+              "receptionTime": "2026-10-09T23:14:01.202Z",
+              "seqNumber": 124,
+              "severity": "INFO",
+              "source": "FPrimeEventProcessor",
+              "type": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry"
+            },
+            {
+              "createdBy": "guest",
+              "extra": {
+                "fprime_event_id": "268492808",
+                "fprime_event_name": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry",
+                "fprime_severity": "ACTIVITY_LO",
+                "productBytes": "902",
+                "productId": "105",
+                "slot": "5",
+                "sourceCrc": "58578",
+                "sourcePath": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_105.bin"
+              },
+              "generationTime": "2026-10-09T23:14:02.182Z",
+              "message": "[StorageCatalogEntry] Storage catalog slot=5 product=105 bytes=902 CRC=58578 path='/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_105.bin'",
+              "receptionTime": "2026-10-09T23:14:01.201Z",
+              "seqNumber": 122,
+              "severity": "INFO",
+              "source": "FPrimeEventProcessor",
+              "type": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry"
+            },
+            {
+              "createdBy": "guest",
+              "extra": {
+                "fprime_event_id": "268492808",
+                "fprime_event_name": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry",
+                "fprime_severity": "ACTIVITY_LO",
+                "productBytes": "902",
+                "productId": "104",
+                "slot": "4",
+                "sourceCrc": "58578",
+                "sourcePath": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_104.bin"
+              },
+              "generationTime": "2026-10-09T23:14:02.182Z",
+              "message": "[StorageCatalogEntry] Storage catalog slot=4 product=104 bytes=902 CRC=58578 path='/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_104.bin'",
+              "receptionTime": "2026-10-09T23:14:01.198Z",
+              "seqNumber": 120,
+              "severity": "INFO",
+              "source": "FPrimeEventProcessor",
+              "type": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry"
+            },
+            {
+              "createdBy": "guest",
+              "extra": {
+                "fprime_event_id": "268492808",
+                "fprime_event_name": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry",
+                "fprime_severity": "ACTIVITY_LO",
+                "productBytes": "902",
+                "productId": "103",
+                "slot": "3",
+                "sourceCrc": "58578",
+                "sourcePath": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_103.bin"
+              },
+              "generationTime": "2026-10-09T23:14:02.182Z",
+              "message": "[StorageCatalogEntry] Storage catalog slot=3 product=103 bytes=902 CRC=58578 path='/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_103.bin'",
+              "receptionTime": "2026-10-09T23:14:01.195Z",
+              "seqNumber": 118,
+              "severity": "INFO",
+              "source": "FPrimeEventProcessor",
+              "type": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry"
+            },
+            {
+              "createdBy": "guest",
+              "extra": {
+                "fprime_event_id": "268492808",
+                "fprime_event_name": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry",
+                "fprime_severity": "ACTIVITY_LO",
+                "productBytes": "902",
+                "productId": "102",
+                "slot": "2",
+                "sourceCrc": "58578",
+                "sourcePath": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_102.bin"
+              },
+              "generationTime": "2026-10-09T23:14:02.182Z",
+              "message": "[StorageCatalogEntry] Storage catalog slot=2 product=102 bytes=902 CRC=58578 path='/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_102.bin'",
+              "receptionTime": "2026-10-09T23:14:01.193Z",
+              "seqNumber": 116,
+              "severity": "INFO",
+              "source": "FPrimeEventProcessor",
+              "type": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry"
+            },
+            {
+              "createdBy": "guest",
+              "extra": {
+                "fprime_event_id": "268492808",
+                "fprime_event_name": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry",
+                "fprime_severity": "ACTIVITY_LO",
+                "productBytes": "902",
+                "productId": "101",
+                "slot": "1",
+                "sourceCrc": "58578",
+                "sourcePath": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_101.bin"
+              },
+              "generationTime": "2026-10-09T23:14:02.182Z",
+              "message": "[StorageCatalogEntry] Storage catalog slot=1 product=101 bytes=902 CRC=58578 path='/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_101.bin'",
+              "receptionTime": "2026-10-09T23:14:01.191Z",
+              "seqNumber": 114,
+              "severity": "INFO",
+              "source": "FPrimeEventProcessor",
+              "type": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry"
+            },
+            {
+              "createdBy": "guest",
+              "extra": {
+                "fprime_event_id": "268492808",
+                "fprime_event_name": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry",
+                "fprime_severity": "ACTIVITY_LO",
+                "productBytes": "902",
+                "productId": "100",
+                "slot": "0",
+                "sourceCrc": "58578",
+                "sourcePath": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_100.bin"
+              },
+              "generationTime": "2026-10-09T23:14:02.182Z",
+              "message": "[StorageCatalogEntry] Storage catalog slot=0 product=100 bytes=902 CRC=58578 path='/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_100.bin'",
+              "receptionTime": "2026-10-09T23:14:01.188Z",
+              "seqNumber": 112,
+              "severity": "INFO",
+              "source": "FPrimeEventProcessor",
+              "type": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry"
+            }
+          ],
+          "command": {
+            "assignments": [
+              {
+                "name": "CCSDS_Version",
+                "userInput": false,
+                "value": {
+                  "type": "UINT32",
+                  "uint32Value": 0
+                }
+              },
+              {
+                "name": "CCSDS_Type",
+                "userInput": false,
+                "value": {
+                  "booleanValue": true,
+                  "type": "BOOLEAN"
+                }
+              },
+              {
+                "name": "CCSDS_Sec_Hdr_Flag",
+                "userInput": false,
+                "value": {
+                  "booleanValue": false,
+                  "type": "BOOLEAN"
+                }
+              },
+              {
+                "name": "CCSDS_APID",
+                "userInput": false,
+                "value": {
+                  "type": "UINT32",
+                  "uint32Value": 0
+                }
+              },
+              {
+                "name": "CCSDS_Group_Flags",
+                "userInput": false,
+                "value": {
+                  "sint64Value": "3",
+                  "stringValue": "Standalone",
+                  "type": "ENUMERATED"
+                }
+              },
+              {
+                "name": "OpCode",
+                "userInput": false,
+                "value": {
+                  "type": "UINT32",
+                  "uint32Value": 268492802
+                }
+              }
+            ],
+            "binary": "EADAAAAAAAAQAOAC",
+            "commandName": "/ArtemisRpiTeensyDeployment_ArtemisRpiTeensyDeployment/ArtemisRpiTeensyDeployment/storageManager/REPORT_STORAGE_HISTORY",
+            "generationTime": "2026-10-09T23:14:01.181Z",
+            "id": "1791587678181-n2-completion-storage-33184-1960988171",
+            "origin": "n2-completion-storage-33184",
+            "queue": "default",
+            "sequenceNumber": 1960988171,
+            "unprocessedBinary": "EADAAAAAAAAQAOAC",
+            "username": "guest"
+          },
+          "complete": true,
+          "count_matches": true,
+          "duplicate_product_ids": [],
+          "elapsed_seconds": 0.892,
+          "empty_events": [],
+          "event_count": 16,
+          "expected_count": 16,
+          "expected_product_ids": [],
+          "generation_time": "2026-10-09T23:14:01.181Z",
+          "ids_match": true,
+          "invalid_id_event_indexes": [],
+          "metadata_errors": [],
+          "missing_product_ids": [],
+          "product_ids": [
+            100,
+            101,
+            102,
+            103,
+            104,
+            105,
+            106,
+            107,
+            108,
+            109,
+            110,
+            111,
+            112,
+            113,
+            114,
+            115
+          ],
+          "status": "PASS",
+          "unexpected_product_ids": []
+        }
+      ],
+      "sequenceNumber": 1960988171,
+      "successful_report_attempt": 1,
+      "unprocessedBinary": "EADAAAAAAAAQAOAC",
+      "username": "guest"
+    },
+    "before_report": {
+      "assignments": [
+        {
+          "name": "CCSDS_Version",
+          "userInput": false,
+          "value": {
+            "type": "UINT32",
+            "uint32Value": 0
+          }
+        },
+        {
+          "name": "CCSDS_Type",
+          "userInput": false,
+          "value": {
+            "booleanValue": true,
+            "type": "BOOLEAN"
+          }
+        },
+        {
+          "name": "CCSDS_Sec_Hdr_Flag",
+          "userInput": false,
+          "value": {
+            "booleanValue": false,
+            "type": "BOOLEAN"
+          }
+        },
+        {
+          "name": "CCSDS_APID",
+          "userInput": false,
+          "value": {
+            "type": "UINT32",
+            "uint32Value": 0
+          }
+        },
+        {
+          "name": "CCSDS_Group_Flags",
+          "userInput": false,
+          "value": {
+            "sint64Value": "3",
+            "stringValue": "Standalone",
+            "type": "ENUMERATED"
+          }
+        },
+        {
+          "name": "OpCode",
+          "userInput": false,
+          "value": {
+            "type": "UINT32",
+            "uint32Value": 268492802
+          }
+        }
+      ],
+      "binary": "EADAAAAAAAAQAOAC",
+      "commandName": "/ArtemisRpiTeensyDeployment_ArtemisRpiTeensyDeployment/ArtemisRpiTeensyDeployment/storageManager/REPORT_STORAGE_HISTORY",
+      "generationTime": "2026-10-09T23:13:59.145Z",
+      "id": "1791587676145-n2-completion-storage-33184-1134823277",
+      "origin": "n2-completion-storage-33184",
+      "queue": "default",
+      "report_attempts": [
+        {
+          "attempt": 1,
+          "catalog_events": [
+            {
+              "createdBy": "guest",
+              "extra": {
+                "fprime_event_id": "268492808",
+                "fprime_event_name": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry",
+                "fprime_severity": "ACTIVITY_LO",
+                "productBytes": "902",
+                "productId": "115",
+                "slot": "15",
+                "sourceCrc": "58578",
+                "sourcePath": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_115.bin"
+              },
+              "generationTime": "2026-10-09T23:14:00.146Z",
+              "message": "[StorageCatalogEntry] Storage catalog slot=15 product=115 bytes=902 CRC=58578 path='/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_115.bin'",
+              "receptionTime": "2026-10-09T23:13:59.806Z",
+              "seqNumber": 91,
+              "severity": "INFO",
+              "source": "FPrimeEventProcessor",
+              "type": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry"
+            },
+            {
+              "createdBy": "guest",
+              "extra": {
+                "fprime_event_id": "268492808",
+                "fprime_event_name": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry",
+                "fprime_severity": "ACTIVITY_LO",
+                "productBytes": "902",
+                "productId": "114",
+                "slot": "14",
+                "sourceCrc": "58578",
+                "sourcePath": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_114.bin"
+              },
+              "generationTime": "2026-10-09T23:14:00.146Z",
+              "message": "[StorageCatalogEntry] Storage catalog slot=14 product=114 bytes=902 CRC=58578 path='/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_114.bin'",
+              "receptionTime": "2026-10-09T23:13:59.804Z",
+              "seqNumber": 89,
+              "severity": "INFO",
+              "source": "FPrimeEventProcessor",
+              "type": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry"
+            },
+            {
+              "createdBy": "guest",
+              "extra": {
+                "fprime_event_id": "268492808",
+                "fprime_event_name": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry",
+                "fprime_severity": "ACTIVITY_LO",
+                "productBytes": "902",
+                "productId": "113",
+                "slot": "13",
+                "sourceCrc": "58578",
+                "sourcePath": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_113.bin"
+              },
+              "generationTime": "2026-10-09T23:14:00.146Z",
+              "message": "[StorageCatalogEntry] Storage catalog slot=13 product=113 bytes=902 CRC=58578 path='/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_113.bin'",
+              "receptionTime": "2026-10-09T23:13:59.800Z",
+              "seqNumber": 87,
+              "severity": "INFO",
+              "source": "FPrimeEventProcessor",
+              "type": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry"
+            },
+            {
+              "createdBy": "guest",
+              "extra": {
+                "fprime_event_id": "268492808",
+                "fprime_event_name": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry",
+                "fprime_severity": "ACTIVITY_LO",
+                "productBytes": "902",
+                "productId": "112",
+                "slot": "12",
+                "sourceCrc": "58578",
+                "sourcePath": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_112.bin"
+              },
+              "generationTime": "2026-10-09T23:14:00.146Z",
+              "message": "[StorageCatalogEntry] Storage catalog slot=12 product=112 bytes=902 CRC=58578 path='/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_112.bin'",
+              "receptionTime": "2026-10-09T23:13:59.181Z",
+              "seqNumber": 85,
+              "severity": "INFO",
+              "source": "FPrimeEventProcessor",
+              "type": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry"
+            },
+            {
+              "createdBy": "guest",
+              "extra": {
+                "fprime_event_id": "268492808",
+                "fprime_event_name": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry",
+                "fprime_severity": "ACTIVITY_LO",
+                "productBytes": "902",
+                "productId": "111",
+                "slot": "11",
+                "sourceCrc": "58578",
+                "sourcePath": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_111.bin"
+              },
+              "generationTime": "2026-10-09T23:14:00.146Z",
+              "message": "[StorageCatalogEntry] Storage catalog slot=11 product=111 bytes=902 CRC=58578 path='/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_111.bin'",
+              "receptionTime": "2026-10-09T23:13:59.180Z",
+              "seqNumber": 83,
+              "severity": "INFO",
+              "source": "FPrimeEventProcessor",
+              "type": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry"
+            },
+            {
+              "createdBy": "guest",
+              "extra": {
+                "fprime_event_id": "268492808",
+                "fprime_event_name": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry",
+                "fprime_severity": "ACTIVITY_LO",
+                "productBytes": "902",
+                "productId": "110",
+                "slot": "10",
+                "sourceCrc": "58578",
+                "sourcePath": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_110.bin"
+              },
+              "generationTime": "2026-10-09T23:14:00.146Z",
+              "message": "[StorageCatalogEntry] Storage catalog slot=10 product=110 bytes=902 CRC=58578 path='/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_110.bin'",
+              "receptionTime": "2026-10-09T23:13:59.178Z",
+              "seqNumber": 81,
+              "severity": "INFO",
+              "source": "FPrimeEventProcessor",
+              "type": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry"
+            },
+            {
+              "createdBy": "guest",
+              "extra": {
+                "fprime_event_id": "268492808",
+                "fprime_event_name": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry",
+                "fprime_severity": "ACTIVITY_LO",
+                "productBytes": "902",
+                "productId": "109",
+                "slot": "9",
+                "sourceCrc": "58578",
+                "sourcePath": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_109.bin"
+              },
+              "generationTime": "2026-10-09T23:14:00.146Z",
+              "message": "[StorageCatalogEntry] Storage catalog slot=9 product=109 bytes=902 CRC=58578 path='/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_109.bin'",
+              "receptionTime": "2026-10-09T23:13:59.176Z",
+              "seqNumber": 79,
+              "severity": "INFO",
+              "source": "FPrimeEventProcessor",
+              "type": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry"
+            },
+            {
+              "createdBy": "guest",
+              "extra": {
+                "fprime_event_id": "268492808",
+                "fprime_event_name": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry",
+                "fprime_severity": "ACTIVITY_LO",
+                "productBytes": "902",
+                "productId": "108",
+                "slot": "8",
+                "sourceCrc": "58578",
+                "sourcePath": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_108.bin"
+              },
+              "generationTime": "2026-10-09T23:14:00.146Z",
+              "message": "[StorageCatalogEntry] Storage catalog slot=8 product=108 bytes=902 CRC=58578 path='/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_108.bin'",
+              "receptionTime": "2026-10-09T23:13:59.173Z",
+              "seqNumber": 77,
+              "severity": "INFO",
+              "source": "FPrimeEventProcessor",
+              "type": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry"
+            },
+            {
+              "createdBy": "guest",
+              "extra": {
+                "fprime_event_id": "268492808",
+                "fprime_event_name": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry",
+                "fprime_severity": "ACTIVITY_LO",
+                "productBytes": "902",
+                "productId": "107",
+                "slot": "7",
+                "sourceCrc": "58578",
+                "sourcePath": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_107.bin"
+              },
+              "generationTime": "2026-10-09T23:14:00.146Z",
+              "message": "[StorageCatalogEntry] Storage catalog slot=7 product=107 bytes=902 CRC=58578 path='/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_107.bin'",
+              "receptionTime": "2026-10-09T23:13:59.169Z",
+              "seqNumber": 75,
+              "severity": "INFO",
+              "source": "FPrimeEventProcessor",
+              "type": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry"
+            },
+            {
+              "createdBy": "guest",
+              "extra": {
+                "fprime_event_id": "268492808",
+                "fprime_event_name": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry",
+                "fprime_severity": "ACTIVITY_LO",
+                "productBytes": "902",
+                "productId": "106",
+                "slot": "6",
+                "sourceCrc": "58578",
+                "sourcePath": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_106.bin"
+              },
+              "generationTime": "2026-10-09T23:14:00.146Z",
+              "message": "[StorageCatalogEntry] Storage catalog slot=6 product=106 bytes=902 CRC=58578 path='/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_106.bin'",
+              "receptionTime": "2026-10-09T23:13:59.166Z",
+              "seqNumber": 73,
+              "severity": "INFO",
+              "source": "FPrimeEventProcessor",
+              "type": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry"
+            },
+            {
+              "createdBy": "guest",
+              "extra": {
+                "fprime_event_id": "268492808",
+                "fprime_event_name": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry",
+                "fprime_severity": "ACTIVITY_LO",
+                "productBytes": "902",
+                "productId": "105",
+                "slot": "5",
+                "sourceCrc": "58578",
+                "sourcePath": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_105.bin"
+              },
+              "generationTime": "2026-10-09T23:14:00.146Z",
+              "message": "[StorageCatalogEntry] Storage catalog slot=5 product=105 bytes=902 CRC=58578 path='/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_105.bin'",
+              "receptionTime": "2026-10-09T23:13:59.163Z",
+              "seqNumber": 71,
+              "severity": "INFO",
+              "source": "FPrimeEventProcessor",
+              "type": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry"
+            },
+            {
+              "createdBy": "guest",
+              "extra": {
+                "fprime_event_id": "268492808",
+                "fprime_event_name": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry",
+                "fprime_severity": "ACTIVITY_LO",
+                "productBytes": "902",
+                "productId": "104",
+                "slot": "4",
+                "sourceCrc": "58578",
+                "sourcePath": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_104.bin"
+              },
+              "generationTime": "2026-10-09T23:14:00.146Z",
+              "message": "[StorageCatalogEntry] Storage catalog slot=4 product=104 bytes=902 CRC=58578 path='/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_104.bin'",
+              "receptionTime": "2026-10-09T23:13:59.161Z",
+              "seqNumber": 69,
+              "severity": "INFO",
+              "source": "FPrimeEventProcessor",
+              "type": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry"
+            },
+            {
+              "createdBy": "guest",
+              "extra": {
+                "fprime_event_id": "268492808",
+                "fprime_event_name": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry",
+                "fprime_severity": "ACTIVITY_LO",
+                "productBytes": "902",
+                "productId": "103",
+                "slot": "3",
+                "sourceCrc": "58578",
+                "sourcePath": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_103.bin"
+              },
+              "generationTime": "2026-10-09T23:14:00.146Z",
+              "message": "[StorageCatalogEntry] Storage catalog slot=3 product=103 bytes=902 CRC=58578 path='/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_103.bin'",
+              "receptionTime": "2026-10-09T23:13:59.159Z",
+              "seqNumber": 67,
+              "severity": "INFO",
+              "source": "FPrimeEventProcessor",
+              "type": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry"
+            },
+            {
+              "createdBy": "guest",
+              "extra": {
+                "fprime_event_id": "268492808",
+                "fprime_event_name": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry",
+                "fprime_severity": "ACTIVITY_LO",
+                "productBytes": "902",
+                "productId": "102",
+                "slot": "2",
+                "sourceCrc": "58578",
+                "sourcePath": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_102.bin"
+              },
+              "generationTime": "2026-10-09T23:14:00.146Z",
+              "message": "[StorageCatalogEntry] Storage catalog slot=2 product=102 bytes=902 CRC=58578 path='/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_102.bin'",
+              "receptionTime": "2026-10-09T23:13:59.157Z",
+              "seqNumber": 65,
+              "severity": "INFO",
+              "source": "FPrimeEventProcessor",
+              "type": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry"
+            },
+            {
+              "createdBy": "guest",
+              "extra": {
+                "fprime_event_id": "268492808",
+                "fprime_event_name": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry",
+                "fprime_severity": "ACTIVITY_LO",
+                "productBytes": "902",
+                "productId": "101",
+                "slot": "1",
+                "sourceCrc": "58578",
+                "sourcePath": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_101.bin"
+              },
+              "generationTime": "2026-10-09T23:14:00.146Z",
+              "message": "[StorageCatalogEntry] Storage catalog slot=1 product=101 bytes=902 CRC=58578 path='/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_101.bin'",
+              "receptionTime": "2026-10-09T23:13:59.155Z",
+              "seqNumber": 63,
+              "severity": "INFO",
+              "source": "FPrimeEventProcessor",
+              "type": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry"
+            },
+            {
+              "createdBy": "guest",
+              "extra": {
+                "fprime_event_id": "268492808",
+                "fprime_event_name": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry",
+                "fprime_severity": "ACTIVITY_LO",
+                "productBytes": "902",
+                "productId": "100",
+                "slot": "0",
+                "sourceCrc": "58578",
+                "sourcePath": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_100.bin"
+              },
+              "generationTime": "2026-10-09T23:14:00.146Z",
+              "message": "[StorageCatalogEntry] Storage catalog slot=0 product=100 bytes=902 CRC=58578 path='/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_100.bin'",
+              "receptionTime": "2026-10-09T23:13:59.153Z",
+              "seqNumber": 61,
+              "severity": "INFO",
+              "source": "FPrimeEventProcessor",
+              "type": "ArtemisRpiTeensyDeployment.storageManager.StorageCatalogEntry"
+            }
+          ],
+          "command": {
+            "assignments": [
+              {
+                "name": "CCSDS_Version",
+                "userInput": false,
+                "value": {
+                  "type": "UINT32",
+                  "uint32Value": 0
+                }
+              },
+              {
+                "name": "CCSDS_Type",
+                "userInput": false,
+                "value": {
+                  "booleanValue": true,
+                  "type": "BOOLEAN"
+                }
+              },
+              {
+                "name": "CCSDS_Sec_Hdr_Flag",
+                "userInput": false,
+                "value": {
+                  "booleanValue": false,
+                  "type": "BOOLEAN"
+                }
+              },
+              {
+                "name": "CCSDS_APID",
+                "userInput": false,
+                "value": {
+                  "type": "UINT32",
+                  "uint32Value": 0
+                }
+              },
+              {
+                "name": "CCSDS_Group_Flags",
+                "userInput": false,
+                "value": {
+                  "sint64Value": "3",
+                  "stringValue": "Standalone",
+                  "type": "ENUMERATED"
+                }
+              },
+              {
+                "name": "OpCode",
+                "userInput": false,
+                "value": {
+                  "type": "UINT32",
+                  "uint32Value": 268492802
+                }
+              }
+            ],
+            "binary": "EADAAAAAAAAQAOAC",
+            "commandName": "/ArtemisRpiTeensyDeployment_ArtemisRpiTeensyDeployment/ArtemisRpiTeensyDeployment/storageManager/REPORT_STORAGE_HISTORY",
+            "generationTime": "2026-10-09T23:13:59.145Z",
+            "id": "1791587676145-n2-completion-storage-33184-1134823277",
+            "origin": "n2-completion-storage-33184",
+            "queue": "default",
+            "sequenceNumber": 1134823277,
+            "unprocessedBinary": "EADAAAAAAAAQAOAC",
+            "username": "guest"
+          },
+          "complete": true,
+          "count_matches": true,
+          "duplicate_product_ids": [],
+          "elapsed_seconds": 0.907,
+          "empty_events": [],
+          "event_count": 16,
+          "expected_count": 16,
+          "expected_product_ids": [],
+          "generation_time": "2026-10-09T23:13:59.145Z",
+          "ids_match": true,
+          "invalid_id_event_indexes": [],
+          "metadata_errors": [],
+          "missing_product_ids": [],
+          "product_ids": [
+            100,
+            101,
+            102,
+            103,
+            104,
+            105,
+            106,
+            107,
+            108,
+            109,
+            110,
+            111,
+            112,
+            113,
+            114,
+            115
+          ],
+          "status": "PASS",
+          "unexpected_product_ids": []
+        }
+      ],
+      "sequenceNumber": 1134823277,
+      "successful_report_attempt": 1,
+      "unprocessedBinary": "EADAAAAAAAAQAOAC",
+      "username": "guest"
+    },
+    "command": {
+      "assignments": [
+        {
+          "name": "CCSDS_Version",
+          "userInput": false,
+          "value": {
+            "type": "UINT32",
+            "uint32Value": 0
+          }
+        },
+        {
+          "name": "CCSDS_Type",
+          "userInput": false,
+          "value": {
+            "booleanValue": true,
+            "type": "BOOLEAN"
+          }
+        },
+        {
+          "name": "CCSDS_Sec_Hdr_Flag",
+          "userInput": false,
+          "value": {
+            "booleanValue": false,
+            "type": "BOOLEAN"
+          }
+        },
+        {
+          "name": "CCSDS_APID",
+          "userInput": false,
+          "value": {
+            "type": "UINT32",
+            "uint32Value": 0
+          }
+        },
+        {
+          "name": "CCSDS_Group_Flags",
+          "userInput": false,
+          "value": {
+            "sint64Value": "3",
+            "stringValue": "Standalone",
+            "type": "ENUMERATED"
+          }
+        },
+        {
+          "name": "OpCode",
+          "userInput": false,
+          "value": {
+            "type": "UINT32",
+            "uint32Value": 268464132
+          }
+        },
+        {
+          "name": "verificationToken",
+          "userInput": true,
+          "value": {
+            "type": "UINT32",
+            "uint32Value": 1998178803
+          }
+        },
+        {
+          "name": "durationSeconds",
+          "userInput": true,
+          "value": {
+            "type": "UINT32",
+            "uint32Value": 1
+          }
+        }
+      ],
+      "binary": "EADAAAAAAAAQAHAEdxnJ8wAAAAE=",
+      "commandName": "/ArtemisRpiTeensyDeployment_ArtemisRpiTeensyDeployment/ArtemisRpiTeensyDeployment/scienceApp/VERIFIED_COLLECT_AND_DOWNLINK",
+      "generationTime": "2026-10-09T23:14:00.054Z",
+      "id": "1791587677054-n2-completion-storage-33184-72153027",
+      "origin": "n2-completion-storage-33184",
+      "queue": "default",
+      "sequenceNumber": 72153027,
+      "unprocessedBinary": "EADAAAAAAAAQAHAEdxnJ8wAAAAE=",
+      "username": "guest"
+    },
+    "history": {
+      "entry": {
+        "assignments": [
+          {
+            "name": "CCSDS_Version",
+            "userInput": false,
+            "value": {
+              "type": "UINT32",
+              "uint32Value": 0
+            }
+          },
+          {
+            "name": "CCSDS_Type",
+            "userInput": false,
+            "value": {
+              "booleanValue": true,
+              "type": "BOOLEAN"
+            }
+          },
+          {
+            "name": "CCSDS_Sec_Hdr_Flag",
+            "userInput": false,
+            "value": {
+              "booleanValue": false,
+              "type": "BOOLEAN"
+            }
+          },
+          {
+            "name": "CCSDS_APID",
+            "userInput": false,
+            "value": {
+              "type": "UINT32",
+              "uint32Value": 0
+            }
+          },
+          {
+            "name": "CCSDS_Group_Flags",
+            "userInput": false,
+            "value": {
+              "sint64Value": "3",
+              "stringValue": "Standalone",
+              "type": "ENUMERATED"
+            }
+          },
+          {
+            "name": "OpCode",
+            "userInput": false,
+            "value": {
+              "type": "UINT32",
+              "uint32Value": 268464132
+            }
+          },
+          {
+            "name": "verificationToken",
+            "userInput": true,
+            "value": {
+              "type": "UINT32",
+              "uint32Value": 1998178803
+            }
+          },
+          {
+            "name": "durationSeconds",
+            "userInput": true,
+            "value": {
+              "type": "UINT32",
+              "uint32Value": 1
+            }
+          }
+        ],
+        "attr": [
+          {
+            "name": "unprocessedBinary",
+            "value": {
+              "binaryValue": "EADAAAAAAAAQAHAEdxnJ8wAAAAE=",
+              "type": "BINARY"
+            }
+          },
+          {
+            "name": "binary",
+            "value": {
+              "binaryValue": "EADAAwANAAAQAHAEdxnJ8wAAAAE=",
+              "type": "BINARY"
+            }
+          },
+          {
+            "name": "username",
+            "value": {
+              "stringValue": "guest",
+              "type": "STRING"
+            }
+          },
+          {
+            "name": "queue",
+            "value": {
+              "stringValue": "default",
+              "type": "STRING"
+            }
+          },
+          {
+            "name": "Acknowledge_Queued_Status",
+            "value": {
+              "stringValue": "OK",
+              "type": "STRING"
+            }
+          },
+          {
+            "name": "Acknowledge_Queued_Time",
+            "value": {
+              "stringValue": "2026-10-09T23:14:00.054Z",
+              "timestampValue": "1791587677054",
+              "type": "TIMESTAMP"
+            }
+          },
+          {
+            "name": "TransmissionConstraints_Status",
+            "value": {
+              "stringValue": "NA",
+              "type": "STRING"
+            }
+          },
+          {
+            "name": "TransmissionConstraints_Time",
+            "value": {
+              "stringValue": "2026-10-09T23:14:00.054Z",
+              "timestampValue": "1791587677054",
+              "type": "TIMESTAMP"
+            }
+          },
+          {
+            "name": "Acknowledge_Released_Status",
+            "value": {
+              "stringValue": "OK",
+              "type": "STRING"
+            }
+          },
+          {
+            "name": "Acknowledge_Released_Time",
+            "value": {
+              "stringValue": "2026-10-09T23:14:00.054Z",
+              "timestampValue": "1791587677054",
+              "type": "TIMESTAMP"
+            }
+          },
+          {
+            "name": "ccsds-seqcount",
+            "value": {
+              "sint32Value": 3,
+              "type": "SINT32"
+            }
+          },
+          {
+            "name": "Acknowledge_Sent_Status",
+            "value": {
+              "stringValue": "OK",
+              "type": "STRING"
+            }
+          },
+          {
+            "name": "Acknowledge_Sent_Time",
+            "value": {
+              "stringValue": "2026-10-09T23:14:00.055Z",
+              "timestampValue": "1791587677055",
+              "type": "TIMESTAMP"
+            }
+          },
+          {
+            "name": "Verification_RunId",
+            "value": {
+              "stringValue": "1d16ddee3115",
+              "type": "STRING"
+            }
+          },
+          {
+            "name": "Verification_Token",
+            "value": {
+              "stringValue": "1998178803",
+              "type": "STRING"
+            }
+          },
+          {
+            "name": "Verification_RequestId",
+            "value": {
+              "stringValue": "1",
+              "type": "STRING"
+            }
+          },
+          {
+            "name": "Verification_Generation",
+            "value": {
+              "stringValue": "1",
+              "type": "STRING"
+            }
+          },
+          {
+            "name": "PayloadAccepted_Status",
+            "value": {
+              "stringValue": "OK",
+              "type": "STRING"
+            }
+          },
+          {
+            "name": "PayloadAccepted_Time",
+            "value": {
+              "stringValue": "2026-10-09T23:14:01.003Z",
+              "type": "STRING"
+            }
+          },
+          {
+            "name": "PayloadAccepted_Message",
+            "value": {
+              "stringValue": "FSW admitted request 1, internal generation 1",
+              "type": "STRING"
+            }
+          },
+          {
+            "name": "Verification_ProductId",
+            "value": {
+              "stringValue": "116",
+              "type": "STRING"
+            }
+          },
+          {
+            "name": "Verification_Bytes",
+            "value": {
+              "stringValue": "902",
+              "type": "STRING"
+            }
+          },
+          {
+            "name": "Verification_CRC16_CCITT",
+            "value": {
+              "stringValue": "58578",
+              "type": "STRING"
+            }
+          },
+          {
+            "name": "PayloadTerminal_Status",
+            "value": {
+              "stringValue": "OK",
+              "type": "STRING"
+            }
+          },
+          {
+            "name": "PayloadTerminal_Time",
+            "value": {
+              "stringValue": "2026-10-09T23:14:01.003Z",
+              "type": "STRING"
+            }
+          },
+          {
+            "name": "PayloadTerminal_Message",
+            "value": {
+              "stringValue": "request 1, generation 1 completed with product 116",
+              "type": "STRING"
+            }
+          },
+          {
+            "name": "StorageCommitted_Status",
+            "value": {
+              "stringValue": "NOK",
+              "type": "STRING"
+            }
+          },
+          {
+            "name": "StorageCommitted_Time",
+            "value": {
+              "stringValue": "2026-10-09T23:14:01.003Z",
+              "type": "STRING"
+            }
+          },
+          {
+            "name": "StorageCommitted_Message",
+            "value": {
+              "stringValue": "multiple storage rejections matched the token-bound product",
+              "type": "STRING"
+            }
+          },
+          {
+            "name": "SenderComplete_Status",
+            "value": {
+              "stringValue": "NOK",
+              "type": "STRING"
+            }
+          },
+          {
+            "name": "SenderComplete_Time",
+            "value": {
+              "stringValue": "2026-10-09T23:14:01.003Z",
+              "type": "STRING"
+            }
+          },
+          {
+            "name": "SenderComplete_Message",
+            "value": {
+              "stringValue": "storage rejected the product",
+              "type": "STRING"
+            }
+          },
+          {
+            "name": "GroundReceipt_Status",
+            "value": {
+              "stringValue": "NOK",
+              "type": "STRING"
+            }
+          },
+          {
+            "name": "GroundReceipt_Time",
+            "value": {
+              "stringValue": "2026-10-09T23:14:01.003Z",
+              "type": "STRING"
+            }
+          },
+          {
+            "name": "GroundReceipt_Message",
+            "value": {
+              "stringValue": "storage rejected the product",
+              "type": "STRING"
+            }
+          },
+          {
+            "name": "CommandComplete_Status",
+            "value": {
+              "stringValue": "NOK",
+              "type": "STRING"
+            }
+          },
+          {
+            "name": "CommandComplete_Time",
+            "value": {
+              "stringValue": "2026-10-09T23:14:01.003Z",
+              "timestampValue": "1791587678003",
+              "type": "TIMESTAMP"
+            }
+          },
+          {
+            "name": "CommandComplete_Message",
+            "value": {
+              "stringValue": "multiple storage rejections matched the product",
+              "type": "STRING"
+            }
+          }
+        ],
+        "commandId": {
+          "commandName": "/ArtemisRpiTeensyDeployment_ArtemisRpiTeensyDeployment/ArtemisRpiTeensyDeployment/scienceApp/VERIFIED_COLLECT_AND_DOWNLINK",
+          "generationTime": "1791587677054",
+          "origin": "n2-completion-storage-33184",
+          "sequenceNumber": 72153027
+        },
+        "commandName": "/ArtemisRpiTeensyDeployment_ArtemisRpiTeensyDeployment/ArtemisRpiTeensyDeployment/scienceApp/VERIFIED_COLLECT_AND_DOWNLINK",
+        "generationTime": "2026-10-09T23:14:00.054Z",
+        "id": "1791587677054-n2-completion-storage-33184-72153027",
+        "origin": "n2-completion-storage-33184",
+        "sequenceNumber": 72153027
+      },
+      "stages": {
+        "Acknowledge_Queued_Status": {
+          "message": null,
+          "time": null,
+          "value": "OK"
+        },
+        "Acknowledge_Queued_Time": {
+          "message": null,
+          "time": null,
+          "value": "2026-10-09T23:14:00.054Z"
+        },
+        "Acknowledge_Released_Status": {
+          "message": null,
+          "time": null,
+          "value": "OK"
+        },
+        "Acknowledge_Released_Time": {
+          "message": null,
+          "time": null,
+          "value": "2026-10-09T23:14:00.054Z"
+        },
+        "Acknowledge_Sent_Status": {
+          "message": null,
+          "time": null,
+          "value": "OK"
+        },
+        "Acknowledge_Sent_Time": {
+          "message": null,
+          "time": null,
+          "value": "2026-10-09T23:14:00.055Z"
+        },
+        "CommandComplete_Message": {
+          "message": null,
+          "time": null,
+          "value": "multiple storage rejections matched the product"
+        },
+        "CommandComplete_Status": {
+          "message": null,
+          "time": null,
+          "value": "NOK"
+        },
+        "CommandComplete_Time": {
+          "message": null,
+          "time": null,
+          "value": "2026-10-09T23:14:01.003Z"
+        },
+        "GroundReceipt_Message": {
+          "message": null,
+          "time": null,
+          "value": "storage rejected the product"
+        },
+        "GroundReceipt_Status": {
+          "message": null,
+          "time": null,
+          "value": "NOK"
+        },
+        "GroundReceipt_Time": {
+          "message": null,
+          "time": null,
+          "value": "2026-10-09T23:14:01.003Z"
+        },
+        "PayloadAccepted_Message": {
+          "message": null,
+          "time": null,
+          "value": "FSW admitted request 1, internal generation 1"
+        },
+        "PayloadAccepted_Status": {
+          "message": null,
+          "time": null,
+          "value": "OK"
+        },
+        "PayloadAccepted_Time": {
+          "message": null,
+          "time": null,
+          "value": "2026-10-09T23:14:01.003Z"
+        },
+        "PayloadTerminal_Message": {
+          "message": null,
+          "time": null,
+          "value": "request 1, generation 1 completed with product 116"
+        },
+        "PayloadTerminal_Status": {
+          "message": null,
+          "time": null,
+          "value": "OK"
+        },
+        "PayloadTerminal_Time": {
+          "message": null,
+          "time": null,
+          "value": "2026-10-09T23:14:01.003Z"
+        },
+        "SenderComplete_Message": {
+          "message": null,
+          "time": null,
+          "value": "storage rejected the product"
+        },
+        "SenderComplete_Status": {
+          "message": null,
+          "time": null,
+          "value": "NOK"
+        },
+        "SenderComplete_Time": {
+          "message": null,
+          "time": null,
+          "value": "2026-10-09T23:14:01.003Z"
+        },
+        "StorageCommitted_Message": {
+          "message": null,
+          "time": null,
+          "value": "multiple storage rejections matched the token-bound product"
+        },
+        "StorageCommitted_Status": {
+          "message": null,
+          "time": null,
+          "value": "NOK"
+        },
+        "StorageCommitted_Time": {
+          "message": null,
+          "time": null,
+          "value": "2026-10-09T23:14:01.003Z"
+        },
+        "TransmissionConstraints_Status": {
+          "message": null,
+          "time": null,
+          "value": "NA"
+        },
+        "TransmissionConstraints_Time": {
+          "message": null,
+          "time": null,
+          "value": "2026-10-09T23:14:00.054Z"
+        },
+        "Verification_Bytes": {
+          "message": null,
+          "time": null,
+          "value": "902"
+        },
+        "Verification_CRC16_CCITT": {
+          "message": null,
+          "time": null,
+          "value": "58578"
+        },
+        "Verification_Generation": {
+          "message": null,
+          "time": null,
+          "value": "1"
+        },
+        "Verification_ProductId": {
+          "message": null,
+          "time": null,
+          "value": "116"
+        },
+        "Verification_RequestId": {
+          "message": null,
+          "time": null,
+          "value": "1"
+        },
+        "Verification_RunId": {
+          "message": null,
+          "time": null,
+          "value": "1d16ddee3115"
+        },
+        "Verification_Token": {
+          "message": null,
+          "time": null,
+          "value": "1998178803"
+        },
+        "binary": {
+          "message": null,
+          "time": null,
+          "value": {
+            "binaryValue": "EADAAwANAAAQAHAEdxnJ8wAAAAE=",
+            "type": "BINARY"
+          }
+        },
+        "ccsds-seqcount": {
+          "message": null,
+          "time": null,
+          "value": 3
+        },
+        "queue": {
+          "message": null,
+          "time": null,
+          "value": "default"
+        },
+        "unprocessedBinary": {
+          "message": null,
+          "time": null,
+          "value": {
+            "binaryValue": "EADAAAAAAAAQAHAEdxnJ8wAAAAE=",
+            "type": "BINARY"
+          }
+        },
+        "username": {
+          "message": null,
+          "time": null,
+          "value": "guest"
+        }
+      }
+    },
+    "product_ids": [
+      100,
+      101,
+      102,
+      103,
+      104,
+      105,
+      106,
+      107,
+      108,
+      109,
+      110,
+      111,
+      112,
+      113,
+      114,
+      115
+    ],
+    "rejection": {
+      "createdBy": "guest",
+      "extra": {
+        "fprime_event_id": "268492807",
+        "fprime_event_name": "ArtemisRpiTeensyDeployment.storageManager.ScienceProductRejected",
+        "fprime_severity": "WARNING_HI",
+        "productId": "116",
+        "reason": "1"
+      },
+      "generationTime": "2026-10-09T23:14:01.793Z",
+      "message": "[ScienceProductRejected] Rejected science product id=116 reason=1",
+      "receptionTime": "2026-10-09T23:14:00.828Z",
+      "seqNumber": 108,
+      "severity": "DISTRESS",
+      "source": "FPrimeEventProcessor",
+      "type": "ArtemisRpiTeensyDeployment.storageManager.ScienceProductRejected"
+    },
+    "terminal": {
+      "createdBy": "guest",
+      "extra": {
+        "fprime_event_id": "268464134",
+        "fprime_event_name": "ArtemisRpiTeensyDeployment.scienceApp.VerifiedCaptureStatus",
+        "fprime_severity": "ACTIVITY_HI",
+        "generation": "1",
+        "productBytes": "902",
+        "productId": "116",
+        "reasonCode": "0",
+        "requestId": "1",
+        "sourceCrc": "58578",
+        "state": "COMPLETED",
+        "verificationToken": "1998178803"
+      },
+      "generationTime": "2026-10-09T23:14:01.793Z",
+      "message": "[VerifiedCaptureStatus] Verified capture token=1998178803 request=1 generation=1 state=COMPLETED product=116 bytes=902 crc=58578 reason=0",
+      "receptionTime": "2026-10-09T23:14:00.823Z",
+      "seqNumber": 104,
+      "severity": "WATCH",
+      "source": "FPrimeEventProcessor",
+      "type": "ArtemisRpiTeensyDeployment.scienceApp.VerifiedCaptureStatus"
+    }
+  },
+  "hardware_or_rf_used": false,
+  "manifest": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-products.json",
+  "phase": "storage-fault",
+  "reselected_valid_product": {
+    "product_id": 100,
+    "recorded_manifest_product": false,
+    "selection": {
+      "command": {
+        "assignments": [
+          {
+            "name": "CCSDS_Version",
+            "userInput": false,
+            "value": {
+              "type": "UINT32",
+              "uint32Value": 0
+            }
+          },
+          {
+            "name": "CCSDS_Type",
+            "userInput": false,
+            "value": {
+              "booleanValue": true,
+              "type": "BOOLEAN"
+            }
+          },
+          {
+            "name": "CCSDS_Sec_Hdr_Flag",
+            "userInput": false,
+            "value": {
+              "booleanValue": false,
+              "type": "BOOLEAN"
+            }
+          },
+          {
+            "name": "CCSDS_APID",
+            "userInput": false,
+            "value": {
+              "type": "UINT32",
+              "uint32Value": 0
+            }
+          },
+          {
+            "name": "CCSDS_Group_Flags",
+            "userInput": false,
+            "value": {
+              "sint64Value": "3",
+              "stringValue": "Standalone",
+              "type": "ENUMERATED"
+            }
+          },
+          {
+            "name": "OpCode",
+            "userInput": false,
+            "value": {
+              "type": "UINT32",
+              "uint32Value": 268492804
+            }
+          },
+          {
+            "name": "productId",
+            "userInput": true,
+            "value": {
+              "type": "UINT32",
+              "uint32Value": 100
+            }
+          }
+        ],
+        "binary": "EADAAAAAAAAQAOAEAAAAZA==",
+        "commandName": "/ArtemisRpiTeensyDeployment_ArtemisRpiTeensyDeployment/ArtemisRpiTeensyDeployment/storageManager/SELECT_PRODUCT",
+        "generationTime": "2026-10-09T23:13:57.048Z",
+        "id": "1791587674048-n2-completion-storage-33184-1214729524",
+        "origin": "n2-completion-storage-33184",
+        "queue": "default",
+        "sequenceNumber": 1214729524,
+        "unprocessedBinary": "EADAAAAAAAAQAOAEAAAAZA==",
+        "username": "guest"
+      },
+      "event": {
+        "createdBy": "guest",
+        "extra": {
+          "fprime_event_id": "268492811",
+          "fprime_event_name": "ArtemisRpiTeensyDeployment.storageManager.ProductSelected",
+          "fprime_severity": "ACTIVITY_HI",
+          "productBytes": "902",
+          "productId": "100",
+          "sourceCrc": "58578",
+          "sourcePath": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_100.bin"
+        },
+        "generationTime": "2026-10-09T23:13:58.049Z",
+        "message": "[ProductSelected] Selected science product=100 bytes=902 CRC=58578 path='/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store/product_100.bin'",
+        "receptionTime": "2026-10-09T23:13:57.803Z",
+        "seqNumber": 57,
+        "severity": "WATCH",
+        "source": "FPrimeEventProcessor",
+        "type": "ArtemisRpiTeensyDeployment.storageManager.ProductSelected"
+      },
+      "telemetry": {
+        "acquisitionStatus": "ACQUIRED",
+        "acquisitionTime": "2026-10-09T23:13:58.803Z",
+        "engValue": {
+          "type": "UINT32",
+          "uint32Value": 100
+        },
+        "generationTime": "2026-10-09T23:13:58.049Z",
+        "id": {
+          "name": "SelectedProductId",
+          "namespace": "/ArtemisRpiTeensyDeployment_ArtemisRpiTeensyDeployment/ArtemisRpiTeensyDeployment/storageManager"
+        },
+        "rawValue": {
+          "type": "UINT32",
+          "uint32Value": 100
+        }
+      }
+    },
+    "verified_downlink": null
+  },
+  "result": "PASS",
+  "run_id": "1d16ddee3115",
+  "stack": {
+    "mode": "BASE",
+    "started_at": "2026-10-09T23:13:19.988706+00:00",
+    "storage_ready": {
+      "acquisitionStatus": "ACQUIRED",
+      "acquisitionTime": "2026-10-09T23:13:53.779Z",
+      "engValue": {
+        "sint64Value": "255",
+        "stringValue": "True",
+        "type": "ENUMERATED"
+      },
+      "generationTime": "2026-10-09T23:13:53.759Z",
+      "id": {
+        "name": "StorageReady",
+        "namespace": "/ArtemisRpiTeensyDeployment_ArtemisRpiTeensyDeployment/ArtemisRpiTeensyDeployment/storageManager"
+      },
+      "rawValue": {
+        "type": "UINT32",
+        "uint32Value": 255
+      }
+    }
+  },
+  "storage_root": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-store",
+  "yamcs_instance": "fprime-project"
+}

@@ -3,7 +3,9 @@
 
 #include "Components/PayloadDriver_NeutronSim/PayloadDriver_NeutronSimComponentAc.hpp"
 
+#include <chrono>
 #include <string>
+#include <sys/types.h>
 
 namespace Components {
 
@@ -22,12 +24,79 @@ class PayloadDriver_NeutronSim final : public PayloadDriver_NeutronSimComponentB
         std::string outputPath;
     };
 
-    void pingIn_handler(FwIndexType portNum, U32 key) override;
-    void requestIn_handler(FwIndexType portNum, U32 durationSeconds) override;
+    struct PendingReply {
+        bool valid = false;
+        U32 requestId = 0U;
+        U32 generation = 0U;
+        Components::PayloadOperationKind kind = Components::PayloadOperationKind::CAPTURE;
+        Components::PayloadOperationState state = Components::PayloadOperationState::FAILED;
+        std::string literalEcho;
+        U32 productId = 0U;
+        U32 productBytes = 0U;
+        Components::ScienceProductSource sourceKind = Components::ScienceProductSource::UNKNOWN;
+        std::string sourcePath;
+        U32 sourceCrc = 0U;
+        U32 errorCode = 0U;
+        std::chrono::steady_clock::time_point due{};
+        bool duplicate = false;
+    };
 
-    CaptureSummary runCapture(U32 durationSeconds) const;
+    void pingIn_handler(FwIndexType portNum, U32 key) override;
+    void run_handler(FwIndexType portNum, U32 context) override;
+    void requestIn_handler(
+        FwIndexType portNum,
+        U32 requestId,
+        U32 generation,
+        U32 durationSeconds,
+        const Components::PayloadSimulationFault& faultMode,
+        U32 delayMs,
+        U32 timeoutMs
+    ) override;
+    void passthroughIn_handler(
+        FwIndexType portNum,
+        U32 requestId,
+        U32 generation,
+        const Fw::StringBase& literalCommand,
+        const Components::PayloadSimulationFault& faultMode,
+        U32 delayMs,
+        U32 timeoutMs
+    ) override;
+
+    bool launchCapture(U32 durationSeconds, const Components::PayloadSimulationFault& faultMode, U32 timeoutMs);
+    void pollCapture();
+    void finishCapture(U32 exitStatus, bool suppressResponse);
+    void scheduleOrSendReply(
+        U32 requestId,
+        U32 generation,
+        const Components::PayloadOperationKind& kind,
+        const Components::PayloadOperationState& state,
+        const std::string& literalEcho,
+        U32 productId,
+        U32 productBytes,
+        const Components::ScienceProductSource& sourceKind,
+        const std::string& sourcePath,
+        U32 sourceCrc,
+        U32 errorCode,
+        bool delayed,
+        U32 delayMs,
+        bool duplicate
+    );
+    void emitOperationResult(
+        U32 requestId,
+        U32 generation,
+        const Components::PayloadOperationKind& kind,
+        const Components::PayloadOperationState& state,
+        const std::string& literalEcho,
+        U32 productId,
+        U32 productBytes,
+        const Components::ScienceProductSource& sourceKind,
+        const std::string& sourcePath,
+        U32 sourceCrc,
+        U32 errorCode,
+        bool duplicate
+    );
+    void setAvailability(bool available);
     static std::string getSimRoot();
-    static std::string shellQuote(const std::string& value);
     static void parseSummaryLine(const std::string& line, CaptureSummary& summary);
     static bool publishLatestCapture(const std::string& outputPath);
     static bool computeFileCrc16(const std::string& outputPath, U32& crcOut);
@@ -41,6 +110,28 @@ class PayloadDriver_NeutronSim final : public PayloadDriver_NeutronSimComponentB
     U32 m_lastExitStatus;
     U32 m_lastProductId;
     U32 m_lastProductCrc;
+    bool m_captureSlotAvailable;
+    bool m_availabilityAnnounced;
+    bool m_announcedAvailable;
+    int m_captureOutputFd;
+    int m_captureKillStage;
+    int m_captureProcessStatus;
+    pid_t m_capturePid;
+    U32 m_captureRequestId;
+    U32 m_captureGeneration;
+    U32 m_captureProductId;
+    U32 m_captureDurationSeconds;
+    U32 m_captureTimeoutMs;
+    U32 m_captureDelayMs;
+    Components::PayloadSimulationFault m_captureFaultMode;
+    Components::PayloadOperationKind m_captureKind;
+    CaptureSummary m_captureSummary;
+    std::string m_captureOutputBuffer;
+    U32 m_captureOutputTotalBytes;
+    std::chrono::steady_clock::time_point m_captureDeadline;
+    std::chrono::steady_clock::time_point m_killDeadline;
+    static constexpr U32 PENDING_REPLY_CAPACITY = 4U;
+    PendingReply m_pendingReplies[PENDING_REPLY_CAPACITY];
 };
 
 }  // namespace Components

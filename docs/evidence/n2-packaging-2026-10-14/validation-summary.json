@@ -1,0 +1,54 @@
+{
+  "result": "PASS",
+  "date": "2026-10-14",
+  "scope": "host-native FSW, synthetic science and localhost Yamcs; no hardware, deployment or RF",
+  "base_head": "33aef0a186205e27d0a05be5a570614ef223de8c",
+  "builds": {
+    "default_OFF": "PASS (compile only)",
+    "local_Yamcs_ON_arm64": "PASS"
+  },
+  "component_tests": {
+    "result": "PASS",
+    "suites": 6,
+    "gtest_cases": 34
+  },
+  "yamcs_python_tests": {
+    "result": "PASS",
+    "tests": 21,
+    "subtests": 5
+  },
+  "syntax": {
+    "python": "PASS",
+    "shell": "PASS"
+  },
+  "runtime_probes": {
+    "passthrough-acceptance.json": {
+      "result": "PASS",
+      "sha256": "dc1265d19e822b93bee210bfb15600e9259f8d9305d787b1732e492bfdbb8807"
+    },
+    "lifecycle-acceptance.json": {
+      "result": "PASS",
+      "sha256": "9d655616b95f7bea0632517ef497e2db971652c801ad1041d810c98548312aba"
+    },
+    "pulse-cycle-acceptance.json": {
+      "result": "PASS",
+      "sha256": "be48c4b5ec5e3600f6269be834680fde85e6378398878f413eb758e162fdb80a"
+    },
+    "completion-storage-before-restart.json": {
+      "result": "PASS",
+      "sha256": "4073b1b99bb4be4c4184a0ad730aff0e00b1f33e2410ee32f97b8a16770d05bb"
+    },
+    "completion-storage-after-restart.json": {
+      "result": "PASS",
+      "sha256": "3f458fc369fe09daf1d6505dda96adc847505d599e36bbe524cabcee49015edc"
+    }
+  },
+  "historical_fault_scenarios": "Original October 9 six-scenario evidence preserved; before/after-restart scenarios replayed during packaging",
+  "shutdown": {
+    "tcp_8090_and_8063_listeners": "none observed by parent lsof check",
+    "pulse_stop_note": "stop.sh returned 1 because recorded runner PID was already absent; test runner verified no listeners/processes remained"
+  },
+  "source_hashes": "source-sha256.json",
+  "binary_and_dictionary_hashes": "native-artifact-sha256.txt",
+  "original_run_directory": "yamcs/run/packaging-checks-20261014-DRiAl2"
+}

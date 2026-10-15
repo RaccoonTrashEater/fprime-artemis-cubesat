@@ -69,12 +69,12 @@ module Components {
         telemetry LastError: U32 update on change
 
         @ Payload downlink started.
-        event PayloadDownlinkStarted(productId: U32, byteCount: U32, totalPackets: U32) \
-            severity activity high format "Payload downlink started product={} bytes={} packets={}"
+        event PayloadDownlinkStarted(productId: U32, transferId: U32, byteCount: U32, totalPackets: U32) \
+            severity activity high format "Payload downlink started product={} transfer={} bytes={} packets={}"
 
-        @ Payload downlink completed.
+        @ Local sender completed its packet emission. Ground receipt is reported separately by Yamcs.
         event PayloadDownlinkComplete(transferId: U32, packetsSent: U32) \
-            severity activity high format "Payload downlink complete transfer={} packetsSent={}"
+            severity activity high format "Payload sender complete transfer={} packetsSent={}"
 
         @ Payload downlink progress, throttled to nominal 10 percent increments with short 100 percent replay after completion.
         event PayloadDownlinkProgress(transferId: U32, percentComplete: U32, packetsSent: U32, totalPackets: U32) \

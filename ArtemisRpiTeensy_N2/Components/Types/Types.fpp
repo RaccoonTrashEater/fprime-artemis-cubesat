@@ -32,8 +32,17 @@ module Components {
   @ Mission collection request from MissionApp to ScienceApp.
   port CollectionRequest(delaySeconds: U32)
 
-  @ Payload capture request in seconds.
-  port PayloadCaptureRequest(durationSeconds: U32)
+  @ Payload capture request with caller correlation, in seconds.
+  port PayloadCaptureRequest(requestId: U32, durationSeconds: U32)
+
+  @ Maximum printable ASCII literal size in bytes for the board-free synthetic pass-through contract.
+  @ Embedded NUL and non-ASCII input are outside this demo contract and are not validated here.
+  constant PAYLOAD_PASSTHROUGH_LITERAL_MAX = 128
+
+  @ Result of the synthetic payload command facade; this does not represent an Aris protocol status.
+  enum PayloadPassthroughStatus : U8 {
+    SIMULATED_ECHOED = 0
+  }
 
   @ Source class for a produced science dataset.
   enum ScienceProductSource : U8 {
@@ -42,6 +51,100 @@ module Components {
     REAL_PAYLOAD = 2
     TEST = 3
   }
+
+  @ Opaque printable ASCII command sent through PayloadManager to the synthetic payload facade.
+  port PayloadPassthroughRequest(
+    requestId: U32,
+    literalCommand: string size PAYLOAD_PASSTHROUGH_LITERAL_MAX
+  )
+
+  @ Correlated synthetic response that echoes the original command literally.
+  port PayloadPassthroughResponse(
+    requestId: U32,
+    generation: U32,
+    status: PayloadPassthroughStatus,
+    literalEcho: string size PAYLOAD_PASSTHROUGH_LITERAL_MAX
+  )
+
+  @ Kind of operation admitted by PayloadManager.
+  enum PayloadOperationKind : U8 {
+    PASSTHROUGH = 0
+    CAPTURE = 1
+  }
+
+  @ Terminal or admission state for the serialized payload operation actor.
+  enum PayloadOperationState : U8 {
+    ACCEPTED = 0
+    COMPLETED = 1
+    BUSY = 2
+    INVALID = 3
+    DRIVER_UNAVAILABLE = 4
+    FAILED = 5
+    TIMED_OUT = 6
+  }
+
+  @ One-shot local simulator behavior; never a real payload protocol status.
+  enum PayloadSimulationFault : U8 {
+    NORMAL = 0
+    FAIL = 1
+    NO_RESPONSE = 2
+    DELAYED_RESPONSE = 3
+    DUPLICATE_RESPONSE = 4
+    HANG_CAPTURE = 5
+    DRIVER_UNAVAILABLE = 6
+  }
+
+  @ Request to the simulated driver to capture one science dataset.
+  port PayloadDriverCaptureRequest(
+    requestId: U32,
+    generation: U32,
+    durationSeconds: U32,
+    faultMode: PayloadSimulationFault,
+    delayMs: U32,
+    timeoutMs: U32
+  )
+
+  @ Request to the simulated driver to echo one opaque literal.
+  port PayloadDriverPassthroughRequest(
+    requestId: U32,
+    generation: U32,
+    literalCommand: string size PAYLOAD_PASSTHROUGH_LITERAL_MAX,
+    faultMode: PayloadSimulationFault,
+    delayMs: U32,
+    timeoutMs: U32
+  )
+
+  @ Correlated response from the simulated driver for either operation kind.
+  port PayloadDriverOperationResult(
+    requestId: U32,
+    generation: U32,
+    kind: PayloadOperationKind,
+    $state: PayloadOperationState,
+    literalEcho: string size PAYLOAD_PASSTHROUGH_LITERAL_MAX,
+    productId: U32,
+    productBytes: U32,
+    sourceKind: ScienceProductSource,
+    sourcePath: string size 192,
+    sourceCrc: U32,
+    errorCode: U32
+  )
+
+  @ Correlated operation progress from PayloadManager to ScienceApp.
+  port PayloadOperationNotice(
+    requestId: U32,
+    generation: U32,
+    kind: PayloadOperationKind,
+    $state: PayloadOperationState,
+    productId: U32,
+    productBytes: U32,
+    sourceKind: ScienceProductSource,
+    sourcePath: string size 192,
+    sourceCrc: U32,
+    scienceRequested: bool
+  )
+
+  @ Whether the simulated driver's physical capture slot is idle and reusable.
+  port PayloadDriverAvailability(available: bool)
 
   @ Science product descriptor handoff. The source path is a driver-owned local file path.
   port ScienceProductDescriptor(
@@ -63,6 +166,18 @@ module Components {
 
   @ Comms-to-storage science downlink request.
   port ScienceDownlinkRequest(
+    productId: U32,
+    productBytes: U32,
+    sourceKind: ScienceProductSource,
+    sourcePath: string size 192,
+    sourceCrc: U32
+  )
+
+  @ Request automatic delivery of a product already handed to StorageManager.
+  port ScienceProductDeliveryRequest(productId: U32)
+
+  @ Validated source descriptor returned for an explicit delivery request.
+  port ScienceProductDeliveryDescriptor(
     productId: U32,
     productBytes: U32,
     sourceKind: ScienceProductSource,

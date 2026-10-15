@@ -1,0 +1,178 @@
+{
+  "result": "PASS",
+  "stages": [
+    {
+      "name": "final-before",
+      "exit_code": 0,
+      "log": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-before.log",
+      "run": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/20261009-130131",
+      "run_id": "d7f1d3f71928"
+    },
+    {
+      "name": "final-after",
+      "exit_code": 0,
+      "log": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-after.log",
+      "run": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/20261009-130240",
+      "run_id": "c5467781a44e"
+    },
+    {
+      "name": "final-verifier-retry",
+      "exit_code": 0,
+      "log": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-verifier-retry.log",
+      "run": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/20261009-130425",
+      "run_id": "e5841c58f32b"
+    },
+    {
+      "name": "final-fault",
+      "exit_code": 0,
+      "log": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-fault.log",
+      "run": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/20261009-130515",
+      "run_id": "f221c7f80cbc"
+    },
+    {
+      "name": "final-full-retry",
+      "exit_code": 0,
+      "log": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full-retry.log",
+      "run": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/20261009-131319",
+      "run_id": "1d16ddee3115"
+    },
+    {
+      "name": "final-receipt",
+      "exit_code": 0,
+      "log": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-receipt.log",
+      "run": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/20261009-131403",
+      "run_id": "11e378f86959"
+    },
+    {
+      "name": "final-pulse-a",
+      "exit_code": 0,
+      "log": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-pulse-a.log",
+      "run": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/20261009-131453",
+      "run_id": "4950ff1745be"
+    },
+    {
+      "name": "final-pulse",
+      "exit_code": 0,
+      "log": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-pulse.log",
+      "run": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/20261009-131453",
+      "run_id": "4950ff1745be"
+    }
+  ],
+  "active_run": {
+    "pid": 33587,
+    "started_at": "2026-10-09T23:14:53.999441+00:00",
+    "url": "http://127.0.0.1:8090",
+    "instance": "fprime-project",
+    "local_run_id": "4950ff1745be",
+    "storage_root": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-pulse-store",
+    "verification_timeout_seconds": 120,
+    "science_viewer_url": "http://127.0.0.1:8063",
+    "local_science_fault_profile": [
+      "corrupt-first-1",
+      "drop-first-0"
+    ],
+    "local_science_format": "pulses-v1",
+    "local_science_packets_per_tick": 32,
+    "local_pulse_seed": "12345",
+    "local_source_sha256": {
+      "local_stack.py": "b0ce4a40f13f9d8b457f5d9149a650eb3b15ce5786a9f0d11d645d2c6f749f0c",
+      "local_link.py": "07cba5347f6b96409fceca6d9b1e9c89ee3f50ee187337a8a4da9b00d8df0e93",
+      "science_ingest.py": "1014b2c190277063a1b390238fa37c2c6491fb71a4963085974512ffdffdb1c9",
+      "science_viewer.py": "1a4252dd0791e5063a0e0cf8d5f024f92227c7dd1efc84794676b689fe3c2246",
+      "pulse_analysis.py": "547bd4971c633b46ab5d474cd802c52386b684cf819871edd874796985c6eaab",
+      "pulse_cycle.py": "d4c96efbd1cd359017529729ac2cffc1fc007c1878a27b31601a643aa14c7ff5",
+      "pulse_sim/neutron_payload_sim.py": "506190e47de3e49ed4f9348b46a93a00f169bb3fbf9360ed3dae540503f94871"
+    },
+    "run_dir": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/20261009-131453",
+    "binary": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/bin/ArtemisRpiTeensyDeployment",
+    "dictionary": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/dict/ArtemisRpiTeensyDeploymentTopologyDictionary.json",
+    "binary_sha256": "80fe0b51bce96f82ccabb8ad17ecc6e004f4e616ef799b66a0fe2df10b89402a",
+    "dictionary_sha256": "752c1726eb43b46a82ccf16210b4bcd1a8a6097aa4aac6e64afc28685216fda0",
+    "local_profile_constants": {
+      "ComCfg.TmFrameFixedSize": 1024,
+      "FW_CMD_STRING_MAX_SIZE": 504,
+      "FW_FIXED_LENGTH_STRING_SIZE": 504
+    },
+    "source_head": "33aef0a186205e27d0a05be5a570614ef223de8c",
+    "source_status": [
+      " M .gitignore",
+      " M ArtemisRpiTeensy_N2/ArtemisRpiTeensyDeployment/CMakeLists.txt",
+      " M ArtemisRpiTeensy_N2/ArtemisRpiTeensyDeployment/Top/CMakeLists.txt",
+      " M ArtemisRpiTeensy_N2/ArtemisRpiTeensyDeployment/Top/topology.fpp",
+      " M ArtemisRpiTeensy_N2/CMakeLists.txt",
+      " M ArtemisRpiTeensy_N2/Components/CommsApp/CommsApp.cpp",
+      " M ArtemisRpiTeensy_N2/Components/CommsApp/CommsApp.fpp",
+      " M ArtemisRpiTeensy_N2/Components/CommsApp/CommsApp.hpp",
+      " M ArtemisRpiTeensy_N2/Components/CommsApp/test/ut/CommsAppTestMain.cpp",
+      " M ArtemisRpiTeensy_N2/Components/CommsApp/test/ut/CommsAppTester.cpp",
+      " M ArtemisRpiTeensy_N2/Components/CommsApp/test/ut/CommsAppTester.hpp",
+      " M ArtemisRpiTeensy_N2/Components/PayloadDownlinkApp/PayloadDownlinkApp.cpp",
+      " M ArtemisRpiTeensy_N2/Components/PayloadDownlinkApp/PayloadDownlinkApp.fpp",
+      " M ArtemisRpiTeensy_N2/Components/PayloadDownlinkApp/PayloadDownlinkApp.hpp",
+      " M ArtemisRpiTeensy_N2/Components/PayloadDownlinkApp/test/ut/PayloadDownlinkAppTestMain.cpp",
+      " M ArtemisRpiTeensy_N2/Components/PayloadDownlinkApp/test/ut/PayloadDownlinkAppTester.cpp",
+      " M ArtemisRpiTeensy_N2/Components/PayloadDownlinkApp/test/ut/PayloadDownlinkAppTester.hpp",
+      " M ArtemisRpiTeensy_N2/Components/PayloadDriver_NeutronSim/PayloadDriver_NeutronSim.cpp",
+      " M ArtemisRpiTeensy_N2/Components/PayloadDriver_NeutronSim/PayloadDriver_NeutronSim.fpp",
+      " M ArtemisRpiTeensy_N2/Components/PayloadDriver_NeutronSim/PayloadDriver_NeutronSim.hpp",
+      " M ArtemisRpiTeensy_N2/Components/PayloadManager/PayloadManager.cpp",
+      " M ArtemisRpiTeensy_N2/Components/PayloadManager/PayloadManager.fpp",
+      " M ArtemisRpiTeensy_N2/Components/PayloadManager/PayloadManager.hpp",
+      " M ArtemisRpiTeensy_N2/Components/ScienceApp/ScienceApp.cpp",
+      " M ArtemisRpiTeensy_N2/Components/ScienceApp/ScienceApp.fpp",
+      " M ArtemisRpiTeensy_N2/Components/ScienceApp/ScienceApp.hpp",
+      " M ArtemisRpiTeensy_N2/Components/ScienceApp/test/ut/ScienceAppTestMain.cpp",
+      " M ArtemisRpiTeensy_N2/Components/ScienceApp/test/ut/ScienceAppTester.cpp",
+      " M ArtemisRpiTeensy_N2/Components/ScienceApp/test/ut/ScienceAppTester.hpp",
+      " M ArtemisRpiTeensy_N2/Components/StorageManager/StorageManager.cpp",
+      " M ArtemisRpiTeensy_N2/Components/StorageManager/StorageManager.fpp",
+      " M ArtemisRpiTeensy_N2/Components/StorageManager/StorageManager.hpp",
+      " M ArtemisRpiTeensy_N2/Components/Types/Types.fpp",
+      " M ArtemisRpiTeensy_N2/Components/UartChannelMux/UartChannelMux.cpp",
+      " M ArtemisRpiTeensy_N2/Components/UartChannelMux/UartChannelMux.hpp",
+      " M ArtemisTeensy_N2_Baremetal/tools/arduino-cli/build.sh",
+      " M GDS_Teensy/tools/arduino-cli/build.sh",
+      " M README.md",
+      " M docs/SYSTEM_ARCHITECTURE.md",
+      "?? ArtemisRpiTeensy_N2/ArtemisRpiTeensyDeployment/LocalYamcsConfig/",
+      "?? \"docs/N2.Software Design Document v4.0.md\"",
+      "?? \"docs/N2.Software Design Document v4.0.pdf\"",
+      "?? docs/N2_CLAUDE_OPUS_REVIEW_2026-10-07.md",
+      "?? docs/N2_COMPLETION_STORAGE_PLAN_2026-10-09.md",
+      "?? docs/N2_DEVELOPMENT_INTENT_2026-10-07.md",
+      "?? docs/N2_LIFECYCLE_OPERATOR_WALKTHROUGH_2026-10-08.md",
+      "?? docs/N2_PASSTHROUGH_OPERATOR_WALKTHROUGH_2026-10-08.md",
+      "?? docs/N2_PULSE_SCIENCE_OPERATOR_WALKTHROUGH_2026-10-08.md",
+      "?? docs/N2_RAW_CYCLE_OPERATOR_WALKTHROUGH_2026-10-08.md",
+      "?? docs/N2_SDD_GAP_AND_DEVELOPMENT_PLAN_2026-10-07.md",
+      "?? docs/N2_SYNTHETIC_PULSE_PLAN_2026-10-08.md",
+      "?? docs/N2_YAMCS_GROUND_HOST_PLAN_2026-10-08.md",
+      "?? docs/N2_YAMCS_LOCAL_TESTING_2026-10-07.md",
+      "?? docs/YAMCS_PRIMER.md",
+      "?? docs/images/n2-lifecycle-2026-10-08/",
+      "?? docs/images/n2-passthrough-2026-10-08/",
+      "?? docs/images/n2-pulse-science-2026-10-08/",
+      "?? docs/images/n2-raw-cycle-2026-10-08/",
+      "?? tools/yamcs/",
+      "?? yamcs/"
+    ],
+    "transport": "software-only UART-mux/CCSDS PTYs; no board UART or RF emulation",
+    "command_verifier_sha256": "811878408d89d334d7674df23ff06ce283133e2d513616481335e9d030451c11"
+  },
+  "prior_failures": [
+    {
+      "name": "final-verifier",
+      "exit_code": 1,
+      "log": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-verifier.log",
+      "run": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/20261009-130240",
+      "run_id": "c5467781a44e"
+    },
+    {
+      "name": "final-full",
+      "exit_code": 1,
+      "log": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/acceptance-completion-storage-20261009-4be9e7/final-full.log",
+      "run": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/20261009-130605",
+      "run_id": "51f4256ed37f"
+    }
+  ]
+}

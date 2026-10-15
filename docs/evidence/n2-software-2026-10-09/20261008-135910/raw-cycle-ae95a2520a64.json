@@ -1,0 +1,999 @@
+{
+  "result": "PASS",
+  "hardware_or_rf_used": false,
+  "route": "Yamcs -> ScienceApp.COLLECT_AND_DOWNLINK -> simulated capture -> validated storage -> CommsApp -> PayloadDownlinkApp -> UART channel 1 -> independent ground receiver -> Yamcs objects -> ground histogram",
+  "stock_file_downlink_used": false,
+  "captures": [
+    {
+      "duration_seconds": 30,
+      "command": {
+        "binary": "EADAAAAAAAAQAHADAAAAHg==",
+        "id": "1791504033991-n2-local-yamcs-smoke-1791503996",
+        "generationTime": "2026-10-08T23:59:56.991Z",
+        "origin": "n2-local-yamcs-smoke",
+        "sequenceNumber": 1791503996,
+        "commandName": "/ArtemisRpiTeensyDeployment_ArtemisRpiTeensyDeployment/ArtemisRpiTeensyDeployment/scienceApp/COLLECT_AND_DOWNLINK",
+        "queue": "default",
+        "username": "guest",
+        "assignments": [
+          {
+            "name": "CCSDS_Version",
+            "value": {
+              "type": "UINT32",
+              "uint32Value": 0
+            },
+            "userInput": false
+          },
+          {
+            "name": "CCSDS_Type",
+            "value": {
+              "type": "BOOLEAN",
+              "booleanValue": true
+            },
+            "userInput": false
+          },
+          {
+            "name": "CCSDS_Sec_Hdr_Flag",
+            "value": {
+              "type": "BOOLEAN",
+              "booleanValue": false
+            },
+            "userInput": false
+          },
+          {
+            "name": "CCSDS_APID",
+            "value": {
+              "type": "UINT32",
+              "uint32Value": 0
+            },
+            "userInput": false
+          },
+          {
+            "name": "CCSDS_Group_Flags",
+            "value": {
+              "type": "ENUMERATED",
+              "stringValue": "Standalone",
+              "sint64Value": "3"
+            },
+            "userInput": false
+          },
+          {
+            "name": "OpCode",
+            "value": {
+              "type": "UINT32",
+              "uint32Value": 268464131
+            },
+            "userInput": false
+          },
+          {
+            "name": "durationSeconds",
+            "value": {
+              "type": "UINT32",
+              "uint32Value": 30
+            },
+            "userInput": true
+          }
+        ],
+        "unprocessedBinary": "EADAAAAAAAAQAHADAAAAHg=="
+      },
+      "admitted": {
+        "source": "FPrimeEventProcessor",
+        "generationTime": "2026-10-08T23:59:57.992Z",
+        "receptionTime": "2026-10-08T23:59:57.592Z",
+        "seqNumber": 27,
+        "type": "ArtemisRpiTeensyDeployment.payloadManager.PayloadOperationStatus",
+        "message": "[PayloadOperationStatus] Payload operation request=2 generation=2 kind=CAPTURE state=ACCEPTED",
+        "severity": "WATCH",
+        "createdBy": "guest",
+        "extra": {
+          "requestId": "2",
+          "generation": "2",
+          "kind": "CAPTURE",
+          "state": "ACCEPTED",
+          "fprime_severity": "ACTIVITY_HI",
+          "fprime_event_id": "268480519",
+          "fprime_event_name": "ArtemisRpiTeensyDeployment.payloadManager.PayloadOperationStatus"
+        }
+      },
+      "same_id_busy_contender": {
+        "command": {
+          "binary": "EADAAAAAAAAQALACAAAAAg==",
+          "id": "1791504035054-n2-local-yamcs-smoke-1791503998",
+          "generationTime": "2026-10-08T23:59:58.054Z",
+          "origin": "n2-local-yamcs-smoke",
+          "sequenceNumber": 1791503998,
+          "commandName": "/ArtemisRpiTeensyDeployment_ArtemisRpiTeensyDeployment/ArtemisRpiTeensyDeployment/payloadManager/START_PAYLOAD_COLLECTION",
+          "queue": "default",
+          "username": "guest",
+          "assignments": [
+            {
+              "name": "CCSDS_Version",
+              "value": {
+                "type": "UINT32",
+                "uint32Value": 0
+              },
+              "userInput": false
+            },
+            {
+              "name": "CCSDS_Type",
+              "value": {
+                "type": "BOOLEAN",
+                "booleanValue": true
+              },
+              "userInput": false
+            },
+            {
+              "name": "CCSDS_Sec_Hdr_Flag",
+              "value": {
+                "type": "BOOLEAN",
+                "booleanValue": false
+              },
+              "userInput": false
+            },
+            {
+              "name": "CCSDS_APID",
+              "value": {
+                "type": "UINT32",
+                "uint32Value": 0
+              },
+              "userInput": false
+            },
+            {
+              "name": "CCSDS_Group_Flags",
+              "value": {
+                "type": "ENUMERATED",
+                "stringValue": "Standalone",
+                "sint64Value": "3"
+              },
+              "userInput": false
+            },
+            {
+              "name": "OpCode",
+              "value": {
+                "type": "UINT32",
+                "uint32Value": 268480514
+              },
+              "userInput": false
+            },
+            {
+              "name": "collectionId",
+              "value": {
+                "type": "UINT32",
+                "uint32Value": 2
+              },
+              "userInput": true
+            }
+          ],
+          "unprocessedBinary": "EADAAAAAAAAQALACAAAAAg=="
+        },
+        "rejected": {
+          "source": "FPrimeEventProcessor",
+          "generationTime": "2026-10-08T23:59:59.055Z",
+          "receptionTime": "2026-10-08T23:59:58.600Z",
+          "seqNumber": 33,
+          "type": "ArtemisRpiTeensyDeployment.payloadManager.PayloadOperationStatus",
+          "message": "[PayloadOperationStatus] Payload operation request=2 generation=0 kind=CAPTURE state=BUSY",
+          "severity": "WATCH",
+          "createdBy": "guest",
+          "extra": {
+            "requestId": "2",
+            "generation": "0",
+            "kind": "CAPTURE",
+            "state": "BUSY",
+            "fprime_severity": "ACTIVITY_HI",
+            "fprime_event_id": "268480519",
+            "fprime_event_name": "ArtemisRpiTeensyDeployment.payloadManager.PayloadOperationStatus"
+          }
+        }
+      },
+      "capture_complete": {
+        "source": "FPrimeEventProcessor",
+        "generationTime": "2026-10-08T23:59:58.577Z",
+        "receptionTime": "2026-10-08T23:59:58.596Z",
+        "seqNumber": 31,
+        "type": "ArtemisRpiTeensyDeployment.payloadDriverNeutronSim.CaptureComplete",
+        "message": "[CaptureComplete] Neutron sim capture duration=30s rows=30 bytes=400 product=1",
+        "severity": "WATCH",
+        "createdBy": "guest",
+        "extra": {
+          "durationSeconds": "30",
+          "rows": "30",
+          "productBytes": "400",
+          "productId": "1",
+          "fprime_severity": "ACTIVITY_HI",
+          "fprime_event_id": "268570624",
+          "fprime_event_name": "ArtemisRpiTeensyDeployment.payloadDriverNeutronSim.CaptureComplete"
+        }
+      },
+      "stored": {
+        "source": "FPrimeEventProcessor",
+        "generationTime": "2026-10-09T00:00:02.597Z",
+        "receptionTime": "2026-10-09T00:00:02.609Z",
+        "seqNumber": 40,
+        "type": "ArtemisRpiTeensyDeployment.storageManager.ScienceStored",
+        "message": "[ScienceStored] Stored science product count=1 size=400",
+        "severity": "WATCH",
+        "createdBy": "guest",
+        "extra": {
+          "productCount": "1",
+          "productBytes": "400",
+          "fprime_severity": "ACTIVITY_HI",
+          "fprime_event_id": "268492800",
+          "fprime_event_name": "ArtemisRpiTeensyDeployment.storageManager.ScienceStored"
+        }
+      },
+      "sender_started": {
+        "source": "FPrimeEventProcessor",
+        "generationTime": "2026-10-09T00:00:02.598Z",
+        "receptionTime": "2026-10-09T00:00:02.615Z",
+        "seqNumber": 44,
+        "type": "ArtemisRpiTeensyDeployment.payloadDownlinkApp.PayloadDownlinkStarted",
+        "message": "[PayloadDownlinkStarted] Payload downlink started product=1 transfer=1 bytes=400 packets=12",
+        "severity": "WATCH",
+        "createdBy": "guest",
+        "extra": {
+          "productId": "1",
+          "transferId": "1",
+          "byteCount": "400",
+          "totalPackets": "12",
+          "fprime_severity": "ACTIVITY_HI",
+          "fprime_event_id": "268632064",
+          "fprime_event_name": "ArtemisRpiTeensyDeployment.payloadDownlinkApp.PayloadDownlinkStarted"
+        }
+      },
+      "sender_complete": {
+        "source": "FPrimeEventProcessor",
+        "generationTime": "2026-10-09T00:00:14.643Z",
+        "receptionTime": "2026-10-09T00:00:14.666Z",
+        "seqNumber": 54,
+        "type": "ArtemisRpiTeensyDeployment.payloadDownlinkApp.PayloadDownlinkComplete",
+        "message": "[PayloadDownlinkComplete] Payload sender complete transfer=1 packetsSent=12",
+        "severity": "WATCH",
+        "createdBy": "guest",
+        "extra": {
+          "transferId": "1",
+          "packetsSent": "12",
+          "fprime_severity": "ACTIVITY_HI",
+          "fprime_event_id": "268632065",
+          "fprime_event_name": "ArtemisRpiTeensyDeployment.payloadDownlinkApp.PayloadDownlinkComplete"
+        }
+      },
+      "ground_receipt_event": {
+        "source": "n2-local-science-ingest",
+        "generationTime": "2026-10-09T00:00:15.777Z",
+        "receptionTime": "2026-10-09T00:00:15.777Z",
+        "seqNumber": 59,
+        "type": "GroundScienceReceiptVerified",
+        "message": "GroundScienceReceiptVerified: Yamcs returned and verified 400 raw science bytes",
+        "severity": "INFO",
+        "createdBy": "guest",
+        "extra": {
+          "runId": "aa83d80ef47f",
+          "productId": "1",
+          "transferId": "1",
+          "bytes": "400",
+          "crc16Ccitt": "20446",
+          "sha256": "fea05c9bb8638b448ca686126b36ad2f3ac1196477552d043198ddf6d1114422",
+          "objectName": "n2-science-aa83d80ef47f-00000001-01-fea05c9bb863.bin",
+          "receiptObject": "n2-science-aa83d80ef47f-00000001-01-fea05c9bb863.bin.receipt.json",
+          "verifiedGroundReceipt": "true"
+        }
+      },
+      "receipt": {
+        "bucket": "fprimeFilesIn",
+        "bytes": 400,
+        "crc16Ccitt": 20446,
+        "crc16CcittHex": "0x4FDE",
+        "faults": {
+          "packetsCorrupted": 1,
+          "packetsDropped": 1,
+          "profile": [
+            "corrupt-first-1",
+            "drop-first-0"
+          ],
+          "recoveredPackets": 2,
+          "retryRequestsSent": 1
+        },
+        "groundIngestCounters": {
+          "badDataPacketCrc": 1,
+          "channel1Packets": 14,
+          "completedTransfers": 1,
+          "conflictingDataPackets": 0,
+          "duplicateDataPackets": 0,
+          "duplicateEndPackets": 0,
+          "duplicateHeaders": 0,
+          "faultPacketsCorrupted": 1,
+          "faultPacketsDropped": 1,
+          "invalidPackets": 0,
+          "recoveredPackets": 2,
+          "rejectedEndPackets": 0,
+          "rejectedHeaders": 0,
+          "retryRequestsSent": 1,
+          "wholeFileCrcFailures": 0
+        },
+        "objectName": "n2-science-aa83d80ef47f-00000001-01-fea05c9bb863.bin",
+        "packetCount": 12,
+        "productId": 1,
+        "receiptObject": "n2-science-aa83d80ef47f-00000001-01-fea05c9bb863.bin.receipt.json",
+        "runId": "aa83d80ef47f",
+        "sha256": "fea05c9bb8638b448ca686126b36ad2f3ac1196477552d043198ddf6d1114422",
+        "transferId": 1,
+        "verificationMethod": "Yamcs GET exact bytes and SHA-256 match",
+        "verifiedAt": "2026-10-09T00:00:15.774065+00:00",
+        "verifiedGroundReceipt": true
+      },
+      "yamcs_download": {
+        "path": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/20261008-135910/independently-downloaded-n2-science-aa83d80ef47f-00000001-01-fea05c9bb863.bin",
+        "bytes": 400,
+        "sha256": "fea05c9bb8638b448ca686126b36ad2f3ac1196477552d043198ddf6d1114422"
+      },
+      "source_oracle": {
+        "path": "/private/tmp/neutron_payload_captures/neutron_capture_20261008T235957Z_00165_00030.csv",
+        "bytes": 400,
+        "sha256": "fea05c9bb8638b448ca686126b36ad2f3ac1196477552d043198ddf6d1114422"
+      },
+      "histogram_oracle": {
+        "windows": 30,
+        "totalCounts": 3145,
+        "frequencies": {
+          "84": 1,
+          "110": 1,
+          "103": 2,
+          "123": 1,
+          "104": 3,
+          "90": 1,
+          "100": 1,
+          "89": 1,
+          "97": 2,
+          "102": 2,
+          "108": 3,
+          "105": 3,
+          "113": 1,
+          "111": 1,
+          "116": 1,
+          "126": 1,
+          "109": 2,
+          "87": 1,
+          "124": 1,
+          "99": 1
+        },
+        "source": "independent Yamcs download"
+      },
+      "ground_viewer": {
+        "bucket": "fprimeFilesIn",
+        "bytes": 400,
+        "crc16Ccitt": 20446,
+        "crc16CcittHex": "0x4FDE",
+        "faults": {
+          "packetsCorrupted": 1,
+          "packetsDropped": 1,
+          "profile": [
+            "corrupt-first-1",
+            "drop-first-0"
+          ],
+          "recoveredPackets": 2,
+          "retryRequestsSent": 1
+        },
+        "groundIngestCounters": {
+          "badDataPacketCrc": 1,
+          "channel1Packets": 14,
+          "completedTransfers": 1,
+          "conflictingDataPackets": 0,
+          "duplicateDataPackets": 0,
+          "duplicateEndPackets": 0,
+          "duplicateHeaders": 0,
+          "faultPacketsCorrupted": 1,
+          "faultPacketsDropped": 1,
+          "invalidPackets": 0,
+          "recoveredPackets": 2,
+          "rejectedEndPackets": 0,
+          "rejectedHeaders": 0,
+          "retryRequestsSent": 1,
+          "wholeFileCrcFailures": 0
+        },
+        "histogram": {
+          "flagFrequencies": {
+            "SAA": 30
+          },
+          "frequencies": {
+            "100": 1,
+            "102": 2,
+            "103": 2,
+            "104": 3,
+            "105": 3,
+            "108": 3,
+            "109": 2,
+            "110": 1,
+            "111": 1,
+            "113": 1,
+            "116": 1,
+            "123": 1,
+            "124": 1,
+            "126": 1,
+            "84": 1,
+            "87": 1,
+            "89": 1,
+            "90": 1,
+            "97": 2,
+            "99": 1
+          },
+          "label": "Simulated count-frequency (not a detector-energy histogram)",
+          "totalCounts": 3145,
+          "windows": 30
+        },
+        "objectName": "n2-science-aa83d80ef47f-00000001-01-fea05c9bb863.bin",
+        "packetCount": 12,
+        "productId": 1,
+        "rawUrl": "/api/products/n2-science-aa83d80ef47f-00000001-01-fea05c9bb863.bin.receipt.json/raw",
+        "readbackBytes": 400,
+        "readbackCrc16Ccitt": 20446,
+        "readbackSha256": "fea05c9bb8638b448ca686126b36ad2f3ac1196477552d043198ddf6d1114422",
+        "receiptObject": "n2-science-aa83d80ef47f-00000001-01-fea05c9bb863.bin.receipt.json",
+        "receiptUrl": "/api/products/n2-science-aa83d80ef47f-00000001-01-fea05c9bb863.bin.receipt.json/receipt",
+        "runId": "aa83d80ef47f",
+        "sha256": "fea05c9bb8638b448ca686126b36ad2f3ac1196477552d043198ddf6d1114422",
+        "transferId": 1,
+        "verificationMethod": "Yamcs GET exact bytes and SHA-256 match",
+        "verifiedAt": "2026-10-09T00:00:15.774065+00:00",
+        "verifiedGroundReceipt": true
+      },
+      "collection_count": {
+        "id": {
+          "name": "CollectionCount",
+          "namespace": "/ArtemisRpiTeensyDeployment_ArtemisRpiTeensyDeployment/ArtemisRpiTeensyDeployment/scienceApp"
+        },
+        "rawValue": {
+          "type": "UINT32",
+          "uint32Value": 1
+        },
+        "engValue": {
+          "type": "UINT32",
+          "uint32Value": 1
+        },
+        "acquisitionTime": "2026-10-09T00:00:03.616Z",
+        "generationTime": "2026-10-09T00:00:02.597Z",
+        "acquisitionStatus": "ACQUIRED"
+      },
+      "result": "PASS"
+    },
+    {
+      "duration_seconds": 5,
+      "command": {
+        "binary": "EADAAAAAAAAQAHADAAAABQ==",
+        "id": "1791504052857-n2-local-yamcs-smoke-1791504015",
+        "generationTime": "2026-10-09T00:00:15.857Z",
+        "origin": "n2-local-yamcs-smoke",
+        "sequenceNumber": 1791504015,
+        "commandName": "/ArtemisRpiTeensyDeployment_ArtemisRpiTeensyDeployment/ArtemisRpiTeensyDeployment/scienceApp/COLLECT_AND_DOWNLINK",
+        "queue": "default",
+        "username": "guest",
+        "assignments": [
+          {
+            "name": "CCSDS_Version",
+            "value": {
+              "type": "UINT32",
+              "uint32Value": 0
+            },
+            "userInput": false
+          },
+          {
+            "name": "CCSDS_Type",
+            "value": {
+              "type": "BOOLEAN",
+              "booleanValue": true
+            },
+            "userInput": false
+          },
+          {
+            "name": "CCSDS_Sec_Hdr_Flag",
+            "value": {
+              "type": "BOOLEAN",
+              "booleanValue": false
+            },
+            "userInput": false
+          },
+          {
+            "name": "CCSDS_APID",
+            "value": {
+              "type": "UINT32",
+              "uint32Value": 0
+            },
+            "userInput": false
+          },
+          {
+            "name": "CCSDS_Group_Flags",
+            "value": {
+              "type": "ENUMERATED",
+              "stringValue": "Standalone",
+              "sint64Value": "3"
+            },
+            "userInput": false
+          },
+          {
+            "name": "OpCode",
+            "value": {
+              "type": "UINT32",
+              "uint32Value": 268464131
+            },
+            "userInput": false
+          },
+          {
+            "name": "durationSeconds",
+            "value": {
+              "type": "UINT32",
+              "uint32Value": 5
+            },
+            "userInput": true
+          }
+        ],
+        "unprocessedBinary": "EADAAAAAAAAQAHADAAAABQ=="
+      },
+      "admitted": {
+        "source": "FPrimeEventProcessor",
+        "generationTime": "2026-10-09T00:00:16.858Z",
+        "receptionTime": "2026-10-09T00:00:16.686Z",
+        "seqNumber": 63,
+        "type": "ArtemisRpiTeensyDeployment.payloadManager.PayloadOperationStatus",
+        "message": "[PayloadOperationStatus] Payload operation request=3 generation=3 kind=CAPTURE state=ACCEPTED",
+        "severity": "WATCH",
+        "createdBy": "guest",
+        "extra": {
+          "requestId": "3",
+          "generation": "3",
+          "kind": "CAPTURE",
+          "state": "ACCEPTED",
+          "fprime_severity": "ACTIVITY_HI",
+          "fprime_event_id": "268480519",
+          "fprime_event_name": "ArtemisRpiTeensyDeployment.payloadManager.PayloadOperationStatus"
+        }
+      },
+      "capture_complete": {
+        "source": "FPrimeEventProcessor",
+        "generationTime": "2026-10-09T00:00:18.655Z",
+        "receptionTime": "2026-10-09T00:00:18.681Z",
+        "seqNumber": 68,
+        "type": "ArtemisRpiTeensyDeployment.payloadDriverNeutronSim.CaptureComplete",
+        "message": "[CaptureComplete] Neutron sim capture duration=5s rows=5 bytes=82 product=2",
+        "severity": "WATCH",
+        "createdBy": "guest",
+        "extra": {
+          "durationSeconds": "5",
+          "rows": "5",
+          "productBytes": "82",
+          "productId": "2",
+          "fprime_severity": "ACTIVITY_HI",
+          "fprime_event_id": "268570624",
+          "fprime_event_name": "ArtemisRpiTeensyDeployment.payloadDriverNeutronSim.CaptureComplete"
+        }
+      },
+      "stored": {
+        "source": "FPrimeEventProcessor",
+        "generationTime": "2026-10-09T00:00:18.656Z",
+        "receptionTime": "2026-10-09T00:00:18.693Z",
+        "seqNumber": 73,
+        "type": "ArtemisRpiTeensyDeployment.storageManager.ScienceStored",
+        "message": "[ScienceStored] Stored science product count=2 size=82",
+        "severity": "WATCH",
+        "createdBy": "guest",
+        "extra": {
+          "productCount": "2",
+          "productBytes": "82",
+          "fprime_severity": "ACTIVITY_HI",
+          "fprime_event_id": "268492800",
+          "fprime_event_name": "ArtemisRpiTeensyDeployment.storageManager.ScienceStored"
+        }
+      },
+      "sender_started": {
+        "source": "FPrimeEventProcessor",
+        "generationTime": "2026-10-09T00:00:18.658Z",
+        "receptionTime": "2026-10-09T00:00:18.700Z",
+        "seqNumber": 77,
+        "type": "ArtemisRpiTeensyDeployment.payloadDownlinkApp.PayloadDownlinkStarted",
+        "message": "[PayloadDownlinkStarted] Payload downlink started product=2 transfer=2 bytes=82 packets=3",
+        "severity": "WATCH",
+        "createdBy": "guest",
+        "extra": {
+          "productId": "2",
+          "transferId": "2",
+          "byteCount": "82",
+          "totalPackets": "3",
+          "fprime_severity": "ACTIVITY_HI",
+          "fprime_event_id": "268632064",
+          "fprime_event_name": "ArtemisRpiTeensyDeployment.payloadDownlinkApp.PayloadDownlinkStarted"
+        }
+      },
+      "sender_complete": {
+        "source": "FPrimeEventProcessor",
+        "generationTime": "2026-10-09T00:00:21.671Z",
+        "receptionTime": "2026-10-09T00:00:21.690Z",
+        "seqNumber": 82,
+        "type": "ArtemisRpiTeensyDeployment.payloadDownlinkApp.PayloadDownlinkComplete",
+        "message": "[PayloadDownlinkComplete] Payload sender complete transfer=2 packetsSent=3",
+        "severity": "WATCH",
+        "createdBy": "guest",
+        "extra": {
+          "transferId": "2",
+          "packetsSent": "3",
+          "fprime_severity": "ACTIVITY_HI",
+          "fprime_event_id": "268632065",
+          "fprime_event_name": "ArtemisRpiTeensyDeployment.payloadDownlinkApp.PayloadDownlinkComplete"
+        }
+      },
+      "ground_receipt_event": {
+        "source": "n2-local-science-ingest",
+        "generationTime": "2026-10-09T00:00:20.688Z",
+        "receptionTime": "2026-10-09T00:00:20.688Z",
+        "seqNumber": 80,
+        "type": "GroundScienceReceiptVerified",
+        "message": "GroundScienceReceiptVerified: Yamcs returned and verified 82 raw science bytes",
+        "severity": "INFO",
+        "createdBy": "guest",
+        "extra": {
+          "runId": "aa83d80ef47f",
+          "productId": "2",
+          "transferId": "2",
+          "bytes": "82",
+          "crc16Ccitt": "55584",
+          "sha256": "a18df26f00005d7e112b7e5204bf9e062cdfa6a8419e7d0c9b2438ae218ce3e8",
+          "objectName": "n2-science-aa83d80ef47f-00000002-02-a18df26f0000.bin",
+          "receiptObject": "n2-science-aa83d80ef47f-00000002-02-a18df26f0000.bin.receipt.json",
+          "verifiedGroundReceipt": "true"
+        }
+      },
+      "receipt": {
+        "bucket": "fprimeFilesIn",
+        "bytes": 82,
+        "crc16Ccitt": 55584,
+        "crc16CcittHex": "0xD920",
+        "faults": {
+          "packetsCorrupted": 0,
+          "packetsDropped": 0,
+          "profile": [
+            "corrupt-first-1",
+            "drop-first-0"
+          ],
+          "recoveredPackets": 0,
+          "retryRequestsSent": 0
+        },
+        "groundIngestCounters": {
+          "badDataPacketCrc": 0,
+          "channel1Packets": 4,
+          "completedTransfers": 1,
+          "conflictingDataPackets": 0,
+          "duplicateDataPackets": 0,
+          "duplicateEndPackets": 0,
+          "duplicateHeaders": 0,
+          "faultPacketsCorrupted": 0,
+          "faultPacketsDropped": 0,
+          "invalidPackets": 0,
+          "recoveredPackets": 0,
+          "rejectedEndPackets": 0,
+          "rejectedHeaders": 0,
+          "retryRequestsSent": 0,
+          "wholeFileCrcFailures": 0
+        },
+        "objectName": "n2-science-aa83d80ef47f-00000002-02-a18df26f0000.bin",
+        "packetCount": 3,
+        "productId": 2,
+        "receiptObject": "n2-science-aa83d80ef47f-00000002-02-a18df26f0000.bin.receipt.json",
+        "runId": "aa83d80ef47f",
+        "sha256": "a18df26f00005d7e112b7e5204bf9e062cdfa6a8419e7d0c9b2438ae218ce3e8",
+        "transferId": 2,
+        "verificationMethod": "Yamcs GET exact bytes and SHA-256 match",
+        "verifiedAt": "2026-10-09T00:00:20.681504+00:00",
+        "verifiedGroundReceipt": true
+      },
+      "yamcs_download": {
+        "path": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/20261008-135910/independently-downloaded-n2-science-aa83d80ef47f-00000002-02-a18df26f0000.bin",
+        "bytes": 82,
+        "sha256": "a18df26f00005d7e112b7e5204bf9e062cdfa6a8419e7d0c9b2438ae218ce3e8"
+      },
+      "source_oracle": {
+        "path": "/private/tmp/neutron_payload_captures/neutron_capture_20261009T000015Z_00195_00005.csv",
+        "bytes": 82,
+        "sha256": "a18df26f00005d7e112b7e5204bf9e062cdfa6a8419e7d0c9b2438ae218ce3e8"
+      },
+      "histogram_oracle": {
+        "windows": 5,
+        "totalCounts": 562,
+        "frequencies": {
+          "121": 1,
+          "118": 1,
+          "109": 1,
+          "113": 1,
+          "101": 1
+        },
+        "source": "independent Yamcs download"
+      },
+      "ground_viewer": {
+        "bucket": "fprimeFilesIn",
+        "bytes": 82,
+        "crc16Ccitt": 55584,
+        "crc16CcittHex": "0xD920",
+        "faults": {
+          "packetsCorrupted": 0,
+          "packetsDropped": 0,
+          "profile": [
+            "corrupt-first-1",
+            "drop-first-0"
+          ],
+          "recoveredPackets": 0,
+          "retryRequestsSent": 0
+        },
+        "groundIngestCounters": {
+          "badDataPacketCrc": 0,
+          "channel1Packets": 4,
+          "completedTransfers": 1,
+          "conflictingDataPackets": 0,
+          "duplicateDataPackets": 0,
+          "duplicateEndPackets": 0,
+          "duplicateHeaders": 0,
+          "faultPacketsCorrupted": 0,
+          "faultPacketsDropped": 0,
+          "invalidPackets": 0,
+          "recoveredPackets": 0,
+          "rejectedEndPackets": 0,
+          "rejectedHeaders": 0,
+          "retryRequestsSent": 0,
+          "wholeFileCrcFailures": 0
+        },
+        "histogram": {
+          "flagFrequencies": {
+            "SAA": 5
+          },
+          "frequencies": {
+            "101": 1,
+            "109": 1,
+            "113": 1,
+            "118": 1,
+            "121": 1
+          },
+          "label": "Simulated count-frequency (not a detector-energy histogram)",
+          "totalCounts": 562,
+          "windows": 5
+        },
+        "objectName": "n2-science-aa83d80ef47f-00000002-02-a18df26f0000.bin",
+        "packetCount": 3,
+        "productId": 2,
+        "rawUrl": "/api/products/n2-science-aa83d80ef47f-00000002-02-a18df26f0000.bin.receipt.json/raw",
+        "readbackBytes": 82,
+        "readbackCrc16Ccitt": 55584,
+        "readbackSha256": "a18df26f00005d7e112b7e5204bf9e062cdfa6a8419e7d0c9b2438ae218ce3e8",
+        "receiptObject": "n2-science-aa83d80ef47f-00000002-02-a18df26f0000.bin.receipt.json",
+        "receiptUrl": "/api/products/n2-science-aa83d80ef47f-00000002-02-a18df26f0000.bin.receipt.json/receipt",
+        "runId": "aa83d80ef47f",
+        "sha256": "a18df26f00005d7e112b7e5204bf9e062cdfa6a8419e7d0c9b2438ae218ce3e8",
+        "transferId": 2,
+        "verificationMethod": "Yamcs GET exact bytes and SHA-256 match",
+        "verifiedAt": "2026-10-09T00:00:20.681504+00:00",
+        "verifiedGroundReceipt": true
+      },
+      "collection_count": {
+        "id": {
+          "name": "CollectionCount",
+          "namespace": "/ArtemisRpiTeensyDeployment_ArtemisRpiTeensyDeployment/ArtemisRpiTeensyDeployment/scienceApp"
+        },
+        "rawValue": {
+          "type": "UINT32",
+          "uint32Value": 2
+        },
+        "engValue": {
+          "type": "UINT32",
+          "uint32Value": 2
+        },
+        "acquisitionTime": "2026-10-09T00:00:19.682Z",
+        "generationTime": "2026-10-09T00:00:18.656Z",
+        "acquisitionStatus": "ACQUIRED"
+      },
+      "result": "PASS"
+    }
+  ],
+  "binary_sha256": "ae7bf3de83b79dab247a004a365eff180b115b4aa37d00026bb6696f4451119c",
+  "dictionary_sha256": "a841a26b99689e5b10ec48d22e61208e2cf369ec39bbc59e314b9f9d53a231b6",
+  "ground_source_sha256": {
+    "science_ingest.py": "1014b2c190277063a1b390238fa37c2c6491fb71a4963085974512ffdffdb1c9",
+    "science_viewer.py": "d24732b5b0ddfd8cf964997e199bb4f7822ba6423fe9f19aff42078f14190337",
+    "local_link.py": "f06f31e14930cba9582c6ab003a8d6d7b97fafd7c74992916f97dd3f89968cce",
+    "local_stack.py": "91db8c4bf300c5850adf5e112eaf4a2e55af939a225292d29c419f512a46d1de",
+    "raw_cycle.py": "a19bfbcc5f69b2da5a4f52bc059b42617572b906c4b895d280e8bbee3cab6f9c"
+  },
+  "initial_mode": "BASE",
+  "initial_collection_count": 0,
+  "negative_checks": [
+    {
+      "duration_seconds": 0,
+      "fault": null,
+      "command": {
+        "binary": "EADAAAAAAAAQAHADAAAAAA==",
+        "id": "1791504024116-n2-local-yamcs-smoke-1791503987",
+        "generationTime": "2026-10-08T23:59:47.116Z",
+        "origin": "n2-local-yamcs-smoke",
+        "sequenceNumber": 1791503987,
+        "commandName": "/ArtemisRpiTeensyDeployment_ArtemisRpiTeensyDeployment/ArtemisRpiTeensyDeployment/scienceApp/COLLECT_AND_DOWNLINK",
+        "queue": "default",
+        "username": "guest",
+        "assignments": [
+          {
+            "name": "CCSDS_Version",
+            "value": {
+              "type": "UINT32",
+              "uint32Value": 0
+            },
+            "userInput": false
+          },
+          {
+            "name": "CCSDS_Type",
+            "value": {
+              "type": "BOOLEAN",
+              "booleanValue": true
+            },
+            "userInput": false
+          },
+          {
+            "name": "CCSDS_Sec_Hdr_Flag",
+            "value": {
+              "type": "BOOLEAN",
+              "booleanValue": false
+            },
+            "userInput": false
+          },
+          {
+            "name": "CCSDS_APID",
+            "value": {
+              "type": "UINT32",
+              "uint32Value": 0
+            },
+            "userInput": false
+          },
+          {
+            "name": "CCSDS_Group_Flags",
+            "value": {
+              "type": "ENUMERATED",
+              "stringValue": "Standalone",
+              "sint64Value": "3"
+            },
+            "userInput": false
+          },
+          {
+            "name": "OpCode",
+            "value": {
+              "type": "UINT32",
+              "uint32Value": 268464131
+            },
+            "userInput": false
+          },
+          {
+            "name": "durationSeconds",
+            "value": {
+              "type": "UINT32",
+              "uint32Value": 0
+            },
+            "userInput": true
+          }
+        ],
+        "unprocessedBinary": "EADAAAAAAAAQAHADAAAAAA=="
+      },
+      "rejected": {
+        "source": "FPrimeEventProcessor",
+        "generationTime": "2026-10-08T23:59:48.122Z",
+        "receptionTime": "2026-10-08T23:59:47.562Z",
+        "seqNumber": 7,
+        "type": "ArtemisRpiTeensyDeployment.scienceApp.ScienceCommandRejected",
+        "message": "[ScienceCommandRejected] Science command rejected reason=2 value=0",
+        "severity": "WARNING",
+        "createdBy": "guest",
+        "extra": {
+          "reason": "2",
+          "value": "0",
+          "fprime_severity": "WARNING_LO",
+          "fprime_event_id": "268464132",
+          "fprime_event_name": "ArtemisRpiTeensyDeployment.scienceApp.ScienceCommandRejected"
+        }
+      },
+      "result": "PASS",
+      "forbidden_events": []
+    },
+    {
+      "duration_seconds": 2,
+      "fault": "FAIL",
+      "command": {
+        "binary": "EADAAAAAAAAQAHADAAAAAg==",
+        "id": "1791504028813-n2-local-yamcs-smoke-1791503991",
+        "generationTime": "2026-10-08T23:59:51.813Z",
+        "origin": "n2-local-yamcs-smoke",
+        "sequenceNumber": 1791503991,
+        "commandName": "/ArtemisRpiTeensyDeployment_ArtemisRpiTeensyDeployment/ArtemisRpiTeensyDeployment/scienceApp/COLLECT_AND_DOWNLINK",
+        "queue": "default",
+        "username": "guest",
+        "assignments": [
+          {
+            "name": "CCSDS_Version",
+            "value": {
+              "type": "UINT32",
+              "uint32Value": 0
+            },
+            "userInput": false
+          },
+          {
+            "name": "CCSDS_Type",
+            "value": {
+              "type": "BOOLEAN",
+              "booleanValue": true
+            },
+            "userInput": false
+          },
+          {
+            "name": "CCSDS_Sec_Hdr_Flag",
+            "value": {
+              "type": "BOOLEAN",
+              "booleanValue": false
+            },
+            "userInput": false
+          },
+          {
+            "name": "CCSDS_APID",
+            "value": {
+              "type": "UINT32",
+              "uint32Value": 0
+            },
+            "userInput": false
+          },
+          {
+            "name": "CCSDS_Group_Flags",
+            "value": {
+              "type": "ENUMERATED",
+              "stringValue": "Standalone",
+              "sint64Value": "3"
+            },
+            "userInput": false
+          },
+          {
+            "name": "OpCode",
+            "value": {
+              "type": "UINT32",
+              "uint32Value": 268464131
+            },
+            "userInput": false
+          },
+          {
+            "name": "durationSeconds",
+            "value": {
+              "type": "UINT32",
+              "uint32Value": 2
+            },
+            "userInput": true
+          }
+        ],
+        "unprocessedBinary": "EADAAAAAAAAQAHADAAAAAg=="
+      },
+      "rejected": {
+        "source": "FPrimeEventProcessor",
+        "generationTime": "2026-10-08T23:59:52.815Z",
+        "receptionTime": "2026-10-08T23:59:52.600Z",
+        "seqNumber": 20,
+        "type": "ArtemisRpiTeensyDeployment.scienceApp.ScienceOperationRejected",
+        "message": "[ScienceOperationRejected] Science payload operation request=1 state=FAILED",
+        "severity": "DISTRESS",
+        "createdBy": "guest",
+        "extra": {
+          "requestId": "1",
+          "state": "FAILED",
+          "fprime_severity": "WARNING_HI",
+          "fprime_event_id": "268464133",
+          "fprime_event_name": "ArtemisRpiTeensyDeployment.scienceApp.ScienceOperationRejected"
+        }
+      },
+      "result": "PASS",
+      "forbidden_events": []
+    }
+  ],
+  "retained_sources": [
+    "/private/tmp/neutron_payload_captures/neutron_capture_20261008T235957Z_00165_00030.csv",
+    "/private/tmp/neutron_payload_captures/neutron_capture_20261009T000015Z_00195_00005.csv"
+  ],
+  "configured_ground_faults": [
+    "corrupt-first-1",
+    "drop-first-0"
+  ],
+  "finished_at": "2026-10-08T14:00:22.739613-10:00"
+}

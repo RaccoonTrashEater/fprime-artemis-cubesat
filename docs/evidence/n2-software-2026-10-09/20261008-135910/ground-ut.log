@@ -1,0 +1,15 @@
+test_end_requests_missing_packets_and_one_shot_faults_repair (test_science_ingest.ScienceIngestTests.test_end_requests_missing_packets_and_one_shot_faults_repair) ... ok
+test_rejects_oversize_header_and_bad_packet_crc (test_science_ingest.ScienceIngestTests.test_rejects_oversize_header_and_bad_packet_crc) ... ok
+test_requires_matching_end_and_deduplicates_header (test_science_ingest.ScienceIngestTests.test_requires_matching_end_and_deduplicates_header) ... ok
+test_requires_whole_file_crc_after_matching_end (test_science_ingest.ScienceIngestTests.test_requires_whole_file_crc_after_matching_end) ... ok
+test_transient_publish_failure_retains_capture_until_verified_retry (test_science_ingest.ScienceIngestTests.test_transient_publish_failure_retains_capture_until_verified_retry) ... retry: start=0 count=2 bitmap_bytes=1
+[science-ingest] Yamcs publish failed: temporary Yamcs readback failure
+[science-ingest] retaining bounded raw capture for retry in 5s: temporary Yamcs readback failure
+ok
+test_api_returns_yamcs_identity_hash_and_simulated_frequency (test_science_viewer.ViewerTests.test_api_returns_yamcs_identity_hash_and_simulated_frequency) ... ok
+test_list_and_download_routes_use_yamcs_bytes (test_science_viewer.ViewerTests.test_list_and_download_routes_use_yamcs_bytes) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 1.133s
+
+OK
