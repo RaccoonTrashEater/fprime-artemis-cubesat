@@ -2,6 +2,7 @@
 
 **Historical baseline.** These guides describe the older Artemis/Pi/Teensy/RFM23BP N2 demo. They do not establish current PLD/SatNOGS/SDR integration. Preserve them for comparison and revision-matched bench work; start [current mission ops here](../../operations/QUICKSTART.md).
 
+- [Architecture before the October 18 UNP refresh](SYSTEM_ARCHITECTURE_BEFORE_UNP_REFRESH.md): historical transport details, diagrams, RF sizing and old defaults.
 - [Old mission-ops quick run](MISSION_OPS_QUICK_RUN.md)
 - [Old local GDS emulation](NEUTRON2_LOCAL_EMULATION_RUNBOOK.md)
 - [Old RF MVP demo](NEUTRON2_RF_MVP_DEMO_RUNBOOK.md)

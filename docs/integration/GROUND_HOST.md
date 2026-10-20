@@ -1,8 +1,18 @@
-# Neutron 2 dedicated Yamcs ground host — October 8, 2026
+# Neutron 2 dedicated Yamcs ground host
+
+Plan recorded October 8, 2026; allocation, transport and ownership updated October 19, 2026.
 
 **BLUF:** Use a Raspberry Pi 5 running **64-bit Ubuntu Linux** as the dedicated ground-station host. It runs Yamcs, keeps ground archives and received files, and connects to an SDR. Students join the router's LAN and use Yamcs in a browser; operating the station does not require a local repository, Java, or Yamcs installation. This is recorded intent and a deployment plan, not an implemented or accepted Pi deployment.
 
 For the concepts behind this plan, read the [Yamcs primer](../operations/YAMCS_BASICS.md). For the existing software test environment, use the [local Yamcs runbook](../development/YAMCS_LOCAL_TESTING.md).
+
+## October 18 milestone allocation
+
+The full Pi 5/Yamcs/SDR ground chain below is the **FSR target**. Revised CDR scope is OBC + real payload + PDU power-on/off and skips COMMS. CDR command/telemetry uses Pi Zero W F′ TCP over the local network to Pi 5 Ubuntu/Yamcs, with operator browsers on the LAN. This is the selected direction, not implemented or hardware-tested TCP support. The local simulator remains useful development evidence, not a selected CDR operating procedure.
+
+## October 18 allocation confirmation
+
+Dennis reaffirmed the satellite **Pi Zero W F′ deployment binary + Teensy embedded split**, with a separate **Pi 5 Ubuntu host for Yamcs/F′ ground services** accessed by browsers over the router LAN. Sam and Zach handle SatNOGS firmware/SPI and SDR; Dennis integrates F′/Yamcs. PLD↔OBC command/telemetry uses USB↔RS-422; raw-file details remain open. This confirms the intended roles, not a purchase, deployment, wiring or RF acceptance. The dated shopping list below remains historical.
 
 ## Pi shopping list — October 8, 2026
 
@@ -40,7 +50,7 @@ Board-price source: [PiShop current Pi listings](https://www.pishop.us/product-c
 | Ground computer | Dedicated Raspberry Pi 5 with Ubuntu Linux; use a 64-bit/aarch64 installation. |
 | Network | Connect the Pi to a router. Students reach it over the local network; SSH is available for maintainers. A stable address or lab hostname should identify the station. |
 | Student interface | Browser access to the Pi-hosted Yamcs web interface. Students developing F′ still need their development tools; station operators do not. |
-| Ground radio | Connect the Pi 5 to the SDR through the SDR's supported host interface, normally USB. The SDR implementation is handled by another team member; record the owner when confirmed. |
+| Ground radio | Connect the Pi 5 to the SDR through the SDR's supported host interface, USB to the USRP B200. Sam and Zach handle SDR implementation and demodulation; agree the software handoff contract. |
 | First radio connection | Connect the SDR's appropriate RF port(s) to the SatNOGS COMMS board over coax with a reviewed attenuation/port arrangement. This is a conducted RF test, not a digital cable bypass. |
 | Later radio connection | Substitute the agreed antenna/radio path for the conducted connection, keeping the ground packet handoff consistent where possible. |
 | Spacecraft software | Current native F′ deployment is the simulated spacecraft in the board-free testbed. For hardware operation, F′ runs on the satellite OBC; the current CDR OBC intent is Pi Zero W. The ground Pi 5 is a separate computer. |
@@ -50,10 +60,10 @@ Board-price source: [PiShop current Pi listings](https://www.pishop.us/product-c
 ```mermaid
 flowchart LR
     Browser["Student browsers"] <-->|"Router / LAN"| Ground["Ground Pi 5 · Ubuntu<br/>Yamcs + SDR software + archives"]
-    Ground <-->|"SDR host interface"| SDR["SDR"]
+    Ground <-->|"SDR host interface"| SDR["USRP B200"]
     SDR <-->|"Conducted RF: coax + attenuation<br/>Later: antennas"| Radio["SatNOGS COMMS"]
     Radio <-->|"Host interface / SPI<br/>integration pending"| OBC["Satellite OBC · F′"]
-    OBC <-->|"Payload interface pending"| Payload["Neutron 2 payload"]
+    OBC <-->|"USB ↔ RS-422; raw-file contract open"| Payload["Neutron 2 payload"]
 ```
 
 Yamcs already serves its web interface, HTTP API, and WebSocket updates. Students would open `http://<ground-pi-lan-address>:8090` for the initial LAN deployment. This is an example URL, not a currently reachable station. Normal browser use does not require SSH or a separate client installation. [Official HTTP server documentation](https://docs.yamcs.org/yamcs-server-manual/services/global/http-server/)
@@ -97,7 +107,7 @@ Moving the web server does not require a major refactor of `MissionApp`, `Scienc
 4. **Configure shared access:** establish viewer, operator, and maintainer privileges. All browsers share the same mission instance and spacecraft; they do not create isolated simulations. Unconfigured Yamcs gives unauthenticated guests superuser access. [Security documentation](https://docs.yamcs.org/yamcs-server-manual/security/)
 5. **Add ground systemd services:** select the runtime account, environment, restart/startup behavior, SDR device access, and persistent archive location. The existing `deploy/pi/` service is for satellite F′ on Pi Zero W and should not be reused as the ground Yamcs service.
 6. **Measure resources:** the pinned `fprime-yamcs` launcher sets `-Xmx4g`, allowing Java heap growth up to 4 GiB; this is not an immediate 4 GiB allocation. Budget OS, native database memory, and SDR processing as well. Lower and validate the heap limit for the budget Pi 5 4GB target, or make it configurable. The 8GB model and SSD remain optional upgrades, not measured capacity requirements.
-7. **Prepare a reproducible release:** the [accepted software baseline](../verification/SOFTWARE_BASELINE.md) packages the local tools and evidence. Publish that commit through the agreed team Git workflow before expecting a fresh remote clone to contain it; preserve deployment configuration and dictionary/binary identity when preparing the station.
+7. **Prepare a reproducible release:** the [accepted software baseline](../verification/SOFTWARE_BASELINE.md) packages the local tools and evidence. The October 18 setup check verified remote `neutron2-develop` at local source `5429a2f`; publish later changes through the agreed team Git workflow. Preserve deployment configuration and dictionary/binary identity when preparing the station.
 
 ## Acceptance sequence
 
@@ -115,7 +125,7 @@ For coax testing, upstream SatNOGS verification explicitly uses an SDR and atten
 ## Open items and ownership
 
 - Shopping target is Pi 5 4GB with 64GB microSD; confirm purchased hardware, Ubuntu release, station hostname/address, and expected simultaneous users.
-- Record the SDR owner, model, TX/RX and band capabilities, host interface, and modem configuration.
+- SDR owners are Sam and Zach (confirmed October 18); USRP B200 uses USB to Pi 5 and the UHF conducted-RF path. The team owns the matching RF arrangement; agree the software handoff.
 - Freeze the SDR↔Yamcs output/input contract: frames versus packets, UDP/TCP endpoint, boundaries, headers, CRC, and radio encapsulation/segmentation.
 - Confirm the SatNOGS↔OBC interface and production firmware compatibility independently of the web-host plan.
 - Select the raw-science reception and file-integrity mechanism. Stock F′ FileDownlink support does not automatically receive the existing custom science channel or interpret the PLD format.

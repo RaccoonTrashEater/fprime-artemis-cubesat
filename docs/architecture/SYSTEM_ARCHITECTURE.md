@@ -1,479 +1,220 @@
 # System Architecture
 
-> **2026-10-08 milestone update:** October CDR requires pass-through science collection through Yamcs, SDR, SatNOGS, OBC, and the PLD, without modes; December FSR adds nominal modes, time-based collection, and EPS payload-power control. Current development is software-only, with a Pi Zero W running F′ as the planned CDR OBC. The PLD supplies raw science; the histogram is a ground-side product. A, C, and B have passed in the local software profile: B reconstructs simulator products, verifies Yamcs readback, and renders simulator CSV count-frequency data. The accepted opt-in pulse extension additionally derives waveform, integrated-charge spectrum, and PSD density from verified simulated raw ADC samples; see the [pulse plan](../verification/SYNTHETIC_PULSE_ACCEPTANCE.md) and [operator guide](../operations/walkthroughs/PULSE_SCIENCE.md). PLD transport and SatNOGS SPI/host contracts remain open; this evidence does not prove Pi deployment, payload hardware, SDR, or RF integration. The architecture below includes prior GDS/RFM23BP demo assumptions and should be read as historical where they conflict with the current milestones. See [current development intent](../planning/DEVELOPMENT_INTENT.md), [SDD gap plan](../planning/SDD_GAP_PLAN.md), [local Yamcs setup and accepted tests](../development/YAMCS_LOCAL_TESTING.md), and the [B operator walkthrough](../operations/walkthroughs/RAW_CYCLE.md).
+**BLUF:** Neutron 2's October UNP CDR demo targets **OBC + payload + PDU**, including PDU-controlled payload on/off and real raw-data acquisition. CDR skips the COMMS stack; Pi Zero W F′ TCP over the LAN to Pi 5/Yamcs is the selected operator path. December FSR targets **payload + PDU + the complete Yamcs/SDR/SatNOGS chain**, retaining the previously planned scheduling and nominal modes. The accepted implementation currently exercises the software chain with a simulated payload and link; hardware integration is the next evidence gate.
 
-> **October 9 scope:** onboard FSW acquires, stores, and downlinks raw science bytes. The payload team provides a JAR for actual science display/interpretation; the local synthetic plots are regression fixtures. Real payload samples are unavailable for this work, and another team owns SatNOGS/SDR development. [Completion/storage plan](../verification/COMPLETION_STORAGE.md) records the new authorized software slices and acceptance boundaries.
+Updated October 19, 2026; incorporates the October 18 scope revision and October 19 transport/hardware decisions. Applies to `neutron2-develop` (source baseline `5429a2f` before this documentation update). [Development intent](../planning/DEVELOPMENT_INTENT.md) owns milestone scope; [software baseline](../verification/SOFTWARE_BASELINE.md) owns dated acceptance. Dennis confirmed the USB↔RS-422 payload interface, Pi Zero W/Teensy satellite split, Pi 5 Ubuntu/Yamcs LAN host, and Sam/Zach SatNOGS firmware/SPI and SDR ownership on October 18. Electrical settings and protocol details below remain open where unspecified.
 
 ## Purpose
 
-**Ground-host intent recorded October 8:** a dedicated Pi 5 running 64-bit Ubuntu hosts Yamcs and the SDR ground software; students use browser clients over the router LAN. Conducted RF over reviewed coax/attenuation precedes antenna testing. The ground Pi is separate from the satellite Pi Zero W running F′. Replace the simulator/PTY launcher for hardware, but retain the ground services. See the [ground-host plan](../integration/GROUND_HOST.md) and [Yamcs primer](../operations/YAMCS_BASICS.md); deployment and the SDR/SatNOGS packet contract remain pending.
+Neutron 2 is the mission; the Artemis CubeSat Kit supplies the prototype bus for the FlatSat demonstration. This checkout's N2 architecture does not select a new reusable Artemis kit architecture or replace the separate C3M/Zephyr baselines. A host simulation, target build, integrated FlatSat demo, and flight qualification are different evidence levels.
 
-The October 8 local-profile implementation makes `PayloadManager` the sole serialized admission point for literal, direct, legacy, ScienceApp, and scheduled capture requests. Typed requests/results carry external request ID plus internal generation; admitted operations emit `ACCEPTED` and one terminal outcome, and stale/duplicate callbacks cannot publish a second product. `ScienceApp` advances only for its matched accepted capture, and `StorageManager` accepts validated products. The simulated driver uses a nonblocking child process with bounded termination/reaping. This bounded C behavior passed 31 Yamcs checks; see the [C acceptance and operator walkthrough](../operations/walkthroughs/LIFECYCLE.md). B's raw simulator delivery through an independent ground receiver and Yamcs readback is also accepted separately below; real payload and communications adapters remain pending.
+The spacecraft F′ deployment runs on the satellite Pi Zero W. The Teensy remains its embedded bridge/local-control partner. A separate Pi 5 running Ubuntu hosts Yamcs and F′ ground services with the SDR; students use the web interface over the local network. The ground host does not run a second spacecraft mission authority. Pi Zero W is the selected SatNOGS SPI controller; harness and firmware interface details remain TBD.
 
-### October 9 completion and durable-storage implementation
+## UNP milestone scope
 
-`StorageManager` now commits immutable raw copies plus versioned metadata under `N2_STORAGE_ROOT`, validates size/CRC before publication, recovers valid catalog entries after process restart, and selects older products through `SELECT_PRODUCT`. A shared lock and persistent high-water marker prevent simulator product-ID reuse across restarts, including orphaned or rejected records. Its rate-group callback is connected. The 16-entry catalog retains products after sender completion and transient cleanup; full storage rejects a new product. Ground ACK reclamation and power-loss qualification are separate work.
+| Requirement | October 2026 CDR | December 2026 FSR |
+| --- | --- | --- |
+| Core systems | PLD, OBC, PDU | PLD, OBC, PDU, COMMS, SDR and Yamcs ground |
+| Operator | Pi Zero W F′ TCP ↔ LAN ↔ Pi 5/Yamcs; browser operators on LAN | Yamcs via Pi 5 Ubuntu/LAN |
+| Trigger | Yamcs command through LAN TCP to Pi Zero W F′ | Previously planned scheduled collection at time X through COMMS |
+| Payload interface | USB↔RS-422 command/telemetry; raw-product transfer contract to be agreed | Same payload contract within the full chain |
+| Power | PDU-controlled payload power-on/off | Integrated PDU power/readiness/collection/shutdown sequence |
+| Mission modes | Formal modes/scheduling not required by the revised CDR scope | Previously planned nominal Base/collection/processing flow and return to Base |
+| Science result | Raw product acquired/retained on OBC and inspected by the agreed local access method | Independently received/verified raw science on the ground |
 
-`ScienceApp.VERIFIED_COLLECT_AND_DOWNLINK` and `CommsApp.VERIFIED_REQUEST_SCIENCE_DOWNLINK` carry explicit nonzero tokens. FSW events bind those tokens to capture request/generation and product/transfer. The Yamcs-launched ground verifier writes admission, terminal, storage, sender, receipt, and final completion stages into actual command history. Final success requires independent Yamcs raw-object readback matching identity, size, CRC, and SHA; sender DONE alone is insufficient. Tokens are owned by the earliest command, persisted across verifier restart, and reused-token rejection does not rewrite the owner. Legacy commands retain dispatch semantics. [D/E plan and acceptance](../verification/COMPLETION_STORAGE.md) contains the operator procedure and evidence.
-
-This document is the working system-architecture crosswalk for the Neutron 2 FlatSat demo, written so future student developers can understand **the architecture, the decisions behind it, the tradeoffs, and the data-flow patterns** — not just the box diagram.
-
-The important distinction is:
-
-- `Neutron 2` is the target spacecraft architecture and subsystem model.
-- `Artemis CubeSat` hardware is the prototype platform used to demonstrate that architecture during the current demo phase.
-
-This means the demo is not a pure Artemis mission and not yet the full Neutron 2 spacecraft. It is a Neutron 2 subsystem story demonstrated on an Artemis-derived hardware stack.
-
-## Source Context
-
-This architecture summary is based on:
-
-- the team's current FlatSat architecture diagrams
-- repo documentation and current implementation state
-- the user-provided Artemis CubeSat manual used as the prototype hardware reference
-
-See [Reference Documents](#reference-documents) for the hardware manuals, datasheets, and ICDs that back the claims in this document. New to the terminology (SOH, CCSDS, APID, D2S2, OBC, PDU, HAL, ...)? Start with the [Glossary](../reference/GLOSSARY.md).
-
-## Why F Prime (and why we refactored)
-
-The prior Artemis/EPSCoR C3M **baremetal reference implementation** lives in [`external/epscorc3m`](../../external/epscorc3m). It provides hardware/protocol examples; its presence and earlier demo reports do not establish flight qualification or N2 acceptance. Neutron 2 uses F′ to separate subsystem logic, hardware drivers and mission behavior so hardware substitutions can remain below application policy.
-
-Neutron 2 needs to evolve hardware and mission behavior independently, so we refactored onto the **[F Prime (F´)](https://github.com/nasa/fprime) flight-software framework**:
-
-- F´ is a NASA/JPL framework, flight-proven on real missions, with a strong component/port model that enforces separation between mission logic and hardware.
-- Many other educational CubeSat teams use F´, so there is community knowledge, tutorials, and reusable framework services (`CdhCore`, `ComCcsds`, `DataProducts`, `FileHandling`, rate groups, drivers).
-- The component model gives us a clean place to put a **Hardware Abstraction Layer** (see below), which is the key enabler for "build with the hardware we have now, swap in flight hardware later."
-
-Keep `external/epscorc3m` as a reference for how the Artemis hardware actually behaves at the register/protocol level; do **not** copy its tightly-coupled architecture back into this repo.
+**October 18 scope revision from Dennis:** payload/PDU is the CDR milestone; COMMS is deferred to FSR. This supersedes the earlier full-RF CDR requirement and its fallback discussion. Exact review dates remain open. Dennis selected Pi Zero W F′ TCP over LAN to Pi 5/Yamcs on October 19; implementation remains pending. ADCS/D2S2 HIL, geo-based commanding and additional flight modes remain below the core FSR sequence.
 
 ## High-Level Architecture
 
-![System architecture diagram for the Neutron 2 FlatSat demo on Artemis prototype hardware](diagrams/SYSTEM_ARCHITECTURE_DIAGRAM.svg)
+### CDR payload/PDU target
 
-## Previous demo subsystem crosswalk — July 2026 baseline
-
-| Subsystem | Demo implementation | Role in the current prototype | Notes |
-| --- | --- | --- | --- |
-| `OBC` | Artemis OBC board using `Raspberry Pi` plus `Teensy 4.1` | Main flight-computing and interface layer | `Raspberry Pi` runs higher-level flight software. `Teensy` handles bridge/control duties and hardware-facing integration. |
-| `EPS` | Artemis EPS / PDU / battery system | Real power-system baseline for the demo | Treat as the real EPS prototype, not a stub. PDU v2 protocol per the [PDU ICD](#reference-documents). |
-| `ADCS` | `D2S2` simulator | Simulated ADCS behavior for the demo | The current demo does not require full physical flight ADCS implementation inside this repo. |
-| `PLD` | `Neutron 2` payload **simulator** now, `Neutron 2` **development payload board** (loaned to us) later | Payload/science data source | Simulated payload data is acceptable for the demo. The driver swaps to the loaned Neutron 2 dev board when it arrives, with no change to mission logic. |
-| `COMMS` | `RFM23BP` for MVP, `SatNOGS` board as alternate/future path | Radio/transport subsystem | Default assumption is `RFM23BP` until the in-house `SatNOGS` board is validated. |
-| `GPS` | Artemis kit GPS module | Position/time reference from installed Artemis hardware | Exact module may vary by kit configuration. |
-| `S&M` | Artemis structure and antenna deployment baseline | Mechanical/structural context for the demo | Important for full-system understanding, but not the primary focus of current software work. |
-| `TCS` | Artemis thermal baseline with sensors/heater context | Thermal and battery-heater context | Relevant to system understanding; currently a lower-priority software slice for the MVP demo. |
-
-## Flight Software Architecture: Application → Manager → Driver (HAL)
-
-This is the most important pattern in the repository. Read it before touching components.
-
-![F Prime architecture pattern: applications talk to managers, managers talk to drivers](diagrams/FPRIME_ARCHITECTURE_PATTERN.png)
-
-### The problem this solves
-
-We have a demo coming up, but we **do not yet have the real flight hardware**. Today we only have the Artemis CubeSat Bus kit. We do **not** have:
-
-- the SatNOGS comms board (we use the RFM23BP instead)
-- the real Neutron 2 payload board (we use a simulator instead)
-- the final/target EPS and other flight subsystems
-
-We still need to build, demonstrate, and iterate now, then **swap in real hardware later without rewriting the mission**. The answer is a deliberate **Hardware Abstraction Layer (HAL)**, expressed in F´ as three component tiers. This is not a novel idea — it is classic layering — but it is the right fit for our "prototype now, fly later" constraint.
-
-### The three tiers
-
-1. **Applications** — *decide what happens next.* Mission and mode logic. They own the demo story (Base Mode -> scheduled collection -> science downlink) and coordinate subsystems. They talk **only to managers**, never to hardware.
-   - `MissionApp`, `ScienceApp`, `SoHApp`, `CommsApp`
-2. **Managers** — *subsystem logic + telemetry.* The stable, hardware-independent contract for each subsystem ("collect a payload sample," "command an EPS rail," "get GPS fix"). Managers expose generic commands/telemetry to the applications and call down to a driver for the actual hardware action.
-   - `PayloadManager`, `EpsManager`, `AdcsManager`, `GpsManager`, `StorageManager`, `TeensyTransportManager`
-3. **Drivers (the HAL)** — *hardware + protocol glue.* Each driver implements one manager's contract against one specific piece of hardware or simulator. This is the **only** tier that changes when hardware changes.
-   - `PayloadDriver_NeutronSim` (sim today → `PayloadDriver_*` for the dev board later)
-   - `EpsDriver_Artemis` (Artemis PDU v2 protocol)
-   - `AdcsDriver_D2S2`, `GpsDriver_Artemis`, `CommsDriver_TeensyRfm23`
-
-> **Applications talk to managers. Managers talk to drivers. Drivers talk to hardware.**
-
-### This is F´'s Application-Manager-Driver pattern
-
-This is not custom terminology. F´ calls this the **Application-Manager-Driver (App-Man-Drv)** pattern, documented in the framework at [`lib/fprime/.../design-patterns/app-man-drv.md`](../../ArtemisRpiTeensy_N2/lib/fprime/docs/user-manual/design-patterns/app-man-drv.md) and [`how-to/develop-device-driver.md`](../../ArtemisRpiTeensy_N2/lib/fprime/docs/how-to/develop-device-driver.md). This repo now uses the native F´ vocabulary in component names and topology instances:
-
-| F´ tier | Repo suffix convention | Current examples | Role |
-| --- | --- | --- |
-| **Application** | `*App` | `MissionApp`, `ScienceApp`, `CommsApp`, `SoHApp`, `PayloadDownlinkApp` | Mission/mode logic; cross-cutting; talks only to managers |
-| **Manager** | `*Manager` | `EpsManager`, `PayloadManager`, `GpsManager`, `StorageManager` | Subsystem-generic command/telemetry contract; hardware-independent |
-| **Driver** | `*Driver_<Hardware>` | `EpsDriver_Artemis`, `PayloadDriver_NeutronSim`, `CommsDriver_TeensyRfm23` | Hardware + protocol glue; the only tier that changes per hardware |
-
-> **Legacy names before 2026-07-06:** the old repo vocabulary was Manager -> Application, Service -> Manager, Adapter -> Driver. Old logs and archived plans may still use those names, but active source and docs should use the native F´ names above.
-
-What makes this a *real* HAL — and not just decorative indirection — is the same mechanism F´ relies on: the swap boundary uses a **shared port interface**. F´ drivers are swappable because `LinuxI2cDriver` and `ZephyrI2cDriver` both speak the same `Drv.I2c` interface. We do the equivalent: `EpsManager` and `EpsDriver_Artemis` both speak the mirrored `Components.EpsCommand` / `Components.EpsStatus` ports defined in [`Components/Types/Types.fpp`](../../ArtemisRpiTeensy_N2/Components/Types/Types.fpp). A new driver only has to honor those ports, then you re-wire one topology connection — the manager is untouched. That shared-port boundary is exactly why the "sim now, real board later" swap works, and the framework docs explicitly call out *simulation and testing* as a reason to layer this way.
-
-### Why this is worth it (the tradeoff)
-
-- **Benefit:** when the loaned Neutron 2 payload board, the SatNOGS comms board, or the final EPS arrives, we write a **new driver** and re-wire one connection in the topology. Applications and managers are untouched, so the mission demo keeps working. We can develop against the hardware we have today and drop in flight hardware with no major refactor.
-- **Cost:** more components and one extra indirection (application -> manager -> driver) than a baremetal "just call the driver" approach. For a one-off baremetal demo this would be overkill — but for Neutron 2's "evolve hardware independently" requirement it pays for itself. This indirection is exactly the flexibility `external/epscorc3m` lacked.
-
-### How to extend it (student recipe)
-
-- New mission behavior -> edit/add an **Application** (`*App`).
-- New subsystem capability or telemetry contract -> edit/add a **Manager** (`*Manager`).
-- New or swapped hardware/sim -> add a **Driver** (`*Driver_<Hardware>`), keep the manager contract identical, and re-wire it in `Top/topology.fpp`.
-- If you find yourself putting hardware/protocol bytes in an application or manager, that logic belongs in a driver.
-
-### Implementation notes (use the framework, don't fight it)
-
-Two notes to keep drivers aligned with stock F´ rather than reinventing it:
-
-1. **For subsystems on the Pi's own bus, use F´'s built-in bus drivers.** If a device is directly reachable from the Pi over I²C/SPI/GPIO (*not* routed behind the satellite Teensy), prefer `Drv.LinuxI2cDriver`, `Drv.LinuxSpiDriver`, or `Drv.LinuxGpioDriver` as the lower half of the driver, plus a thin device manager — don't hand-roll the bus access. Our current EPS/GPS/thermal drivers are bespoke because they go through the **channel 2 Teensy RPC** (a hardware constraint of the one-UART OBC board), which justifies the custom code *there*. But for anything the Pi can talk to directly, use the framework driver.
-2. **Check `fprime-sensors` before writing a new driver.** The community library [`fprime-sensors`](https://github.com/fprime-community/fprime-sensors) ships ready-made device managers (IMU, magnetometer, etc.) as Manager+Driver pairs. When the real GPS/IMU/thermal boards arrive, see whether a drop-in already exists before building a `*Driver_*` from scratch.
-
-## OBC Detail
-
-The `OBC` is the most important subsystem for this repository.
-
-### OBC hardware model
-
-- `Raspberry Pi Zero W`
-  - runs the primary flight-software application layer (the F´ deployment) for the demo
-- `Teensy 4.1`
-  - provides embedded control / bridge behavior around hardware and communications (UART mux relay, RFM23BP driver, local subsystem RPC)
-
-### OBC software model in this repo
-
-- `ArtemisRpiTeensy_N2`
-  - active `F'` project and flight-software root (applications, managers, drivers, topology)
-- `ArtemisTeensy_N2_Baremetal`
-  - satellite-side Teensy firmware (UART↔RF relay + local RPC)
-- `GDS_Teensy`
-  - ground-side Teensy firmware (RF↔USB triple-serial bridge)
-
-### Important conceptual rule
-
-Do not treat the current repo as if every Neutron 2 subsystem already exists in software.
-
-Today, the codebase is strongest in:
-
-- `OBC` transport and command/telemetry plumbing
-- `COMMS` bridge behavior
-- ground-link demonstration path
-
-The broader subsystem architecture still matters, but several subsystem functions remain planned, simulated, or partially integrated. The HAL is what lets those slices firm up one driver at a time.
-
-## Transport Architecture: One UART, Three Channels
-
-![Basic command dataflow from fprime-gds through the ground Teensy, RF link, satellite Teensy, custom UART framing, ComCcsds, and F Prime deployment](../archive/legacy-gds-rfm23bp/diagrams/GDS_TO_SATELLITE_DATAFLOW.png)
-
-Source diagram: [`GDS_TO_SATELLITE_DATAFLOW.svg`](../archive/legacy-gds-rfm23bp/diagrams/GDS_TO_SATELLITE_DATAFLOW.svg), generated from [`GDS_TO_SATELLITE_DATAFLOW.mmd`](../archive/legacy-gds-rfm23bp/diagrams/GDS_TO_SATELLITE_DATAFLOW.mmd). The PNG is checked in for GitHub Markdown rendering.
-
-This section is the corrected, authoritative description of how bytes move between the Raspberry Pi, the satellite Teensy, the RF link, the ground Teensy, and the ground laptop. The single source of truth for the constants below is [`config/transport_constants.json`](../../config/transport_constants.json).
-
-### Why one UART
-
-The satellite Raspberry Pi talks to the satellite Teensy over **one physical UART** (`115200 8N1` on the Pi's `/dev/serial0`). This is a **hardware constraint** of the current Artemis OBC board: the Pi has exactly one practical UART path to the Teensy. We are hardware-bounded here until a new OBC board exists, so rather than add wires we **software-multiplex** that one UART into virtual channels with `UartChannelMux` on the Pi side.
-
-### The Pi-side UART frame wrapper
-
-Every Pi↔Teensy UART frame is wrapped as:
-
-```
-0xD4 0xC3 | channel | len | payload (≤ 220 bytes) | crc16
+```mermaid
+flowchart LR
+    Operator["Operator browser"] <-->|"LAN"| Ground["Pi 5 Ubuntu / Yamcs"]
+    Ground <-->|"LAN TCP / implementation pending"| OBC["Pi Zero W / F′"]
+    OBC <-->|"UART mux channel 2 / local RPC"| Teensy["Satellite Teensy"]
+    Teensy <-->|"UART / PDU v2 protocol"| PDU["Artemis PDU v2.2"]
+    OBC <-->|"USB ↔ RS-422; raw-file contract open"| PLD["Real Neutron 2 payload"]
+    PDU -->|"Switched payload power on/off"| PLD
 ```
 
-(magic bytes `212 195`, `250 ms` frame timeout). The `channel` byte is what separates the three logical streams below.
+Dennis selected Pi Zero W F′ TCP over LAN to Pi 5/Yamcs on October 19. The [TCP implementation plan](../planning/CDR_TCP_YAMCS_IMPLEMENTATION_PLAN.md) remains unimplemented. SSH/SCP is a separate proposed retained-product retrieval path, not F′ command dispatch. No SatNOGS/SDR link is required for CDR.
 
-### The three satellite UART channels
+### FSR full FlatSat hardware and ground
 
-| Channel | Name | Contents | Crosses RF? |
-| --- | --- | --- | --- |
-| `0` | CCSDS / GDS | Raw F´/`fprime-gds` CCSDS command/event/telemetry bytestream | **Yes** |
-| `1` | Payload | Payload/science data packet **sidecar**, chunk-sized for the RFM23BP packet budget (`N2` = `0x4E 0x32` magic, 35 data bytes/packet) | **Yes** |
-| `2` | Teensy-local RPC | Satellite-Teensy-local subsystem RPC — PDU/EPS, GPS, etc. | **No** |
-
-**Channel 2 is the one students most often misread.** It is *Remote Procedure Call* traffic between the F´ drivers on the Pi and the subsystem hardware that hangs off the **satellite Teensy's** local bus (e.g. the PDU/EPS over the Teensy's I²C/serial). The Teensy **consumes** channel 2 locally to actuate or read those boards; it is **not** forwarded over RF. The *results* (status, telemetry) can still be surfaced and logged through F´ events/telemetry on the ground — but the RPC bytes themselves never leave the satellite.
-
-Only channels `0` and `1` cross the RF link (`rf_count = 2`); the satellite UART carries all three (`satellite_count = 3`).
-
-### RF segmentation (Teensy ↔ Teensy)
-
-The RFM23BP has a small packet budget, so each cross-RF channel is segmented:
-
-- RF packet max `49` bytes, `5`-byte segment header, per-segment magic (`165` CCSDS / `166` payload).
-- ACK/retry with `4` retries and `80 ms` ACK timeout; `500 ms` reassembly timeout; `8 ms` inter-segment gap.
-
-See the [RFM23BP datasheet](#reference-documents) for the radio's packet/FIFO limits that drive these numbers.
-
-### The three ground USB serial ports
-
-The ground Teensy presents **three USB serial ports** to the ground laptop (Teensy USB triple-serial).
-
-> ⚠️ **Numbering warning:** the ground USB serial **port** index is *not* the same axis as the satellite UART **channel** index. Don't conflate "channel 2" (satellite-local RPC, never on RF) with "ground serial port 2" (payload receiver).
-
-| Ground USB serial port | Purpose | Carries |
-| --- | --- | --- |
-| `0` (`Serial`) | `fprime-gds` command/event/telemetry port | RF channel 0 (CCSDS) |
-| `1` (`SerialUSB1`) | **Debug** port — prints live UART+RF link counters so you can watch traffic and loss | diagnostics only |
-| `2` (`SerialUSB2`) | **Payload receiver** tool port for `tools/payload_receiver.py` | RF channel 1 (payload) |
-
-### End-to-end data paths
-
-```text
-Channel 0: fprime-gds command/events/telemetry
-laptop fprime-gds  (ground USB serial port 0)
--> ground Teensy
--> ground RFM23BP  -> RF ->  satellite RFM23BP
--> satellite Teensy
--> Raspberry Pi /dev/serial0
--> UartChannelMux
--> F Prime ComCcsds  (and back the same way for uplink)
-
-Channel 1: payload/science product bytes
-F Prime PayloadDownlinkApp
--> UartChannelMux
--> satellite Teensy
--> RFM23BP RF link
--> ground Teensy  (ground USB serial port 2)
--> tools/payload_receiver.py
--> reconstructed .bin or .csv file
--> ground-station/neutron2-payload-viewer
-
-Channel 2: satellite-local subsystem RPC (stays on the satellite)
-F Prime driver (e.g. EpsDriver_Artemis)
--> UartChannelMux
--> satellite Teensy
--> local board bus (PDU/EPS, GPS, ...)
--> result returns as F Prime telemetry/events (not raw RF)
+```mermaid
+flowchart LR
+    Browser["Operator browser"] <-->|"LAN"| Ground["Pi 5 Ubuntu / Yamcs"]
+    Ground <-->|"USB / team-owned SDR software"| SDR["USRP B200"]
+    SDR <-->|"UHF conducted RF / SMA-coax"| Radio["Separately powered SatNOGS-COMMS v0.3.2 PHASMA PC104"]
+    Radio <-->|"SPI breakout / 6-pin Molex-to-PC104 harness; pinout TBD"| OBC["Pi Zero W / F′ custom SatNOGS driver"]
+    OBC <-->|"USB ↔ RS-422; raw-file contract open"| PLD["Real Neutron 2 payload"]
+    OBC <-->|"UART mux channel 2 / local RPC"| Teensy["Satellite Teensy"]
+    Teensy <-->|"UART / PDU protocol v2"| PDU["Artemis PDU hardware v2.2"]
+    PDU -->|"Payload power on/off"| PLD
 ```
 
-Important student-facing rule:
+Links show system responsibilities, not a pinout or an implemented driver. The Pi Zero W runs the F′ binary and retains mission authority; the Teensy provides the embedded half of the OBC split. USB↔RS-422 is the selected payload connection; exact adapter, connector, electrical settings, and the means of transferring the complete raw product must be recorded before implementation. Pi Zero W is the selected SatNOGS SPI controller; the Teensy retains local PDU duties.
 
-- `fprime-gds` is the command, event, telemetry, and progress screen (ground serial port 0).
-- ground serial port 1 is a **read-only debug** view of link health.
-- `tools/payload_receiver.py` is the file reconstruction tool for channel 1 (ground serial port 2).
-- `ground-station/neutron2-payload-viewer` is the science review tool after a payload file exists. It can parse `.bin` payload products when the bytes inside are the Neutron 2 CSV format.
+Sam and Zach own SatNOGS firmware/SPI and SDR work. Dennis owns OBC F′, Yamcs integration, and the F′ SatNOGS component/driver. Aris owns the payload. Agree the interfaces across those ownership boundaries before substituting hardware. [Payload contract](../integration/PAYLOAD.md) · [SatNOGS/SDR contract](../integration/SATNOGS.md) · [Ground host](../integration/GROUND_HOST.md).
 
-## The RF Link Constraint: How fprime-gds Talks Over a Walkie-Talkie
+### Implemented local software path
 
-The single biggest constraint on this whole system is the **radio**. Understanding it explains almost every "why is the comms path built this strange way" question. The full investigation lives in [`docs/archive/investigations/RF_CHAIN_ROOT_CAUSE_ANALYSIS_2026-04-24.md`](../archive/investigations/RF_CHAIN_ROOT_CAUSE_ANALYSIS_2026-04-24.md); this is the summary.
+```mermaid
+flowchart LR
+    UI["Browser / Yamcs API"] <--> Y["Local Yamcs"]
+    Y <-->|"CCSDS / software UART adapter"| F["Host-native F′ deployment"]
+    F <-->|"Typed payload request/result"| Sim["Simulated payload"]
+    F --> Store["Immutable raw product / StorageManager"]
+    Store --> Send["CommsApp / PayloadDownlinkApp"]
+    Send -->|"Custom software channel 1"| RX["Independent ground receiver"]
+    RX -->|"Reconstructed raw object + receipt"| Y
+    Y -->|"Independent object GET / integrity checks"| View["Ground verifier / synthetic viewer"]
+```
 
-### What fprime-gds expects
-
-`fprime-gds` is the ground tool. It speaks **CCSDS** — the spacecraft framing standard — using F´'s `space-packet-space-data-link` framing:
-
-- The satellite emits fixed-size **TM (telemetry) transfer frames**; the ground emits **TC (telecommand) frames**.
-- Each frame is **byte-exact and CRC-protected.** If a single byte is lost, inserted, or reordered, the frame's CRC fails, GDS prints `Checksum validation failed`, and the whole frame is discarded.
-- Inside each frame are CCSDS space packets tagged by APID. GDS tracks a per-APID sequence count, so dropped packets surface as `APID n received sequence count ...` warnings.
-
-So GDS does not want a "best-effort byte stream." It wants **whole, intact frames, in order.** That expectation is what collides with the radio.
-
-### What the radio actually is
-
-The RFM23BP is a **low-cost, ~50-byte-packet, half-duplex 433 MHz COTS packet radio — essentially a digital walkie-talkie.** It was never meant to be a clean modem for a byte-perfect framed protocol:
-
-| Property | Reality | Consequence |
-| --- | --- | --- |
-| Max RF packet | ~49 bytes (44 useful after our 5-byte relay header) | A normal F´ frame does not fit in one packet |
-| Duplex | Half-duplex — cannot transmit and receive at once | No free back-channel; ACKs compete with data |
-| Reliability | Lossy under sustained traffic | One dropped segment can ruin an entire frame |
-| Throughput | ~15 kB/s raw before overhead | Real file downlink is painfully slow |
-
-### The collision, and the decisions we made
-
-A byte-exact framed protocol meets a lossy walkie-talkie. Out of the box, F´ used `ComCfg.TmFrameFixedSize = 1024`, which is **~24 RF packets per frame** — lose any one of the 24 and the frame is dead. That is the core reason early downlink "did not work."
-
-To make GDS comms work over this radio at all, we deliberately shrank and throttled everything:
-
-- **Shrink the CCSDS frame:** `ComCfg.TmFrameFixedSize` 1024 → **128 bytes**, which is exactly **3 RF packets** (128 / 44 ≈ 3). A 3-strip frame can mostly survive the hop; a 24-strip frame cannot.
-- **Shrink the buffers:** `FW_COM_BUFFER_MAX_SIZE = 96` and `FW_LOG_STRING_MAX_SIZE = 80` so packets and event strings fit the smaller frame. Tradeoff: long command arguments, long event strings, and stock file downlink can break — this is an MVP hack (see *Open Risks* in the RCA).
-- **Throttle telemetry:** disable high-volume periodic subsystem telemetry. Keep `SOH` to a tiny heartbeat (a few integers, every 1–2 s). The radio cannot carry full subsystem telemetry without flooding and dropping frames.
-- **Per-segment ACK/retry + partial-chunk dropping** in the Teensy relay (see [Transport Architecture](#transport-architecture-one-uart-three-channels)), so the 3 segments of a frame reassemble correctly and stale fragments never reach GDS.
-- **Avoid stock F´ file downlink over RF.** Science data uses the custom, chunked **channel 1 payload sidecar** (35-byte payload packets) instead of the CCSDS TM path. This is why payload downlink is its own channel and not a normal F´ file transfer.
-
-### What this means in practice
-
-- ✅ Commands, command ACK, and a tiny `SOH` heartbeat are reliable enough for the live demo.
-- ⚠️ Sustained full telemetry drops packets and produces APID sequence-count warnings.
-- ❌ Large, byte-perfect file downlink over the CCSDS path is not realistic on this radio — that is what the channel 1 sidecar (now) and a better modem / SatNOGS board (later) are for.
-
-This is exactly why the architecture treats **RFM23BP as the MVP comms path and a SatNOGS-style board as the real-downlink future path**, and why the Application -> Manager -> Driver split matters: moving to a better radio is a new `CommsDriver_*`, not a mission rewrite.
-
-## RF MVP Config Overrides (a landmine to know about)
-
-To survive the RFM23BP link, this deployment shrinks several **global F´ framework limits**. These are **project-local overrides** — *not* edits inside `lib/fprime` — which is the correct, update-safe way to do it. They live in:
-
-- [`ArtemisRpiTeensyDeployment/RfMvpConfig/ComCfg.fpp`](../../ArtemisRpiTeensy_N2/ArtemisRpiTeensyDeployment/RfMvpConfig/ComCfg.fpp)
-- [`ArtemisRpiTeensyDeployment/RfMvpConfig/FpConstants.fpp`](../../ArtemisRpiTeensy_N2/ArtemisRpiTeensyDeployment/RfMvpConfig/FpConstants.fpp)
-
-and are wired into the build by `ArtemisRpiTeensyDeployment/CMakeLists.txt` (`add_fprime_subdirectory(.../RfMvpConfig/)`), which overrides the framework defaults in `lib/fprime/default/config/`.
-
-The values that actually changed from the framework default:
-
-| Constant | Framework default | RF MVP value | What it caps |
-| --- | ---: | ---: | --- |
-| `ComCfg.TmFrameFixedSize` | 1024 | **128** | CCSDS TM frame size → 3 RF packets instead of ~24 |
-| `FW_COM_BUFFER_MAX_SIZE` | 512 | **96** | Every command / event / telemetry / param / file buffer |
-| `FW_LOG_STRING_MAX_SIZE` | 200 | **80** | Maximum event (log) string length |
-
-**Why this is a landmine:** these are *global* limits, so they silently constrain the **entire deployment**, not just the radio path. If you add a long event format string, a large command argument, a big telemetry struct, or try stock F´ file downlink and it mysteriously truncates or fails to fit, **check `RfMvpConfig/` first.** The numbers are deliberately tiny for the RF demo; raising them re-inflates CCSDS frames and makes the RF link *worse*. When the comms path moves to a better radio, revisit these values together with the framing. (This corrects an older note in the RCA that said these edits lived inside `lib/fprime`; they are now proper project-local overrides.)
-
-## End-to-End Example: Tracing a Command and a Telemetry Channel
-
-This section ties the component tiers and the transport together using **real instance and port names** from [`ArtemisRpiTeensyDeployment/Top/topology.fpp`](../../ArtemisRpiTeensy_N2/ArtemisRpiTeensyDeployment/Top/topology.fpp). Follow `missionApp.PING` down and back.
-
-### Uplink: a command from the ground to a handler
-
-1. Operator runs `fprime-cli command-send ...missionApp.PING --arguments 4245` (or clicks it in the GDS GUI). `fprime-gds` serializes it as a CCSDS **TC** byte stream out ground USB serial port 0.
-2. Ground Teensy → RF (channel 0) → satellite Teensy → Pi `/dev/serial0`.
-3. On the Pi, `comDriver` (the `LinuxUartDriver`) receives bytes: `comDriver.$recv -> uartChannelMux.drvReceiveIn`.
-4. `uartChannelMux` de-multiplexes channel 0 and passes CCSDS bytes up: `uartChannelMux.ccsdsRecvOut -> ComCcsds.comStub.drvReceiveIn`.
-5. `ComCcsds` deframes the CCSDS frame/packet and routes the command: `ComCcsds.fprimeRouter.commandOut -> CdhCore.cmdDisp.seqCmdBuff`.
-6. `CdhCore.cmdDisp` (the command dispatcher) matches the opcode and invokes the owning component — here `missionApp`'s `PING` command input port.
-7. `MissionApp::PING_cmdHandler` runs: bumps `PingCount`, emits the `Pong` event, and replies `cmdResponse_out(... OK)`.
-8. The response returns: `CdhCore.cmdDisp.seqCmdStatus -> ComCcsds.fprimeRouter.cmdResponseIn`, is framed, and goes back down channel 0 to GDS as the command ack.
-
-### Downlink: a telemetry channel to the ground
-
-1. A component writes a channel — e.g. `MissionApp::writeTelemetry()` calls the autocoded `tlmWrite_PingCount(...)`.
-2. The telemetry path aggregates channels and emits CCSDS packets: `CdhCore.tlmSend.PktSend -> ComCcsds.comQueue.comPacketQueueIn[TELEMETRY]`.
-3. `ComCcsds` frames it into a (128-byte) CCSDS **TM** frame: `ComCcsds.comStub.drvSendOut -> uartChannelMux.ccsdsSendIn`.
-4. `uartChannelMux` wraps it on channel 0 and pushes it to the UART: `uartChannelMux.drvSendOut -> comDriver.$send`.
-5. Pi → satellite Teensy → RF (segmented into 3 packets) → ground Teensy → ground USB serial port 0 → `fprime-gds` validates the frame CRC and updates the channel in the GUI.
-
-Events follow the same downlink path via `CdhCore.events`; ground debug serial port 1 can watch the raw link counters while this happens. The **science/payload path is different** — it never touches `ComCcsds`/CCSDS; it uses `PayloadDownlinkApp` → channel 1 (see [Transport Architecture](#transport-architecture-one-uart-three-channels)).
-
-### Where the HAL fits in this trace
-
-`PING` is a pure C&DH loop, so it never touches a driver. A *subsystem* command does: e.g. an EPS rail command flows `cmdDisp → epsManager` (the stable contract) `→ epsDriverArtemis` (PDU v2 over channel 2 RPC) `→ uartChannelMux` (channel 2) `→ satellite Teensy → PDU`. Same uplink plumbing; the manager and driver tiers are where subsystem-specific behavior lives. Swapping hardware swaps only the driver.
-
-## Key Demo Interfaces
-
-These are the interfaces that matter most for the current demo architecture.
-
-- `OBC <-> EPS`
-  - control and telemetry relationship using the Artemis EPS/PDU baseline (channel 2 RPC → `EpsDriver_Artemis`)
-- `OBC <-> ADCS`
-  - simulated through `D2S2`
-- `OBC <-> PLD`
-  - local A/C/B acceptance uses the simulator; B sends its raw simulator product over software channel 1 to the local ground receiver and verifies the Yamcs object. The loaned Neutron 2 development payload board and Aris's public command/data contract remain pending.
-- `OBC <-> COMMS`
-  - the local B acceptance uses a software channel-1 link. The October CDR sequence still requires SatNOGS and SDR; the prior `RFM23BP` path is historical hardware-demo context, and no physical radio path has been accepted for N2.
-- `OBC <-> GPS`
-  - Artemis-provided GPS module
-- `COMMS <-> Ground`
-  - local B acceptance reconstructs the channel-1 simulator product in the ground adapter, uploads it to Yamcs, and confirms it by HTTP readback. This is not the required SatNOGS/SDR/RF path.
-
-## Ground Segment
-
-The ground side for this demo should be understood as a separate but essential part of the system:
-
-- `D2S2`
-  - external ADCS simulator
-- `fprime-gds`
-  - ground interface in the earlier Artemis/RFM23BP demo architecture
-- `Yamcs`
-  - command/observation surface used for the accepted A/C/B software tests; the B run verifies raw-object readback independently of sender completion
-- `tools/yamcs/science_viewer.py`
-  - local operator view that retrieves the raw object and receipt from Yamcs; supports count-CSV frequency or opt-in simulated pulse waveform, integrated-charge spectrum, and PSD density. Pulse charge is ADC-sample area, with physical energy calibration and figure of merit deferred
-- operator-facing display
-  - the live demo must make telemetry, command acknowledgement, payload-transfer progress, and science-data review visible
-
-## D2S2: Orbit / Pass-Timing Simulator
-
-`D2S2` ([dawndusk.space](https://dawndusk.space/)) is the external **orbit / pass-timing simulator** the demo uses in place of real orbital mechanics and a real ADCS sensor suite. We are on a bench, not in orbit, so D2S2 stands in for *"where is the spacecraft, and when is it over a ground station."*
-
-Conceptually, D2S2 answers one question for the demo: **"are we approaching our orbit / contact window?"** That timing signal is what drives the mission story:
-
-- D2S2 pass/timing information → a story service informs `MissionApp` → the spacecraft moves between **Base Mode** and **Science Collection** at the right moments.
-- On the ground, the same D2S2 pass-planning inputs define the **mock contact window** used to stage the live demo: when the "pass" starts and how long it lasts.
-
-In other words, D2S2 lets us rehearse the *timing* of a real pass — approach, contact, collect, downlink — without being in space. It is a simulator (orange in the [system diagram](#high-level-architecture)), not flight hardware; a real spacecraft would derive the same timing from GPS/ephemeris and ADCS. In the current topology the actual mission-mode transitions are emitted by `scienceApp` and `commsApp` into `missionApp.modeUpdateIn`; D2S2 provides the pass-timing premise those transitions are staged around.
+This profile runs on one macOS host, with pseudo-terminals in place of board UARTs and no RF packetization. It proves software behavior, not USB↔RS-422, Pi target runtime, SPI, or SDR compatibility. Moving to the FlatSat keeps the ownership model but requires real device/ground adapters and target validation.
 
 ## Demo Operating Story
 
-![Demo flow from boot through contact setup, SOH display, scheduled collection, data collection, science downlink, and ground review](../archive/legacy-gds-rfm23bp/diagrams/DEMO_FLOWCHART.png)
+### October CDR: payload collection and PDU on/off
 
-Source diagram: [`DEMO_FLOWCHART.svg`](../archive/legacy-gds-rfm23bp/diagrams/DEMO_FLOWCHART.svg), generated from [`DEMO_FLOWCHART.mmd`](../archive/legacy-gds-rfm23bp/diagrams/DEMO_FLOWCHART.mmd). The PNG is checked in for GitHub Markdown rendering.
+1. Command/observe Pi Zero W F′ from Pi 5/Yamcs over LAN TCP, once the selected profile is implemented and validated.
+2. OBC commands the PDU to turn the payload on. Observe power/readback and payload readiness using the agreed hardware indicators and timing.
+3. Command the real payload over USB↔RS-422 to collect for the requested duration. Distinguish acceptance from collection completion and report failure truthfully.
+4. Retrieve the complete raw product through the agreed payload file-transfer contract, validate it and retain it on the OBC before removing payload power.
+5. Command the PDU to turn payload power off and verify the off state.
+6. Inspect the retained raw product through the chosen local access/retrieval method, recording identity, size and integrity. The payload team's JAR owns actual science interpretation.
 
-This is the architecture-level story the software must support.
+The required demo is real payload + PDU integration. SatNOGS, SDR and RF downlink are deferred to FSR. Formal mission modes and scheduling remain outside the CDR requirement; the PDU control/readback and payload startup/shutdown sequence are now in scope. The retained data must be inspectable, but its CDR operator retrieval/display method is still open. Local synthetic tests do not establish real payload or PDU acceptance.
 
-1. System boots into `Base Mode`.
-2. Ground side uses `D2S2` pass assumptions to define the mock contact window.
-3. During the pass, the satellite downlinks `SOH` / basic health telemetry.
-4. Operator sends a command that schedules data collection after a short delay, such as `10` seconds.
-5. The spacecraft performs a payload/data-collection action using a real or simulated payload source.
-6. The system transitions into a science-data downlink path.
-7. Ground software reconstructs, reviews, and presents the result.
+### December FSR: scheduled mode and power sequence
 
-## Payload Downlink Progress
+1. Start in Base Mode. Yamcs schedules collection for time X through the full ground → SDR → SatNOGS → OBC COMMS path added for FSR.
+2. At time X, F′ sequences EPS payload power and readiness, then enters the agreed collection state and starts acquisition.
+3. After the requested duration, transition PLD to standby/processing and retrieve the complete raw product.
+4. Validate and commit the onboard copy before powering the payload off. Return the system to Base with the product retained.
+5. Downlink through SatNOGS/SDR and independently verify ground receipt in Yamcs; show the recorded scheduling, mode and power transitions.
 
-The accepted board-free B path starts a simulator capture from Yamcs, reconstructs the raw simulator product at the local ground receiver over software channel 1, uploads it to Yamcs, and verifies the stored bytes by independent GET/readback. The local viewer builds a count-frequency histogram from Yamcs-retrieved simulator CSV. See the [B acceptance record](../planning/SDD_GAP_PLAN.md#slice-b-acceptance-record-2026-10-08) and [operator walkthrough](../operations/walkthroughs/RAW_CYCLE.md). This proves neither the real PLD protocol nor the October SatNOGS/SDR/RF sequence.
+This is the target behavior. Existing demo mode/scheduling code is a starting point, not evidence that this integrated FSR sequence exists. Exact mode names, absolute UTC versus relative time X, clock validity, startup/settling delays, power readback, cancel/restart and lost-link behavior still need agreement. Failure must produce a truthful terminal result and the agreed recovery behavior rather than a false science/delivery success.
 
-The earlier RFM23BP MVP path did not use stock GDS file downlink for its science product. Instead, the mission command path started a custom channel 1 payload transfer designed for the RFM23BP link. The following runtime notes describe that previous hardware path, not the accepted local B route.
+## Flight Software Architecture: Application → Manager → Driver (HAL)
 
-Runtime ownership is:
+Keep mission policy above device protocols. F′'s [Application-Manager-Driver pattern](../../ArtemisRpiTeensy_N2/lib/fprime/docs/user-manual/design-patterns/app-man-drv.md) provides the design guide. The actual [topology](../../ArtemisRpiTeensy_N2/ArtemisRpiTeensyDeployment/Top/topology.fpp) and [shared types/ports](../../ArtemisRpiTeensy_N2/Components/Types/Types.fpp) own current connections.
 
-- `PayloadDriver_NeutronSim` (or a future real Neutron 2 payload-board driver) produces payload bytes.
-- `StorageManager` tracks the latest science product.
-- `CommsApp.REQUEST_SCIENCE_DOWNLINK` requests downlink of the latest stored product.
-- `PayloadDownlinkApp` packetizes the product, sends channel 1 packets, and emits progress events.
-- `tools/payload_receiver.py` reconstructs bytes, requests retries for missing packets, verifies CRC, and writes the output file.
-- The payload viewer opens the reconstructed file and parses neutron-count CSV content.
+| Owner | Current responsibility | Hardware integration boundary |
+| --- | --- | --- |
+| `MissionApp` | Mode ownership/transition guard; mission commands | Extend nominal FSR coordination without moving mission authority to the ground or Teensy |
+| `ScienceApp` | Capture scheduling/execution, matched operation outcomes, collection/downlink orchestration | Coordinate agreed PLD/EPS readiness and completion |
+| `PayloadManager` | Sole admission/serialization point for payload operations | Keep shared request/generation/outcome semantics across the real driver |
+| `PayloadDriver_NeutronSim` | Synthetic literal echo and simulator acquisition | Real USB↔RS-422 driver must implement the agreed public PLD contract |
+| `StorageManager` | Validate/retain immutable raw products and metadata; recover/select catalog entries | Retention, capacity and target filesystem evidence |
+| `CommsApp` | Delivery requests, product/transfer correlation and sender outcome | Real transport integration must retain truthful outcome semantics |
+| `PayloadDownlinkApp` | Current custom science packet sender and retry path | SatNOGS/ground adaptation is not established by the existing sender |
+| `EpsManager` / `EpsDriver_Artemis` | Generic EPS operations / PDU v2 through satellite-local RPC | Actual payload rail, on/off/readback and timing for CDR; integrated scheduling/mode behavior for FSR |
+| Ground receiver/verifier | Reconstruct raw bytes; verify Yamcs readback; update VERIFIED command history | SDR science routing, object ingestion, and independent receipt |
 
-`PayloadDownlinkApp.PayloadDownlinkProgress` emits nominal `10%` increments from `10` through `90`. `PayloadDownlinkComplete` and `CommsApp.DownlinkFinished` are the completion signals. For tiny payloads, several progress events may appear at the same timestamp or packet count because one payload packet can represent more than ten percent of the file.
+Applications also coordinate framework services and delivery components according to topology; the tier names do not mean every packet traverses all three tiers. Hardware substitution should preserve stable contracts where possible. A new driver is not a guarantee of zero manager/topology changes: real payload and radio requirements may expose missing interface semantics.
 
-## Previous demo development assumptions — superseded 2026-10-08
+### Payload lifecycle
 
-Unless the user says otherwise, agents should assume the following:
+All payload entry points share one arbiter. One operation may be active; competing valid requests receive `BUSY`. Admitted operations carry request ID plus internal generation and produce `ACCEPTED` followed by one terminal result. Failure, timeout, unavailability, and stale/duplicate callbacks cannot create a successful collection or second science product. A successful literal echo creates no science product.
 
-- `RFM23BP` is the default communications path for the MVP demo.
-- `SatNOGS` is an alternate or future communications path, not the default assumption.
-- `D2S2` provides simulated `ADCS` behavior.
-- The payload source is the **Neutron 2 payload simulator**, with the loaned **Neutron 2 development payload board** as the future real source; simulation is acceptable until the dev board is integrated and stable.
-- `fprime-gds` is the ground-tool default for the MVP demonstration.
-- `Yamcs` is a longer-term target, not the current required ground stack.
+The simulator's worker cleanup and recovery were tested locally. The real driver must define equivalent timeout/cancel/recovery behavior against PLD responses; no private opcode meaning or hardware timing should be inferred from the simulator. See [lifecycle evidence](../operations/walkthroughs/LIFECYCLE.md).
 
-## EPS/PDU Boundary Note
+### Raw storage and completion
 
-For the MVP, the `EpsManager` and `EpsDriver_Artemis` boundary is intentionally pragmatic. The new PDU is planned for F Prime-driven testing, so some PDU-shaped diagnostics and rail semantics may appear near the EPS manager while the ICD settles.
+FSW handles opaque raw science. `StorageManager` commits immutable copies with versioned metadata under `N2_STORAGE_ROOT`, validates size/CRC, and recovers valid catalog entries after process restart. Persistent identity allocation prevents product-ID reuse. The current catalog holds 16 products, rejects new captures when full, and retains delivered products; automatic ACK-based reclamation and power-loss qualification are deferred.
 
-This is acceptable when:
+For local operations, `scienceApp.VERIFIED_COLLECT_AND_DOWNLINK` and `commsApp.VERIFIED_REQUEST_SCIENCE_DOWNLINK` use unique nonzero tokens. Yamcs command history records `PayloadAccepted`, `PayloadTerminal`, `StorageCommitted`, `SenderComplete`, `GroundReceipt`, and `CommandComplete` as applicable. Final success requires independent raw-object readback matching identity, size, CRC and SHA-256. Sender DONE and ordinary F′ opcode completion are insufficient. See [completion/storage acceptance](../verification/COMPLETION_STORAGE.md).
 
-- mission operators see generic EPS/rail commands rather than raw PDU packets
-- `EpsDriver_Artemis` owns the PDU v2 protocol and channel 2 local RPC details
-- HIL notes clearly say when behavior is real PDU response versus local emulation
+The real SatNOGS/SDR path must supply equivalent independent receipt evidence. The current custom science channel and a stock F′ FileDownlink compatibility test are separate paths; neither automatically defines how SDR will receive science.
 
-If the PDU grows into a fuller subsystem contract, refactor the manager/driver split then. The MVP priority is an understandable, reproducible EPS path that can exercise the real PDU through F Prime. See the [PDU Protocol ICD](#reference-documents) for the wire format.
+## OBC Detail
+
+The selected demo split remains **Pi Zero W F′ mission computer + Teensy embedded bridge/local services**. The planned Pi 5 Ubuntu machine is ground equipment. Local emulation temporarily runs the spacecraft binary on the development host; it is not the target placement.
+
+`ArtemisRpiTeensy_N2/` owns F′. `ArtemisTeensy_N2_Baremetal/` and `GDS_Teensy/` preserve the earlier satellite/ground RFM23BP firmware. CDR uses the satellite Pi/Teensy split without requiring a ground Teensy or radio chain. Pi Zero W owns SatNOGS SPI; MCU endpoint, harness and reset/ready details remain to be agreed.
+
+The longer-term N2 iOBC target is separate from this Pi Zero W FlatSat proxy. This document claims no iOBC port or qualification.
+
+## Transport Architecture: One UART, Three Channels
+
+The implementation still uses `LinuxUartDriver` ↔ `UartChannelMux` with the contract in [`config/transport_constants.json`](../../config/transport_constants.json). Generate/check headers from the JSON; do not hand-edit generated constants.
+
+| Logical channel | Current role | Scope |
+| --- | --- | --- |
+| 0 | CCSDS commands, events and telemetry | Local Yamcs software bridge; prior RFM23BP RF path |
+| 1 | Custom raw-science packets and recovery | Independent local receiver; prior RFM23BP science sidecar |
+| 2 | Satellite-local RPC, including PDU v2 | Consumed locally; never forwarded as raw RF traffic by the prior bridge |
+
+These are current software/legacy UART channels, not SatNOGS SPI endpoints or an SDR ICD. Real USB↔RS-422 payload traffic must have its own device contract; it is not automatically a new RF channel.
+
+### The three ground USB serial ports
+
+The older ground Teensy exposes GDS, debug, and payload serial ports. USB port index 2 carries science from logical RF channel 1; it is not satellite-local RPC channel 2. See the [historical transport details](../archive/legacy-gds-rfm23bp/SYSTEM_ARCHITECTURE_BEFORE_UNP_REFRESH.md#the-three-ground-usb-serial-ports). This triple-serial layout is not the planned Pi 5/SDR ground interface.
+
+## Build profiles and current evidence
+
+F′ is pinned to v4.2.1 (`a750219`); the PDU reference is `f287924`. The [deployment CMake](../../ArtemisRpiTeensy_N2/ArtemisRpiTeensyDeployment/CMakeLists.txt) selects `LocalYamcsConfig` when `NEUTRON2_LOCAL_YAMCS=ON` and `RfMvpConfig` otherwise. The option defaults OFF.
+
+The local profile uses 512-byte framework communication buffers, 1024-byte TM frames and 504-byte generated command/fixed-string constants. Individual commands retain their own declared limits; synthetic pass-through uses a 128-byte printable-ASCII contract. These capacities are host-test choices, not agreed PLD/radio limits. The [Yamcs build helper](../../tools/yamcs/build_native.sh) selects ON explicitly. Re-run it after UTs before local replay because native and UT installs share artifacts. Never deploy the macOS host artifact to the Pi or infer that OFF is a validated SatNOGS configuration.
+
+| Evidence | Established | Remaining boundary |
+| --- | --- | --- |
+| July frozen MVP | Historical Pi/Teensy/RFM23BP simulated-payload HIL | Different radio/ground path; not UNP CDR acceptance |
+| October 8–14 local acceptance | Synthetic A/C/B, pulse science, durable storage and VERIFIED completion; packaging regressions | Exact scenarios and dated fingerprints in [baseline](../verification/SOFTWARE_BASELINE.md) |
+| October 18 setup rerun, source `5429a2f` | Native ON build; six component suites; 26 Python tests; transport consistency; Yamcs PING, pass-through and two pulse/raw-readback captures with invalid/failure cases | Host-only; not every historical lifecycle/restart scenario was replayed |
+| Current UNP hardware integration | Selected interfaces and ownership documented | Target build/runtime, payload wiring/protocol, SatNOGS/SPI, SDR routing and complete CDR/FSR sequence still need proof |
+
+October 18 evidence is local/ignored under `yamcs/run/20261018-145218/`; portable historical packages remain under [verification evidence](../verification/evidence/). See [README setup](../../README.md#local-setup-and-demo) for the pinned CMake wheel metadata caveat observed on that host.
+
+## Ground Segment
+
+CDR uses the selected Pi Zero W F′ TCP ↔ LAN ↔ Pi 5/Yamcs path (implementation pending). Pi 5/Yamcs is therefore part of CDR; SDR/SatNOGS RF is added for FSR. Initial retained-product retrieval is planned separately through SSH/SCP.
+
+The Pi 5 Ubuntu host runs Yamcs/F′ ground services, connects to SDR, archives telemetry/events and received science, and serves operator browsers on the router LAN. Sam and Zach own the SatNOGS/SDR work; Dennis integrates the Yamcs handoff. The frame-versus-packet boundary, identifiers, framing, error checks, and science reconstruction must be agreed end to end.
+
+The current local launcher binds `127.0.0.1` and starts both simulated spacecraft and ground services. It is not a deployable ground-only service. Pi 5 setup still needs a supported runtime, resource/heap budget, LAN binding/access controls, service/restart configuration, persistence, and multi-client checks. See [ground-host plan](../integration/GROUND_HOST.md).
+
+FSW returns raw files. Aris's payload JAR owns actual science interpretation. The local synthetic viewer independently retrieves Yamcs objects and plots count-frequency or simulated pulse waveform/charge/PSD views; its schema and units are not the real payload ICD or calibrated detector science.
+
+## Hardware decisions and acceptance gates
+
+| Boundary | Confirmed October 18 | Still needed before acceptance |
+| --- | --- | --- |
+| PLD ↔ OBC | USB↔RS-422 command/telemetry; Aris + Dennis interface | Adapter/connector/pinout, electrical/serial settings, public command and duration units, readiness/response correlation, raw-product framing/retrieval/integrity and timeout behavior |
+| SatNOGS ↔ OBC | Pi Zero W SPI controller; PHASMA v0.3.2; Sam/Zach firmware, Dennis F′ driver | Populated board and firmware identity, SPI mode/clock, CS/reset/ready/IRQ, MCU packet endpoint, queues/backpressure and recovery |
+| SDR ↔ Yamcs | USRP B200 over USB; Sam/Zach handle SDR; Pi 5 Ubuntu ground host | Team-owned demodulation and software frame/packet handoff; raw-science receipt |
+| PDU ↔ PLD/OBC | Artemis hardware v2.2, protocol v2; Pi UART mux → Teensy → UART → PDU, reported mostly wired | Actual EPS/PDU board and payload rail, harness/readback, power budget, startup/shutdown timing, safe fault response |
+| Mission Ops | CDR payload/PDU without COMMS; FSR full chain | CDR operator access/command path, Yamcs role, local raw-product inspection; exact review dates and FSR time/mode/cancel/restart/lost-link rules |
+
+Progress through these gates: agree payload/PDU and operator contracts → fake-transport tests → target build/runtime → authorized wired PLD/OBC/PDU integration → CDR payload on/collect/retain/off demonstration. Then add MCU/SPI and SDR/Yamcs integration → reviewed conducted RF → FSR full-chain command/raw-data and scheduled mode/power sequence. Record conducted and antenna tests separately. Use exact board, firmware, binary/dictionary and received-product identity for every hardware record. Hardware activity requires its applicable runbook and task-specific authorization; this is a documentation update.
+
+## Historical comparison interfaces
+
+The [pre-refresh architecture](../archive/legacy-gds-rfm23bp/SYSTEM_ARCHITECTURE_BEFORE_UNP_REFRESH.md) preserves detailed July-era transport, RF sizing and GDS rationale. It is historical where it treats RFM23BP as the default or Yamcs/SatNOGS as future work. Current N2 mission ops starts at the [quickstart](../operations/QUICKSTART.md).
+
+### The RF Link Constraint: How fprime-gds Talks Over a Walkie-Talkie
+
+The old RFM23BP path segmented small packets, constrained CCSDS frames and throttled telemetry. Its constraints do not establish SatNOGS throughput or limits. [Historical rationale](../archive/legacy-gds-rfm23bp/SYSTEM_ARCHITECTURE_BEFORE_UNP_REFRESH.md#the-rf-link-constraint-how-fprime-gds-talks-over-a-walkie-talkie).
+
+### RF MVP Config Overrides (a landmine to know about)
+
+The OFF/RF profile retains the old small-buffer configuration in `RfMvpConfig`; the ON/local profile uses `LocalYamcsConfig`. Advice about the old 128-byte frames and 80-byte log strings is profile-specific. [Historical overrides](../archive/legacy-gds-rfm23bp/SYSTEM_ARCHITECTURE_BEFORE_UNP_REFRESH.md#rf-mvp-config-overrides-a-landmine-to-know-about).
+
+### End-to-End Example: Tracing a Command and a Telemetry Channel
+
+Current local PING travels Yamcs → software UART/mux channel 0 → `ComCcsds` → `CdhCore.cmdDisp` → `missionApp.PING`; Pong returns through the event/CCSDS path to Yamcs. [Historical RF trace](../archive/legacy-gds-rfm23bp/SYSTEM_ARCHITECTURE_BEFORE_UNP_REFRESH.md#end-to-end-example-tracing-a-command-and-a-telemetry-channel) adds the old ground/satellite Teensy hops. The new SDR/SatNOGS trace must be proven separately.
+
+### D2S2: Orbit / Pass-Timing Simulator
+
+D2S2 belongs to the earlier pass-timing/ADCS demo context. It is not a CDR requirement or an established hardware source for the current collection trigger. [Historical explanation](../archive/legacy-gds-rfm23bp/SYSTEM_ARCHITECTURE_BEFORE_UNP_REFRESH.md#d2s2-orbit--pass-timing-simulator); current mode ownership is described in [mission modes](MISSION_MODES.md).
 
 ## Reference Documents
 
-Authoritative hardware/protocol references that back this architecture. Read these when you need ground truth instead of a summary.
-
-- **Artemis CubeSat User's Manual (April 2026)** — prototype hardware reference (OBC, EPS, GPS, structure). The repo file [`docs/reference/artemis/Artemis User's Manual - April 2026.txt`](<../reference/artemis/Artemis User's Manual - April 2026.txt>) is a **local snapshot**; the full, up-to-date manual is the public Google Doc: <https://docs.google.com/document/d/1rWuh5gqnNprtgiNfhd3HfEG-Midq0QqxDkGm_KqfT8Y/edit?tab=t.0>
-- **RFM23BP datasheet** — radio packet/FIFO limits that drive the RF segmentation budget. The repo file [`docs/reference/artemis/rfm23bp/RFM23BP_datasheet.txt`](../reference/artemis/rfm23bp/RFM23BP_datasheet.txt) is a **local copy**; the online datasheet is: <https://www.hoperf.com/uploads/RFM23BPdatasheet_1695351296.pdf>
-- **RF chain root-cause analysis** — why the RF link forced the 128-byte frame and telemetry throttling decisions: [`docs/archive/investigations/RF_CHAIN_ROOT_CAUSE_ANALYSIS_2026-04-24.md`](../archive/investigations/RF_CHAIN_ROOT_CAUSE_ANALYSIS_2026-04-24.md)
-- **iOBC 1 MB NOR fit & boot architecture** — why the 1 MB NOR is the bootloader budget (not the F´ app budget), the SD→SDRAM boot chain, and the recommended golden-image/A-B failover memory map: [`docs/archive/investigations/IOBC_NOR_FIT_AND_BOOT_ARCHITECTURE.md`](../archive/investigations/IOBC_NOR_FIT_AND_BOOT_ARCHITECTURE.md)
-- **Artemis PDU Protocol ICD** — PDU v2 command/telemetry wire format used by `EpsDriver_Artemis` over channel 2: [`external/artemis-pdu/PDU_PROTOCOL_ICD.md`](../../external/artemis-pdu/PDU_PROTOCOL_ICD.md) ([PDF](../../external/artemis-pdu/docs/PDU_PROTOCOL_ICD.pdf))
-- **Legacy baremetal comparison reference** — prior Artemis/C3M implementation context: [`external/epscorc3m`](../../external/epscorc3m)
-- **Transport constants (source of truth)** — channel IDs, frame wrapper, RF/payload sizing: [`config/transport_constants.json`](../../config/transport_constants.json)
-
-Companion docs for newcomers:
-
-- **Glossary** — every acronym and term used across the repo: [`docs/reference/GLOSSARY.md`](../reference/GLOSSARY.md)
-- **Hardware port map & power bring-up** — which USB device is which, and how to power the bench safely: [`docs/reference/artemis/HARDWARE_PORT_MAP_AND_POWER.md`](../reference/artemis/HARDWARE_PORT_MAP_AND_POWER.md)
-- **Time & scheduling** — how rate groups, the clock, and the "collect in N seconds" countdown work: [`docs/development/TIME_AND_SCHEDULING.md`](../development/TIME_AND_SCHEDULING.md)
-- **F´ ground interfaces primer** — commands, events, telemetry, and parameters, and how to add each: [`docs/reference/FPRIME_GROUND_INTERFACES_PRIMER.md`](../reference/FPRIME_GROUND_INTERFACES_PRIMER.md)
-
-## Agent Guidance
-
-Read this document before making architecture claims, subsystem plans, or demo-flow decisions.
-
-In particular, do not:
-
-- confuse Artemis hardware with the full Neutron 2 production architecture
-- assume every subsystem in the architecture already has matching implementation in the repo
-- put hardware/protocol details into applications or managers — that belongs in a driver
-- optimize for generic CubeSat completeness when the actual goal is the Neutron 2 demo story on Artemis prototype hardware
-
-Instead, use this rule:
-
-- preserve the Neutron 2 subsystem architecture in planning and naming
-- keep the Application -> Manager -> Driver layering intact so hardware can be swapped later
-- use Artemis hardware reality as the implementation constraint for the current demo
+- [Development intent](../planning/DEVELOPMENT_INTENT.md), [SDD gap plan](../planning/SDD_GAP_PLAN.md), and [mission modes](MISSION_MODES.md).
+- [Local Yamcs runbook](../development/YAMCS_LOCAL_TESTING.md), [operator quickstart](../operations/QUICKSTART.md), and [software baseline](../verification/SOFTWARE_BASELINE.md).
+- [PDU payload power](../integration/PDU.md), [payload](../integration/PAYLOAD.md), [SatNOGS/SDR](../integration/SATNOGS.md), and [ground host](../integration/GROUND_HOST.md) contracts/plans.
+- [PDU v2 ICD](../../external/artemis-pdu/PDU_PROTOCOL_ICD.md): implementation-owned protocol reference, not a populated-board acceptance record.
+- [Artemis references](../reference/artemis/README.md), [original SDD](../reference/sdd/README.md), and [glossary](../reference/GLOSSARY.md).
+- [Frozen GDS/RFM23BP runbooks](../archive/legacy-gds-rfm23bp/README.md): comparison evidence and revision-matched bench instructions.

@@ -13,6 +13,17 @@ Start with the guide for your task. Current N2 software uses Yamcs with a host-n
 | Check what passed | [Software baseline](verification/SOFTWARE_BASELINE.md), [verification index](verification/README.md) |
 | Understand priorities/open work | [Development intent](planning/DEVELOPMENT_INTENT.md), [SDD gap plan](planning/SDD_GAP_PLAN.md) |
 
+## UNP milestones — scope October 18; transport selection October 19
+
+CDR is real payload + OBC + PDU power-on/off, without COMMS. CDR command/telemetry uses Pi Zero W F′ TCP over the local network to Pi 5 Ubuntu/Yamcs, with operator browsers on the LAN. This is the selected direction, not implemented or hardware-tested TCP support. FSR adds the complete SatNOGS/SDR/Yamcs chain to payload + PDU, with the previously planned modes/scheduling. Start with [current intent](planning/DEVELOPMENT_INTENT.md), [architecture](architecture/SYSTEM_ARCHITECTURE.md), and [PDU integration](integration/PDU.md).
+
+## CDR implementation handoff and historical material
+
+- [Selected TCP/Yamcs implementation plan](planning/CDR_TCP_YAMCS_IMPLEMENTATION_PLAN.md): documentation only; no TCP adapter/profile implementation yet.
+- [Historical October 7 review](N2_CLAUDE_OPUS_REVIEW_2026-10-07.md): findings apply to the reviewed snapshot, not automatically to current code.
+- [Pre-refresh architecture](archive/legacy-gds-rfm23bp/SYSTEM_ARCHITECTURE_BEFORE_UNP_REFRESH.md): legacy comparison, not current N2 mission authority.
+- Preliminary October 8 screenshots: [command](images/n2-pulse-science-2026-10-08/preliminary-01-command.jpg), [report](images/n2-pulse-science-2026-10-08/preliminary-02-command-report.jpg), [capture events](images/n2-pulse-science-2026-10-08/preliminary-03-capture-events.jpg). These show simulator activity; Queued/Released/Sent is not verified end-to-end completion, and a CaptureComplete event is not hardware evidence.
+
 ## Keep the mission context clear
 
 - **Current N2:** `operations/`, `development/`, `architecture/`, `integration/`, `verification/`, and `planning/`. A document may describe planned behavior; check its status before treating it as implemented.
