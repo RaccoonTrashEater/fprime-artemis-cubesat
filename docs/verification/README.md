@@ -4,6 +4,7 @@ Start with [the accepted baseline](SOFTWARE_BASELINE.md). Recorded host tests do
 
 | Record | Scope |
 | --- | --- |
+| [October 20 CDR TCP acceptance](evidence/n2-cdr-tcp-2026-10-20/README.md) | Direct stock FileDownlink/TCP with real local Yamcs, exact payload sample readback and independent fake UART/PDU RPC |
 | [Completion and storage](COMPLETION_STORAGE.md) | Verified delivery stages, persistent raw products, six October 9 scenarios |
 | [Synthetic pulse acceptance](SYNTHETIC_PULSE_ACCEPTANCE.md) | Simulated raw samples and ground regression views |
 | [October 9 evidence](evidence/n2-software-2026-10-09/README.md) | Original selected acceptance artifacts |

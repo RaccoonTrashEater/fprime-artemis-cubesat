@@ -1,0 +1,11 @@
+{
+  "result": "PASS",
+  "local_uart_launcher_rejects_cdr_profile": {
+    "exit_code": 1,
+    "message": "CDR TCP artifacts selected: use run_cdr_tcp.sh or rebuild with build_native.sh for the local UART demo."
+  },
+  "cdr_invalid_port_rejected_before_startup": {
+    "exit_code": 2,
+    "message": "Invalid TCP listen port: 0"
+  }
+}

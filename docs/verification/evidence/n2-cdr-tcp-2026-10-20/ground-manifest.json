@@ -1,0 +1,82 @@
+{
+  "command": [
+    "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/tools/yamcs/.venv/bin/fprime-yamcs",
+    "--no-app",
+    "--dictionary",
+    "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/dict/ArtemisRpiTeensyDeploymentTopologyDictionary.json",
+    "--communication-selection",
+    "none",
+    "--udp-tm-inject-port",
+    "50002",
+    "--yamcs-config-dir",
+    "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/cdr-acceptance-20261021T014825Z-8ab7f1/ground/yamcs-config",
+    "--yamcs-data-dir",
+    "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/cdr-acceptance-20261021T014825Z-8ab7f1/ground/yamcs-data",
+    "--logs",
+    "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/cdr-acceptance-20261021T014825Z-8ab7f1/ground/gds-logs",
+    "--log-directly",
+    "--log-to-stdout",
+    "--skip-browser-open"
+  ],
+  "config_dir": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/cdr-acceptance-20261021T014825Z-8ab7f1/ground/yamcs-config",
+  "dictionary": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/dict/ArtemisRpiTeensyDeploymentTopologyDictionary.json",
+  "dictionary_sha256": "99da5566223970682e0cd3e906c98f186e5f7b4817fd5437d3c4a622acb9f3f6",
+  "exit_code": 130,
+  "fprime_yamcs_pid": 88195,
+  "heap": "1024m",
+  "helper_udp": {
+    "bridge_bind": "127.0.0.1",
+    "bridge_peer": "127.0.0.1",
+    "ports": [
+      50000,
+      50001,
+      50002
+    ],
+    "yamcs_receive_binding": "wildcard in pinned Yamcs 5.12 UdpTmFrameLink/UdpTmDataLink; no supported bind-address option"
+  },
+  "network_mux": false,
+  "no_app": true,
+  "paced_bridge_command": [
+    "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/tools/yamcs/.venv/bin/python",
+    "-u",
+    "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/tools/yamcs/cdr_comm_bridge.py",
+    "--dictionary",
+    "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/dict/ArtemisRpiTeensyDeploymentTopologyDictionary.json",
+    "--address",
+    "127.0.0.1",
+    "--port",
+    "63335",
+    "--frame-interval-ms",
+    "5.0"
+  ],
+  "paced_bridge_exit_code": 0,
+  "paced_bridge_pid": 88194,
+  "paced_bridge_process_group_id": 88194,
+  "paced_tm_egress": {
+    "catch_up_bursts": false,
+    "default": 5.0,
+    "frame_interval_ms": 5.0
+  },
+  "physical_uart_mux": {
+    "channel": 2,
+    "independent_of_tcp": true,
+    "purpose": "Teensy/PDU RPC"
+  },
+  "pid": 88189,
+  "process_group_id": 88195,
+  "ready_at": "2026-10-21T01:48:29.105457+00:00",
+  "run_dir": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/cdr-acceptance-20261021T014825Z-8ab7f1/ground",
+  "started_at": "2026-10-21T01:48:27.021157+00:00",
+  "startup_seconds": 2.08,
+  "status": "stopped",
+  "stopped_at": "2026-10-21T01:49:21.803487+00:00",
+  "tcp_peer": {
+    "address": "127.0.0.1",
+    "port": 63335
+  },
+  "transport": "Pi Zero W Drv.TcpServer <-> stock F' TCP/UDP adapters with local paced TM egress <-> Yamcs; direct ComCcsds and stock FileDownlink",
+  "yamcs_http": {
+    "bind": "127.0.0.1",
+    "port": 8090
+  }
+}

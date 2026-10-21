@@ -2,9 +2,9 @@
 
 Prepared October 14, 2026 on `neutron2-develop`. This checkpoint packages the October 7–9 host software work after review. Its starting HEAD was `33aef0a`; the frozen `neutron_2` / `v1.0.0-mvp-demo` baseline remains at `abc8bcd`. Publication to the remote is a separate step.
 
-## Milestone scope revision — October 18; transport selection October 19
+## Milestone scope revision — October 18; local TCP acceptance October 20
 
-The acceptance record below remains dated software evidence. Dennis revised CDR to real PLD + OBC + PDU payload power on/off, excluding COMMS; the selected CDR command/telemetry path is Pi Zero W F′ TCP over LAN to Pi 5/Yamcs (implementation pending). FSR adds the full SatNOGS/SDR/Yamcs chain around payload + PDU and the previously planned modes/scheduling. Follow [current intent](../planning/DEVELOPMENT_INTENT.md) for milestone allocation; older full-RF CDR references below describe the prior plan.
+The acceptance record below remains dated software evidence. Dennis revised CDR to real PLD + OBC + PDU payload power on/off, excluding COMMS; the selected CDR command/telemetry path is Pi Zero W F′ stock ComCcsds/TCP and FileDownlink over LAN to Pi 5/Yamcs, with no network mux and independent UART channel-2 PDU RPC. The [October 20 native loopback acceptance](evidence/n2-cdr-tcp-2026-10-20/README.md) passed; Pi and hardware acceptance remain separate. Follow the [canonical CDR plan](../planning/CDR_TCP_YAMCS_IMPLEMENTATION_PLAN.md) for current implementation status. FSR adds the full SatNOGS/SDR/Yamcs chain around payload + PDU and the previously planned modes/scheduling. Follow [current intent](../planning/DEVELOPMENT_INTENT.md) for milestone allocation; older full-RF CDR references below describe the prior plan.
 
 ## Included behavior
 

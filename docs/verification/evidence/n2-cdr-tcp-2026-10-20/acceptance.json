@@ -1,0 +1,1406 @@
+{
+  "result": "PASS",
+  "scope": "native F\u2032 TCP + real Yamcs + fake UART/PDU only; no network mux or RF",
+  "binary": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/bin/ArtemisRpiTeensyDeployment",
+  "dictionary": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/ArtemisRpiTeensy_N2/build-artifacts/Darwin/ArtemisRpiTeensyDeployment/dict/ArtemisRpiTeensyDeploymentTopologyDictionary.json",
+  "binary_sha256": "425a8099777126168dd9bf819e49fed3ff7879db66fd4253e06d28757a6d285d",
+  "dictionary_sha256": "99da5566223970682e0cd3e906c98f186e5f7b4817fd5437d3c4a622acb9f3f6",
+  "checks": {
+    "pdu_without_tcp_client": {
+      "requests": 1,
+      "app_running": true
+    },
+    "ping": {
+      "token": 4283970266,
+      "command": {
+        "binary": "EADAAAAAAAAQAGAB/1gy2g==",
+        "id": "1792547346113-n2-local-yamcs-smoke-1792547309",
+        "generationTime": "2026-10-21T01:48:29.113Z",
+        "origin": "n2-local-yamcs-smoke",
+        "sequenceNumber": 1792547309,
+        "commandName": "/ArtemisRpiTeensyDeployment_ArtemisRpiTeensyDeployment/ArtemisRpiTeensyDeployment/missionApp/PING",
+        "queue": "default",
+        "username": "guest",
+        "assignments": [
+          {
+            "name": "CCSDS_Version",
+            "value": {
+              "type": "UINT32",
+              "uint32Value": 0
+            },
+            "userInput": false
+          },
+          {
+            "name": "CCSDS_Type",
+            "value": {
+              "type": "BOOLEAN",
+              "booleanValue": true
+            },
+            "userInput": false
+          },
+          {
+            "name": "CCSDS_Sec_Hdr_Flag",
+            "value": {
+              "type": "BOOLEAN",
+              "booleanValue": false
+            },
+            "userInput": false
+          },
+          {
+            "name": "CCSDS_APID",
+            "value": {
+              "type": "UINT32",
+              "uint32Value": 0
+            },
+            "userInput": false
+          },
+          {
+            "name": "CCSDS_Group_Flags",
+            "value": {
+              "type": "ENUMERATED",
+              "stringValue": "Standalone",
+              "sint64Value": "3"
+            },
+            "userInput": false
+          },
+          {
+            "name": "OpCode",
+            "value": {
+              "type": "UINT32",
+              "uint32Value": 268460033
+            },
+            "userInput": false
+          },
+          {
+            "name": "token",
+            "value": {
+              "type": "UINT32",
+              "uint32Value": 4283970266
+            },
+            "userInput": true
+          }
+        ],
+        "unprocessedBinary": "EADAAAAAAAAQAGAB/1gy2g=="
+      },
+      "event": {
+        "source": "FPrimeEventProcessor",
+        "generationTime": "2026-10-21T01:48:30.121Z",
+        "receptionTime": "2026-10-21T01:48:29.946Z",
+        "seqNumber": 5,
+        "type": "ArtemisRpiTeensyDeployment.missionApp.Pong",
+        "message": "[Pong] MissionApp pong token=4283970266 count=1",
+        "severity": "INFO",
+        "createdBy": "guest",
+        "extra": {
+          "token": "4283970266",
+          "count": "1",
+          "fprime_severity": "ACTIVITY_LO",
+          "fprime_event_id": "268460035",
+          "fprime_event_name": "ArtemisRpiTeensyDeployment.missionApp.Pong"
+        }
+      }
+    },
+    "unsupported_automatic_downlink_rejected": [
+      {
+        "command": {
+          "binary": "EADAAAAAAAAQAHADAAAAAQ==",
+          "id": "1792547347184-n2-local-yamcs-smoke-1792547310",
+          "generationTime": "2026-10-21T01:48:30.184Z",
+          "origin": "n2-local-yamcs-smoke",
+          "sequenceNumber": 1792547310,
+          "commandName": "/ArtemisRpiTeensyDeployment_ArtemisRpiTeensyDeployment/ArtemisRpiTeensyDeployment/scienceApp/COLLECT_AND_DOWNLINK",
+          "queue": "default",
+          "username": "guest",
+          "assignments": [
+            {
+              "name": "CCSDS_Version",
+              "value": {
+                "type": "UINT32",
+                "uint32Value": 0
+              },
+              "userInput": false
+            },
+            {
+              "name": "CCSDS_Type",
+              "value": {
+                "type": "BOOLEAN",
+                "booleanValue": true
+              },
+              "userInput": false
+            },
+            {
+              "name": "CCSDS_Sec_Hdr_Flag",
+              "value": {
+                "type": "BOOLEAN",
+                "booleanValue": false
+              },
+              "userInput": false
+            },
+            {
+              "name": "CCSDS_APID",
+              "value": {
+                "type": "UINT32",
+                "uint32Value": 0
+              },
+              "userInput": false
+            },
+            {
+              "name": "CCSDS_Group_Flags",
+              "value": {
+                "type": "ENUMERATED",
+                "stringValue": "Standalone",
+                "sint64Value": "3"
+              },
+              "userInput": false
+            },
+            {
+              "name": "OpCode",
+              "value": {
+                "type": "UINT32",
+                "uint32Value": 268464131
+              },
+              "userInput": false
+            },
+            {
+              "name": "durationSeconds",
+              "value": {
+                "type": "UINT32",
+                "uint32Value": 1
+              },
+              "userInput": true
+            }
+          ],
+          "unprocessedBinary": "EADAAAAAAAAQAHADAAAAAQ=="
+        },
+        "rejection": {
+          "source": "FPrimeEventProcessor",
+          "generationTime": "2026-10-21T01:48:31.186Z",
+          "receptionTime": "2026-10-21T01:48:30.937Z",
+          "seqNumber": 8,
+          "type": "ArtemisRpiTeensyDeployment.scienceApp.ScienceCommandRejected",
+          "message": "[ScienceCommandRejected] Science command rejected reason=3 value=268464131",
+          "severity": "WARNING",
+          "createdBy": "guest",
+          "extra": {
+            "reason": "3",
+            "value": "268464131",
+            "fprime_severity": "WARNING_LO",
+            "fprime_event_id": "268464132",
+            "fprime_event_name": "ArtemisRpiTeensyDeployment.scienceApp.ScienceCommandRejected"
+          }
+        },
+        "response": {
+          "source": "FPrimeEventProcessor",
+          "generationTime": "2026-10-21T01:48:31.186Z",
+          "receptionTime": "2026-10-21T01:48:30.940Z",
+          "seqNumber": 9,
+          "type": "CdhCore.cmdDisp.OpCodeError",
+          "message": "[OpCodeError] Opcode 0x10007003 completed with error VALIDATION_ERROR",
+          "severity": "INFO",
+          "createdBy": "guest",
+          "extra": {
+            "Opcode": "268464131",
+            "error": "VALIDATION_ERROR",
+            "fprime_severity": "COMMAND",
+            "fprime_event_id": "16777219",
+            "fprime_event_name": "CdhCore.cmdDisp.OpCodeError"
+          }
+        }
+      },
+      {
+        "command": {
+          "binary": "EADAAAAAAAAQAHAEAAAAKgAAAAE=",
+          "id": "1792547348247-n2-local-yamcs-smoke-1792547311",
+          "generationTime": "2026-10-21T01:48:31.247Z",
+          "origin": "n2-local-yamcs-smoke",
+          "sequenceNumber": 1792547311,
+          "commandName": "/ArtemisRpiTeensyDeployment_ArtemisRpiTeensyDeployment/ArtemisRpiTeensyDeployment/scienceApp/VERIFIED_COLLECT_AND_DOWNLINK",
+          "queue": "default",
+          "username": "guest",
+          "assignments": [
+            {
+              "name": "CCSDS_Version",
+              "value": {
+                "type": "UINT32",
+                "uint32Value": 0
+              },
+              "userInput": false
+            },
+            {
+              "name": "CCSDS_Type",
+              "value": {
+                "type": "BOOLEAN",
+                "booleanValue": true
+              },
+              "userInput": false
+            },
+            {
+              "name": "CCSDS_Sec_Hdr_Flag",
+              "value": {
+                "type": "BOOLEAN",
+                "booleanValue": false
+              },
+              "userInput": false
+            },
+            {
+              "name": "CCSDS_APID",
+              "value": {
+                "type": "UINT32",
+                "uint32Value": 0
+              },
+              "userInput": false
+            },
+            {
+              "name": "CCSDS_Group_Flags",
+              "value": {
+                "type": "ENUMERATED",
+                "stringValue": "Standalone",
+                "sint64Value": "3"
+              },
+              "userInput": false
+            },
+            {
+              "name": "OpCode",
+              "value": {
+                "type": "UINT32",
+                "uint32Value": 268464132
+              },
+              "userInput": false
+            },
+            {
+              "name": "verificationToken",
+              "value": {
+                "type": "UINT32",
+                "uint32Value": 42
+              },
+              "userInput": true
+            },
+            {
+              "name": "durationSeconds",
+              "value": {
+                "type": "UINT32",
+                "uint32Value": 1
+              },
+              "userInput": true
+            }
+          ],
+          "unprocessedBinary": "EADAAAAAAAAQAHAEAAAAKgAAAAE="
+        },
+        "rejection": {
+          "source": "FPrimeEventProcessor",
+          "generationTime": "2026-10-21T01:48:32.249Z",
+          "receptionTime": "2026-10-21T01:48:31.263Z",
+          "seqNumber": 15,
+          "type": "ArtemisRpiTeensyDeployment.scienceApp.ScienceCommandRejected",
+          "message": "[ScienceCommandRejected] Science command rejected reason=3 value=268464132",
+          "severity": "WARNING",
+          "createdBy": "guest",
+          "extra": {
+            "reason": "3",
+            "value": "268464132",
+            "fprime_severity": "WARNING_LO",
+            "fprime_event_id": "268464132",
+            "fprime_event_name": "ArtemisRpiTeensyDeployment.scienceApp.ScienceCommandRejected"
+          }
+        },
+        "response": {
+          "source": "FPrimeEventProcessor",
+          "generationTime": "2026-10-21T01:48:32.249Z",
+          "receptionTime": "2026-10-21T01:48:31.929Z",
+          "seqNumber": 16,
+          "type": "CdhCore.cmdDisp.OpCodeError",
+          "message": "[OpCodeError] Opcode 0x10007004 completed with error VALIDATION_ERROR",
+          "severity": "INFO",
+          "createdBy": "guest",
+          "extra": {
+            "Opcode": "268464132",
+            "error": "VALIDATION_ERROR",
+            "fprime_severity": "COMMAND",
+            "fprime_event_id": "16777219",
+            "fprime_event_name": "CdhCore.cmdDisp.OpCodeError"
+          }
+        }
+      }
+    ],
+    "pdu_status": {
+      "source": "FPrimeEventProcessor",
+      "generationTime": "2026-10-21T01:48:33.287Z",
+      "receptionTime": "2026-10-21T01:48:32.946Z",
+      "seqNumber": 21,
+      "type": "ArtemisRpiTeensyDeployment.epsManager.EpsStatusUpdated",
+      "message": "[EpsStatusUpdated] EPS status health=OK outputs=37 faults=0",
+      "severity": "INFO",
+      "createdBy": "guest",
+      "extra": {
+        "healthState": "OK",
+        "outputBitmap": "37",
+        "faultBitmap": "0",
+        "fprime_severity": "ACTIVITY_LO",
+        "fprime_event_id": "268476416",
+        "fprime_event_name": "ArtemisRpiTeensyDeployment.epsManager.EpsStatusUpdated"
+      }
+    },
+    "sample_files": [
+      {
+        "name": "sample-ayload-config-sohdata.csv",
+        "command": {
+          "binary": "EADAAAAAAAAFABAAACdzb3VyY2Uvc2FtcGxlLWF5bG9hZC1jb25maWctc29oZGF0YS5jc3YALWNkci0yNDYyZDY3MC1zYW1wbGUtYXlsb2FkLWNvbmZpZy1zb2hkYXRhLmNzdg==",
+          "id": "1792547350322-n2-local-yamcs-smoke-1792547313",
+          "generationTime": "2026-10-21T01:48:33.322Z",
+          "origin": "n2-local-yamcs-smoke",
+          "sequenceNumber": 1792547313,
+          "commandName": "/ArtemisRpiTeensyDeployment_ArtemisRpiTeensyDeployment/FileHandling/fileDownlink/SendFile",
+          "queue": "default",
+          "username": "guest",
+          "assignments": [
+            {
+              "name": "CCSDS_Version",
+              "value": {
+                "type": "UINT32",
+                "uint32Value": 0
+              },
+              "userInput": false
+            },
+            {
+              "name": "CCSDS_Type",
+              "value": {
+                "type": "BOOLEAN",
+                "booleanValue": true
+              },
+              "userInput": false
+            },
+            {
+              "name": "CCSDS_Sec_Hdr_Flag",
+              "value": {
+                "type": "BOOLEAN",
+                "booleanValue": false
+              },
+              "userInput": false
+            },
+            {
+              "name": "CCSDS_APID",
+              "value": {
+                "type": "UINT32",
+                "uint32Value": 0
+              },
+              "userInput": false
+            },
+            {
+              "name": "CCSDS_Group_Flags",
+              "value": {
+                "type": "ENUMERATED",
+                "stringValue": "Standalone",
+                "sint64Value": "3"
+              },
+              "userInput": false
+            },
+            {
+              "name": "OpCode",
+              "value": {
+                "type": "UINT32",
+                "uint32Value": 83890176
+              },
+              "userInput": false
+            },
+            {
+              "name": "sourceFileName",
+              "value": {
+                "type": "STRING",
+                "stringValue": "source/sample-ayload-config-sohdata.csv"
+              },
+              "userInput": true
+            },
+            {
+              "name": "destFileName",
+              "value": {
+                "type": "STRING",
+                "stringValue": "cdr-2462d670-sample-ayload-config-sohdata.csv"
+              },
+              "userInput": true
+            }
+          ],
+          "unprocessedBinary": "EADAAAAAAAAFABAAACdzb3VyY2Uvc2FtcGxlLWF5bG9hZC1jb25maWctc29oZGF0YS5jc3YALWNkci0yNDYyZDY3MC1zYW1wbGUtYXlsb2FkLWNvbmZpZy1zb2hkYXRhLmNzdg=="
+        },
+        "object": "cdr-2462d670-sample-ayload-config-sohdata.csv",
+        "bytes": 729,
+        "sha256": "3fa9a43df9aa2bcbe3ced89cb99695e2c77ce73e7bf916c1e4d35188fb3fca72",
+        "crc16_ccitt": 52221,
+        "receipt_wait_seconds": 1.834,
+        "expected_min_data_packets_at_499_bytes": 2,
+        "uart_rpc_within_transfer_interval": 3
+      },
+      {
+        "name": "sample-payload-raw-science.csv",
+        "command": {
+          "binary": "EADAAAAAAAAFABAAACVzb3VyY2Uvc2FtcGxlLXBheWxvYWQtcmF3LXNjaWVuY2UuY3N2ACtjZHItMDgwMzNiODMtc2FtcGxlLXBheWxvYWQtcmF3LXNjaWVuY2UuY3N2",
+          "id": "1792547352156-n2-local-yamcs-smoke-1792547315",
+          "generationTime": "2026-10-21T01:48:35.156Z",
+          "origin": "n2-local-yamcs-smoke",
+          "sequenceNumber": 1792547315,
+          "commandName": "/ArtemisRpiTeensyDeployment_ArtemisRpiTeensyDeployment/FileHandling/fileDownlink/SendFile",
+          "queue": "default",
+          "username": "guest",
+          "assignments": [
+            {
+              "name": "CCSDS_Version",
+              "value": {
+                "type": "UINT32",
+                "uint32Value": 0
+              },
+              "userInput": false
+            },
+            {
+              "name": "CCSDS_Type",
+              "value": {
+                "type": "BOOLEAN",
+                "booleanValue": true
+              },
+              "userInput": false
+            },
+            {
+              "name": "CCSDS_Sec_Hdr_Flag",
+              "value": {
+                "type": "BOOLEAN",
+                "booleanValue": false
+              },
+              "userInput": false
+            },
+            {
+              "name": "CCSDS_APID",
+              "value": {
+                "type": "UINT32",
+                "uint32Value": 0
+              },
+              "userInput": false
+            },
+            {
+              "name": "CCSDS_Group_Flags",
+              "value": {
+                "type": "ENUMERATED",
+                "stringValue": "Standalone",
+                "sint64Value": "3"
+              },
+              "userInput": false
+            },
+            {
+              "name": "OpCode",
+              "value": {
+                "type": "UINT32",
+                "uint32Value": 83890176
+              },
+              "userInput": false
+            },
+            {
+              "name": "sourceFileName",
+              "value": {
+                "type": "STRING",
+                "stringValue": "source/sample-payload-raw-science.csv"
+              },
+              "userInput": true
+            },
+            {
+              "name": "destFileName",
+              "value": {
+                "type": "STRING",
+                "stringValue": "cdr-08033b83-sample-payload-raw-science.csv"
+              },
+              "userInput": true
+            }
+          ],
+          "unprocessedBinary": "EADAAAAAAAAFABAAACVzb3VyY2Uvc2FtcGxlLXBheWxvYWQtcmF3LXNjaWVuY2UuY3N2ACtjZHItMDgwMzNiODMtc2FtcGxlLXBheWxvYWQtcmF3LXNjaWVuY2UuY3N2"
+        },
+        "object": "cdr-08033b83-sample-payload-raw-science.csv",
+        "bytes": 606273,
+        "sha256": "50b3b55e536f30183190518ead5bfa48d36f78572f6bb0f80fecf19e197aad10",
+        "crc16_ccitt": 14885,
+        "receipt_wait_seconds": 10.715,
+        "expected_min_data_packets_at_499_bytes": 1215,
+        "uart_rpc_within_transfer_interval": 15
+      }
+    ],
+    "pdu_during_file_transfer": {
+      "requests_before": 5,
+      "requests_after": 23,
+      "within_transfer_intervals": 18
+    },
+    "missing_source": {
+      "command": {
+        "binary": "EADAAAAAAAAFABAAABlzb3VyY2UvZG9lcy1ub3QtZXhpc3QuY3N2ABRtaXNzaW5nLTA5MTI1MzhmLmNzdg==",
+        "id": "1792547362872-n2-local-yamcs-smoke-1792547325",
+        "generationTime": "2026-10-21T01:48:45.872Z",
+        "origin": "n2-local-yamcs-smoke",
+        "sequenceNumber": 1792547325,
+        "commandName": "/ArtemisRpiTeensyDeployment_ArtemisRpiTeensyDeployment/FileHandling/fileDownlink/SendFile",
+        "queue": "default",
+        "username": "guest",
+        "assignments": [
+          {
+            "name": "CCSDS_Version",
+            "value": {
+              "type": "UINT32",
+              "uint32Value": 0
+            },
+            "userInput": false
+          },
+          {
+            "name": "CCSDS_Type",
+            "value": {
+              "type": "BOOLEAN",
+              "booleanValue": true
+            },
+            "userInput": false
+          },
+          {
+            "name": "CCSDS_Sec_Hdr_Flag",
+            "value": {
+              "type": "BOOLEAN",
+              "booleanValue": false
+            },
+            "userInput": false
+          },
+          {
+            "name": "CCSDS_APID",
+            "value": {
+              "type": "UINT32",
+              "uint32Value": 0
+            },
+            "userInput": false
+          },
+          {
+            "name": "CCSDS_Group_Flags",
+            "value": {
+              "type": "ENUMERATED",
+              "stringValue": "Standalone",
+              "sint64Value": "3"
+            },
+            "userInput": false
+          },
+          {
+            "name": "OpCode",
+            "value": {
+              "type": "UINT32",
+              "uint32Value": 83890176
+            },
+            "userInput": false
+          },
+          {
+            "name": "sourceFileName",
+            "value": {
+              "type": "STRING",
+              "stringValue": "source/does-not-exist.csv"
+            },
+            "userInput": true
+          },
+          {
+            "name": "destFileName",
+            "value": {
+              "type": "STRING",
+              "stringValue": "missing-0912538f.csv"
+            },
+            "userInput": true
+          }
+        ],
+        "unprocessedBinary": "EADAAAAAAAAFABAAABlzb3VyY2UvZG9lcy1ub3QtZXhpc3QuY3N2ABRtaXNzaW5nLTA5MTI1MzhmLmNzdg=="
+      },
+      "failure_event": {
+        "source": "FPrimeEventProcessor",
+        "generationTime": "2026-10-21T01:48:47.022Z",
+        "receptionTime": "2026-10-21T01:48:47.041Z",
+        "seqNumber": 136,
+        "type": "FileHandling.fileDownlink.FileOpenError",
+        "message": "[FileOpenError] Could not open file source/does-not-exist.csv",
+        "severity": "DISTRESS",
+        "createdBy": "guest",
+        "extra": {
+          "fileName": "source/does-not-exist.csv",
+          "fprime_severity": "WARNING_HI",
+          "fprime_event_id": "83890176",
+          "fprime_event_name": "FileHandling.fileDownlink.FileOpenError"
+        }
+      },
+      "object_absent": true
+    },
+    "interrupted_transfer": {
+      "command": {
+        "binary": "EADAAAAAAAAFABAAACVzb3VyY2Uvc2FtcGxlLXBheWxvYWQtcmF3LXNjaWVuY2UuY3N2ABhpbnRlcnJ1cHRlZC04YjJjNzQyYy5jc3Y=",
+        "id": "1792547364450-n2-local-yamcs-smoke-1792547327",
+        "generationTime": "2026-10-21T01:48:47.450Z",
+        "origin": "n2-local-yamcs-smoke",
+        "sequenceNumber": 1792547327,
+        "commandName": "/ArtemisRpiTeensyDeployment_ArtemisRpiTeensyDeployment/FileHandling/fileDownlink/SendFile",
+        "queue": "default",
+        "username": "guest",
+        "assignments": [
+          {
+            "name": "CCSDS_Version",
+            "value": {
+              "type": "UINT32",
+              "uint32Value": 0
+            },
+            "userInput": false
+          },
+          {
+            "name": "CCSDS_Type",
+            "value": {
+              "type": "BOOLEAN",
+              "booleanValue": true
+            },
+            "userInput": false
+          },
+          {
+            "name": "CCSDS_Sec_Hdr_Flag",
+            "value": {
+              "type": "BOOLEAN",
+              "booleanValue": false
+            },
+            "userInput": false
+          },
+          {
+            "name": "CCSDS_APID",
+            "value": {
+              "type": "UINT32",
+              "uint32Value": 0
+            },
+            "userInput": false
+          },
+          {
+            "name": "CCSDS_Group_Flags",
+            "value": {
+              "type": "ENUMERATED",
+              "stringValue": "Standalone",
+              "sint64Value": "3"
+            },
+            "userInput": false
+          },
+          {
+            "name": "OpCode",
+            "value": {
+              "type": "UINT32",
+              "uint32Value": 83890176
+            },
+            "userInput": false
+          },
+          {
+            "name": "sourceFileName",
+            "value": {
+              "type": "STRING",
+              "stringValue": "source/sample-payload-raw-science.csv"
+            },
+            "userInput": true
+          },
+          {
+            "name": "destFileName",
+            "value": {
+              "type": "STRING",
+              "stringValue": "interrupted-8b2c742c.csv"
+            },
+            "userInput": true
+          }
+        ],
+        "unprocessedBinary": "EADAAAAAAAAFABAAACVzb3VyY2Uvc2FtcGxlLXBheWxvYWQtcmF3LXNjaWVuY2UuY3N2ABhpbnRlcnJ1cHRlZC04YjJjNzQyYy5jc3Y="
+      },
+      "object_absent": true,
+      "pdu_requests_while_disconnected": 1,
+      "still_absent_after_recovery": true
+    },
+    "reconnected_ping": {
+      "token": 1929190640,
+      "command": {
+        "binary": "EADAAAAAAAAQAGABcv0c8A==",
+        "id": "1792547366337-n2-local-yamcs-smoke-1792547329",
+        "generationTime": "2026-10-21T01:48:49.337Z",
+        "origin": "n2-local-yamcs-smoke",
+        "sequenceNumber": 1792547329,
+        "commandName": "/ArtemisRpiTeensyDeployment_ArtemisRpiTeensyDeployment/ArtemisRpiTeensyDeployment/missionApp/PING",
+        "queue": "default",
+        "username": "guest",
+        "assignments": [
+          {
+            "name": "CCSDS_Version",
+            "value": {
+              "type": "UINT32",
+              "uint32Value": 0
+            },
+            "userInput": false
+          },
+          {
+            "name": "CCSDS_Type",
+            "value": {
+              "type": "BOOLEAN",
+              "booleanValue": true
+            },
+            "userInput": false
+          },
+          {
+            "name": "CCSDS_Sec_Hdr_Flag",
+            "value": {
+              "type": "BOOLEAN",
+              "booleanValue": false
+            },
+            "userInput": false
+          },
+          {
+            "name": "CCSDS_APID",
+            "value": {
+              "type": "UINT32",
+              "uint32Value": 0
+            },
+            "userInput": false
+          },
+          {
+            "name": "CCSDS_Group_Flags",
+            "value": {
+              "type": "ENUMERATED",
+              "stringValue": "Standalone",
+              "sint64Value": "3"
+            },
+            "userInput": false
+          },
+          {
+            "name": "OpCode",
+            "value": {
+              "type": "UINT32",
+              "uint32Value": 268460033
+            },
+            "userInput": false
+          },
+          {
+            "name": "token",
+            "value": {
+              "type": "UINT32",
+              "uint32Value": 1929190640
+            },
+            "userInput": true
+          }
+        ],
+        "unprocessedBinary": "EADAAAAAAAAQAGABcv0c8A=="
+      },
+      "event": {
+        "source": "FPrimeEventProcessor",
+        "generationTime": "2026-10-21T01:48:50.629Z",
+        "receptionTime": "2026-10-21T01:48:57.933Z",
+        "seqNumber": 151,
+        "type": "ArtemisRpiTeensyDeployment.missionApp.Pong",
+        "message": "[Pong] MissionApp pong token=1929190640 count=2",
+        "severity": "INFO",
+        "createdBy": "guest",
+        "extra": {
+          "token": "1929190640",
+          "count": "2",
+          "fprime_severity": "ACTIVITY_LO",
+          "fprime_event_id": "268460035",
+          "fprime_event_name": "ArtemisRpiTeensyDeployment.missionApp.Pong"
+        }
+      }
+    },
+    "fresh_send_after_reconnect": {
+      "command": {
+        "binary": "EADAAAAAAAAFABAAACVzb3VyY2Uvc2FtcGxlLXBheWxvYWQtcmF3LXNjaWVuY2UuY3N2ABZyZWNvdmVyZWQtNmM0ZTRkNzMuY3N2",
+        "id": "1792547378100-n2-local-yamcs-smoke-1792547341",
+        "generationTime": "2026-10-21T01:49:01.100Z",
+        "origin": "n2-local-yamcs-smoke",
+        "sequenceNumber": 1792547341,
+        "commandName": "/ArtemisRpiTeensyDeployment_ArtemisRpiTeensyDeployment/FileHandling/fileDownlink/SendFile",
+        "queue": "default",
+        "username": "guest",
+        "assignments": [
+          {
+            "name": "CCSDS_Version",
+            "value": {
+              "type": "UINT32",
+              "uint32Value": 0
+            },
+            "userInput": false
+          },
+          {
+            "name": "CCSDS_Type",
+            "value": {
+              "type": "BOOLEAN",
+              "booleanValue": true
+            },
+            "userInput": false
+          },
+          {
+            "name": "CCSDS_Sec_Hdr_Flag",
+            "value": {
+              "type": "BOOLEAN",
+              "booleanValue": false
+            },
+            "userInput": false
+          },
+          {
+            "name": "CCSDS_APID",
+            "value": {
+              "type": "UINT32",
+              "uint32Value": 0
+            },
+            "userInput": false
+          },
+          {
+            "name": "CCSDS_Group_Flags",
+            "value": {
+              "type": "ENUMERATED",
+              "stringValue": "Standalone",
+              "sint64Value": "3"
+            },
+            "userInput": false
+          },
+          {
+            "name": "OpCode",
+            "value": {
+              "type": "UINT32",
+              "uint32Value": 83890176
+            },
+            "userInput": false
+          },
+          {
+            "name": "sourceFileName",
+            "value": {
+              "type": "STRING",
+              "stringValue": "source/sample-payload-raw-science.csv"
+            },
+            "userInput": true
+          },
+          {
+            "name": "destFileName",
+            "value": {
+              "type": "STRING",
+              "stringValue": "recovered-6c4e4d73.csv"
+            },
+            "userInput": true
+          }
+        ],
+        "unprocessedBinary": "EADAAAAAAAAFABAAACVzb3VyY2Uvc2FtcGxlLXBheWxvYWQtcmF3LXNjaWVuY2UuY3N2ABZyZWNvdmVyZWQtNmM0ZTRkNzMuY3N2"
+      },
+      "object": "recovered-6c4e4d73.csv",
+      "bytes": 606273,
+      "sha256": "50b3b55e536f30183190518ead5bfa48d36f78572f6bb0f80fecf19e197aad10"
+    },
+    "ground_helper": {
+      "source_file": {
+        "bucket": "fprimeFilesIn",
+        "command": {
+          "assignments": [
+            {
+              "name": "CCSDS_Version",
+              "userInput": false,
+              "value": {
+                "type": "UINT32",
+                "uint32Value": 0
+              }
+            },
+            {
+              "name": "CCSDS_Type",
+              "userInput": false,
+              "value": {
+                "booleanValue": true,
+                "type": "BOOLEAN"
+              }
+            },
+            {
+              "name": "CCSDS_Sec_Hdr_Flag",
+              "userInput": false,
+              "value": {
+                "booleanValue": false,
+                "type": "BOOLEAN"
+              }
+            },
+            {
+              "name": "CCSDS_APID",
+              "userInput": false,
+              "value": {
+                "type": "UINT32",
+                "uint32Value": 0
+              }
+            },
+            {
+              "name": "CCSDS_Group_Flags",
+              "userInput": false,
+              "value": {
+                "sint64Value": "3",
+                "stringValue": "Standalone",
+                "type": "ENUMERATED"
+              }
+            },
+            {
+              "name": "OpCode",
+              "userInput": false,
+              "value": {
+                "type": "UINT32",
+                "uint32Value": 83890176
+              }
+            },
+            {
+              "name": "sourceFileName",
+              "userInput": true,
+              "value": {
+                "stringValue": "source/sample-ayload-config-sohdata.csv",
+                "type": "STRING"
+              }
+            },
+            {
+              "name": "destFileName",
+              "userInput": true,
+              "value": {
+                "stringValue": "cdr-fcec42e9-sample-ayload-config-sohdata.csv",
+                "type": "STRING"
+              }
+            }
+          ],
+          "binary": "EADAAAAAAAAFABAAACdzb3VyY2Uvc2FtcGxlLWF5bG9hZC1jb25maWctc29oZGF0YS5jc3YALWNkci1mY2VjNDJlOS1zYW1wbGUtYXlsb2FkLWNvbmZpZy1zb2hkYXRhLmNzdg==",
+          "commandName": "/ArtemisRpiTeensyDeployment_ArtemisRpiTeensyDeployment/FileHandling/fileDownlink/SendFile",
+          "generationTime": "2026-10-21T01:49:10.240Z",
+          "id": "1792547387240-n2-cdr-stock-filedownlink-1267683954",
+          "origin": "n2-cdr-stock-filedownlink",
+          "queue": "default",
+          "sequenceNumber": 1267683954,
+          "unprocessedBinary": "EADAAAAAAAAFABAAACdzb3VyY2Uvc2FtcGxlLWF5bG9hZC1jb25maWctc29oZGF0YS5jc3YALWNkci1mY2VjNDJlOS1zYW1wbGUtYXlsb2FkLWNvbmZpZy1zb2hkYXRhLmNzdg==",
+          "username": "guest"
+        },
+        "command_generation_time": "2026-10-21T01:49:10.240Z",
+        "destination": "cdr-fcec42e9-sample-ayload-config-sohdata.csv",
+        "finished_at": "2026-10-21T01:49:12.422376+00:00",
+        "instance": "fprime-project",
+        "integrity_expectations": {
+          "expected_crc16_ccitt": 52221,
+          "expected_sha256": "3fa9a43df9aa2bcbe3ced89cb99695e2c77ce73e7bf916c1e4d35188fb3fca72",
+          "expected_size": 729,
+          "source_sha256_verified": true
+        },
+        "method": "stock FileHandling.fileDownlink.SendFile",
+        "network_mux": false,
+        "processor": "realtime",
+        "product_id": null,
+        "product_selection": null,
+        "received": {
+          "bytes": 729,
+          "checks": {
+            "expected_crc16_ccitt": true,
+            "expected_file_bytes": true,
+            "expected_sha256": true,
+            "expected_size": true,
+            "nonempty": true
+          },
+          "crc16_ccitt": 52221,
+          "saved_path": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/cdr-acceptance-20261021T014825Z-8ab7f1/helper-source_file/received-cdr-fcec42e9-sample-ayload-config-sohdata.csv",
+          "sha256": "3fa9a43df9aa2bcbe3ced89cb99695e2c77ce73e7bf916c1e4d35188fb3fca72",
+          "sha256_verified_against_source": true
+        },
+        "remote_source_path": "source/sample-ayload-config-sohdata.csv",
+        "started_at": "2026-10-21T01:49:10.234252+00:00",
+        "status": "PASS",
+        "url": "http://127.0.0.1:8090"
+      },
+      "missing_source": {
+        "bucket": "fprimeFilesIn",
+        "command": {
+          "assignments": [
+            {
+              "name": "CCSDS_Version",
+              "userInput": false,
+              "value": {
+                "type": "UINT32",
+                "uint32Value": 0
+              }
+            },
+            {
+              "name": "CCSDS_Type",
+              "userInput": false,
+              "value": {
+                "booleanValue": true,
+                "type": "BOOLEAN"
+              }
+            },
+            {
+              "name": "CCSDS_Sec_Hdr_Flag",
+              "userInput": false,
+              "value": {
+                "booleanValue": false,
+                "type": "BOOLEAN"
+              }
+            },
+            {
+              "name": "CCSDS_APID",
+              "userInput": false,
+              "value": {
+                "type": "UINT32",
+                "uint32Value": 0
+              }
+            },
+            {
+              "name": "CCSDS_Group_Flags",
+              "userInput": false,
+              "value": {
+                "sint64Value": "3",
+                "stringValue": "Standalone",
+                "type": "ENUMERATED"
+              }
+            },
+            {
+              "name": "OpCode",
+              "userInput": false,
+              "value": {
+                "type": "UINT32",
+                "uint32Value": 83890176
+              }
+            },
+            {
+              "name": "sourceFileName",
+              "userInput": true,
+              "value": {
+                "stringValue": "source/absent-helper.csv",
+                "type": "STRING"
+              }
+            },
+            {
+              "name": "destFileName",
+              "userInput": true,
+              "value": {
+                "stringValue": "cdr-2ab9998a-absent-helper.csv",
+                "type": "STRING"
+              }
+            }
+          ],
+          "binary": "EADAAAAAAAAFABAAABhzb3VyY2UvYWJzZW50LWhlbHBlci5jc3YAHmNkci0yYWI5OTk4YS1hYnNlbnQtaGVscGVyLmNzdg==",
+          "commandName": "/ArtemisRpiTeensyDeployment_ArtemisRpiTeensyDeployment/FileHandling/fileDownlink/SendFile",
+          "generationTime": "2026-10-21T01:49:12.487Z",
+          "id": "1792547389487-n2-cdr-stock-filedownlink-25704567",
+          "origin": "n2-cdr-stock-filedownlink",
+          "queue": "default",
+          "sequenceNumber": 25704567,
+          "unprocessedBinary": "EADAAAAAAAAFABAAABhzb3VyY2UvYWJzZW50LWhlbHBlci5jc3YAHmNkci0yYWI5OTk4YS1hYnNlbnQtaGVscGVyLmNzdg==",
+          "username": "guest"
+        },
+        "command_generation_time": "2026-10-21T01:49:12.487Z",
+        "destination": "cdr-2ab9998a-absent-helper.csv",
+        "error": "RuntimeError: F' FileDownlink reported FileHandling.fileDownlink.FileOpenError: [FileOpenError] Could not open file source/absent-helper.csv",
+        "finished_at": "2026-10-21T01:49:15.687253+00:00",
+        "instance": "fprime-project",
+        "integrity_expectations": {
+          "expected_crc16_ccitt": 0,
+          "expected_sha256": null,
+          "expected_size": 1,
+          "source_sha256_verified": false
+        },
+        "method": "stock FileHandling.fileDownlink.SendFile",
+        "network_mux": false,
+        "processor": "realtime",
+        "product_id": null,
+        "product_selection": null,
+        "remote_source_path": "source/absent-helper.csv",
+        "started_at": "2026-10-21T01:49:12.481822+00:00",
+        "status": "FAIL",
+        "url": "http://127.0.0.1:8090"
+      },
+      "retained_product": {
+        "capture_command": {
+          "binary": "EADAAAAAAAAQAHACAAAAAQ==",
+          "id": "1792547392747-n2-local-yamcs-smoke-1792547355",
+          "generationTime": "2026-10-21T01:49:15.747Z",
+          "origin": "n2-local-yamcs-smoke",
+          "sequenceNumber": 1792547355,
+          "commandName": "/ArtemisRpiTeensyDeployment_ArtemisRpiTeensyDeployment/ArtemisRpiTeensyDeployment/scienceApp/SCIENCE_CAPTURE",
+          "queue": "default",
+          "username": "guest",
+          "assignments": [
+            {
+              "name": "CCSDS_Version",
+              "value": {
+                "type": "UINT32",
+                "uint32Value": 0
+              },
+              "userInput": false
+            },
+            {
+              "name": "CCSDS_Type",
+              "value": {
+                "type": "BOOLEAN",
+                "booleanValue": true
+              },
+              "userInput": false
+            },
+            {
+              "name": "CCSDS_Sec_Hdr_Flag",
+              "value": {
+                "type": "BOOLEAN",
+                "booleanValue": false
+              },
+              "userInput": false
+            },
+            {
+              "name": "CCSDS_APID",
+              "value": {
+                "type": "UINT32",
+                "uint32Value": 0
+              },
+              "userInput": false
+            },
+            {
+              "name": "CCSDS_Group_Flags",
+              "value": {
+                "type": "ENUMERATED",
+                "stringValue": "Standalone",
+                "sint64Value": "3"
+              },
+              "userInput": false
+            },
+            {
+              "name": "OpCode",
+              "value": {
+                "type": "UINT32",
+                "uint32Value": 268464130
+              },
+              "userInput": false
+            },
+            {
+              "name": "durationSeconds",
+              "value": {
+                "type": "UINT32",
+                "uint32Value": 1
+              },
+              "userInput": true
+            }
+          ],
+          "unprocessedBinary": "EADAAAAAAAAQAHACAAAAAQ=="
+        },
+        "committed_event": {
+          "source": "FPrimeEventProcessor",
+          "generationTime": "2026-10-21T01:49:18.237Z",
+          "receptionTime": "2026-10-21T01:49:18.248Z",
+          "seqNumber": 234,
+          "type": "ArtemisRpiTeensyDeployment.storageManager.ScienceProductCommitted",
+          "message": "[ScienceProductCommitted] Committed science product=1 bytes=26 CRC=30517 path='onboard-storage/product_1.bin'",
+          "severity": "WATCH",
+          "createdBy": "guest",
+          "extra": {
+            "productId": "1",
+            "productBytes": "26",
+            "sourceCrc": "30517",
+            "sourcePath": "onboard-storage/product_1.bin",
+            "fprime_severity": "ACTIVITY_HI",
+            "fprime_event_id": "268492810",
+            "fprime_event_name": "ArtemisRpiTeensyDeployment.storageManager.ScienceProductCommitted"
+          }
+        },
+        "stock_downlink": {
+          "bucket": "fprimeFilesIn",
+          "command": {
+            "assignments": [
+              {
+                "name": "CCSDS_Version",
+                "userInput": false,
+                "value": {
+                  "type": "UINT32",
+                  "uint32Value": 0
+                }
+              },
+              {
+                "name": "CCSDS_Type",
+                "userInput": false,
+                "value": {
+                  "booleanValue": true,
+                  "type": "BOOLEAN"
+                }
+              },
+              {
+                "name": "CCSDS_Sec_Hdr_Flag",
+                "userInput": false,
+                "value": {
+                  "booleanValue": false,
+                  "type": "BOOLEAN"
+                }
+              },
+              {
+                "name": "CCSDS_APID",
+                "userInput": false,
+                "value": {
+                  "type": "UINT32",
+                  "uint32Value": 0
+                }
+              },
+              {
+                "name": "CCSDS_Group_Flags",
+                "userInput": false,
+                "value": {
+                  "sint64Value": "3",
+                  "stringValue": "Standalone",
+                  "type": "ENUMERATED"
+                }
+              },
+              {
+                "name": "OpCode",
+                "userInput": false,
+                "value": {
+                  "type": "UINT32",
+                  "uint32Value": 83890176
+                }
+              },
+              {
+                "name": "sourceFileName",
+                "userInput": true,
+                "value": {
+                  "stringValue": "onboard-storage/product_1.bin",
+                  "type": "STRING"
+                }
+              },
+              {
+                "name": "destFileName",
+                "userInput": true,
+                "value": {
+                  "stringValue": "cdr-22b4fa9e-product_1.bin",
+                  "type": "STRING"
+                }
+              }
+            ],
+            "binary": "EADAAAAAAAAFABAAAB1vbmJvYXJkLXN0b3JhZ2UvcHJvZHVjdF8xLmJpbgAaY2RyLTIyYjRmYTllLXByb2R1Y3RfMS5iaW4=",
+            "commandName": "/ArtemisRpiTeensyDeployment_ArtemisRpiTeensyDeployment/FileHandling/fileDownlink/SendFile",
+            "generationTime": "2026-10-21T01:49:19.456Z",
+            "id": "1792547396456-n2-cdr-stock-filedownlink-1114200481",
+            "origin": "n2-cdr-stock-filedownlink",
+            "queue": "default",
+            "sequenceNumber": 1114200481,
+            "unprocessedBinary": "EADAAAAAAAAFABAAAB1vbmJvYXJkLXN0b3JhZ2UvcHJvZHVjdF8xLmJpbgAaY2RyLTIyYjRmYTllLXByb2R1Y3RfMS5iaW4=",
+            "username": "guest"
+          },
+          "command_generation_time": "2026-10-21T01:49:19.456Z",
+          "destination": "cdr-22b4fa9e-product_1.bin",
+          "finished_at": "2026-10-21T01:49:21.642385+00:00",
+          "instance": "fprime-project",
+          "integrity_expectations": {
+            "expected_crc16_ccitt": 30517,
+            "expected_sha256": "8d65ba2c72dd782c2d45bed3decdc5432919b78ebe90de3aa98763f2d4e1789b",
+            "expected_size": 26,
+            "source_sha256_verified": true
+          },
+          "method": "stock FileHandling.fileDownlink.SendFile",
+          "network_mux": false,
+          "processor": "realtime",
+          "product_id": 1,
+          "product_selection": {
+            "command": {
+              "assignments": [
+                {
+                  "name": "CCSDS_Version",
+                  "userInput": false,
+                  "value": {
+                    "type": "UINT32",
+                    "uint32Value": 0
+                  }
+                },
+                {
+                  "name": "CCSDS_Type",
+                  "userInput": false,
+                  "value": {
+                    "booleanValue": true,
+                    "type": "BOOLEAN"
+                  }
+                },
+                {
+                  "name": "CCSDS_Sec_Hdr_Flag",
+                  "userInput": false,
+                  "value": {
+                    "booleanValue": false,
+                    "type": "BOOLEAN"
+                  }
+                },
+                {
+                  "name": "CCSDS_APID",
+                  "userInput": false,
+                  "value": {
+                    "type": "UINT32",
+                    "uint32Value": 0
+                  }
+                },
+                {
+                  "name": "CCSDS_Group_Flags",
+                  "userInput": false,
+                  "value": {
+                    "sint64Value": "3",
+                    "stringValue": "Standalone",
+                    "type": "ENUMERATED"
+                  }
+                },
+                {
+                  "name": "OpCode",
+                  "userInput": false,
+                  "value": {
+                    "type": "UINT32",
+                    "uint32Value": 268492804
+                  }
+                },
+                {
+                  "name": "productId",
+                  "userInput": true,
+                  "value": {
+                    "type": "UINT32",
+                    "uint32Value": 1
+                  }
+                }
+              ],
+              "binary": "EADAAAAAAAAQAOAEAAAAAQ==",
+              "commandName": "/ArtemisRpiTeensyDeployment_ArtemisRpiTeensyDeployment/ArtemisRpiTeensyDeployment/storageManager/SELECT_PRODUCT",
+              "generationTime": "2026-10-21T01:49:18.395Z",
+              "id": "1792547395395-n2-cdr-stock-filedownlink-1077263028",
+              "origin": "n2-cdr-stock-filedownlink",
+              "queue": "default",
+              "sequenceNumber": 1077263028,
+              "unprocessedBinary": "EADAAAAAAAAQAOAEAAAAAQ==",
+              "username": "guest"
+            },
+            "event": {
+              "createdBy": "guest",
+              "extra": {
+                "fprime_event_id": "268492811",
+                "fprime_event_name": "ArtemisRpiTeensyDeployment.storageManager.ProductSelected",
+                "fprime_severity": "ACTIVITY_HI",
+                "productBytes": "26",
+                "productId": "1",
+                "sourceCrc": "30517",
+                "sourcePath": "onboard-storage/product_1.bin"
+              },
+              "generationTime": "2026-10-21T01:49:19.395Z",
+              "message": "[ProductSelected] Selected science product=1 bytes=26 CRC=30517 path='onboard-storage/product_1.bin'",
+              "receptionTime": "2026-10-21T01:49:19.252Z",
+              "seqNumber": 236,
+              "severity": "WATCH",
+              "source": "FPrimeEventProcessor",
+              "type": "ArtemisRpiTeensyDeployment.storageManager.ProductSelected"
+            },
+            "source_file": "onboard-storage/product_1.bin"
+          },
+          "received": {
+            "bytes": 26,
+            "checks": {
+              "expected_crc16_ccitt": true,
+              "expected_file_bytes": true,
+              "expected_sha256": true,
+              "expected_size": true,
+              "nonempty": true
+            },
+            "crc16_ccitt": 30517,
+            "saved_path": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/cdr-acceptance-20261021T014825Z-8ab7f1/helper-product/received-cdr-22b4fa9e-product_1.bin",
+            "sha256": "8d65ba2c72dd782c2d45bed3decdc5432919b78ebe90de3aa98763f2d4e1789b",
+            "sha256_verified_against_source": true
+          },
+          "remote_source_path": "onboard-storage/product_1.bin",
+          "started_at": "2026-10-21T01:49:18.389293+00:00",
+          "status": "PASS",
+          "url": "http://127.0.0.1:8090"
+        }
+      }
+    },
+    "physical_uart_channels": [
+      2
+    ],
+    "proxy": {
+      "fragment_writes": 53882,
+      "connections": 2
+    }
+  },
+  "fake_pdu_requests": 41,
+  "fake_pdu_errors": [],
+  "process_exit_codes": {
+    "ground": 130,
+    "app": 0
+  }
+}

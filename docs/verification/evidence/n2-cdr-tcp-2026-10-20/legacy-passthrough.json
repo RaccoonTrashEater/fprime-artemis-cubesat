@@ -1,0 +1,252 @@
+{
+  "result": "PASS",
+  "route": "Yamcs -> PayloadManager -> typed synthetic pass-through port -> PayloadDriver_NeutronSim -> typed response port -> Yamcs event",
+  "hardware_or_rf_used": false,
+  "text_contract": "printable ASCII only; embedded NUL and non-ASCII are not validated",
+  "max_literal_bytes": 128,
+  "vectors": [
+    {
+      "requestId": 823548631,
+      "literalCommand": "literal command: keep spaces, =, [brackets], 'quotes', /? !"
+    },
+    {
+      "requestId": 946643872,
+      "literalCommand": "MAX128: \"A B\" = C;[]{}!@#$%^&*()/+-_MAX128: \"A B\" = C;[]{}!@#$%^&*()/+-_MAX128: \"A B\" = C;[]{}!@#$%^&*()/+-_MAX128: \"A B\" = C;[]"
+    }
+  ],
+  "mode_before": "BASE",
+  "observed": [
+    {
+      "command": {
+        "binary": "EADAAAAAAAAQALAEMRZa1wA7bGl0ZXJhbCBjb21tYW5kOiBrZWVwIHNwYWNlcywgPSwgW2JyYWNrZXRzXSwgJ3F1b3RlcycsIC8/ICE=",
+        "id": "1792547171904-n2-local-yamcs-smoke-1792547134",
+        "generationTime": "2026-10-21T01:45:34.904Z",
+        "origin": "n2-local-yamcs-smoke",
+        "sequenceNumber": 1792547134,
+        "commandName": "/ArtemisRpiTeensyDeployment_ArtemisRpiTeensyDeployment/ArtemisRpiTeensyDeployment/payloadManager/SYNTHETIC_PASSTHROUGH",
+        "queue": "default",
+        "username": "guest",
+        "assignments": [
+          {
+            "name": "CCSDS_Version",
+            "value": {
+              "type": "UINT32",
+              "uint32Value": 0
+            },
+            "userInput": false
+          },
+          {
+            "name": "CCSDS_Type",
+            "value": {
+              "type": "BOOLEAN",
+              "booleanValue": true
+            },
+            "userInput": false
+          },
+          {
+            "name": "CCSDS_Sec_Hdr_Flag",
+            "value": {
+              "type": "BOOLEAN",
+              "booleanValue": false
+            },
+            "userInput": false
+          },
+          {
+            "name": "CCSDS_APID",
+            "value": {
+              "type": "UINT32",
+              "uint32Value": 0
+            },
+            "userInput": false
+          },
+          {
+            "name": "CCSDS_Group_Flags",
+            "value": {
+              "type": "ENUMERATED",
+              "stringValue": "Standalone",
+              "sint64Value": "3"
+            },
+            "userInput": false
+          },
+          {
+            "name": "OpCode",
+            "value": {
+              "type": "UINT32",
+              "uint32Value": 268480516
+            },
+            "userInput": false
+          },
+          {
+            "name": "requestId",
+            "value": {
+              "type": "UINT32",
+              "uint32Value": 823548631
+            },
+            "userInput": true
+          },
+          {
+            "name": "literalCommand",
+            "value": {
+              "type": "STRING",
+              "stringValue": "literal command: keep spaces, =, [brackets], 'quotes', /? !"
+            },
+            "userInput": true
+          }
+        ],
+        "unprocessedBinary": "EADAAAAAAAAQALAEMRZa1wA7bGl0ZXJhbCBjb21tYW5kOiBrZWVwIHNwYWNlcywgPSwgW2JyYWNrZXRzXSwgJ3F1b3RlcycsIC8/ICE="
+      },
+      "forwarded_event": {
+        "source": "FPrimeEventProcessor",
+        "generationTime": "2026-10-21T01:45:35.909Z",
+        "receptionTime": "2026-10-21T01:45:35.724Z",
+        "seqNumber": 8,
+        "type": "ArtemisRpiTeensyDeployment.payloadManager.SyntheticPassthroughForwarded",
+        "message": "[SyntheticPassthroughForwarded] Synthetic payload pass-through forwarded request=823548631 literal='literal command: keep spaces, =, [brackets], 'quotes', /? !'",
+        "severity": "WATCH",
+        "createdBy": "guest",
+        "extra": {
+          "requestId": "823548631",
+          "literalCommand": "literal command: keep spaces, =, [brackets], 'quotes', /? !",
+          "fprime_severity": "ACTIVITY_HI",
+          "fprime_event_id": "268480516",
+          "fprime_event_name": "ArtemisRpiTeensyDeployment.payloadManager.SyntheticPassthroughForwarded"
+        }
+      },
+      "response_event": {
+        "source": "FPrimeEventProcessor",
+        "generationTime": "2026-10-21T01:45:35.909Z",
+        "receptionTime": "2026-10-21T01:45:35.729Z",
+        "seqNumber": 11,
+        "type": "ArtemisRpiTeensyDeployment.payloadManager.SyntheticPassthroughResponse",
+        "message": "[SyntheticPassthroughResponse] Synthetic payload response request=823548631 status=SIMULATED_ECHOED literal='literal command: keep spaces, =, [brackets], 'quotes', /? !'",
+        "severity": "WATCH",
+        "createdBy": "guest",
+        "extra": {
+          "requestId": "823548631",
+          "status": "SIMULATED_ECHOED",
+          "literalEcho": "literal command: keep spaces, =, [brackets], 'quotes', /? !",
+          "fprime_severity": "ACTIVITY_HI",
+          "fprime_event_id": "268480518",
+          "fprime_event_name": "ArtemisRpiTeensyDeployment.payloadManager.SyntheticPassthroughResponse"
+        }
+      }
+    },
+    {
+      "command": {
+        "binary": "EADAAAAAAAAQALAEOGyjoACATUFYMTI4OiAiQSBCIiA9IEM7W117fSFAIyQlXiYqKCkvKy1fTUFYMTI4OiAiQSBCIiA9IEM7W117fSFAIyQlXiYqKCkvKy1fTUFYMTI4OiAiQSBCIiA9IEM7W117fSFAIyQlXiYqKCkvKy1fTUFYMTI4OiAiQSBCIiA9IEM7W10=",
+        "id": "1792547173067-n2-local-yamcs-smoke-1792547136",
+        "generationTime": "2026-10-21T01:45:36.067Z",
+        "origin": "n2-local-yamcs-smoke",
+        "sequenceNumber": 1792547136,
+        "commandName": "/ArtemisRpiTeensyDeployment_ArtemisRpiTeensyDeployment/ArtemisRpiTeensyDeployment/payloadManager/SYNTHETIC_PASSTHROUGH",
+        "queue": "default",
+        "username": "guest",
+        "assignments": [
+          {
+            "name": "CCSDS_Version",
+            "value": {
+              "type": "UINT32",
+              "uint32Value": 0
+            },
+            "userInput": false
+          },
+          {
+            "name": "CCSDS_Type",
+            "value": {
+              "type": "BOOLEAN",
+              "booleanValue": true
+            },
+            "userInput": false
+          },
+          {
+            "name": "CCSDS_Sec_Hdr_Flag",
+            "value": {
+              "type": "BOOLEAN",
+              "booleanValue": false
+            },
+            "userInput": false
+          },
+          {
+            "name": "CCSDS_APID",
+            "value": {
+              "type": "UINT32",
+              "uint32Value": 0
+            },
+            "userInput": false
+          },
+          {
+            "name": "CCSDS_Group_Flags",
+            "value": {
+              "type": "ENUMERATED",
+              "stringValue": "Standalone",
+              "sint64Value": "3"
+            },
+            "userInput": false
+          },
+          {
+            "name": "OpCode",
+            "value": {
+              "type": "UINT32",
+              "uint32Value": 268480516
+            },
+            "userInput": false
+          },
+          {
+            "name": "requestId",
+            "value": {
+              "type": "UINT32",
+              "uint32Value": 946643872
+            },
+            "userInput": true
+          },
+          {
+            "name": "literalCommand",
+            "value": {
+              "type": "STRING",
+              "stringValue": "MAX128: \"A B\" = C;[]{}!@#$%^&*()/+-_MAX128: \"A B\" = C;[]{}!@#$%^&*()/+-_MAX128: \"A B\" = C;[]{}!@#$%^&*()/+-_MAX128: \"A B\" = C;[]"
+            },
+            "userInput": true
+          }
+        ],
+        "unprocessedBinary": "EADAAAAAAAAQALAEOGyjoACATUFYMTI4OiAiQSBCIiA9IEM7W117fSFAIyQlXiYqKCkvKy1fTUFYMTI4OiAiQSBCIiA9IEM7W117fSFAIyQlXiYqKCkvKy1fTUFYMTI4OiAiQSBCIiA9IEM7W117fSFAIyQlXiYqKCkvKy1fTUFYMTI4OiAiQSBCIiA9IEM7W10="
+      },
+      "forwarded_event": {
+        "source": "FPrimeEventProcessor",
+        "generationTime": "2026-10-21T01:45:37.068Z",
+        "receptionTime": "2026-10-21T01:45:36.087Z",
+        "seqNumber": 14,
+        "type": "ArtemisRpiTeensyDeployment.payloadManager.SyntheticPassthroughForwarded",
+        "message": "[SyntheticPassthroughForwarded] Synthetic payload pass-through forwarded request=946643872 literal='MAX128: \"A B\" = C;[]{}!@#$%^&*()/+-_MAX128: \"A B\" = C;[]{}!@#$%^&*()/+-_MAX128: \"A B\" = C;[]{}!@#$%^&*()/+-_MAX128: \"A B\" = C;[]'",
+        "severity": "WATCH",
+        "createdBy": "guest",
+        "extra": {
+          "requestId": "946643872",
+          "literalCommand": "MAX128: \"A B\" = C;[]{}!@#$%^&*()/+-_MAX128: \"A B\" = C;[]{}!@#$%^&*()/+-_MAX128: \"A B\" = C;[]{}!@#$%^&*()/+-_MAX128: \"A B\" = C;[]",
+          "fprime_severity": "ACTIVITY_HI",
+          "fprime_event_id": "268480516",
+          "fprime_event_name": "ArtemisRpiTeensyDeployment.payloadManager.SyntheticPassthroughForwarded"
+        }
+      },
+      "response_event": {
+        "source": "FPrimeEventProcessor",
+        "generationTime": "2026-10-21T01:45:37.068Z",
+        "receptionTime": "2026-10-21T01:45:36.715Z",
+        "seqNumber": 17,
+        "type": "ArtemisRpiTeensyDeployment.payloadManager.SyntheticPassthroughResponse",
+        "message": "[SyntheticPassthroughResponse] Synthetic payload response request=946643872 status=SIMULATED_ECHOED literal='MAX128: \"A B\" = C;[]{}!@#$%^&*()/+-_MAX128: \"A B\" = C;[]{}!@#$%^&*()/+-_MAX128: \"A B\" = C;[]{}!@#$%^&*()/+-_MAX128: \"A B\" = C;[]'",
+        "severity": "WATCH",
+        "createdBy": "guest",
+        "extra": {
+          "requestId": "946643872",
+          "status": "SIMULATED_ECHOED",
+          "literalEcho": "MAX128: \"A B\" = C;[]{}!@#$%^&*()/+-_MAX128: \"A B\" = C;[]{}!@#$%^&*()/+-_MAX128: \"A B\" = C;[]{}!@#$%^&*()/+-_MAX128: \"A B\" = C;[]",
+          "fprime_severity": "ACTIVITY_HI",
+          "fprime_event_id": "268480518",
+          "fprime_event_name": "ArtemisRpiTeensyDeployment.payloadManager.SyntheticPassthroughResponse"
+        }
+      }
+    }
+  ],
+  "mode_after": "BASE",
+  "mode_change_events_after_commands": []
+}

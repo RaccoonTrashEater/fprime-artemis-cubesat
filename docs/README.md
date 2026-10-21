@@ -1,6 +1,6 @@
 # Neutron 2 documentation
 
-Start with the guide for your task. Current N2 software uses Yamcs with a host-native simulated spacecraft; real payload, Pi, SatNOGS/SDR and RF integration remain separate gates.
+Start with the guide for your task. Final local native CDR profile and legacy Yamcs regression checks pass. Both opaque fixtures passed independent Yamcs GET byte/hash checks; disconnect recovery, fake UART mux channel-2 PDU RPC, guard tests, and startup cancellation passed. This is local software evidence, not Pi, payload or PDU hardware acceptance. CDR does not use a network mux or SatNOGS/SDR/RF; the physical UART mux channel 2 remains for PDU RPC, and SatNOGS/SDR/RF are deferred to FSR. See the [canonical plan](planning/CDR_TCP_YAMCS_IMPLEMENTATION_PLAN.md), [runbook](operations/CDR_TCP.md), and [portable evidence pack](verification/evidence/n2-cdr-tcp-2026-10-20/README.md).
 
 | Your task | Start here |
 | --- | --- |
@@ -13,13 +13,13 @@ Start with the guide for your task. Current N2 software uses Yamcs with a host-n
 | Check what passed | [Software baseline](verification/SOFTWARE_BASELINE.md), [verification index](verification/README.md) |
 | Understand priorities/open work | [Development intent](planning/DEVELOPMENT_INTENT.md), [SDD gap plan](planning/SDD_GAP_PLAN.md) |
 
-## UNP milestones — scope October 18; transport selection October 19
+## UNP milestones — transport selection October 20
 
-CDR is real payload + OBC + PDU power-on/off, without COMMS. CDR command/telemetry uses Pi Zero W F′ TCP over the local network to Pi 5 Ubuntu/Yamcs, with operator browsers on the LAN. This is the selected direction, not implemented or hardware-tested TCP support. FSR adds the complete SatNOGS/SDR/Yamcs chain to payload + PDU, with the previously planned modes/scheduling. Start with [current intent](planning/DEVELOPMENT_INTENT.md), [architecture](architecture/SYSTEM_ARCHITECTURE.md), and [PDU integration](integration/PDU.md).
+CDR retains payload/OBC/PDU power-on/off without SatNOGS/SDR/RF. Pi Zero W F′ runs the stock TCP server; Pi 5 Yamcs connects with tcp-fast-client. ComCcsds and stock FileDownlink use the direct TCP link. Keep UART mux channel 2 for local PDU RPC. Final local checks passed with fake payload/PDU interfaces; they do not establish hardware acceptance. FSR adds SatNOGS/SDR/RF and previously planned modes/scheduling. Start with [current intent](planning/DEVELOPMENT_INTENT.md), [architecture](architecture/SYSTEM_ARCHITECTURE.md), and [PDU integration](integration/PDU.md).
 
 ## CDR implementation handoff and historical material
 
-- [Selected TCP/Yamcs implementation plan](planning/CDR_TCP_YAMCS_IMPLEMENTATION_PLAN.md): documentation only; no TCP adapter/profile implementation yet.
+- [CDR TCP/Yamcs implementation plan](planning/CDR_TCP_YAMCS_IMPLEMENTATION_PLAN.md): current status and gates; the [runbook](operations/CDR_TCP.md) has commands and procedures.
 - [Historical October 7 review](N2_CLAUDE_OPUS_REVIEW_2026-10-07.md): findings apply to the reviewed snapshot, not automatically to current code.
 - [Pre-refresh architecture](archive/legacy-gds-rfm23bp/SYSTEM_ARCHITECTURE_BEFORE_UNP_REFRESH.md): legacy comparison, not current N2 mission authority.
 - Preliminary October 8 screenshots: [command](images/n2-pulse-science-2026-10-08/preliminary-01-command.jpg), [report](images/n2-pulse-science-2026-10-08/preliminary-02-command-report.jpg), [capture events](images/n2-pulse-science-2026-10-08/preliminary-03-capture-events.jpg). These show simulator activity; Queued/Released/Sent is not verified end-to-end completion, and a CaptureComplete event is not hardware evidence.

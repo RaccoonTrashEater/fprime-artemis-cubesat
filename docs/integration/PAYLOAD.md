@@ -2,7 +2,7 @@
 
 **Updated October 18, 2026:** Dennis confirmed PLD↔OBC command/telemetry over **USB↔RS-422**. Aris owns the real PLD; Dennis owns the F′/Yamcs side. This selects the connection, not its electrical/protocol details or completed hardware integration. [Current intent](../planning/DEVELOPMENT_INTENT.md) and [completion/storage scope](../verification/COMPLETION_STORAGE.md) are the recorded decisions.
 
-**Milestone allocation:** CDR integrates the real payload with OBC and PDU payload on/off, without COMMS. CDR command/telemetry uses Pi Zero W F′ TCP over the local network to Pi 5 Ubuntu/Yamcs, with operator browsers on the LAN. This is the selected direction, not implemented or hardware-tested TCP support. FSR extends this to the complete COMMS/ground chain. Retrieve and retain the raw product before payload power-off; agree readiness and shutdown behavior with PDU integration.
+**Milestone allocation:** CDR integrates the real payload with OBC and PDU payload on/off, without COMMS. CDR command/telemetry uses Pi Zero W F′ TCP over the local network to Pi 5 Ubuntu/Yamcs, with operator browsers on the LAN. The stock ComCcsds/TCP and FileDownlink profile passed [native local acceptance](../verification/evidence/n2-cdr-tcp-2026-10-20/README.md); Pi and payload/PDU hardware acceptance remain open. The [canonical CDR plan](../planning/CDR_TCP_YAMCS_IMPLEMENTATION_PLAN.md) owns current transport status. FSR extends this to the complete COMMS/ground chain. Retrieve and retain the raw product before payload power-off; agree readiness and shutdown behavior with PDU integration.
 
 Agree these inputs before implementing the real adapter:
 

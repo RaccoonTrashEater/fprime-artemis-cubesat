@@ -1,0 +1,83 @@
+[
+  {
+    "run": "cdr-acceptance-20261021T012403Z-42b7a9",
+    "result": "FAIL",
+    "error": "Fake UART/PDU did not work with TCP client absent",
+    "completed_check_keys": []
+  },
+  {
+    "run": "cdr-acceptance-20261021T012538Z-de51cd",
+    "result": "FAIL",
+    "error": "No complete stock-file object: cdr-dee257ae-sample-payload-raw-science.csv",
+    "completed_check_keys": [
+      "pdu_without_tcp_client",
+      "ping",
+      "pdu_status"
+    ]
+  },
+  {
+    "run": "cdr-acceptance-20261021T012844Z-48d2f3",
+    "result": "FAIL",
+    "error": "No complete stock-file object: cdr-5ed67c03-sample-payload-raw-science.csv",
+    "completed_check_keys": [
+      "pdu_without_tcp_client",
+      "ping",
+      "pdu_status"
+    ]
+  },
+  {
+    "run": "cdr-acceptance-20261021T013126Z-13a164",
+    "result": "FAIL",
+    "error": "No complete stock-file object: cdr-768c5971-sample-payload-raw-science.csv",
+    "completed_check_keys": [
+      "pdu_without_tcp_client",
+      "ping",
+      "pdu_status"
+    ]
+  },
+  {
+    "run": "cdr-acceptance-20261021T013802Z-4da2f9",
+    "result": "FAIL",
+    "error": "Fake UART/PDU did not work with TCP client absent",
+    "completed_check_keys": []
+  },
+  {
+    "run": "cdr-acceptance-20261021T014356Z-ae95cb",
+    "result": "PASS",
+    "error": null,
+    "completed_check_keys": [
+      "pdu_without_tcp_client",
+      "ping",
+      "pdu_status",
+      "sample_files",
+      "pdu_during_file_transfer",
+      "missing_source",
+      "interrupted_transfer",
+      "reconnected_ping",
+      "fresh_send_after_reconnect",
+      "ground_helper",
+      "physical_uart_channels",
+      "proxy"
+    ]
+  },
+  {
+    "run": "cdr-acceptance-20261021T014825Z-8ab7f1",
+    "result": "PASS",
+    "error": null,
+    "completed_check_keys": [
+      "pdu_without_tcp_client",
+      "ping",
+      "unsupported_automatic_downlink_rejected",
+      "pdu_status",
+      "sample_files",
+      "pdu_during_file_transfer",
+      "missing_source",
+      "interrupted_transfer",
+      "reconnected_ping",
+      "fresh_send_after_reconnect",
+      "ground_helper",
+      "physical_uart_channels",
+      "proxy"
+    ]
+  }
+]

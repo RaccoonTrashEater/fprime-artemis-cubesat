@@ -1,14 +1,14 @@
 # Neutron 2 dedicated Yamcs ground host
 
-Plan recorded October 8, 2026; allocation, transport and ownership updated October 19, 2026.
+Plan recorded October 8, 2026; CDR TCP/FileDownlink path selected October 20, 2026.
 
-**BLUF:** Use a Raspberry Pi 5 running **64-bit Ubuntu Linux** as the dedicated ground-station host. It runs Yamcs, keeps ground archives and received files, and connects to an SDR. Students join the router's LAN and use Yamcs in a browser; operating the station does not require a local repository, Java, or Yamcs installation. This is recorded intent and a deployment plan, not an implemented or accepted Pi deployment.
+**BLUF:** Use a Raspberry Pi 5 running **64-bit Ubuntu Linux** as the dedicated Yamcs ground host. For CDR it runs the Yamcs tcp-fast-client and receives stock FileDownlink over LAN TCP from F′ on the Pi Zero W. SDR connection is FSR scope. Students join the router's LAN and use Yamcs in a browser; operating the station does not require a local repository, Java, or Yamcs installation. Final local native F′/Yamcs CDR loopback and legacy checks pass; the Pi 5 deployment is not yet accepted.
 
 For the concepts behind this plan, read the [Yamcs primer](../operations/YAMCS_BASICS.md). For the existing software test environment, use the [local Yamcs runbook](../development/YAMCS_LOCAL_TESTING.md).
 
-## October 18 milestone allocation
+## October 20 CDR transport selection
 
-The full Pi 5/Yamcs/SDR ground chain below is the **FSR target**. Revised CDR scope is OBC + real payload + PDU power-on/off and skips COMMS. CDR command/telemetry uses Pi Zero W F′ TCP over the local network to Pi 5 Ubuntu/Yamcs, with operator browsers on the LAN. This is the selected direction, not implemented or hardware-tested TCP support. The local simulator remains useful development evidence, not a selected CDR operating procedure.
+The Pi 5/Yamcs/SDR chain below is the **FSR target**. CDR retains OBC + real payload + PDU power-on/off and skips SatNOGS/SDR/RF. Use stock ComCcsds over TCP: the Pi Zero W runs the F′ TCP server and the Pi 5 connects with tcp-fast-client. Use stock FileDownlink for files; do not add a network mux. Keep the physical Pi-to-Teensy UART mux channel 2 for PDU RPC. Final native loopback passed both opaque files with independent Yamcs GET byte/hash checks, disconnect recovery, and 41 fake channel-2 PDU RPCs; guard tests and legacy Yamcs regressions also passed. Pi and hardware validation remain separate. See the [CDR implementation plan](../planning/CDR_TCP_YAMCS_IMPLEMENTATION_PLAN.md), [runbook](../operations/CDR_TCP.md), and [portable evidence pack](../verification/evidence/n2-cdr-tcp-2026-10-20/README.md).
 
 ## October 18 allocation confirmation
 
@@ -90,24 +90,28 @@ If the SDR instead outputs bare CCSDS space packets, select a packet link. A TCP
 | Today: board-free testbed | Later: hardware station |
 | --- | --- |
 | Native F′ process on the test host | F′ process on the satellite OBC |
-| Software UART-mux/CCSDS PTYs | Agreed SDR/SatNOGS transport |
+| Software UART-mux/CCSDS and channel-1 PTYs | CDR direct ComCcsds/TCP and stock FileDownlink (final local loopback PASS); physical UART mux channel 2 remains for PDU; FSR adds SDR/SatNOGS |
 | Simulated payload driver | Validated physical payload driver |
 | Yamcs server and F′ integration | Yamcs server and F′ integration retained, with matching hardware configuration/dictionary |
 | Foreground `tools/yamcs/run.sh` | Dedicated ground services started automatically on the Pi |
 
-Skip the **simulator launcher** when using hardware. Keep Yamcs and the SDR ground services running. The existing `run.sh` calls `local_stack.py`, which requires a native F′ executable and launches it through PTYs; it is not the hardware ground-host launcher. The underlying `fprime-yamcs --no-app` capability can run the ground stack without starting a spacecraft executable. See [current launcher](../../tools/yamcs/local_stack.py).
+Skip the **simulator launcher** when using hardware. The separate CDR ground-only launcher starts Yamcs and its TCP client without a second spacecraft deployment. The existing `run.sh` calls `local_stack.py`, which requires a native F′ executable and launches it through PTYs; it remains the local simulator workflow. The CDR launcher passed local loopback and startup-cancellation checks; cancellation exited in 0.444 seconds with both exact process groups gone. See the [CDR runbook](../operations/CDR_TCP.md) and [simulator launcher](../../tools/yamcs/local_stack.py).
 
-Moving the web server does not require a major refactor of `MissionApp`, `ScienceApp`, or `PayloadManager`. Real payload, SPI/radio, packet transport, and science delivery still require their own implementation and acceptance; the host move does not complete them.
+Moving the web server does not require a major refactor of `MissionApp`, `ScienceApp`, or `PayloadManager`. The local CDR TCP bridge has final native acceptance, but Pi target/LAN deployment remains unvalidated. Real payload and FSR SPI/radio and science-delivery paths need their own implementation and acceptance; the host move does not complete them.
 
 ## Deployment work to implement separately
 
 1. **Install on Ubuntu/aarch64:** create fresh environments from the dependency pins; do not copy the Mac venv or executable. Current bootstrap requires Python 3.11, which must be provisioned or the requirement deliberately revised and validated. The pinned [Java runtime](https://pypi.org/project/fprime-jre/25.0.4.1.0/) publishes Linux aarch64 wheels, and the [Yamcs bundle](https://pypi.org/project/fprime-yamcs-bundle/5.12.8.0/) supplies packaged runtime dependencies. Package availability is not Pi runtime acceptance.
-2. **Create a ground-only entry point:** package the matching dictionary, F′ Yamcs services, selected transport, configuration, and persistent data/log directories. Ground runtime need not compile or run the simulated spacecraft. Keep the current local runner for development.
+2. **Deploy the ground-only entry point:** the local CDR launcher and profile are implemented. Package the matching dictionary, F′ Yamcs services, selected transport, configuration, and persistent data/log directories on Pi 5; do not compile or run a second spacecraft deployment there. Keep the current local runner for development.
 3. **Enable LAN HTTP access:** the current [global configuration](../../yamcs/config/etc/yamcs.yaml) binds `127.0.0.1:8090`. A ground-host profile must select a suitable LAN/wildcard bind, lab network access, and a unique signing key. Keep internal bridge sockets local when both processes run on the Pi.
 4. **Configure shared access:** establish viewer, operator, and maintainer privileges. All browsers share the same mission instance and spacecraft; they do not create isolated simulations. Unconfigured Yamcs gives unauthenticated guests superuser access. [Security documentation](https://docs.yamcs.org/yamcs-server-manual/security/)
 5. **Add ground systemd services:** select the runtime account, environment, restart/startup behavior, SDR device access, and persistent archive location. The existing `deploy/pi/` service is for satellite F′ on Pi Zero W and should not be reused as the ground Yamcs service.
 6. **Measure resources:** the pinned `fprime-yamcs` launcher sets `-Xmx4g`, allowing Java heap growth up to 4 GiB; this is not an immediate 4 GiB allocation. Budget OS, native database memory, and SDR processing as well. Lower and validate the heap limit for the budget Pi 5 4GB target, or make it configurable. The 8GB model and SSD remain optional upgrades, not measured capacity requirements.
 7. **Prepare a reproducible release:** the [accepted software baseline](../verification/SOFTWARE_BASELINE.md) packages the local tools and evidence. The October 18 setup check verified remote `neutron2-develop` at local source `5429a2f`; publish later changes through the agreed team Git workflow. Preserve deployment configuration and dictionary/binary identity when preparing the station.
+
+## CDR TCP and FileDownlink acceptance
+
+Final local native acceptance passed both supplied opaque files (729 and 606273 bytes) with independent Yamcs GET byte/hash equality, source/product helper selection, forced fragmentation and disconnect recovery, missing-file `FileOpenError` with no received object, and 41 fake UART mux channel-2 PDU RPCs before/during transfer and while disconnected. Guard tests, startup cancellation, and legacy Yamcs regressions also passed. These results do not validate the Pi 5 LAN deployment, Pi Zero W runtime, real payload/PDU operation, SatNOGS firmware, or RF. See the [canonical TCP/Yamcs plan](../planning/CDR_TCP_YAMCS_IMPLEMENTATION_PLAN.md), [runbook](../operations/CDR_TCP.md), and [portable evidence pack](../verification/evidence/n2-cdr-tcp-2026-10-20/README.md) for exact evidence and procedures.
 
 ## Acceptance sequence
 
@@ -128,7 +132,7 @@ For coax testing, upstream SatNOGS verification explicitly uses an SDR and atten
 - SDR owners are Sam and Zach (confirmed October 18); USRP B200 uses USB to Pi 5 and the UHF conducted-RF path. The team owns the matching RF arrangement; agree the software handoff.
 - Freeze the SDR↔Yamcs output/input contract: frames versus packets, UDP/TCP endpoint, boundaries, headers, CRC, and radio encapsulation/segmentation.
 - Confirm the SatNOGS↔OBC interface and production firmware compatibility independently of the web-host plan.
-- Select the raw-science reception and file-integrity mechanism. Stock F′ FileDownlink support does not automatically receive the existing custom science channel or interpret the PLD format.
+- CDR uses stock FileDownlink; its SendFile path is separate from the accepted custom channel-1 software demo. Select the ground receipt location and preserve independent byte/hash checks. Do not claim the custom VERIFIED workflow has migrated.
 - Select ground-side histogram generation only after the received raw-data format and integrity are established.
 
 This document records the hosting decision. It authorizes no installation, deployment, flashing, power switching, or RF operation. See the [development intent](../planning/DEVELOPMENT_INTENT.md) for mission scope and the [SatNOGS integration references](../../../satnogs-comms/docs/ARTEMIS_INTEGRATION.md) for unresolved hardware contracts.

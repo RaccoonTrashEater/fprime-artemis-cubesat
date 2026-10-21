@@ -1,0 +1,22 @@
+test_bridge_uses_dictionary_tm_constants (test_cdr_tcp_tools.CdrTcpToolTests.test_bridge_uses_dictionary_tm_constants) ... ok
+test_cleanup_kills_children_after_process_group_leader_exits (test_cdr_tcp_tools.CdrTcpToolTests.test_cleanup_kills_children_after_process_group_leader_exits) ... ok
+test_copied_yamcs_config_mirrors_downlinks_into_run_directory (test_cdr_tcp_tools.CdrTcpToolTests.test_copied_yamcs_config_mirrors_downlinks_into_run_directory) ... ok
+test_dictionary_must_identify_cdr_tcp_profile (test_cdr_tcp_tools.CdrTcpToolTests.test_dictionary_must_identify_cdr_tcp_profile) ... ok
+test_downlink_errors_must_match_time_and_file_identity (test_cdr_tcp_tools.CdrTcpToolTests.test_downlink_errors_must_match_time_and_file_identity) ... ok
+test_expected_file_is_a_local_sha_oracle (test_cdr_tcp_tools.CdrTcpToolTests.test_expected_file_is_a_local_sha_oracle) ... ok
+test_frame_interval_rejects_zero_and_nonfinite_values (test_cdr_tcp_tools.CdrTcpToolTests.test_frame_interval_rejects_zero_and_nonfinite_values) ... ok
+test_generated_destination_is_unique_and_fits_dictionary_limit (test_cdr_tcp_tools.CdrTcpToolTests.test_generated_destination_is_unique_and_fits_dictionary_limit) ... ok
+test_heap_validation_is_bounded_to_java_heap_syntax (test_cdr_tcp_tools.CdrTcpToolTests.test_heap_validation_is_bounded_to_java_heap_syntax) ... ok
+test_http_readiness_stops_when_startup_is_cancelled (test_cdr_tcp_tools.CdrTcpToolTests.test_http_readiness_stops_when_startup_is_cancelled) ... ok
+test_java_wrapper_substitutes_the_pinned_launcher_heap (test_cdr_tcp_tools.CdrTcpToolTests.test_java_wrapper_substitutes_the_pinned_launcher_heap) ... ok
+test_paced_adapter_spaces_writes_without_catchup_bursts (test_cdr_tcp_tools.CdrTcpToolTests.test_paced_adapter_spaces_writes_without_catchup_bursts) ... ok
+test_product_metadata_rejects_conflicting_cli_expectations (test_cdr_tcp_tools.CdrTcpToolTests.test_product_metadata_rejects_conflicting_cli_expectations) ... ok
+test_product_selection_derives_size_and_crc_without_claiming_source_sha (test_cdr_tcp_tools.CdrTcpToolTests.test_product_selection_derives_size_and_crc_without_claiming_source_sha) ... ok
+test_remote_source_is_passed_as_relative_name (test_cdr_tcp_tools.CdrTcpToolTests.test_remote_source_is_passed_as_relative_name) ... ok
+test_source_file_mode_checks_given_size_and_crc (test_cdr_tcp_tools.CdrTcpToolTests.test_source_file_mode_checks_given_size_and_crc) ... ok
+test_source_file_mode_requires_integrity_basis (test_cdr_tcp_tools.CdrTcpToolTests.test_source_file_mode_requires_integrity_basis) ... ok
+
+----------------------------------------------------------------------
+Ran 17 tests in 0.523s
+
+OK

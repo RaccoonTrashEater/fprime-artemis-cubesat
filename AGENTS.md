@@ -63,7 +63,7 @@ Use this project with the `fprime-swe` skill and follow these steps exactly.
   - `docs/development/COMPONENT_STARTERS.md`
   Keep detailed architecture in those docs rather than duplicating it here.
 - Current N2 local functional testing uses Yamcs. Use `docs/operations/QUICKSTART.md` for mission ops and `docs/development/YAMCS_LOCAL_TESTING.md` for detailed setup/probes. Build this profile with `./tools/yamcs/build_native.sh`; generic native generate may select the default OFF/RF configuration.
-- October 18 scope revision: CDR targets OBC + real PLD + PDU-controlled payload on/off and raw-data acquisition, skipping COMMS. CDR command/telemetry uses Pi Zero W F′ TCP over the local network to Pi 5 Ubuntu/Yamcs, with operator browsers on the LAN. This is the selected direction, not implemented or hardware-tested TCP support. FSR adds the complete payload/PDU/COMMS chain through SatNOGS/SDR/Yamcs, with previously planned nominal modes and time-based collection. Local software evidence does not establish either hardware milestone.
+- CDR retains OBC + real PLD + PDU-controlled payload on/off and raw-data acquisition, skipping SatNOGS/SDR/RF. Use stock ComCcsds over TCP: Pi Zero W F′ runs the stock TCP server and Pi 5 Yamcs uses tcp-fast-client. Stock FileDownlink carries files; do not add a network mux or migrate the accepted custom channel-1 VERIFIED flow. Keep the physical Pi↔Teensy UART mux channel 2 for PDU RPC. Final local native profile and legacy Yamcs regressions pass: both fixtures have independent byte/hash checks, disconnect recovery passes, fake channel-2 RPC passes, legacy automatic-science commands are rejected before capture/token allocation, and startup cancellation exits in 0.444 s with both process groups gone. See `docs/verification/evidence/n2-cdr-tcp-2026-10-20/README.md` and `acceptance.json`. This does not establish Pi, payload or PDU hardware acceptance. FSR adds SatNOGS/SDR/RF and previously planned modes/scheduling.
 - Shared Artemis/C3M references live under `docs/reference/`; older GDS/RFM23BP workflows live under `docs/archive/legacy-gds-rfm23bp/`. Do not treat them as current N2 mission-ops instructions or qualification evidence.
 - Active F' project root is:
   - `ArtemisRpiTeensy_N2`
@@ -315,7 +315,7 @@ PORT="$(ls /dev/ttyACM* /dev/ttyUSB* 2>/dev/null | head -n 1)"
 ### Demo-First Decision Rule
 - Prefer the smallest implementation that supports the live demo story.
 - Demo-critical visible behaviors take priority over deeper architectural cleanup.
-- The accepted local software story is Yamcs command → serialized simulated acquisition → immutable raw storage → sender completion → independently verified ground receipt. It is a rehearsal, not the selected CDR operator procedure. See `docs/planning/DEVELOPMENT_INTENT.md` for revised CDR payload/PDU and FSR full-chain scope.
+- The accepted local software story uses the custom channel-1 science path for simulated acquisition and independent Yamcs receipt. It remains separate from the CDR stock ComCcsds/TCP/FileDownlink path; do not imply the custom VERIFIED command migrates automatically. See `docs/planning/DEVELOPMENT_INTENT.md` and `docs/planning/CDR_TCP_YAMCS_IMPLEMENTATION_PLAN.md`. Physical UART mux channel 2 remains for local PDU RPC.
 - Preserve the earlier GDS/RFM23BP demo as comparison evidence; mode scheduling and EPS hardware behavior have separate acceptance gates.
 
 ### Runtime Smoke Flow (RPi)
