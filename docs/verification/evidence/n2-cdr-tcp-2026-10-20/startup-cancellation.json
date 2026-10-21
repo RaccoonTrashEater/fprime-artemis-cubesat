@@ -1,0 +1,9 @@
+{
+  "result": "PASS",
+  "signal": "SIGINT during startup",
+  "elapsed_seconds": 0.444,
+  "launcher_exit": 130,
+  "manifest_status": "stopped",
+  "remaining_owned_process_groups": [],
+  "run_dir": "/Users/sozodennis/Developer/Artemis-Cubesat-Kit/neutron_2/yamcs/run/cdr-startup-stop-final"
+}

@@ -81,6 +81,8 @@ namespace ArtemisRpiTeensyDeployment {
  */
 struct TopologyState {
     const char* uartDevice; //!< Linux UART device path (e.g. /dev/serial0)
+    const char* tcpListenAddress; //!< CDR TCP server bind address (numeric IPv4)
+    U16 tcpListenPort; //!< CDR TCP server listen port
     CdhCore::SubtopologyState cdhCore;           //!< Subtopology state for CdhCore
     ComCcsds::SubtopologyState comCcsds;         //!< Subtopology state for ComCcsds 
     DataProducts::SubtopologyState dataProducts; //!< Subtopology state for DataProducts

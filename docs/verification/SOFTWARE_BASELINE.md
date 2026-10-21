@@ -2,6 +2,10 @@
 
 Prepared October 14, 2026 on `neutron2-develop`. This checkpoint packages the October 7–9 host software work after review. Its starting HEAD was `33aef0a`; the frozen `neutron_2` / `v1.0.0-mvp-demo` baseline remains at `abc8bcd`. Publication to the remote is a separate step.
 
+## Milestone scope revision — October 18; local TCP acceptance October 20
+
+The acceptance record below remains dated software evidence. Dennis revised CDR to real PLD + OBC + PDU payload power on/off, excluding COMMS; the selected CDR command/telemetry path is Pi Zero W F′ stock ComCcsds/TCP and FileDownlink over LAN to Pi 5/Yamcs, with no network mux and independent UART channel-2 PDU RPC. The [October 20 native loopback acceptance](evidence/n2-cdr-tcp-2026-10-20/README.md) passed; Pi and hardware acceptance remain separate. Follow the [canonical CDR plan](../planning/CDR_TCP_YAMCS_IMPLEMENTATION_PLAN.md) for current implementation status. FSR adds the full SatNOGS/SDR/Yamcs chain around payload + PDU and the previously planned modes/scheduling. Follow [current intent](../planning/DEVELOPMENT_INTENT.md) for milestone allocation; older full-RF CDR references below describe the prior plan.
+
 ## Included behavior
 
 - Opt-in `NEUTRON2_LOCAL_YAMCS=ON` native configuration, matching dictionary conversion, loopback Yamcs stack, and reproducible probes.
@@ -33,9 +37,9 @@ The [completion/storage procedure](COMPLETION_STORAGE.md) covers VERIFIED comman
 
 October 9 acceptance passed all six completion/storage scenarios and A/C/B/pulse regressions. Before the packaging correction below, all 20 recorded implementation files matched the original source fingerprint. These historical runs used the recorded executable/dictionary and source HEAD plus dirty state. Current packaging validation is recorded below separately from the historical acceptance.
 
-FSW owns acquiring, retaining, and downlinking opaque raw files. The payload team's JAR owns actual science interpretation. Real payload command/file transport, SatNOGS MCU/SPI endpoint and ownership, SDR frame handoff, Pi runtime, and full RF CDR acceptance remain integration gates. December FSR additionally requires nominal modes, scheduling and EPS payload-power behavior. See [development intent](../planning/DEVELOPMENT_INTENT.md).
+FSW owns acquiring, retaining, and downlinking opaque raw files. The payload team's JAR owns actual science interpretation. CDR integration gates are real payload command/file transport, Pi runtime, PDU payload power-on/off, retained raw-product inspection and the operator command/telemetry approach. FSR adds SatNOGS MCU/SPI, SDR frame handoff and full RF/ground receipt, with the previously planned nominal modes, scheduling and integrated PDU power behavior. See [development intent](../planning/DEVELOPMENT_INTENT.md).
 
-The two pre-existing Teensy Arduino build-script repairs, internal Claude review, preliminary screenshots, local environments, generated builds, and complete runtime/data trees are excluded from this checkpoint. The SDD PDF and extracted sidecar are reference inputs, not claims of implemented flight readiness.
+The two pre-existing Teensy Arduino build-script repairs, internal Claude review, preliminary screenshots, local environments, generated builds, and complete runtime/data trees were excluded from the October 14 checkpoint. The October 19 documentation checkpoint separately retains the historical review and preliminary screenshots; it does not promote them to new acceptance evidence. The SDD PDF and extracted sidecar are reference inputs, not claims of implemented flight readiness.
 
 ## Packaging correction — October 14
 

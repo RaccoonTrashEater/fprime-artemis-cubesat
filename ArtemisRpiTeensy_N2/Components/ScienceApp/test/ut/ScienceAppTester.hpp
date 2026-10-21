@@ -25,6 +25,7 @@ class ScienceAppTester final : public ScienceAppGTestBase {
     void testInvalidParamFallsBackToThirty();
     void testCollectAndDownlinkWaitsForValidatedCompletion();
     void testCollectAndDownlinkClearsIntentOnFailure();
+    void testCdrRejectsAutomaticDownlinkBeforeCaptureOrTokenAllocation();
 
   private:
     void connectPorts();

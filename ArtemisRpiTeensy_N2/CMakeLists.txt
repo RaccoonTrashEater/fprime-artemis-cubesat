@@ -9,8 +9,13 @@ project(ArtemisRpiTeensy_N2 C CXX)
 # Enable a host-only configuration for Yamcs local testing. This is deliberately
 # opt-in so the default build retains the RF MVP sizing and behavior.
 option(NEUTRON2_LOCAL_YAMCS "Build with local Yamcs command and UART capacity" OFF)
-if (NEUTRON2_LOCAL_YAMCS)
+option(NEUTRON2_CDR_TCP "Build the CDR CCSDS-over-TCP profile" OFF)
+if (NEUTRON2_LOCAL_YAMCS AND NEUTRON2_CDR_TCP)
+    message(FATAL_ERROR "NEUTRON2_LOCAL_YAMCS and NEUTRON2_CDR_TCP are mutually exclusive profiles")
+elseif (NEUTRON2_LOCAL_YAMCS)
     add_compile_definitions(NEUTRON2_LOCAL_YAMCS)
+elseif (NEUTRON2_CDR_TCP)
+    add_compile_definitions(NEUTRON2_CDR_TCP)
 endif()
 
 # Pi Zero W (ARMv6) requires explicit CPU/FPU flags for ARM Linux builds.

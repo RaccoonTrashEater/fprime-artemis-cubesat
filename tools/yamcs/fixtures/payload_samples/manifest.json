@@ -1,0 +1,13 @@
+{
+  "provenance": "Payload sample CSVs supplied by Dennis on October 20, 2026; opaque byte-transfer fixtures, not an implemented payload decoder or hardware capture proof. Original filenames and bytes preserved.",
+  "files": {
+    "sample-ayload-config-sohdata.csv": {
+      "bytes": 729,
+      "sha256": "3fa9a43df9aa2bcbe3ced89cb99695e2c77ce73e7bf916c1e4d35188fb3fca72"
+    },
+    "sample-payload-raw-science.csv": {
+      "bytes": 606273,
+      "sha256": "50b3b55e536f30183190518ead5bfa48d36f78572f6bb0f80fecf19e197aad10"
+    }
+  }
+}

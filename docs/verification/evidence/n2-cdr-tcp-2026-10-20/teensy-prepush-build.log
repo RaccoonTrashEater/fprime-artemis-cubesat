@@ -1,0 +1,8 @@
+Downloading index: package_index.tar.bz2 0 B / 110.52 KiB    0.00%Downloading index: package_index.tar.bz2 downloaded
+Downloading index: package_teensy_index.json 0 B / 31.52 KiB    0.00%Downloading index: package_teensy_index.json downloaded
+Platform teensy:avr@1.62.0 already installed
+Memory Usage on Teensy 4.1:
+  FLASH: code:56240, data:11008, headers:8524   free for files:8050692
+   RAM1: variables:32352, code:53672, padding:11864   free for local variables:426400
+   RAM2: variables:12416  free for malloc/new:511872
+

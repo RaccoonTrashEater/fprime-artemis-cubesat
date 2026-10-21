@@ -1,0 +1,77 @@
+{
+  "result": "PASS",
+  "date_hst": "2026-10-20",
+  "scope": "macOS arm64 native Fprime + real Yamcs over loopback + fake physical UART/PDU; no hardware, deployment or RF",
+  "git_head": "f1f5716bf43a2bfd34ba28176ba2af0d33616077",
+  "working_changes": "uncommitted; source-sha256.json identifies implementation and test bytes",
+  "framework_sha": "a750219414881d3461054e73c25a0868a5e648f9",
+  "python": "3.11.16",
+  "dependencies": {
+    "fprime-yamcs": "0.2.4",
+    "fprime-gds": "4.4.0",
+    "PyYAML": "6.0.2"
+  },
+  "yamcs_version": "5.12.8",
+  "native_cdr_build": "PASS, 857/857 build steps; final binary/dictionary hashes in acceptance.json",
+  "legacy_local_build": "PASS; tools/yamcs/build_native.sh, followed by passthrough and pulse cycle through Yamcs",
+  "tests": {
+    "scienceapp_cdr": 9,
+    "uart_mux_cdr": 2,
+    "scienceapp_legacy": 10,
+    "ground_tools": 17
+  },
+  "coverage_note": "UART mux executable exits successfully with 2/2 passed; stale gcda merge diagnostics are retained in its log and do not constitute coverage evidence.",
+  "profiles": {
+    "ArtemisRpiTeensy_N2/build-fprime-legacy-ut/CMakeCache.txt": [
+      "CMAKE_OSX_ARCHITECTURES:STRING=arm64",
+      "NEUTRON2_CDR_TCP:BOOL=OFF",
+      "NEUTRON2_LOCAL_YAMCS:BOOL=OFF"
+    ],
+    "ArtemisRpiTeensy_N2/build-fprime-automatic-native/CMakeCache.txt": [
+      "CMAKE_OSX_ARCHITECTURES:STRING=arm64",
+      "NEUTRON2_CDR_TCP:BOOL=ON",
+      "NEUTRON2_LOCAL_YAMCS:BOOL=OFF"
+    ],
+    "ArtemisRpiTeensy_N2/build-fprime-cdr-ut/CMakeCache.txt": [
+      "CMAKE_OSX_ARCHITECTURES:STRING=arm64",
+      "NEUTRON2_CDR_TCP:BOOL=ON",
+      "NEUTRON2_LOCAL_YAMCS:BOOL=OFF"
+    ],
+    "ArtemisRpiTeensy_N2/build-fprime-automatic-native-ut/CMakeCache.txt": [
+      "CMAKE_OSX_ARCHITECTURES:STRING=",
+      "NEUTRON2_LOCAL_YAMCS:BOOL=OFF"
+    ],
+    "ArtemisRpiTeensy_N2/build-fprime-automatic-pi-zero-w-armv6hf/CMakeCache.txt": []
+  },
+  "shutdown": {
+    "acceptance_exit_codes": {
+      "ground": 130,
+      "app": 0
+    },
+    "startup_cancellation": "PASS; see startup-cancellation.json",
+    "helper_ports_after_checks": "No listeners on TCP8090 or UDP50000/50001/50002 observed with lsof."
+  },
+  "not_tested": [
+    "ARMv6 cross-build/runtime",
+    "Pi5 Ubuntu deployment and two-Pi LAN",
+    "real payload USB/RS422",
+    "real Teensy/PDU electrical integration and power switching",
+    "SatNOGS/SDR/RF",
+    "flight qualification"
+  ],
+  "satellite_teensy_pre_push_compile": {
+    "result": "PASS",
+    "command": "./tools/arduino-cli/build.sh from ArtemisTeensy_N2_Baremetal",
+    "exit_code": 0,
+    "flash_or_hardware_used": false,
+    "log": "teensy-prepush-build.log"
+  },
+  "publication_formatting": {
+    "file": "ArtemisRpiTeensy_N2/ArtemisRpiTeensyDeployment/Top/topology.cdr_tcp.fpp",
+    "change": "Remove indentation from two otherwise empty lines; no semantic topology change.",
+    "accepted_source_sha256": "e687c4a4f540e5ce20f5ca1d060d8f647fb8c71835e55c171a13f272e33c5995",
+    "published_source_sha256": "03d4785ceb3125c8cbd6bac67c01ec609a99e34151e3d8f782eacd1266c92187",
+    "artifact_verification": "Incremental native rebuild PASS; executable and dictionary SHA-256 remain identical to acceptance.json."
+  },
+  "publication_fixture_attributes": "CSV -text preserves original fixture bytes across Git checkouts; whitespace checks permit original CRLF line endings. Staged fixture blobs were checked against their supplied size/hash."
+}

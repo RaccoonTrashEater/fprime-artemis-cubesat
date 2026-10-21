@@ -1,0 +1,28 @@
+[==========] Running 10 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 10 tests from Nominal
+[ RUN      ] Nominal.DefaultDurationIsThirty
+[       OK ] Nominal.DefaultDurationIsThirty (0 ms)
+[ RUN      ] Nominal.ScheduledCountdownFiresExactlyOnce
+[       OK ] Nominal.ScheduledCountdownFiresExactlyOnce (0 ms)
+[ RUN      ] Nominal.RejectsZeroDelayAndBadDurations
+[       OK ] Nominal.RejectsZeroDelayAndBadDurations (0 ms)
+[ RUN      ] Nominal.CancelClearsCountdown
+[       OK ] Nominal.CancelClearsCountdown (0 ms)
+[ RUN      ] Nominal.QueuedCancelAtFinalTickBoundaryPreventsCollection
+[       OK ] Nominal.QueuedCancelAtFinalTickBoundaryPreventsCollection (0 ms)
+[ RUN      ] Nominal.ScienceCaptureDoesNotPersistDuration
+[       OK ] Nominal.ScienceCaptureDoesNotPersistDuration (0 ms)
+[ RUN      ] Nominal.ParamSeedsDurationAtInit
+[       OK ] Nominal.ParamSeedsDurationAtInit (0 ms)
+[ RUN      ] Nominal.InvalidParamFallsBackToThirty
+[       OK ] Nominal.InvalidParamFallsBackToThirty (0 ms)
+[ RUN      ] Nominal.CollectAndDownlinkWaitsForValidatedCompletion
+[       OK ] Nominal.CollectAndDownlinkWaitsForValidatedCompletion (0 ms)
+[ RUN      ] Nominal.CollectAndDownlinkClearsIntentOnFailure
+[       OK ] Nominal.CollectAndDownlinkClearsIntentOnFailure (0 ms)
+[----------] 10 tests from Nominal (1 ms total)
+
+[----------] Global test environment tear-down
+[==========] 10 tests from 1 test suite ran. (1 ms total)
+[  PASSED  ] 10 tests.

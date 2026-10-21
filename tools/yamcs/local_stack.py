@@ -44,6 +44,8 @@ def main():
     if not any(c["name"] == "ArtemisRpiTeensyDeployment.missionApp.PING" for c in data["commands"]):
         raise SystemExit("Stale/non-N2 dictionary: regenerate/build neutron2-develop first.")
     constants = {c["qualifiedName"]: c["value"] for c in data.get("constants", [])}
+    if constants.get("N2CdrTcp.ENABLED") is True:
+        raise SystemExit("CDR TCP artifacts selected: use run_cdr_tcp.sh or rebuild with build_native.sh for the local UART demo.")
     required_profile = {"ComCfg.TmFrameFixedSize": 1024,
                         "FW_CMD_STRING_MAX_SIZE": 504,
                         "FW_FIXED_LENGTH_STRING_SIZE": 504}

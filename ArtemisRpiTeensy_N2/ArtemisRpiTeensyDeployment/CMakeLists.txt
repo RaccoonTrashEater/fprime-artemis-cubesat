@@ -11,7 +11,10 @@
 # Topology and Components
 ###
 
-if (NEUTRON2_LOCAL_YAMCS)
+if (NEUTRON2_CDR_TCP)
+    set(NEUTRON2_DEPLOYMENT_CONFIG CdrTcpConfig)
+    add_fprime_subdirectory("${CMAKE_CURRENT_LIST_DIR}/CdrTcpConfig/")
+elseif (NEUTRON2_LOCAL_YAMCS)
     set(NEUTRON2_DEPLOYMENT_CONFIG LocalYamcsConfig)
     add_fprime_subdirectory("${CMAKE_CURRENT_LIST_DIR}/LocalYamcsConfig/")
 else()

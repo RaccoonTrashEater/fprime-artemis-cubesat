@@ -40,6 +40,7 @@ TEST(Nominal, InvalidParamFallsBackToThirty) {
     tester.testInvalidParamFallsBackToThirty();
 }
 
+#ifndef NEUTRON2_CDR_TCP
 TEST(Nominal, CollectAndDownlinkWaitsForValidatedCompletion) {
     Components::ScienceAppTester tester;
     tester.testCollectAndDownlinkWaitsForValidatedCompletion();
@@ -49,6 +50,12 @@ TEST(Nominal, CollectAndDownlinkClearsIntentOnFailure) {
     Components::ScienceAppTester tester;
     tester.testCollectAndDownlinkClearsIntentOnFailure();
 }
+#else
+TEST(Nominal, CdrRejectsAutomaticDownlinkBeforeCaptureOrTokenAllocation) {
+    Components::ScienceAppTester tester;
+    tester.testCdrRejectsAutomaticDownlinkBeforeCaptureOrTokenAllocation();
+}
+#endif
 
 int main(int argc, char** argv) {
     ::testing::InitGoogleTest(&argc, argv);

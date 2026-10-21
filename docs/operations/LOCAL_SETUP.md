@@ -1,6 +1,6 @@
 # N2 local Yamcs setup
 
-One-time setup for the local synthetic demo. The accepted `neutron2-develop` software baseline is currently local and unpublished; these clone commands will work for teammates after that branch is pushed. Until then, use a checkout provided by the maintainer.
+One-time setup for the local synthetic demo. The accepted software baseline is available on `neutron2-develop`; its remote tip matched local source `5429a2f` during the October 18 setup check. These instructions prepare a software simulation, not the Pi/SatNOGS/SDR hardware deployment.
 
 ## Requirements and platform status
 
@@ -13,7 +13,7 @@ The Yamcs web UI and science viewer bind to loopback (`127.0.0.1`). This setup i
 
 ## Clone and prepare
 
-After `neutron2-develop` is published, clone it and initialize the two required submodules:
+Clone `neutron2-develop` and initialize the two required submodules:
 
 ```sh
 git clone --branch neutron2-develop \
