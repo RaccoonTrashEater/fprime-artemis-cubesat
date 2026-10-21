@@ -44,6 +44,7 @@ class UartChannelMux final : public UartChannelMuxComponentBase {
     void parseByte(U8 byte);
     void resetParser();
     void handleFrame();
+    void recordFrameDrop(U32 reason);
     U16 crc16Ccitt(const U8* data, FwSizeType size) const;
 
     ParseState m_state;

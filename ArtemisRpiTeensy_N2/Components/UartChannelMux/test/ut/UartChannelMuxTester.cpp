@@ -64,6 +64,10 @@ void UartChannelMuxTester::testWrapsAndRoutesChannelFrames() {
 
     Fw::Buffer payloadBuffer(const_cast<U8*>(payloadBytes), sizeof(payloadBytes));
     this->invoke_to_payloadSendIn(0, payloadBuffer);
+#ifdef NEUTRON2_CDR_TCP
+    ASSERT_from_drvSendOut_SIZE(0);
+    ASSERT_EQ(this->m_txFrames.size(), 0U);
+#else
     ASSERT_from_drvSendOut_SIZE(1);
     ASSERT_EQ(this->m_txFrames.size(), 1U);
     ASSERT_EQ(this->m_txFrames[0].size(), sizeof(payloadBytes) + LinkCfg::UART_FRAME_OVERHEAD);
@@ -75,14 +79,24 @@ void UartChannelMuxTester::testWrapsAndRoutesChannelFrames() {
     for (FwSizeType i = 0; i < sizeof(payloadBytes); ++i) {
         EXPECT_EQ(this->m_txFrames[0][5 + i], payloadBytes[i]);
     }
+#endif
 
     Fw::Buffer localBuffer(const_cast<U8*>(localBytes), sizeof(localBytes));
     this->invoke_to_localSendIn(0, localBuffer);
+#ifdef NEUTRON2_CDR_TCP
+    ASSERT_from_drvSendOut_SIZE(1);
+    ASSERT_EQ(this->m_txFrames.size(), 1U);
+#else
     ASSERT_from_drvSendOut_SIZE(2);
     ASSERT_EQ(this->m_txFrames.size(), 2U);
-    EXPECT_EQ(this->m_txFrames[1][2], LinkCfg::CHANNEL_TEENSY_LOCAL);
+#endif
+    EXPECT_EQ(this->m_txFrames.back()[2], LinkCfg::CHANNEL_TEENSY_LOCAL);
+#ifdef NEUTRON2_CDR_TCP
+    ASSERT_TLM_FramesTx(0, 1);
+#else
     ASSERT_TLM_FramesTx(0, 1);
     ASSERT_TLM_FramesTx(1, 2);
+#endif
 
     const std::vector<U8> localFrame = makeFrame(LinkCfg::CHANNEL_TEENSY_LOCAL, localBytes, sizeof(localBytes));
     const FwSizeType split = 3;
@@ -104,12 +118,30 @@ void UartChannelMuxTester::testWrapsAndRoutesChannelFrames() {
         makeFrame(LinkCfg::CHANNEL_PAYLOAD, payloadBytes, sizeof(payloadBytes));
     Fw::Buffer incomingPayload(const_cast<U8*>(payloadFrame.data()), payloadFrame.size());
     this->invoke_to_drvReceiveIn(0, incomingPayload, Drv::ByteStreamStatus::OP_OK);
+#ifdef NEUTRON2_CDR_TCP
+    ASSERT_from_payloadRecvOut_SIZE(0);
+    ASSERT_EQ(this->m_payloadFrames.size(), 0U);
+#else
     ASSERT_from_payloadRecvOut_SIZE(1);
     ASSERT_EQ(this->m_payloadFrames.size(), 1U);
     ASSERT_EQ(this->m_payloadFrames[0].size(), sizeof(payloadBytes));
     for (FwSizeType i = 0; i < sizeof(payloadBytes); ++i) {
         EXPECT_EQ(this->m_payloadFrames[0][i], payloadBytes[i]);
     }
+#endif
+}
+
+void UartChannelMuxTester::testDropsUnconnectedCcsdsReceive() {
+    UartChannelMux unconnectedMux("UnconnectedCcsdsMux");
+    unconnectedMux.init(static_cast<FwEnumStoreType>(TEST_INSTANCE_ID + 1));
+
+    const U8 ccsdsBytes[] = {0x08, 0x01, 0x02, 0x03};
+    const std::vector<U8> ccsdsFrame = makeFrame(LinkCfg::CHANNEL_CCSDS, ccsdsBytes, sizeof(ccsdsBytes));
+    Fw::Buffer incoming(const_cast<U8*>(ccsdsFrame.data()), static_cast<FwSizeType>(ccsdsFrame.size()));
+    unconnectedMux.get_drvReceiveIn_InputPort(0)->invoke(incoming, Drv::ByteStreamStatus::OP_OK);
+
+    // An unconnected channel-0 output must be rejected cleanly instead of invoking a null port.
+    unconnectedMux.deinit();
 }
 
 std::vector<U8> UartChannelMuxTester::makeFrame(U8 channel, const U8* payload, FwSizeType size) {

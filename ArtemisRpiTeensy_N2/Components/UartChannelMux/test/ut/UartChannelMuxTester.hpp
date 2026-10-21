@@ -17,6 +17,7 @@ class UartChannelMuxTester final : public UartChannelMuxGTestBase {
     ~UartChannelMuxTester();
 
     void testWrapsAndRoutesChannelFrames();
+    void testDropsUnconnectedCcsdsReceive();
 
   private:
     void connectPorts();

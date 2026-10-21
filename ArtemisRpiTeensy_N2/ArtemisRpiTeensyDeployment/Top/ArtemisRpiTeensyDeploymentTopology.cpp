@@ -11,6 +11,11 @@
 // Necessary project-specified types
 #include <Fw/Types/MallocAllocator.hpp>
 #include <Drv/LinuxUartDriver/LinuxUartDriver.hpp>
+#ifdef NEUTRON2_CDR_TCP
+#include <Drv/TcpServer/TcpServerComponentImpl.hpp>
+#include <Os/Task.hpp>
+#include <cstdio>
+#endif
 #include <cstring>
 
 // Public functions for use in main program are namespaced with deployment module ArtemisRpiTeensyDeployment
@@ -78,6 +83,16 @@ void setupTopology(const TopologyState& state) {
                                            UART_READ_BUFFER_SIZE);
         FW_ASSERT(opened);
     }
+#ifdef NEUTRON2_CDR_TCP
+    const Drv::SocketIpStatus tcpStatus = tcpServer.configure(state.tcpListenAddress, state.tcpListenPort);
+    if (tcpStatus != Drv::SOCK_SUCCESS) {
+        (void)std::fprintf(stderr,
+                           "CDR TCP listen setup failed at %s:%hu (status %d); server thread will retry\n",
+                           state.tcpListenAddress,
+                           state.tcpListenPort,
+                           static_cast<int>(tcpStatus));
+    }
+#endif
     // Project-specific component configuration. Function provided above. May be inlined, if desired.
     configureTopology();
     // Autocoded parameter loading. Function provided by autocoder.
@@ -89,6 +104,10 @@ void setupTopology(const TopologyState& state) {
         // UART driver uses a dedicated receive thread.
         comDriver.start(COMM_PRIORITY, Default::STACK_SIZE);
     }
+#ifdef NEUTRON2_CDR_TCP
+    Os::TaskString tcpTaskName("TcpServerRead");
+    tcpServer.start(tcpTaskName, COMM_PRIORITY, Default::STACK_SIZE);
+#endif
 }
 
 void startRateGroups(const Fw::TimeInterval& interval) {
@@ -113,6 +132,10 @@ void teardownTopology(const TopologyState& state) {
         comDriver.quitReadThread();
         (void)comDriver.join();
     }
+#ifdef NEUTRON2_CDR_TCP
+    tcpServer.stop();
+    (void)tcpServer.join();
+#endif
 
     // Resource deallocation
     cmdSeq.deallocateBuffer(mallocator);

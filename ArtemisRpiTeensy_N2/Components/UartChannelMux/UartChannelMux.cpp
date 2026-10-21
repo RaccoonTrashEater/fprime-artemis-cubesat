@@ -27,13 +27,16 @@ Drv::ByteStreamStatus UartChannelMux::ccsdsSendIn_handler(FwIndexType portNum, F
 
 void UartChannelMux::payloadSendIn_handler(FwIndexType portNum, Fw::Buffer& fwBuffer) {
     static_cast<void>(portNum);
+#ifdef NEUTRON2_CDR_TCP
+    static_cast<void>(fwBuffer);
+    this->recordFrameDrop(13);
+#else
     const Drv::ByteStreamStatus status =
         this->sendWrapped(LinkCfg::CHANNEL_PAYLOAD, fwBuffer.getData(), fwBuffer.getSize());
     if (status != Drv::ByteStreamStatus::OP_OK) {
-        this->m_frameDrops++;
-        this->tlmWrite_FrameDrops(this->m_frameDrops);
-        this->log_WARNING_LO_FrameDropped(10);
+        this->recordFrameDrop(10);
     }
+#endif
 }
 
 void UartChannelMux::localSendIn_handler(FwIndexType portNum, Fw::Buffer& fwBuffer) {
@@ -187,19 +190,49 @@ void UartChannelMux::resetParser() {
     this->m_crcLo = 0;
 }
 
+void UartChannelMux::recordFrameDrop(U32 reason) {
+    this->m_frameDrops++;
+    this->tlmWrite_FrameDrops(this->m_frameDrops);
+    this->log_WARNING_LO_FrameDropped(reason);
+}
+
 void UartChannelMux::handleFrame() {
     Fw::Buffer frame(this->m_rxPayload, this->m_rxLength);
     if (this->m_rxChannel == LinkCfg::CHANNEL_CCSDS) {
-        this->ccsdsRecvOut_out(0, frame, Drv::ByteStreamStatus::OP_OK);
-    } else if ((this->m_rxChannel == LinkCfg::CHANNEL_PAYLOAD) && this->isConnected_payloadRecvOut_OutputPort(0)) {
-        this->payloadRecvOut_out(0, frame);
+        if (this->isConnected_ccsdsRecvOut_OutputPort(0)) {
+            this->ccsdsRecvOut_out(0, frame, Drv::ByteStreamStatus::OP_OK);
+        } else {
+            this->recordFrameDrop(20);
+        }
+    } else if (this->m_rxChannel == LinkCfg::CHANNEL_PAYLOAD) {
+#ifdef NEUTRON2_CDR_TCP
+        // CDR uses stock FileDownlink over TCP; custom UART payload delivery is disabled.
+        this->recordFrameDrop(21);
+#else
+        if (this->isConnected_payloadRecvOut_OutputPort(0)) {
+            this->payloadRecvOut_out(0, frame);
+        } else {
+            this->recordFrameDrop(21);
+        }
+#endif
     } else if (this->m_rxChannel == LinkCfg::CHANNEL_TEENSY_LOCAL) {
         const U8 target = (this->m_rxLength > 0) ? this->m_rxPayload[0] : 0;
+#ifdef NEUTRON2_CDR_TCP
+        if (target == LinkCfg::TEENSY_TARGET_PDU && this->isConnected_localRecvOut_OutputPort(0)) {
+            this->localRecvOut_out(0, frame);
+        } else {
+            // Only target 1 (the PDU) is valid on the CDR UART RPC path.
+            this->recordFrameDrop(22);
+        }
+#else
         if ((target == LinkCfg::TEENSY_TARGET_RF_STATUS) && this->isConnected_rfLocalRecvOut_OutputPort(0)) {
             this->rfLocalRecvOut_out(0, frame);
         } else if (this->isConnected_localRecvOut_OutputPort(0)) {
             this->localRecvOut_out(0, frame);
+        } else {
+            this->recordFrameDrop(22);
         }
+#endif
     }
 
     this->m_framesRx++;

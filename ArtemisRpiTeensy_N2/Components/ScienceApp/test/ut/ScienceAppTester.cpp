@@ -356,4 +356,39 @@ void ScienceAppTester::testCollectAndDownlinkClearsIntentOnFailure() {
     ASSERT_from_scienceProductOut_SIZE(0);
 }
 
+void ScienceAppTester::testCdrRejectsAutomaticDownlinkBeforeCaptureOrTokenAllocation() {
+#ifdef NEUTRON2_CDR_TCP
+    constexpr U32 REJECT_CDR_AUTO_DOWNLINK_UNSUPPORTED = 3U;
+    this->clearHistory();
+
+    this->sendCmd_COLLECT_AND_DOWNLINK(0, 0, 5U);
+    this->component.doDispatch();
+    this->sendCmd_VERIFIED_COLLECT_AND_DOWNLINK(0, 1, 42U, 5U);
+    this->component.doDispatch();
+    // Reusing the token remains an unsupported-workflow rejection, proving the
+    // earlier request did not consume a token-table entry.
+    this->sendCmd_VERIFIED_COLLECT_AND_DOWNLINK(0, 2, 42U, 5U);
+    this->component.doDispatch();
+
+    ASSERT_CMD_RESPONSE_SIZE(3);
+    ASSERT_CMD_RESPONSE(0, ScienceAppComponentBase::OPCODE_COLLECT_AND_DOWNLINK, 0,
+                        Fw::CmdResponse::VALIDATION_ERROR);
+    ASSERT_CMD_RESPONSE(1, ScienceAppComponentBase::OPCODE_VERIFIED_COLLECT_AND_DOWNLINK, 1,
+                        Fw::CmdResponse::VALIDATION_ERROR);
+    ASSERT_CMD_RESPONSE(2, ScienceAppComponentBase::OPCODE_VERIFIED_COLLECT_AND_DOWNLINK, 2,
+                        Fw::CmdResponse::VALIDATION_ERROR);
+    ASSERT_EVENTS_ScienceCommandRejected_SIZE(3);
+    ASSERT_EVENTS_ScienceCommandRejected(0, REJECT_CDR_AUTO_DOWNLINK_UNSUPPORTED,
+                                         ScienceAppComponentBase::OPCODE_COLLECT_AND_DOWNLINK);
+    ASSERT_EVENTS_ScienceCommandRejected(1, REJECT_CDR_AUTO_DOWNLINK_UNSUPPORTED,
+                                         ScienceAppComponentBase::OPCODE_VERIFIED_COLLECT_AND_DOWNLINK);
+    ASSERT_EVENTS_ScienceCommandRejected(2, REJECT_CDR_AUTO_DOWNLINK_UNSUPPORTED,
+                                         ScienceAppComponentBase::OPCODE_VERIFIED_COLLECT_AND_DOWNLINK);
+    ASSERT_EVENTS_VerifiedCaptureStatus_SIZE(0);
+    ASSERT_from_payloadRequestOut_SIZE(0);
+    ASSERT_from_deliveryRequestOut_SIZE(0);
+    ASSERT_from_missionModeOut_SIZE(0);
+#endif
+}
+
 }  // namespace Components

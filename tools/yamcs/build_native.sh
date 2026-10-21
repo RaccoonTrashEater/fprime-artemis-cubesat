@@ -25,7 +25,7 @@ if [[ ! -x "${PROJECT}/fprime-venv/bin/python" ]]; then
 fi
 source "${PROJECT}/fprime-venv/bin/activate"
 cd "${PROJECT}"
-TASK_CMAKE_ARGS=("-DNEUTRON2_LOCAL_YAMCS=ON")
+TASK_CMAKE_ARGS=("-DNEUTRON2_LOCAL_YAMCS=ON" "-DNEUTRON2_CDR_TCP=OFF")
 if [[ "$(uname -s)" == Darwin ]]; then
   TASK_CMAKE_ARGS+=("-DCMAKE_OSX_ARCHITECTURES=$(uname -m)")
 fi

@@ -10,6 +10,7 @@ constexpr U32 DEFAULT_CAPTURE_DURATION_SECONDS = 30U;
 constexpr U32 MAX_CAPTURE_DURATION_SECONDS = 120U;
 constexpr U32 REJECT_INVALID_DELAY_SECONDS = 1U;
 constexpr U32 REJECT_INVALID_CAPTURE_DURATION_SECONDS = 2U;
+constexpr U32 REJECT_CDR_AUTO_DOWNLINK_UNSUPPORTED = 3U;
 constexpr U32 VERIFIED_REJECT_ZERO_TOKEN = 1U;
 constexpr U32 VERIFIED_REJECT_REUSED_TOKEN = 2U;
 constexpr U32 VERIFIED_REJECT_TABLE_FULL = 3U;
@@ -289,6 +290,11 @@ void ScienceApp::SCIENCE_CAPTURE_cmdHandler(FwOpcodeType opCode, U32 cmdSeq, U32
 }
 
 void ScienceApp::COLLECT_AND_DOWNLINK_cmdHandler(FwOpcodeType opCode, U32 cmdSeq, U32 durationSeconds) {
+#ifdef NEUTRON2_CDR_TCP
+    this->log_WARNING_LO_ScienceCommandRejected(REJECT_CDR_AUTO_DOWNLINK_UNSUPPORTED, opCode);
+    this->cmdResponse_out(opCode, cmdSeq, Fw::CmdResponse::VALIDATION_ERROR);
+    return;
+#endif
     if (!this->isValidCaptureDuration(durationSeconds)) {
         this->log_WARNING_LO_ScienceCommandRejected(REJECT_INVALID_CAPTURE_DURATION_SECONDS, durationSeconds);
         this->cmdResponse_out(opCode, cmdSeq, Fw::CmdResponse::VALIDATION_ERROR);
@@ -302,6 +308,11 @@ void ScienceApp::COLLECT_AND_DOWNLINK_cmdHandler(FwOpcodeType opCode, U32 cmdSeq
 
 void ScienceApp::VERIFIED_COLLECT_AND_DOWNLINK_cmdHandler(FwOpcodeType opCode, U32 cmdSeq,
                                                            U32 verificationToken, U32 durationSeconds) {
+#ifdef NEUTRON2_CDR_TCP
+    this->log_WARNING_LO_ScienceCommandRejected(REJECT_CDR_AUTO_DOWNLINK_UNSUPPORTED, opCode);
+    this->cmdResponse_out(opCode, cmdSeq, Fw::CmdResponse::VALIDATION_ERROR);
+    return;
+#endif
     if (verificationToken == 0U) {
         this->logVerifiedCaptureStatus(verificationToken, 0U, 0U,
                                        Components::PayloadOperationState::INVALID, 0U, 0U, 0U,
