@@ -5,6 +5,8 @@
 
 #include "Components/EpsDriver_Artemis/EpsDriver_ArtemisComponentAc.hpp"
 #include "Components/LinkCfg/LinkCfg.hpp"
+#include <Fw/Types/String.hpp>
+#include <Os/Mutex.hpp>
 
 namespace Components {
 
@@ -31,10 +33,23 @@ class EpsDriver_Artemis final : public EpsDriver_ArtemisComponentBase {
         U8 payload[96];
     };
 
-    bool sendPduRequest(U8 opcode, const U8* payload, U8 payloadLen);
+    U8 sendPduRequest(
+        Components::EpsRequest request,
+        U8 outputId,
+        U8 state,
+        U8 opcode,
+        const U8* payload,
+        U8 payloadLen
+    );
     bool parsePduResponse(const U8* frame, U32 frameLen, U8 expectedSeq, U8 expectedOpcode, PduResponse& response);
-    void processResponse(const Components::EpsRequest& request, const PduResponse& response);
-    void emitStatus(Components::HealthState health, U8 linkState, U8 pduStatus, U8 opcode);
+    bool processResponse(const Components::EpsRequest& request, const PduResponse& response);
+    void emitStatus(
+        Components::HealthState health,
+        U8 linkState,
+        U8 pduStatus,
+        U8 opcode,
+        Components::EpsRequest request
+    );
     void writeTelemetry();
 
     static U16 crc16Ccitt(const U8* data, U32 length);
@@ -49,23 +64,34 @@ class EpsDriver_Artemis final : public EpsDriver_ArtemisComponentBase {
     static constexpr U8 LOCAL_HEADER_LEN = 4;
     static constexpr U32 LOCAL_MAX_PACKET_LEN = LOCAL_HEADER_LEN + PDU_V2_MAX_FRAME_LEN;
     static constexpr U32 PDU_REQUEST_TIMEOUT_TICKS = 2;
+    static constexpr U8 DRIVER_STATUS_READBACK_MISMATCH = 0xF9U;
+    static constexpr U8 DRIVER_STATUS_MALFORMED_PAYLOAD = 0xFAU;
+    static constexpr U8 DRIVER_STATUS_MALFORMED_FRAME = 0xFB;
 
+    Os::Mutex m_stateMutex;
     U8 m_sequence;
     U8 m_pendingRequestId;
     U8 m_pendingOpcode;
     U32 m_pendingRequestTicks;
     bool m_requestPending;
     Components::EpsRequest m_lastRequest;
+    Components::EpsRequest m_pendingRequest;
+    U8 m_pendingOutputId;
+    U8 m_pendingState;
     U8 m_protocolVersion;
     U16 m_outputBitmap;
     U8 m_resetCause;
     U8 m_faultBitmap;
     U32 m_uptimeSeconds;
     U8 m_capabilities;
+    U8 m_firmwareMajor;
+    U8 m_firmwareMinor;
+    U8 m_firmwarePatch;
+    U8 m_buildFlags;
+    Fw::String m_gitHash;
     U8 m_lastPduStatus;
     U8 m_lastOpcode;
     U32 m_transportFailureCount;
-    U8 m_localPacket[LOCAL_MAX_PACKET_LEN];
 
     void run_handler(FwIndexType portNum, U32 context) override;
     void timeoutPendingRequest();

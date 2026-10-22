@@ -12,10 +12,44 @@
 
 This is a hardware acceptance target, not a result established by the local simulator. Formal modes and time-based scheduling are not CDR prerequisites. The PDU power sequence and the operator/data-inspection procedure still need implementation/runbook agreement.
 
+## CDR firmware and command behavior — October 22, 2026
+
+The pinned PDU firmware is 2.2.2. Pi↔Teensy remains at 115200 baud and
+Teensy↔PDU remains at 9600 baud. The firmware uses nonblocking byte reads and
+a 250 ms transmit deadline; timed output actions continue to be serviced while
+the transmitter waits. These changes do not change GPIO defaults or add new
+power-control commands.
+
+`epsManager` serializes requests and waits for the matching driver result before
+returning command completion. Busy, timeout, malformed replies and PDU rejection
+produce failure. GET/SET rail replies update the enable-state bitmap; a SET reply
+must match the requested output and state. A power-cycle ACK confirms the initial
+off state, not completion of the later restoration. Request fresh status after
+the off interval to observe restoration.
+
+`epsManager.REQUEST_EPS_DRIVER_INFO` reports firmware major/minor/patch,
+`DriverGitHash` and `DriverBuildFlags`. Flag bit 0 means the hash is known;
+bit 1 means the firmware source tree was dirty when built. The hash is a
+12-character Git commit prefix, not a hash of uncommitted edits. Legacy
+seven-byte protocol-info replies remain supported and report an unknown hash.
+The extended firmware reply preserves those seven bytes and appends build
+metadata. Rebuild the N2 binary and its matching Yamcs dictionary together.
+
+Readback is the PDU's enable-pin state, not measured rail voltage or proof that
+the payload is ready. The October 21 record established Pi/Teensy UART byte flow
+but still reported PDU UNKNOWN. These software changes do not close that hardware
+gate; a valid real PDU response and measured payload on/off remain required.
+
+Local verification: PDU host smoke and address/undefined-behavior sanitizer
+checks passed; EPS driver 4/4 and manager 2/2 unit tests passed. The native CDR
+deployment built, listened on loopback TCP with a pseudo-terminal UART, remained
+running, and exited with status 0 after SIGINT. No target MPLAB build, flashing,
+physical UART or power switching was performed for this change.
+
 ## Inputs to agree
 
 - Selected hardware is Artemis PDU v2.2; verify exact populated board, running firmware and payload output/rail mapping; harness, connector/pinout, voltage and current requirements.
-- Selected path: Pi Zero W F′ → UART mux channel 2/local RPC → satellite Teensy → UART → PDU v2 protocol. Dennis reports the bench mostly wired; this is not an observed HIL result. Firmware reference: [`codex/pdu-protocol-refactor`](https://github.com/hsfl/artemis-cubesat-pdu-firmware/tree/codex/pdu-protocol-refactor). Hardware v2.2 and protocol v2 are distinct; the pinned reference remains unchanged.
+- Selected path: Pi Zero W F′ → UART mux channel 2/local RPC → satellite Teensy → UART → PDU v2 protocol. Dennis reports the bench mostly wired; this is not an observed HIL result. Firmware reference: [`codex/n2-cdr-pdu`](https://github.com/hsfl/artemis-cubesat-pdu-firmware/tree/codex/n2-cdr-pdu), pinned by `external/artemis-pdu`. Hardware v2.2, firmware version, and protocol v2 are distinct.
 - Payload startup/readiness and shutdown/standby timing; command order and what readback or measurement proves powered-on and powered-off states.
 - All payload supply paths, including the USB↔RS-422 adapter, so the intended PDU-controlled off state can be verified.
 - Timeout, missing readback, payload-not-ready, failed collection and failed retrieval behavior. Agree whether/when power is removed on each failure and how retained data are protected.

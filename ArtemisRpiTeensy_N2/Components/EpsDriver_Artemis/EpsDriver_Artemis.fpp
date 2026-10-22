@@ -50,6 +50,17 @@ module Components {
         @ Age of the pending Teensy-local PDU request in scheduler ticks
         telemetry PendingRequestTicks: U32
 
+        @ PDU firmware semantic version fields from GET_PROTOCOL_INFO
+        telemetry PduFirmwareMajor: U8
+        telemetry PduFirmwareMinor: U8
+        telemetry PduFirmwarePatch: U8
+
+        @ PDU build flags: bit 0 hash known, bit 1 dirty build
+        telemetry PduBuildFlags: U8
+
+        @ 12-character lowercase Git hash, all zeroes when unknown
+        telemetry PduGitHash: string size 12
+
         @ PDU request queued to the Teensy-local channel
         event PduRequestQueued(epsRequest: Components.EpsRequest, requestId: U32) severity activity low format "Artemis PDU request={} queued local request={}"
 

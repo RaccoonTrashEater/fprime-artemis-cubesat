@@ -155,7 +155,7 @@ The older ground Teensy exposes GDS, debug, and payload serial ports. USB port i
 
 ## Build profiles and current evidence
 
-F′ is pinned to v4.2.1 (`a750219`); the PDU reference is `f287924`. The [deployment CMake](../../ArtemisRpiTeensy_N2/ArtemisRpiTeensyDeployment/CMakeLists.txt) selects `LocalYamcsConfig` when `NEUTRON2_LOCAL_YAMCS=ON` and `RfMvpConfig` otherwise. The option defaults OFF.
+F′ is pinned to v4.2.1 (`a750219`); the PDU reference is `e94ee06` (firmware 2.2.2, `codex/n2-cdr-pdu`). The [deployment CMake](../../ArtemisRpiTeensy_N2/ArtemisRpiTeensyDeployment/CMakeLists.txt) selects `LocalYamcsConfig` when `NEUTRON2_LOCAL_YAMCS=ON` and `RfMvpConfig` otherwise. The option defaults OFF.
 
 The local profile uses 512-byte framework communication buffers, 1024-byte TM frames and 504-byte generated command/fixed-string constants. Individual commands retain their own declared limits; synthetic pass-through uses a 128-byte printable-ASCII contract. These capacities are host-test choices, not agreed PLD/radio limits. The [Yamcs build helper](../../tools/yamcs/build_native.sh) selects ON explicitly. Re-run it after UTs before local replay because native and UT installs share artifacts. Never deploy the macOS host artifact to the Pi or infer that OFF is a validated SatNOGS configuration.
 

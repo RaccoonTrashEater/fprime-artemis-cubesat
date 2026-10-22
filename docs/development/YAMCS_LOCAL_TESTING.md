@@ -14,7 +14,7 @@ cd neutron_2
 git submodule update --init --recursive ArtemisRpiTeensy_N2/lib/fprime external/artemis-pdu
 ```
 
-The superproject pins F′ at v4.2.1, commit `a750219414881d3461054e73c25a0868a5e648f9`, and `external/artemis-pdu` at `f28792476b7aef8abe06bc1a0cb2d8d913cec132`. Keep those gitlink revisions; do not move F′ to the separate v4.3 study checkout. The current PDU submodule commit is on `codex/pdu-protocol-refactor`.
+The superproject pins F′ at v4.2.1, commit `a750219414881d3461054e73c25a0868a5e648f9`, and `external/artemis-pdu` at `e94ee066442a0cdf980bc62854c8351b2eb0aa04`. Keep those gitlink revisions; do not move F′ to the separate v4.3 study checkout. The current PDU submodule commit is on `codex/n2-cdr-pdu` (firmware 2.2.2).
 
 Yamcs dependencies are isolated under `tools/yamcs/.venv`; native F′ Python dependencies are isolated under `ArtemisRpiTeensy_N2/fprime-venv`. The branch's direct Yamcs pins are:
 
