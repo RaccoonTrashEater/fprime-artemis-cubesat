@@ -1,12 +1,69 @@
 module Components {
 
   @ Mission mode for the short FlatSat FSR story.
+  @ Values are append-only: tools and ground displays decode the numbers.
   enum MissionMode : U8 {
     BASE = 0
     COLLECTION_PENDING = 1
     COLLECTING = 2
     SCIENCE_READY = 3
     DOWNLINKING = 4
+    @ Safe mode (MOP v2.0 §8.8): science inhibited. Only a guarded ground command leaves it.
+    SAFE = 5
+  }
+
+  @ Operations mode by its MOP v2.0 §8 name. MissionApp derives it from MissionMode.
+  enum OperationsMode : U8 {
+    BASE = 0
+    SCIENCE_COLLECTION = 1
+    SCIENCE_PROCESSING = 2
+    SCIENCE_DOWNLINK = 3
+    SAFE = 4
+  }
+
+  @ Why MissionApp entered SAFE (SDD v4.0 Table 5, FSW-007, FSW-013). NONE outside SAFE.
+  enum SafeCause : U8 {
+    NONE = 0
+    GROUND_COMMAND = 1
+    LOW_POWER = 2
+    WATCHDOG = 3
+    ADCS_RATE = 4
+    CONTACT_TIMEOUT = 5
+    OTHER_FAULT = 6
+    BOOT = 7
+  }
+
+  @ Why MissionApp refused a mode change. ALLOWED means the transition table accepted it.
+  enum ModeRejectReason : U8 {
+    ALLOWED = 0
+    @ The move is not in the transition table.
+    NOT_IN_TABLE = 1
+    @ In SAFE, only a ground command to BASE can leave.
+    SAFE_LOCKED = 2
+    @ A latched fault holds SAFE until CLEAR_SAFE_LATCH.
+    SAFE_LATCHED = 3
+    @ The last fault is more recent than the stability interval.
+    SAFE_NOT_STABLE = 4
+    @ The mode starts on its own when the payload hands over a product.
+    AUTOMATIC_ONLY = 5
+    @ Collections start through SCHEDULE_COLLECTION so the payload confirms the start.
+    USE_SCHEDULE_COLLECTION = 6
+    @ A collection is queued or running.
+    COLLECTION_ACTIVE = 7
+  }
+
+  @ State an operations mode asks a subsystem to be in (MOP v2.0 §8 hardware status).
+  enum SubsystemRequest : U8 {
+    OFF = 0
+    ON = 1
+    MINIMAL = 2
+    TBC = 3
+    FLAG_DEPENDENT = 4
+    LVLH = 5
+    SUN_TRACKING = 6
+    TARGET_TRACKING = 7
+    STANDBY = 8
+    ACQUISITION = 9
   }
 
   @ Normalized subsystem health state for SOH aggregation.
@@ -190,6 +247,10 @@ module Components {
 
   @ Mission mode update from services that complete visible story transitions.
   port MissionModeUpdate(mode: MissionMode, detail: U32)
+
+  @ Fault indication that asks MissionApp for SAFE (FSW-007).
+  @ latch = true holds SAFE until the ground sends CLEAR_SAFE_LATCH.
+  port SafeModeRequest(cause: SafeCause, latch: bool, detail: U32)
 
   @ RF link-strength status in dBm.
   port RssiStatus(rssiDbm: I32)
