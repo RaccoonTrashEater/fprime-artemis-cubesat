@@ -9,10 +9,10 @@ module Components {
         output port pingOut: Svc.Ping
 
         @ Rate group scheduling input
-        sync input port run: Svc.Sched
+        async input port run: Svc.Sched
 
         @ Driver status input
-        sync input port driverStatusIn: Components.EpsStatus
+        async input port driverStatusIn: Components.EpsStatus
 
         @ Driver request output
         output port driverRequestOut: Components.EpsCommand
@@ -73,6 +73,17 @@ module Components {
 
         @ Manager heartbeat
         telemetry ManagerHeartbeat: U32
+
+        @ Latest PDU firmware semantic version fields
+        telemetry DriverFirmwareMajor: U8
+        telemetry DriverFirmwareMinor: U8
+        telemetry DriverFirmwarePatch: U8
+
+        @ Latest PDU build flags: bit 0 hash known, bit 1 dirty build
+        telemetry DriverBuildFlags: U8
+
+        @ Latest 12-character lowercase Git hash, all zeroes when unknown
+        telemetry DriverGitHash: string size 12
 
         @ EPS status update event
         event EpsStatusUpdated(healthState: Components.HealthState, outputBitmap: U32, faultBitmap: U32) severity activity low format "EPS status health={} outputs={} faults={}"

@@ -17,10 +17,15 @@ class EpsDriver_ArtemisTester final : public EpsDriver_ArtemisGTestBase {
     ~EpsDriver_ArtemisTester();
 
     void testTimeoutClearsPendingRequest();
+    void testBusyRequestDoesNotReplacePendingIdentity();
+    void testOutputReadbackValidationAndBitmapMapping();
+    void testLegacyAndExtendedProtocolInfo();
 
   private:
     void connectPorts();
     void initComponents();
+    void deliverResponse(U8 opcode, U8 status, const std::vector<U8>& payload);
+    static U16 crc16Ccitt(const U8* data, U32 length);
     void from_teensyRequestOut_handler(FwIndexType portNum, Fw::Buffer& fwBuffer) override;
 
     EpsDriver_Artemis component;

@@ -2,6 +2,7 @@
 #define Components_EpsManager_HPP
 
 #include "Components/EpsManager/EpsManagerComponentAc.hpp"
+#include <Fw/Types/String.hpp>
 
 namespace Components {
 
@@ -24,7 +25,13 @@ class EpsManager final : public EpsManagerComponentBase {
         U32 uptimeSeconds,
         U8 capabilities,
         U8 driverStatus,
-        U8 lastDriverOpcode
+        U8 lastDriverOpcode,
+        const Components::EpsRequest& driverRequest,
+        U8 firmwareMajor,
+        U8 firmwareMinor,
+        U8 firmwarePatch,
+        U8 buildFlags,
+        const Fw::StringBase& gitHash
     ) override;
     void REQUEST_EPS_STATUS_cmdHandler(FwOpcodeType opCode, U32 cmdSeq) override;
     void PING_EPS_DRIVER_cmdHandler(FwOpcodeType opCode, U32 cmdSeq) override;
@@ -35,7 +42,15 @@ class EpsManager final : public EpsManagerComponentBase {
     void REQUEST_CHARGER_STATUS_cmdHandler(FwOpcodeType opCode, U32 cmdSeq) override;
     void SET_CHARGER_STATE_cmdHandler(FwOpcodeType opCode, U32 cmdSeq, U32 enable, U32 confirm) override;
 
-    void sendRequest(Components::EpsRequest request, U8 outputId, U8 state, U16 durationMs);
+    bool sendRequest(Components::EpsRequest request, U8 outputId, U8 state, U16 durationMs);
+    void beginCommand(
+        FwOpcodeType opCode,
+        U32 cmdSeq,
+        Components::EpsRequest request,
+        U8 outputId,
+        U8 state,
+        U16 durationMs
+    );
     bool isSafeOutputId(U32 outputId) const;
     void writeTelemetry();
 
@@ -52,6 +67,16 @@ class EpsManager final : public EpsManagerComponentBase {
     U8 m_capabilities;
     U8 m_lastDriverStatus;
     U8 m_lastOpcode;
+    Components::EpsRequest m_pendingRequest;
+    bool m_requestPending;
+    bool m_commandPending;
+    FwOpcodeType m_pendingCommandOpcode;
+    U32 m_pendingCommandSequence;
+    U8 m_firmwareMajor;
+    U8 m_firmwareMinor;
+    U8 m_firmwarePatch;
+    U8 m_buildFlags;
+    Fw::String m_gitHash;
     U32 m_managerHeartbeat;
 };
 

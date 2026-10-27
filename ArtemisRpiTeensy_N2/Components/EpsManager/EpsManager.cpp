@@ -2,6 +2,11 @@
 
 namespace Components {
 
+namespace {
+constexpr U8 LINK_REQUEST_QUEUED = 1U;
+constexpr U8 LINK_PROTOCOL_OK = 2U;
+}
+
 EpsManager::EpsManager(const char* const compName)
     : EpsManagerComponentBase(compName),
       m_health(Components::HealthState::UNKNOWN),
@@ -14,6 +19,16 @@ EpsManager::EpsManager(const char* const compName)
       m_capabilities(0),
       m_lastDriverStatus(0),
       m_lastOpcode(0),
+      m_pendingRequest(Components::EpsRequest::GET_SUMMARY_STATUS),
+      m_requestPending(false),
+      m_commandPending(false),
+      m_pendingCommandOpcode(0),
+      m_pendingCommandSequence(0),
+      m_firmwareMajor(0),
+      m_firmwareMinor(0),
+      m_firmwarePatch(0),
+      m_buildFlags(0),
+      m_gitHash("000000000000"),
       m_managerHeartbeat(0) {}
 
 EpsManager::~EpsManager() {}
@@ -28,7 +43,7 @@ void EpsManager::run_handler(FwIndexType portNum, U32 context) {
     static_cast<void>(context);
     this->m_managerHeartbeat += 1;
 
-    if (this->isConnected_driverRequestOut_OutputPort(0)) {
+    if (!this->m_requestPending) {
         this->sendRequest(Components::EpsRequest::GET_SUMMARY_STATUS, 0, 0, 0);
     }
     if (this->isConnected_sohStatusOut_OutputPort(0)) {
@@ -49,7 +64,13 @@ void EpsManager::driverStatusIn_handler(
     U32 uptimeSeconds,
     U8 capabilities,
     U8 driverStatus,
-    U8 lastDriverOpcode
+    U8 lastDriverOpcode,
+    const Components::EpsRequest& driverRequest,
+    U8 firmwareMajor,
+    U8 firmwareMinor,
+    U8 firmwarePatch,
+    U8 buildFlags,
+    const Fw::StringBase& gitHash
 ) {
     static_cast<void>(portNum);
     this->m_health = health;
@@ -62,26 +83,48 @@ void EpsManager::driverStatusIn_handler(
     this->m_capabilities = capabilities;
     this->m_lastDriverStatus = driverStatus;
     this->m_lastOpcode = lastDriverOpcode;
+    this->m_firmwareMajor = firmwareMajor;
+    this->m_firmwareMinor = firmwareMinor;
+    this->m_firmwarePatch = firmwarePatch;
+    this->m_buildFlags = buildFlags;
+    this->m_gitHash = gitHash.toChar();
+
+    FwOpcodeType completedCommandOpcode = 0;
+    U32 completedCommandSequence = 0;
+    bool respond = false;
+    if (this->m_requestPending && (driverRequest == this->m_pendingRequest) &&
+        (linkState != LINK_REQUEST_QUEUED)) {
+        this->m_requestPending = false;
+        if (this->m_commandPending) {
+            completedCommandOpcode = this->m_pendingCommandOpcode;
+            completedCommandSequence = this->m_pendingCommandSequence;
+            this->m_commandPending = false;
+            respond = true;
+        }
+    }
+
     this->writeTelemetry();
     this->log_ACTIVITY_LO_EpsStatusUpdated(this->m_health, this->m_outputBitmap, this->m_faultBitmap);
     if (this->isConnected_sohStatusOut_OutputPort(0)) {
         this->sohStatusOut_out(0, this->m_health, this->m_outputBitmap);
     }
+    if (respond) {
+        const Fw::CmdResponse response = ((linkState == LINK_PROTOCOL_OK) && (driverStatus == 0U)) ?
+                                             Fw::CmdResponse::OK : Fw::CmdResponse::EXECUTION_ERROR;
+        this->cmdResponse_out(completedCommandOpcode, completedCommandSequence, response);
+    }
 }
 
 void EpsManager::REQUEST_EPS_STATUS_cmdHandler(FwOpcodeType opCode, U32 cmdSeq) {
-    this->sendRequest(Components::EpsRequest::GET_SUMMARY_STATUS, 0, 0, 0);
-    this->cmdResponse_out(opCode, cmdSeq, Fw::CmdResponse::OK);
+    this->beginCommand(opCode, cmdSeq, Components::EpsRequest::GET_SUMMARY_STATUS, 0, 0, 0);
 }
 
 void EpsManager::PING_EPS_DRIVER_cmdHandler(FwOpcodeType opCode, U32 cmdSeq) {
-    this->sendRequest(Components::EpsRequest::PING, 0, 0, 0);
-    this->cmdResponse_out(opCode, cmdSeq, Fw::CmdResponse::OK);
+    this->beginCommand(opCode, cmdSeq, Components::EpsRequest::PING, 0, 0, 0);
 }
 
 void EpsManager::REQUEST_EPS_DRIVER_INFO_cmdHandler(FwOpcodeType opCode, U32 cmdSeq) {
-    this->sendRequest(Components::EpsRequest::GET_PROTOCOL_INFO, 0, 0, 0);
-    this->cmdResponse_out(opCode, cmdSeq, Fw::CmdResponse::OK);
+    this->beginCommand(opCode, cmdSeq, Components::EpsRequest::GET_PROTOCOL_INFO, 0, 0, 0);
 }
 
 void EpsManager::REQUEST_EPS_RAIL_cmdHandler(FwOpcodeType opCode, U32 cmdSeq, U32 outputId) {
@@ -90,8 +133,13 @@ void EpsManager::REQUEST_EPS_RAIL_cmdHandler(FwOpcodeType opCode, U32 cmdSeq, U3
         this->cmdResponse_out(opCode, cmdSeq, Fw::CmdResponse::VALIDATION_ERROR);
         return;
     }
-    this->sendRequest(Components::EpsRequest::GET_OUTPUT_STATE, static_cast<U8>(outputId), 0, 0);
-    this->cmdResponse_out(opCode, cmdSeq, Fw::CmdResponse::OK);
+    this->beginCommand(
+        opCode,
+        cmdSeq,
+        Components::EpsRequest::GET_OUTPUT_STATE,
+        static_cast<U8>(outputId),
+        0,
+        0);
 }
 
 void EpsManager::SET_EPS_RAIL_STATE_cmdHandler(FwOpcodeType opCode, U32 cmdSeq, U32 outputId, U32 state, U32 confirm) {
@@ -105,8 +153,13 @@ void EpsManager::SET_EPS_RAIL_STATE_cmdHandler(FwOpcodeType opCode, U32 cmdSeq, 
         this->cmdResponse_out(opCode, cmdSeq, Fw::CmdResponse::VALIDATION_ERROR);
         return;
     }
-    this->sendRequest(Components::EpsRequest::SET_OUTPUT_STATE, static_cast<U8>(outputId), static_cast<U8>(state), 0);
-    this->cmdResponse_out(opCode, cmdSeq, Fw::CmdResponse::OK);
+    this->beginCommand(
+        opCode,
+        cmdSeq,
+        Components::EpsRequest::SET_OUTPUT_STATE,
+        static_cast<U8>(outputId),
+        static_cast<U8>(state),
+        0);
 }
 
 void EpsManager::POWER_CYCLE_EPS_RAIL_cmdHandler(
@@ -121,22 +174,22 @@ void EpsManager::POWER_CYCLE_EPS_RAIL_cmdHandler(
         this->cmdResponse_out(opCode, cmdSeq, Fw::CmdResponse::VALIDATION_ERROR);
         return;
     }
-    if (!this->isSafeOutputId(outputId) || (offMs > MAX_POWER_CYCLE_MS)) {
+    if (!this->isSafeOutputId(outputId) || (offMs == 0U) || (offMs > MAX_POWER_CYCLE_MS)) {
         this->log_WARNING_LO_EpsCommandRejected(4, outputId);
         this->cmdResponse_out(opCode, cmdSeq, Fw::CmdResponse::VALIDATION_ERROR);
         return;
     }
-    this->sendRequest(
+    this->beginCommand(
+        opCode,
+        cmdSeq,
         Components::EpsRequest::POWER_CYCLE_OUTPUT,
         static_cast<U8>(outputId),
         0,
         static_cast<U16>(offMs));
-    this->cmdResponse_out(opCode, cmdSeq, Fw::CmdResponse::OK);
 }
 
 void EpsManager::REQUEST_CHARGER_STATUS_cmdHandler(FwOpcodeType opCode, U32 cmdSeq) {
-    this->sendRequest(Components::EpsRequest::GET_CHARGER_STATUS, 0, 0, 0);
-    this->cmdResponse_out(opCode, cmdSeq, Fw::CmdResponse::OK);
+    this->beginCommand(opCode, cmdSeq, Components::EpsRequest::GET_CHARGER_STATUS, 0, 0, 0);
 }
 
 void EpsManager::SET_CHARGER_STATE_cmdHandler(FwOpcodeType opCode, U32 cmdSeq, U32 enable, U32 confirm) {
@@ -145,13 +198,54 @@ void EpsManager::SET_CHARGER_STATE_cmdHandler(FwOpcodeType opCode, U32 cmdSeq, U
         this->cmdResponse_out(opCode, cmdSeq, Fw::CmdResponse::VALIDATION_ERROR);
         return;
     }
-    this->sendRequest(Components::EpsRequest::SET_CHARGER_STATE, 0, (enable == 0U) ? 0U : 1U, 0);
-    this->cmdResponse_out(opCode, cmdSeq, Fw::CmdResponse::OK);
+    if (enable > 1U) {
+        this->log_WARNING_LO_EpsCommandRejected(5, enable);
+        this->cmdResponse_out(opCode, cmdSeq, Fw::CmdResponse::VALIDATION_ERROR);
+        return;
+    }
+    this->beginCommand(
+        opCode,
+        cmdSeq,
+        Components::EpsRequest::SET_CHARGER_STATE,
+        0,
+        static_cast<U8>(enable),
+        0);
 }
 
-void EpsManager::sendRequest(Components::EpsRequest request, U8 outputId, U8 state, U16 durationMs) {
-    if (this->isConnected_driverRequestOut_OutputPort(0)) {
-        this->driverRequestOut_out(0, request, outputId, state, durationMs);
+bool EpsManager::sendRequest(Components::EpsRequest request, U8 outputId, U8 state, U16 durationMs) {
+    if (this->m_requestPending || !this->isConnected_driverRequestOut_OutputPort(0)) {
+        return false;
+    }
+    this->m_requestPending = true;
+    this->m_pendingRequest = request;
+    this->driverRequestOut_out(0, request, outputId, state, durationMs);
+    return true;
+}
+
+void EpsManager::beginCommand(
+    FwOpcodeType opCode,
+    U32 cmdSeq,
+    Components::EpsRequest request,
+    U8 outputId,
+    U8 state,
+    U16 durationMs
+) {
+    if (this->m_requestPending || this->m_commandPending) {
+        this->cmdResponse_out(opCode, cmdSeq, Fw::CmdResponse::BUSY);
+        return;
+    }
+    if (!this->isConnected_driverRequestOut_OutputPort(0)) {
+        this->cmdResponse_out(opCode, cmdSeq, Fw::CmdResponse::EXECUTION_ERROR);
+        return;
+    }
+
+    // Reserve identity before the synchronous driver call can queue a failure status.
+    this->m_commandPending = true;
+    this->m_pendingCommandOpcode = opCode;
+    this->m_pendingCommandSequence = cmdSeq;
+    if (!this->sendRequest(request, outputId, state, durationMs)) {
+        this->m_commandPending = false;
+        this->cmdResponse_out(opCode, cmdSeq, Fw::CmdResponse::EXECUTION_ERROR);
     }
 }
 
@@ -172,6 +266,11 @@ void EpsManager::writeTelemetry() {
     this->tlmWrite_LastDriverStatus(this->m_lastDriverStatus);
     this->tlmWrite_LastDriverOpcode(this->m_lastOpcode);
     this->tlmWrite_ManagerHeartbeat(this->m_managerHeartbeat);
+    this->tlmWrite_DriverFirmwareMajor(this->m_firmwareMajor);
+    this->tlmWrite_DriverFirmwareMinor(this->m_firmwareMinor);
+    this->tlmWrite_DriverFirmwarePatch(this->m_firmwarePatch);
+    this->tlmWrite_DriverBuildFlags(this->m_buildFlags);
+    this->tlmWrite_DriverGitHash(this->m_gitHash);
 }
 
 }  // namespace Components

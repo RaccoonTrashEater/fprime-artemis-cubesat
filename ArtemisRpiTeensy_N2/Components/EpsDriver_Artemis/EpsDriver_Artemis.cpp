@@ -4,6 +4,50 @@
 
 namespace Components {
 
+namespace {
+
+constexpr U8 REQUEST_STATUS_BUSY = 0xFDU;
+constexpr U8 REQUEST_STATUS_NOT_CONFIGURED = 0xFEU;
+constexpr U8 OUTPUT_IDS[PDU_V2_OUTPUT_COUNT] = {
+    PDU_OUTPUT_3V3_1,
+    PDU_OUTPUT_3V3_2,
+    PDU_OUTPUT_5V_1,
+    PDU_OUTPUT_5V_2,
+    PDU_OUTPUT_5V_3,
+    PDU_OUTPUT_12V,
+    PDU_OUTPUT_VBATT,
+    PDU_OUTPUT_BURN1,
+    PDU_OUTPUT_BURN2,
+};
+
+bool outputBitIndex(U8 outputId, U8& bitIndex) {
+    for (U8 index = 0; index < PDU_V2_OUTPUT_COUNT; ++index) {
+        if (OUTPUT_IDS[index] == outputId) {
+            bitIndex = index;
+            return true;
+        }
+    }
+    return false;
+}
+
+bool updateOutputBitmap(U16& bitmap, U8 outputId, U8 state) {
+    U8 bitIndex = 0;
+    if ((state > 1U) || !outputBitIndex(outputId, bitIndex)) {
+        return false;
+    }
+    const U16 bit = static_cast<U16>(1U << bitIndex);
+    bitmap = (state == 0U) ? static_cast<U16>(bitmap & static_cast<U16>(~bit)) :
+                             static_cast<U16>(bitmap | bit);
+    return true;
+}
+
+bool isLowerHex(U8 value) {
+    return ((value >= static_cast<U8>('0')) && (value <= static_cast<U8>('9'))) ||
+           ((value >= static_cast<U8>('a')) && (value <= static_cast<U8>('f')));
+}
+
+}  // namespace
+
 EpsDriver_Artemis::EpsDriver_Artemis(const char* const compName)
     : EpsDriver_ArtemisComponentBase(compName),
       m_sequence(0),
@@ -12,17 +56,23 @@ EpsDriver_Artemis::EpsDriver_Artemis(const char* const compName)
       m_pendingRequestTicks(0),
       m_requestPending(false),
       m_lastRequest(Components::EpsRequest::GET_SUMMARY_STATUS),
+      m_pendingRequest(Components::EpsRequest::GET_SUMMARY_STATUS),
+      m_pendingOutputId(0),
+      m_pendingState(0),
       m_protocolVersion(0),
       m_outputBitmap(0),
       m_resetCause(0),
       m_faultBitmap(0),
       m_uptimeSeconds(0),
       m_capabilities(0),
+      m_firmwareMajor(0),
+      m_firmwareMinor(0),
+      m_firmwarePatch(0),
+      m_buildFlags(0),
+      m_gitHash("000000000000"),
       m_lastPduStatus(0),
       m_lastOpcode(0),
-      m_transportFailureCount(0) {
-    std::memset(this->m_localPacket, 0, sizeof(this->m_localPacket));
-}
+      m_transportFailureCount(0) {}
 
 EpsDriver_Artemis::~EpsDriver_Artemis() {}
 
@@ -34,11 +84,16 @@ void EpsDriver_Artemis::pingIn_handler(FwIndexType portNum, U32 key) {
 void EpsDriver_Artemis::run_handler(FwIndexType portNum, U32 context) {
     static_cast<void>(portNum);
     static_cast<void>(context);
-    if (this->m_requestPending) {
-        this->m_pendingRequestTicks += 1U;
-        if (this->m_pendingRequestTicks >= PDU_REQUEST_TIMEOUT_TICKS) {
-            this->timeoutPendingRequest();
+    bool timeout = false;
+    {
+        Os::ScopeLock lock(this->m_stateMutex);
+        if (this->m_requestPending) {
+            this->m_pendingRequestTicks += 1U;
+            timeout = this->m_pendingRequestTicks >= PDU_REQUEST_TIMEOUT_TICKS;
         }
+    }
+    if (timeout) {
+        this->timeoutPendingRequest();
     }
     this->writeTelemetry();
 }
@@ -51,7 +106,6 @@ void EpsDriver_Artemis::requestIn_handler(
     U16 durationMs
 ) {
     static_cast<void>(portNum);
-    this->m_lastRequest = request;
     const U8 opcode = mapRequestToOpcode(request);
 
     U8 payload[PDU_V2_MAX_PAYLOAD_LEN] = {};
@@ -73,123 +127,205 @@ void EpsDriver_Artemis::requestIn_handler(
         payloadLen = PDU_V2_SET_CHARGER_STATE_REQ_LEN;
     }
 
-    if (!this->sendPduRequest(opcode, payload, payloadLen)) {
-        const U8 linkState = this->m_requestPending ? LINK_BUSY : LINK_NOT_CONFIGURED;
-        const U8 status = this->m_requestPending ? 0xFDU : 0xFEU;
-        this->m_transportFailureCount += 1U;
-        this->emitStatus(Components::HealthState::UNKNOWN, linkState, status, opcode);
-        this->log_WARNING_LO_PduRequestFailed(request, status);
-        this->writeTelemetry();
+    const U8 admissionStatus = this->sendPduRequest(request, outputId, state, opcode, payload, payloadLen);
+    if (admissionStatus == 0U) {
         return;
     }
 
-    this->emitStatus(Components::HealthState::UNKNOWN, LINK_REQUEST_QUEUED, 0, opcode);
-    this->log_ACTIVITY_LO_PduRequestQueued(request, this->m_pendingRequestId);
+    const U8 linkState = (admissionStatus == REQUEST_STATUS_BUSY) ? LINK_BUSY : LINK_NOT_CONFIGURED;
+    {
+        Os::ScopeLock lock(this->m_stateMutex);
+        this->m_transportFailureCount += 1U;
+        this->m_lastPduStatus = admissionStatus;
+        this->m_lastOpcode = opcode;
+    }
+    this->emitStatus(Components::HealthState::UNKNOWN, linkState, admissionStatus, opcode, request);
+    this->log_WARNING_LO_PduRequestFailed(request, admissionStatus);
     this->writeTelemetry();
 }
 
-bool EpsDriver_Artemis::sendPduRequest(U8 opcode, const U8* payload, U8 payloadLen) {
+U8 EpsDriver_Artemis::sendPduRequest(
+    Components::EpsRequest request,
+    U8 outputId,
+    U8 state,
+    U8 opcode,
+    const U8* payload,
+    U8 payloadLen
+) {
     if (payloadLen > PDU_V2_MAX_PAYLOAD_LEN) {
-        return false;
-    }
-    if (this->m_requestPending || !this->isConnected_teensyRequestOut_OutputPort(0)) {
-        return false;
+        return DRIVER_STATUS_MALFORMED_PAYLOAD;
     }
 
-    const U8 seq = ++this->m_sequence;
-    U8 pduFrame[PDU_V2_MAX_FRAME_LEN] = {};
-    pduFrame[0] = PDU_V2_SOF;
-    pduFrame[1] = PDU_V2_VERSION;
-    pduFrame[2] = PDU_V2_MSG_REQUEST;
-    pduFrame[3] = opcode;
-    pduFrame[4] = seq;
-    pduFrame[5] = 0;
-    pduFrame[6] = payloadLen;
-    if (payloadLen > 0U) {
-        std::memcpy(&pduFrame[PDU_V2_HEADER_LEN], payload, payloadLen);
-    }
-    const U32 crcInputLen = 6U + payloadLen;
-    const U16 crc = crc16Ccitt(&pduFrame[1], crcInputLen);
-    const U32 crcIndex = PDU_V2_HEADER_LEN + payloadLen;
-    pduFrame[crcIndex] = static_cast<U8>(crc & 0xFFU);
-    pduFrame[crcIndex + 1U] = static_cast<U8>((crc >> 8U) & 0xFFU);
+    U8 localPacket[LOCAL_MAX_PACKET_LEN] = {};
+    U32 packetLen = 0;
+    U8 sequence = 0;
+    {
+        Os::ScopeLock lock(this->m_stateMutex);
+        if (this->m_requestPending) {
+            return REQUEST_STATUS_BUSY;
+        }
+        if (!this->isConnected_teensyRequestOut_OutputPort(0)) {
+            return REQUEST_STATUS_NOT_CONFIGURED;
+        }
 
-    const U32 frameLen = PDU_V2_HEADER_LEN + payloadLen + PDU_V2_CRC_LEN;
-    const U32 packetLen = LOCAL_HEADER_LEN + frameLen;
-    if (packetLen > sizeof(this->m_localPacket)) {
-        return false;
-    }
-    this->m_localPacket[0] = LinkCfg::TEENSY_TARGET_PDU;
-    this->m_localPacket[1] = seq;
-    this->m_localPacket[2] = static_cast<U8>(frameLen);
-    this->m_localPacket[3] = 0;
-    std::memcpy(&this->m_localPacket[LOCAL_HEADER_LEN], pduFrame, frameLen);
+        sequence = ++this->m_sequence;
+        U8 pduFrame[PDU_V2_MAX_FRAME_LEN] = {};
+        pduFrame[0] = PDU_V2_SOF;
+        pduFrame[1] = PDU_V2_VERSION;
+        pduFrame[2] = PDU_V2_MSG_REQUEST;
+        pduFrame[3] = opcode;
+        pduFrame[4] = sequence;
+        pduFrame[5] = 0;
+        pduFrame[6] = payloadLen;
+        if (payloadLen > 0U) {
+            std::memcpy(&pduFrame[PDU_V2_HEADER_LEN], payload, payloadLen);
+        }
+        const U32 crcInputLen = 6U + payloadLen;
+        const U16 crc = crc16Ccitt(&pduFrame[1], crcInputLen);
+        const U32 crcIndex = PDU_V2_HEADER_LEN + payloadLen;
+        pduFrame[crcIndex] = static_cast<U8>(crc & 0xFFU);
+        pduFrame[crcIndex + 1U] = static_cast<U8>((crc >> 8U) & 0xFFU);
 
-    this->m_pendingRequestId = seq;
-    this->m_pendingOpcode = opcode;
-    this->m_pendingRequestTicks = 0;
-    this->m_requestPending = true;
-    Fw::Buffer localRequest(this->m_localPacket, packetLen);
+        const U32 frameLen = PDU_V2_HEADER_LEN + payloadLen + PDU_V2_CRC_LEN;
+        packetLen = LOCAL_HEADER_LEN + frameLen;
+        if (packetLen > sizeof(localPacket)) {
+            return DRIVER_STATUS_MALFORMED_PAYLOAD;
+        }
+        localPacket[0] = LinkCfg::TEENSY_TARGET_PDU;
+        localPacket[1] = sequence;
+        localPacket[2] = static_cast<U8>(frameLen);
+        localPacket[3] = 0;
+        std::memcpy(&localPacket[LOCAL_HEADER_LEN], pduFrame, frameLen);
+
+        // Request identity changes only after the request is admitted.
+        this->m_pendingRequestId = sequence;
+        this->m_pendingOpcode = opcode;
+        this->m_pendingRequest = request;
+        this->m_pendingOutputId = outputId;
+        this->m_pendingState = state;
+        this->m_pendingRequestTicks = 0;
+        this->m_requestPending = true;
+        this->m_lastRequest = request;
+    }
+
+    // Queue the admission notice before handing off the packet; the RX path can
+    // respond synchronously in tests and must never overtake this notification.
+    this->emitStatus(Components::HealthState::UNKNOWN, LINK_REQUEST_QUEUED, 0, opcode, request);
+    this->log_ACTIVITY_LO_PduRequestQueued(request, sequence);
+    this->writeTelemetry();
+    Fw::Buffer localRequest(localPacket, packetLen);
     this->teensyRequestOut_out(0, localRequest);
-    return true;
+    return 0;
 }
 
 void EpsDriver_Artemis::teensyResponseIn_handler(FwIndexType portNum, Fw::Buffer& fwBuffer) {
     static_cast<void>(portNum);
-    if (!fwBuffer.isValid() || fwBuffer.getSize() < LOCAL_HEADER_LEN) {
-        this->m_transportFailureCount += 1U;
-        return;
-    }
+    Components::EpsRequest request = Components::EpsRequest::GET_SUMMARY_STATUS;
+    U8 requestId = 0;
+    U8 opcode = 0;
+    U8 status = 0;
+    U8 linkState = LINK_ERROR;
+    Components::HealthState health = Components::HealthState::UNKNOWN;
+    bool report = false;
+    bool handled = false;
 
-    const U8* data = fwBuffer.getData();
-    const U8 target = data[0];
-    const U8 requestId = data[1];
-    const U8 localStatus = data[2];
-    const U8 payloadLen = data[3];
-    if ((target != LinkCfg::TEENSY_TARGET_PDU) || !this->m_requestPending ||
-        (requestId != this->m_pendingRequestId) ||
-        (fwBuffer.getSize() < static_cast<FwSizeType>(LOCAL_HEADER_LEN + payloadLen))) {
-        this->m_transportFailureCount += 1U;
-        if ((target == LinkCfg::TEENSY_TARGET_PDU) && this->m_requestPending &&
-            (requestId == this->m_pendingRequestId)) {
-            this->m_requestPending = false;
-            this->m_pendingRequestTicks = 0;
-            this->emitStatus(Components::HealthState::UNKNOWN, LINK_ERROR, 0xFCU, this->m_pendingOpcode);
-            this->writeTelemetry();
+    {
+        Os::ScopeLock lock(this->m_stateMutex);
+        if (!fwBuffer.isValid() || (fwBuffer.getSize() < LOCAL_HEADER_LEN)) {
+            this->m_transportFailureCount += 1U;
+            if (this->m_requestPending) {
+                request = this->m_pendingRequest;
+                requestId = this->m_pendingRequestId;
+                opcode = this->m_pendingOpcode;
+                this->m_requestPending = false;
+                this->m_pendingRequestTicks = 0;
+                this->m_lastPduStatus = DRIVER_STATUS_MALFORMED_FRAME;
+                this->m_lastOpcode = opcode;
+                status = DRIVER_STATUS_MALFORMED_FRAME;
+                report = true;
+            }
+        } else {
+            const U8* data = fwBuffer.getData();
+            const U8 target = data[0];
+            const U8 responseId = data[1];
+            const U8 localStatus = data[2];
+            const U8 payloadLen = data[3];
+            const bool matchingPending = this->m_requestPending &&
+                                         (target == LinkCfg::TEENSY_TARGET_PDU) &&
+                                         (responseId == this->m_pendingRequestId);
+            if (!matchingPending) {
+                this->m_transportFailureCount += 1U;
+            } else {
+                request = this->m_pendingRequest;
+                requestId = this->m_pendingRequestId;
+                opcode = this->m_pendingOpcode;
+                this->m_requestPending = false;
+                this->m_pendingRequestTicks = 0;
+                report = true;
+
+                if (fwBuffer.getSize() != static_cast<FwSizeType>(LOCAL_HEADER_LEN + payloadLen)) {
+                    this->m_transportFailureCount += 1U;
+                    status = DRIVER_STATUS_MALFORMED_FRAME;
+                    this->m_lastPduStatus = status;
+                    this->m_lastOpcode = opcode;
+                } else if (localStatus != LinkCfg::TEENSY_STATUS_OK) {
+                    this->m_transportFailureCount += 1U;
+                    status = localStatus;
+                    this->m_lastPduStatus = localStatus;
+                    this->m_lastOpcode = opcode;
+                } else {
+                    PduResponse response = {};
+                    const bool parsed = this->parsePduResponse(
+                        &data[LOCAL_HEADER_LEN],
+                        payloadLen,
+                        requestId,
+                        opcode,
+                        response);
+                    if (!parsed) {
+                        this->m_transportFailureCount += 1U;
+                        status = DRIVER_STATUS_MALFORMED_FRAME;
+                        this->m_lastPduStatus = status;
+                        this->m_lastOpcode = opcode;
+                    } else if (response.status != PDU_V2_STATUS_OK) {
+                        status = response.status;
+                        this->m_lastPduStatus = response.status;
+                        this->m_lastOpcode = response.opcode;
+                        linkState = LINK_PROTOCOL_OK;
+                        health = Components::HealthState::WARN;
+                        handled = true;
+                    } else if (!this->processResponse(request, response)) {
+                        this->m_transportFailureCount += 1U;
+                        status = this->m_lastPduStatus;
+                        this->m_lastOpcode = opcode;
+                        if (status == DRIVER_STATUS_READBACK_MISMATCH) {
+                            health = Components::HealthState::WARN;
+                        }
+                    } else {
+                        status = response.status;
+                        this->m_lastPduStatus = response.status;
+                        this->m_lastOpcode = response.opcode;
+                        linkState = LINK_PROTOCOL_OK;
+                        health = ((request == Components::EpsRequest::GET_SUMMARY_STATUS) &&
+                                  (this->m_faultBitmap != 0U)) ?
+                                     Components::HealthState::WARN : Components::HealthState::OK;
+                        handled = true;
+                    }
+                }
+            }
         }
-        return;
     }
 
-    if (localStatus != LinkCfg::TEENSY_STATUS_OK) {
-        this->m_requestPending = false;
-        this->m_pendingRequestTicks = 0;
-        this->m_transportFailureCount += 1U;
-        this->m_lastPduStatus = localStatus;
-        this->m_lastOpcode = this->m_pendingOpcode;
-        this->emitStatus(Components::HealthState::UNKNOWN, LINK_ERROR, localStatus, this->m_pendingOpcode);
-        this->log_WARNING_LO_PduRequestFailed(this->m_lastRequest, localStatus);
+    if (!report) {
         this->writeTelemetry();
         return;
     }
-
-    PduResponse response = {};
-    const bool parsed = this->parsePduResponse(
-        &data[LOCAL_HEADER_LEN],
-        payloadLen,
-        this->m_pendingRequestId,
-        this->m_pendingOpcode,
-        response);
-    this->m_requestPending = false;
-    this->m_pendingRequestTicks = 0;
-    if (!parsed) {
-        this->m_transportFailureCount += 1U;
-        this->emitStatus(Components::HealthState::UNKNOWN, LINK_ERROR, 0xFBU, this->m_pendingOpcode);
-        this->log_WARNING_LO_PduRequestFailed(this->m_lastRequest, 0xFBU);
-        this->writeTelemetry();
-        return;
+    this->emitStatus(health, linkState, status, opcode, request);
+    if (handled && (status == PDU_V2_STATUS_OK)) {
+        this->log_ACTIVITY_LO_PduRequestHandled(request, status);
+    } else {
+        this->log_WARNING_LO_PduRequestFailed(request, status);
     }
-
-    this->processResponse(this->m_lastRequest, response);
+    static_cast<void>(requestId);
     this->writeTelemetry();
 }
 
@@ -228,87 +364,261 @@ bool EpsDriver_Artemis::parsePduResponse(
     return true;
 }
 
-void EpsDriver_Artemis::processResponse(const Components::EpsRequest& request, const PduResponse& response) {
+bool EpsDriver_Artemis::processResponse(const Components::EpsRequest& request, const PduResponse& response) {
     this->m_lastPduStatus = response.status;
     this->m_lastOpcode = response.opcode;
+    if (response.status != PDU_V2_STATUS_OK) {
+        return true;
+    }
 
-    Components::HealthState health =
-        (response.status == PDU_V2_STATUS_OK) ? Components::HealthState::OK : Components::HealthState::WARN;
-    if ((request == Components::EpsRequest::GET_SUMMARY_STATUS) &&
-        (response.status == PDU_V2_STATUS_OK) &&
-        (response.payloadLen >= PDU_V2_SUMMARY_STATUS_LEN)) {
-        this->m_outputBitmap = static_cast<U16>(response.payload[0]) | static_cast<U16>(response.payload[1] << 8U);
+    if (request == Components::EpsRequest::GET_SUMMARY_STATUS) {
+        if (response.payloadLen != PDU_V2_SUMMARY_STATUS_LEN) {
+            this->m_lastPduStatus = DRIVER_STATUS_MALFORMED_PAYLOAD;
+            return false;
+        }
+        this->m_outputBitmap = static_cast<U16>(response.payload[0]) |
+                               static_cast<U16>(response.payload[1] << 8U);
         this->m_resetCause = response.payload[2];
         this->m_faultBitmap = response.payload[3];
         this->m_uptimeSeconds = readLe32(&response.payload[4]);
         this->m_capabilities = response.payload[8];
         this->m_protocolVersion = PDU_V2_VERSION;
-        if (this->m_faultBitmap != 0U) {
-            health = Components::HealthState::WARN;
-        }
-    } else if ((request == Components::EpsRequest::GET_PROTOCOL_INFO) &&
-               (response.status == PDU_V2_STATUS_OK) &&
-               (response.payloadLen >= PDU_V2_PROTOCOL_INFO_LEN)) {
-        this->m_protocolVersion = response.payload[0];
-        this->m_capabilities = response.payload[1];
-    } else if ((request == Components::EpsRequest::PING) &&
-               (response.status == PDU_V2_STATUS_OK) &&
-               (response.payloadLen >= PDU_V2_PING_LEN)) {
-        this->m_protocolVersion = response.payload[0];
+        return true;
     }
 
-    this->emitStatus(health, LINK_PROTOCOL_OK, response.status, response.opcode);
-    if (response.status == PDU_V2_STATUS_OK) {
-        this->log_ACTIVITY_LO_PduRequestHandled(request, response.status);
-    } else {
-        this->log_WARNING_LO_PduRequestFailed(request, response.status);
+    if (request == Components::EpsRequest::GET_PROTOCOL_INFO) {
+        if ((response.payloadLen != PDU_V2_PROTOCOL_INFO_LEN) &&
+            (response.payloadLen != PDU_V2_PROTOCOL_INFO_EXT_LEN)) {
+            this->m_lastPduStatus = DRIVER_STATUS_MALFORMED_PAYLOAD;
+            return false;
+        }
+        const U8 protocolVersion = response.payload[0];
+        const U8 capabilities = response.payload[1];
+        const U8 firmwareMajor = response.payload[4];
+        const U8 firmwareMinor = response.payload[5];
+        const U8 firmwarePatch = response.payload[6];
+        U8 buildFlags = 0;
+        Fw::String gitHash("000000000000");
+        if (response.payloadLen == PDU_V2_PROTOCOL_INFO_EXT_LEN) {
+            const U8 flags = response.payload[PDU_V2_PROTOCOL_INFO_FLAGS_OFFSET];
+            const U8 knownAndDirty = PDU_V2_PROTOCOL_INFO_FLAG_HASH_KNOWN | PDU_V2_PROTOCOL_INFO_FLAG_DIRTY;
+            if ((flags & static_cast<U8>(~knownAndDirty)) != 0U) {
+                this->m_lastPduStatus = DRIVER_STATUS_MALFORMED_PAYLOAD;
+                return false;
+            }
+            char hash[PDU_V2_PROTOCOL_INFO_HASH_LEN + 1U] = {};
+            const bool hashKnown = (flags & PDU_V2_PROTOCOL_INFO_FLAG_HASH_KNOWN) != 0U;
+            for (U8 index = 0; index < PDU_V2_PROTOCOL_INFO_HASH_LEN; ++index) {
+                const U8 value = response.payload[PDU_V2_PROTOCOL_INFO_HASH_OFFSET + index];
+                if (hashKnown && !isLowerHex(value)) {
+                    this->m_lastPduStatus = DRIVER_STATUS_MALFORMED_PAYLOAD;
+                    return false;
+                }
+                if (!hashKnown && (value != 0U) && (value != static_cast<U8>('0'))) {
+                    this->m_lastPduStatus = DRIVER_STATUS_MALFORMED_PAYLOAD;
+                    return false;
+                }
+                hash[index] = hashKnown ? static_cast<char>(value) : '0';
+            }
+            buildFlags = flags;
+            gitHash = hash;
+        }
+        this->m_protocolVersion = protocolVersion;
+        this->m_capabilities = capabilities;
+        this->m_firmwareMajor = firmwareMajor;
+        this->m_firmwareMinor = firmwareMinor;
+        this->m_firmwarePatch = firmwarePatch;
+        this->m_buildFlags = buildFlags;
+        this->m_gitHash = gitHash;
+        return true;
     }
+
+    if (request == Components::EpsRequest::PING) {
+        if (response.payloadLen != PDU_V2_PING_LEN) {
+            this->m_lastPduStatus = DRIVER_STATUS_MALFORMED_PAYLOAD;
+            return false;
+        }
+        this->m_protocolVersion = response.payload[0];
+        return true;
+    }
+
+    if ((request == Components::EpsRequest::GET_OUTPUT_STATE) && (this->m_pendingOutputId == PDU_V2_OUTPUT_ALL)) {
+        if ((response.payloadLen != (2U + PDU_V2_OUTPUT_COUNT)) ||
+            (response.payload[0] != PDU_V2_OUTPUT_ALL) || (response.payload[1] != PDU_V2_OUTPUT_COUNT)) {
+            this->m_lastPduStatus = DRIVER_STATUS_MALFORMED_PAYLOAD;
+            return false;
+        }
+        U16 bitmap = 0;
+        for (U8 index = 0; index < PDU_V2_OUTPUT_COUNT; ++index) {
+            if (!updateOutputBitmap(bitmap, OUTPUT_IDS[index], response.payload[2U + index])) {
+                this->m_lastPduStatus = DRIVER_STATUS_MALFORMED_PAYLOAD;
+                return false;
+            }
+        }
+        this->m_outputBitmap = bitmap;
+        return true;
+    }
+
+    if ((request == Components::EpsRequest::GET_OUTPUT_STATE) ||
+        (request == Components::EpsRequest::SET_OUTPUT_STATE) ||
+        (request == Components::EpsRequest::POWER_CYCLE_OUTPUT)) {
+        if ((response.payloadLen != 2U) || (response.payload[0] != this->m_pendingOutputId) ||
+            (response.payload[1] > 1U) ||
+            !updateOutputBitmap(this->m_outputBitmap, response.payload[0], response.payload[1])) {
+            this->m_lastPduStatus = DRIVER_STATUS_MALFORMED_PAYLOAD;
+            return false;
+        }
+        if (((request == Components::EpsRequest::SET_OUTPUT_STATE) &&
+             (response.payload[1] != this->m_pendingState)) ||
+            ((request == Components::EpsRequest::POWER_CYCLE_OUTPUT) && (response.payload[1] != 0U))) {
+            this->m_lastPduStatus = DRIVER_STATUS_READBACK_MISMATCH;
+            return false;
+        }
+        return true;
+    }
+
+    if ((request == Components::EpsRequest::GET_CHARGER_STATUS) ||
+        (request == Components::EpsRequest::SET_CHARGER_STATE)) {
+        if (response.payloadLen != PDU_V2_CHARGER_STATUS_RESP_LEN) {
+            this->m_lastPduStatus = DRIVER_STATUS_MALFORMED_PAYLOAD;
+            return false;
+        }
+        return true;
+    }
+
+    this->m_lastPduStatus = DRIVER_STATUS_MALFORMED_PAYLOAD;
+    return false;
 }
 
-void EpsDriver_Artemis::emitStatus(Components::HealthState health, U8 linkState, U8 pduStatus, U8 opcode) {
-    if (this->isConnected_statusOut_OutputPort(0)) {
-        this->statusOut_out(
-            0,
-            health,
-            linkState,
-            this->m_protocolVersion,
-            this->m_outputBitmap,
-            this->m_resetCause,
-            this->m_faultBitmap,
-            this->m_uptimeSeconds,
-            this->m_capabilities,
-            pduStatus,
-            opcode);
+void EpsDriver_Artemis::emitStatus(
+    Components::HealthState health,
+    U8 linkState,
+    U8 pduStatus,
+    U8 opcode,
+    Components::EpsRequest request
+) {
+    if (!this->isConnected_statusOut_OutputPort(0)) {
+        return;
     }
+    U8 protocolVersion = 0;
+    U16 outputBitmap = 0;
+    U8 resetCause = 0;
+    U8 faultBitmap = 0;
+    U32 uptimeSeconds = 0;
+    U8 capabilities = 0;
+    U8 firmwareMajor = 0;
+    U8 firmwareMinor = 0;
+    U8 firmwarePatch = 0;
+    U8 buildFlags = 0;
+    Fw::String gitHash;
+    {
+        Os::ScopeLock lock(this->m_stateMutex);
+        protocolVersion = this->m_protocolVersion;
+        outputBitmap = this->m_outputBitmap;
+        resetCause = this->m_resetCause;
+        faultBitmap = this->m_faultBitmap;
+        uptimeSeconds = this->m_uptimeSeconds;
+        capabilities = this->m_capabilities;
+        firmwareMajor = this->m_firmwareMajor;
+        firmwareMinor = this->m_firmwareMinor;
+        firmwarePatch = this->m_firmwarePatch;
+        buildFlags = this->m_buildFlags;
+        gitHash = this->m_gitHash;
+    }
+    this->statusOut_out(
+        0,
+        health,
+        linkState,
+        protocolVersion,
+        outputBitmap,
+        resetCause,
+        faultBitmap,
+        uptimeSeconds,
+        capabilities,
+        pduStatus,
+        opcode,
+        request,
+        firmwareMajor,
+        firmwareMinor,
+        firmwarePatch,
+        buildFlags,
+        gitHash);
 }
 
 void EpsDriver_Artemis::writeTelemetry() {
-    this->tlmWrite_LastRequest(this->m_lastRequest);
-    this->tlmWrite_LastPduStatus(this->m_lastPduStatus);
-    this->tlmWrite_LastPduOpcode(this->m_lastOpcode);
-    this->tlmWrite_PduProtocolVersion(this->m_protocolVersion);
-    this->tlmWrite_PduOutputBitmap(this->m_outputBitmap);
-    this->tlmWrite_PduFaultBitmap(this->m_faultBitmap);
-    this->tlmWrite_PduUptimeSeconds(this->m_uptimeSeconds);
-    this->tlmWrite_TransportFailureCount(this->m_transportFailureCount);
-    this->tlmWrite_PendingRequestTicks(this->m_pendingRequestTicks);
+    Components::EpsRequest lastRequest = Components::EpsRequest::GET_SUMMARY_STATUS;
+    U8 lastPduStatus = 0;
+    U8 lastOpcode = 0;
+    U8 protocolVersion = 0;
+    U16 outputBitmap = 0;
+    U8 faultBitmap = 0;
+    U32 uptimeSeconds = 0;
+    U32 transportFailureCount = 0;
+    U32 pendingRequestTicks = 0;
+    U8 firmwareMajor = 0;
+    U8 firmwareMinor = 0;
+    U8 firmwarePatch = 0;
+    U8 buildFlags = 0;
+    Fw::String gitHash;
+    {
+        Os::ScopeLock lock(this->m_stateMutex);
+        lastRequest = this->m_lastRequest;
+        lastPduStatus = this->m_lastPduStatus;
+        lastOpcode = this->m_lastOpcode;
+        protocolVersion = this->m_protocolVersion;
+        outputBitmap = this->m_outputBitmap;
+        faultBitmap = this->m_faultBitmap;
+        uptimeSeconds = this->m_uptimeSeconds;
+        transportFailureCount = this->m_transportFailureCount;
+        pendingRequestTicks = this->m_pendingRequestTicks;
+        firmwareMajor = this->m_firmwareMajor;
+        firmwareMinor = this->m_firmwareMinor;
+        firmwarePatch = this->m_firmwarePatch;
+        buildFlags = this->m_buildFlags;
+        gitHash = this->m_gitHash;
+    }
+    this->tlmWrite_LastRequest(lastRequest);
+    this->tlmWrite_LastPduStatus(lastPduStatus);
+    this->tlmWrite_LastPduOpcode(lastOpcode);
+    this->tlmWrite_PduProtocolVersion(protocolVersion);
+    this->tlmWrite_PduOutputBitmap(outputBitmap);
+    this->tlmWrite_PduFaultBitmap(faultBitmap);
+    this->tlmWrite_PduUptimeSeconds(uptimeSeconds);
+    this->tlmWrite_TransportFailureCount(transportFailureCount);
+    this->tlmWrite_PendingRequestTicks(pendingRequestTicks);
+    this->tlmWrite_PduFirmwareMajor(firmwareMajor);
+    this->tlmWrite_PduFirmwareMinor(firmwareMinor);
+    this->tlmWrite_PduFirmwarePatch(firmwarePatch);
+    this->tlmWrite_PduBuildFlags(buildFlags);
+    this->tlmWrite_PduGitHash(gitHash);
 }
 
 void EpsDriver_Artemis::timeoutPendingRequest() {
-    const U8 timedOutRequestId = this->m_pendingRequestId;
-    const U8 timedOutOpcode = this->m_pendingOpcode;
-    this->m_requestPending = false;
-    this->m_pendingRequestTicks = 0;
-    this->m_transportFailureCount += 1U;
-    this->m_lastPduStatus = LinkCfg::TEENSY_STATUS_TIMEOUT;
-    this->m_lastOpcode = timedOutOpcode;
+    Components::EpsRequest request = Components::EpsRequest::GET_SUMMARY_STATUS;
+    U8 requestId = 0;
+    U8 opcode = 0;
+    {
+        Os::ScopeLock lock(this->m_stateMutex);
+        if (!this->m_requestPending || (this->m_pendingRequestTicks < PDU_REQUEST_TIMEOUT_TICKS)) {
+            return;
+        }
+        request = this->m_pendingRequest;
+        requestId = this->m_pendingRequestId;
+        opcode = this->m_pendingOpcode;
+        this->m_requestPending = false;
+        this->m_pendingRequestTicks = 0;
+        this->m_transportFailureCount += 1U;
+        this->m_lastPduStatus = LinkCfg::TEENSY_STATUS_TIMEOUT;
+        this->m_lastOpcode = opcode;
+    }
     this->emitStatus(
         Components::HealthState::UNKNOWN,
         LINK_ERROR,
         LinkCfg::TEENSY_STATUS_TIMEOUT,
-        timedOutOpcode);
-    this->log_WARNING_LO_PduRequestTimedOut(this->m_lastRequest, timedOutRequestId);
-    this->log_WARNING_LO_PduRequestFailed(this->m_lastRequest, LinkCfg::TEENSY_STATUS_TIMEOUT);
+        opcode,
+        request);
+    this->log_WARNING_LO_PduRequestTimedOut(request, requestId);
+    this->log_WARNING_LO_PduRequestFailed(request, LinkCfg::TEENSY_STATUS_TIMEOUT);
 }
 
 U16 EpsDriver_Artemis::crc16Ccitt(const U8* data, U32 length) {

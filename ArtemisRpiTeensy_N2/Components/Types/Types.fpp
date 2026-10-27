@@ -219,6 +219,12 @@ module Components {
     uptimeSeconds: U32,
     capabilities: U8,
     adapterStatus: U8,
-    lastAdapterOpcode: U8
+    lastAdapterOpcode: U8,
+    epsRequest: EpsRequest,
+    firmwareMajor: U8,
+    firmwareMinor: U8,
+    firmwarePatch: U8,
+    buildFlags: U8,
+    gitHash: string size 12
   )
 }
