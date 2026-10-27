@@ -62,6 +62,14 @@ The script waits for the Yamcs instance, resolves the current `missionApp.PING` 
 
 To stop this checkout's recorded stack, press Ctrl+C in its foreground terminal or run `./tools/yamcs/stop.sh` from another terminal. The helper checks the recorded PID's command path before signaling it. A deliberate restart creates fresh native application state while retaining the local Yamcs archive; the probe checks fresh reception/acquisition times so archived successes do not satisfy a new run.
 
+## State-of-health check through Yamcs
+
+```sh
+tools/yamcs/.venv/bin/python tools/yamcs/soh_check.py
+```
+
+The script checks `sohApp` through the Yamcs HTTP API: `EMIT_SOH_SNAPSHOT` gives one `Snapshot` event and a fresh `OverallHealth`. `SET_SOH_REPORTING ENABLED` gives `SohReportingChanged` and a report at once, and `DISABLED` stops reporting. `SOH_PERIOD_SECONDS` set to 0 is reported with `SohParameterRejected` and the 10 s default stays in use. Periodic reports (one every `SOH_PERIOD_SECONDS`) need `sohApp.run` connected to a rate group, which both topologies still leave commented out. Add `--expect-periodic` only on a build where it is connected. For the CDR TCP stack add `--dictionary <matching dictionary>`. Local software evidence only.
+
 ## Existing collection/file compatibility probe
 
 On a freshly started, otherwise idle local stack, run:
