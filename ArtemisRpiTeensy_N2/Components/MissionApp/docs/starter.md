@@ -19,6 +19,9 @@ Base case: coordinate RFM23BP downlink and RPi-emulated payload collection.
 - `SCHEDULE_COLLECTION(delaySeconds)`
 - `CANCEL_COLLECTION`
 - `REPORT_MODE` (read-only: emits one `ModeReport` event with the current mode)
+- `SET_MODE(mode)` (switch operations mode: `BASE`, `SAFE` or `SCIENCE_DOWNLINK`; the transition table refuses the rest with a reason)
+- `CLEAR_SAFE_LATCH` (clears a latched SAFE fault; leaving SAFE still needs `SET_MODE BASE`)
+- `SIMULATE_SAFE_FAULT(cause, latch)` (local Yamcs builds only: acts like a fault indication)
 
 ## Abstraction Rule
 
