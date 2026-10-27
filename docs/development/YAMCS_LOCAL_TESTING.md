@@ -73,6 +73,16 @@ tools/yamcs/.venv/bin/python tools/yamcs/report_mode.py --expect-mode BASE
 
 The script sends the read-only `missionApp.REPORT_MODE` command through the Yamcs HTTP API. It then checks the Yamcs event archive for exactly one `missionApp.ModeReport` answer, plus the stock `CdhCore.cmdDisp` `OpCodeDispatched` and `OpCodeCompleted` events for its opcode. It prints the reported mode and saves a JSON record under the active `yamcs/run/<timestamp>/` directory. `--expect-mode` also requires a specific mode; a freshly started stack is in `BASE`. For the CDR TCP stack ([CDR_TCP.md](../operations/CDR_TCP.md)), whose launcher does not write `yamcs/run/current.json`, add `--dictionary <matching dictionary>`; the record then goes to `yamcs/run/report-mode-<time>/` unless `--run-dir` is given. Operators can send the same command from the Yamcs web UI Commanding page; the answer appears under Events as `Mission mode is BASE`. This is local software evidence only.
 
+## Demo mode cycle through Yamcs
+
+On a freshly started stack, with no other operator commands in flight:
+
+```sh
+tools/yamcs/.venv/bin/python tools/yamcs/mode_cycle.py
+```
+
+The script walks the demo modes ([MISSION_MODES.md](../architecture/MISSION_MODES.md)) through the Yamcs HTTP API. Part A runs one scheduled collection through Science Collection and Science Processing, opens and closes a downlink window with `missionApp.SET_MODE`, and checks the refusals for `SET_MODE SCIENCE_PROCESSING`, `SET_MODE SCIENCE_COLLECTION` and a downlink while a collection is queued. Part B enters SAFE from the ground, checks that commands are refused there, and leaves it. On this local build it also sends `missionApp.SIMULATE_SAFE_FAULT` (low power, latched), checks that the exit is blocked until `CLEAR_SAFE_LATCH` and the stability interval (default 10 s), then leaves SAFE. Part C sets `AUTO_RETURN_TO_BASE` to 1 for one collection, checks that MissionApp returns to `BASE` by itself after the stored product, and sets it back to 0. Every step checks the `CdhCore.cmdDisp` result (`OpCodeCompleted` or `OpCodeError`) and the MissionApp events it must produce. It sets a 3 s capture with `scienceApp.CONFIGURE_CAPTURE_DURATION` (volatile) and takes about a minute. It saves one JSON record under the active `yamcs/run/<timestamp>/` directory. For the CDR TCP stack add `--dictionary <matching dictionary>`: that build refuses `SIMULATE_SAFE_FAULT`, and the script checks the refusal instead. This is local software evidence only.
+
 ## Existing collection/file compatibility probe
 
 On a freshly started, otherwise idle local stack, run:

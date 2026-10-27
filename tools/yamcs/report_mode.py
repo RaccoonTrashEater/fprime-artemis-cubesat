@@ -30,8 +30,8 @@ COMMAND = "ArtemisRpiTeensyDeployment.missionApp.REPORT_MODE"
 REPORT_EVENT = "ArtemisRpiTeensyDeployment.missionApp.ModeReport"
 DISPATCHED_EVENT = "CdhCore.cmdDisp.OpCodeDispatched"
 COMPLETED_EVENT = "CdhCore.cmdDisp.OpCodeCompleted"
-# Components.MissionMode in Types.fpp, in value order (BASE = 0 ... DOWNLINKING = 4).
-MODES = ("BASE", "COLLECTION_PENDING", "COLLECTING", "SCIENCE_READY", "DOWNLINKING")
+# Components.MissionMode in Types.fpp, in value order (BASE = 0 ... SAFE = 5).
+MODES = ("BASE", "COLLECTION_PENDING", "COLLECTING", "SCIENCE_READY", "DOWNLINKING", "SAFE")
 # After completion, wait this long before counting answers, so a duplicate would be caught.
 SETTLE_SECONDS = 3
 
