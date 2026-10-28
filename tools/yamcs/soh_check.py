@@ -3,8 +3,9 @@
 
 1. EMIT_SOH_SNAPSHOT: one Snapshot event and a fresh OverallHealth value.
 2. SET_SOH_REPORTING ENABLED: SohReportingChanged, and a report at once (MVP step 2.1).
-3. With --expect-periodic (only when sohApp.run is wired to a rate group): more reports
-   arrive every SOH_PERIOD_SECONDS, and they stop after SET_SOH_REPORTING DISABLED.
+3. With --expect-periodic (builds that connect sohApp.run to rateGroup1): no report while
+   reporting is off, then one every SOH_PERIOD_SECONDS while it is on, and none after
+   SET_SOH_REPORTING DISABLED.
 4. SET_SOH_REPORTING DISABLED: SohReportingChanged DISABLED.
 5. SOH_PERIOD_SECONDS_PRM_SET 0: refused value is reported (SohParameterRejected), then 10 again.
 
@@ -12,7 +13,7 @@ Local stack (run.sh): no options needed. CDR TCP stack: pass --dictionary <its d
 Saves one JSON record. Local software evidence only: no board, RF or EPS hardware.
 """
 import argparse
-from datetime import datetime
+from datetime import datetime, timezone
 import hashlib
 import json
 from pathlib import Path
@@ -127,7 +128,7 @@ def main():
     parser.add_argument("--dictionary", help="matching F' JSON dictionary; required for the CDR TCP stack")
     parser.add_argument("--run-dir", help="folder for the JSON evidence")
     parser.add_argument("--expect-periodic", action="store_true",
-                        help="also check periodic reports (needs sohApp.run wired to a rate group)")
+                        help="also check timed reports (needs sohApp.run connected to rateGroup1)")
     parser.add_argument("--url", default=URL)
     parser.add_argument("--instance", default=INSTANCE)
     args = parser.parse_args()
@@ -184,6 +185,13 @@ def main():
             return f"{name} = {value.get('engValue', {}).get('stringValue')}"
         return check
 
+    if args.expect_periodic:  # the timer is connected, but reporting is off at start-up: nothing may go down
+        quiet_from = datetime.now(timezone.utc)
+        time.sleep(PERIOD_SECONDS + 4)
+        count = len(events_after("SOH overall", "Snapshot", quiet_from))
+        steps.append({"step": "no reports while reporting is off", "result": "PASS" if count == 0 else "FAIL",
+                      "snapshots_while_off": count})
+        print(f"{'PASS' if count == 0 else 'FAIL':4}  no reports while reporting is off ({count} seen in {PERIOD_SECONDS + 4} s)")
     step("EMIT_SOH_SNAPSHOT: one report now", SOH + ".EMIT_SOH_SNAPSHOT", {},
          [event_check("Snapshot", "SOH overall"), value_check("OverallHealth")])
     enabled_at = step("SET_SOH_REPORTING ENABLED: report at once", SOH + ".SET_SOH_REPORTING", {"reporting": "ENABLED"},
