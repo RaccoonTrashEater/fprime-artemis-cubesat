@@ -299,6 +299,9 @@ def main():
                 return False
 
         wait_until(ready, 100, "Yamcs did not reach RUNNING")
+        # The event forwarder starts a moment after the instance. A Pong sent before it never reaches Yamcs.
+        wait_until(lambda: "Event processor running" in (run / "ground.log").read_text(errors="replace"),
+                   60, "Yamcs event processor did not start")
         result["checks"]["ping"] = ping()
         rejections = []
         for command_name, arguments in [

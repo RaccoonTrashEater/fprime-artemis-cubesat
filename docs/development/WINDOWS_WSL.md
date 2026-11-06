@@ -253,7 +253,9 @@ be stale.
 - Do not run F' build commands from native PowerShell unless a specific doc says
   that path is supported.
 - Do not clone the developer workspace under `/mnt/c` unless you are only doing
-  lightweight file edits.
+  lightweight file edits. Yamcs keeps its run data under the repo, and writes to
+  `/mnt/c` can stall it long enough to drop frames, so large files fail their
+  checksum.
 - Do not paste another laptop's `/dev/cu.usbmodem...` path; Windows/WSL usually
   exposes attached serial devices as `/dev/ttyACM*` or `/dev/ttyUSB*`.
 - Do not assume `/dev/ttyACM0` and `/dev/ttyACM2` forever; enumerate after each

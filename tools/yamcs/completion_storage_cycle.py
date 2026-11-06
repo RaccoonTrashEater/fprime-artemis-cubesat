@@ -771,7 +771,9 @@ def initial_negative_probes(current, timeout):
     failed["configuration"] = configured
     result.append(failed)
 
-    configured = configure_simulation("DELAYED_RESPONSE", delay_ms=6000, timeout_ms=1000)
+    # PayloadManager and the simulated driver run on the 2 s rate group. The timeout must outlast the first
+    # poll, or the driver kills the capture and no late reply ever exists.
+    configured = configure_simulation("DELAYED_RESPONSE", delay_ms=6000, timeout_ms=2500)
     old_command, old_accepted = start_verified_capture(random_token(), 1, timeout=timeout)
     old_token = int(old_accepted["extra"]["verificationToken"])
     old_terminal = capture_status(old_command, old_token, "TIMED_OUT", timeout=timeout)
@@ -787,7 +789,10 @@ def initial_negative_probes(current, timeout):
     # Start a newer pending operation while the old delayed callback is still
     # due. An old legacy request ID must not affect the verified owner's
     # generation when the manager reports generation-zero BUSY.
-    configured = configure_simulation("DELAYED_RESPONSE", delay_ms=6000, timeout_ms=8000)
+    # Worst case on the 2 s rate group: the capture is accepted just before a tick, so its finish is seen a
+    # tick later, and the reply then lands on the first tick after its delay. 3 s lands 4 s after that poll,
+    # inside the 8 s timeout. 4 s or more can land 6 s after it and meet the timeout on the same tick.
+    configured = configure_simulation("DELAYED_RESPONSE", delay_ms=3000, timeout_ms=8000)
     new_token = random_token({old_token})
     new_command, new_accepted = start_verified_capture(new_token, 1, timeout=timeout)
     owner_request_id = int(new_accepted["extra"]["requestId"])
