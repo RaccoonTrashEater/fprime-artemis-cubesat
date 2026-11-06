@@ -8,6 +8,7 @@ Start with the guide for your task. Final local native CDR profile and legacy Ya
 | Mission ops: run a prepared laptop | [Daily quickstart](operations/QUICKSTART.md) |
 | Mission ops: a command or display failed | [Operator troubleshooting](operations/TROUBLESHOOTING.md) |
 | PDU named rail commands and readbacks | [PDU Yamcs operator guide](operations/PDU_READABILITY.md) |
+| CDR payload power and collection | [CDR payload power runbook](operations/CDR_PAYLOAD_POWER_RUNBOOK.md) |
 | Develop or test N2 FSW | [Build and test](development/BUILD_AND_TEST.md) |
 | Understand the implementation | [System architecture](architecture/SYSTEM_ARCHITECTURE.md), [mission modes](architecture/MISSION_MODES.md) |
 | Connect hardware | [Integration status and contracts](integration/README.md) |
